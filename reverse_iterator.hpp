@@ -30,7 +30,7 @@ namespace	ft
 
 			/*---------------------------------------------------------------------------------------------------
 			*                                  Constructors
-			/---------------------------------------------------------------------------------------------------*
+			---------------------------------------------------------------------------------------------------*/
 
 			reverse_iterator() : _current() {} // construct with default container
 			explicit reverse_iterator(iterator_type x) : _current(x) {} // construct with container it points to
