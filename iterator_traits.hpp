@@ -20,32 +20,32 @@ if the type does not provide the usual typedefs.
 
 namespace	ft
 {
-	struct input_iterator_tag {};
-	struct output_iterator_tag {};
-    struct forward_iterator_tag : public input_iterator_tag {};
-	struct bidirectional_iterator_tag : public forward_iterator_tag {};
-	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
+	struct input_iterator_tag {}; // is a LegacyIterator that can read from the pointed-to element
+	struct output_iterator_tag {}; //is a LegacyIterator that can write to the pointed-to element.
+    struct forward_iterator_tag : public input_iterator_tag {}; //is a LegacyIterator that can read data from the pointed-to element.
+	struct bidirectional_iterator_tag : public forward_iterator_tag {}; //is a LegacyForwardIterator that can be moved in both directions (i.e. incremented and decremented).
+	struct random_access_iterator_tag : public bidirectional_iterator_tag {}; //is a LegacyBidirectionalIterator that can be moved to point to any element in constant time.
 
 	template <typename Category, typename Tp, typename Distance, typename Pointer, typename Reference>
 	struct iterator
 	{
 		// public:
-			typedef Category iterator_category;
-			typedef Tp iterator_type;
-			typedef Distance difference_type;
-			typedef Pointer pointer;
-			typedef Reference reference;
+			typedef Category iterator_category; // 	the category of the iterator, one of the iterator tags : input/output/forward/bidirectional/random_access -->_iterator_tag
+			typedef Tp iterator_type; //the type of the values that can be obtained by dereferencing the iterator. This type should be void for output iterators.
+			typedef Distance difference_type; //	a type that can be used to identify distance between iterators
+			typedef Pointer pointer; //defines a pointer to the type iterated over (T)
+			typedef Reference reference; //	defines a reference to the type iterated over (T)
 	};
 
 	template <class Iterator>
 	class iterator_traits
 	{
 		// public:
-			typedef typename Iterator::difference_type		difference_type;
-			typedef typename Iterator::value_type			value_type;
-			typedef typename Iterator::pointer				pointer;
-			typedef typename Iterator::reference			reference;
-			typedef typename Iterator::iterator_category	iterator_category;
+			typedef typename Iterator::difference_type		difference_type; //Type to express the result of subtracting one iterator from another
+			typedef typename Iterator::value_type			value_type; //The type of the element the iterator can point to
+			typedef typename Iterator::pointer				pointer; //The type of a pointer to an element the iterator can point to
+			typedef typename Iterator::reference			reference; //	The type of a reference to an element the iterator can point to
+			typedef typename Iterator::iterator_category	iterator_category; // input/output/forward/bidirectional/random_access -->_iterator_tag
 	};
 	//specialization for pointer
 	template <class T>
