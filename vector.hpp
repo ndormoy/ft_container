@@ -2,6 +2,8 @@
 #define VECTOR_HPP
 
 #include <memory>
+#include <iostream>
+#include "reverse_iterator.hpp"
 
 namespace	ft
 {
@@ -18,18 +20,20 @@ namespace	ft
 		public:
 
 			// member types:
-			typedef typename Allocator::reference reference;
-			typedef typename Allocator::const_reference const_reference;
-			typedef implementation defined iterator;
-			typedef implementation defined const_iterator;
-			typedef implementation defined size_type;
-			typedef implementation defined difference_type
-			typedef T value_type; //The type of the elements.
-			typedef Allocator allocator_type;
-			typedef typename Allocator::pointer pointer;
-			typedef typename Allocator::const_pointer const_pointer
-			typedef std::reverse_iterator<iterator> reverse_iterator;
-			typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+			typedef T										value_type; //The type of the elements.
+			typedef Allocator								allocator_type;
+			typedef std::size_t								size_type;
+			typedef std::ptrdiff_t							difference_type;
+			typedef typename Allocator::reference			reference;
+			//ou typedef reference value_type&; // (sur cppreference)
+			typedef typename Allocator::const_reference		const_reference;
+			//ou typedef	typename const_reference value_type; // (sur cppreference) 
+			typedef typename Allocator::pointer				pointer;
+			typedef T										*iterator; // Pareil que d'heriter de std::random_access_iterator
+			typedef const T									*const_iterator; // Pareil que d'heriter de std::random_access_iterator
+			typedef typename Allocator::const_pointer		const_pointer;
+			typedef ft::reverse_iterator<iterator>			reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
 			// 23.2.4.1 construct/copy/destroy:
 			explicit vector(const Allocator& = Allocator()); //default constructor
@@ -45,22 +49,23 @@ namespace	ft
 			allocator_type get_allocator() const; //get allocator
 
 			// iterators:
-			iterator begin(); //return iterator to beginning
-			const_iterator begin() const; //return const_iterator to beginning
-			iterator end(); //return iterator to end
-			const_iterator end() const; //return const_iterator to end
-			reverse_iterator rbegin(); //return reverse iterator to reverse beginning
-			const_reverse_iterator rbegin() const; //return const reverse iterator to reverse beginning
-			reverse_iterator rend(); //return reverse iterator to reverse end
-			const_reverse_iterator rend() const; //return const reverse iterator to reverse end
+			iterator begin(); //Returns an iterator pointing to the first element in the vector
+			const_iterator begin() const; //Returns an const_iterator pointing to the first element in the vector
+			iterator end(); //Returns an iterator pointing to the theoretical element that follows the last element in the vector
+			const_iterator end() const; //Returns a const_iterator pointing to the theoretical element that follows the last element in the vector
+			reverse_iterator rbegin(); //Returns a reverse iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
+			const_reverse_iterator rbegin() const; //Returns a reverse const_iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
+			reverse_iterator rend(); //Returns a reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
+			const_reverse_iterator rend() const; //Returns a const reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
 
 			// 23.2.4.2 capacity:
-			size_type size() const;
-			size_type max_size() const;
-			void resize(size_type sz, T c = T());
-			size_type capacity() const;
-			bool empty() const;
-			void reserve(size_type n);
+			size_type size() const; // Returns the number of elements in the vector.
+			size_type max_size() const; // Returns the maximum number of elements that the vector can hold.
+			// void resize(size_type sz, T c = T());
+			void	resize(size_type size, value_type val = value_type()); // Resizes the container so that it contains ‘size’ elements.
+			size_type capacity() const; // Returns the size of the storage space currently allocated to the vector expressed as number of elements.
+			bool empty() const; // Returns whether the container is empty.
+			void reserve(size_type n); // Requests that the vector capacity be at least enough to contain n elements.
 
 			// element access:
 			reference operator[](size_type n);
@@ -84,7 +89,48 @@ namespace	ft
 			iterator erase(iterator first, iterator last);
 			void swap(vector<T,Allocator>&);
 			void clear();
+
+		private:
+
+			allocator_type	_m_allocator;//
+            size_type		_m_size; //size of the vector
+			size_type		_m_capacity; //a value at least as large as size
+			pointer			_m_begin;//pointer to the first element of the vector
+			pointer 		_m_end;//pointer to the last element of the vector
+	
 	};
+
+	//ATTENTION : TO FILL
+	//overload operator of vector<T,Allocator>
+	template <class T, class Allocator>
+	bool operator==(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{	
+	}
+
+	template <class T, class Allocator>
+	bool operator!=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+	}
+
+	template <class T, class Allocator>
+	bool operator<(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+	}
+
+	template <class T, class Allocator>
+	bool operator<=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+	}
+
+	template <class T, class Allocator>
+	bool operator>(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+    }
+
+	template <class T, class Allocator>
+	bool operator>=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+    }
 
 }
 #endif
