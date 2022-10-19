@@ -288,7 +288,20 @@ namespace	ft
 			InputIterator first, InputIterator last);
 			iterator erase(iterator position);
 			iterator erase(iterator first, iterator last);
-			void swap(vector<T,Allocator>&);
+			// Exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
+			void swap(vector<T, Allocator>& x)
+			{
+				//TODO verifer si il ne faut pas swap les allocators
+				pointer tmp_begin = _m_begin;
+				size_type tmp_size = _m_size;
+				size_type tmp_capacity = _m_capacity;
+				_m_begin = x._m_begin;
+				_m_size = x._m_size;
+				_m_capacity = x._m_capacity;
+				x._m_begin = tmp_begin;
+				x._m_size = tmp_size;
+				x._m_capacity = tmp_capacity;
+			}
 			void clear();
 
 		private:
