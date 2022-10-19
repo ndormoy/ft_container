@@ -64,13 +64,41 @@ namespace	ft
 			{
 				return (_m_begin);
 			}
-			const_iterator begin() const; //Returns an const_iterator pointing to the first element in the vector
-			iterator end(); //Returns an iterator pointing to the theoretical element that follows the last element in the vector
-			const_iterator end() const; //Returns a const_iterator pointing to the theoretical element that follows the last element in the vector
-			reverse_iterator rbegin(); //Returns a reverse iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
-			const_reverse_iterator rbegin() const; //Returns a reverse const_iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
-			reverse_iterator rend(); //Returns a reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
-			const_reverse_iterator rend() const; //Returns a const reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
+			//Returns an const_iterator pointing to the first element in the vector
+			const_iterator begin() const
+			{
+				return (_m_begin);
+			}
+			//Returns an iterator pointing to the theoretical element that follows the last element in the vector
+			iterator end();
+			{
+				return (_m_begin + _m_size);
+			}
+			//Returns a const_iterator pointing to the theoretical element that follows the last element in the vector
+			const_iterator end() const;
+			{
+				return (_m_begin + _m_size);
+			}
+			//Returns a reverse iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
+			reverse_iterator rbegin()
+			{
+				return (reverse_iterator(end()));
+			}
+			//Returns a reverse const_iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
+			const_reverse_iterator rbegin() const
+			{
+				return (const_reverse_iterator(end()));
+			}
+			//Returns a reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
+			reverse_iterator rend()
+			{
+				return (reverse_iterator(begin()));
+			}
+			//Returns a const reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
+			const_reverse_iterator rend() const
+			{
+				return (const_reverse_iterator(begin()));
+			}
 
 			/*
 			capacity:
@@ -107,8 +135,8 @@ namespace	ft
 			element access:
 			*/
 
-			reference operator[](size_type n);
-			const_reference operator[](size_type n) const;
+			reference operator[](size_type n); // returns a reference to the element at position n in the vector container.
+			const_reference operator[](size_type n) const; // returns a const reference to the element at position n in the vector container.
 			const_reference at(size_type n) const;
 			reference at(size_type n);
 			reference front();
