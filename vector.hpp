@@ -231,12 +231,9 @@ namespace	ft
 					if (_m_capacity == 0)
 						reserve(1);
 					else
-					{
 						reserve(_m_capacity * 2 );
-						_m_allocator.construct(_m_begin + _m_size, x);
-					}
 				}
-				_m_size++;
+				_m_allocator.construct(_m_begin + _m_size++, x);
 			}
 			// Removes the last element in the vector, effectively reducing the container size by one. This destroys the removed element.
 			void pop_back()
@@ -286,7 +283,18 @@ namespace	ft
 			template <class InputIterator>
 			void insert(iterator position,
 			InputIterator first, InputIterator last);
-			iterator erase(iterator position);
+			//Removes from the vector either a single element (position) or a range of elements ([first,last)).
+			iterator erase(iterator position)
+			{
+				_m_allocator.destroy(position);
+				for (iterator it = position; it < end() - 1; it++)
+				{
+					(*it) = *(it + 1);
+				}
+				_m_allocator.destroy(end());
+				_m_size--;
+                return (position);
+			}
 			iterator erase(iterator first, iterator last);
 			// Exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
 			void swap(vector<T, Allocator>& x)
