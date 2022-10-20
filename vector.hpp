@@ -241,36 +241,14 @@ namespace	ft
 				_m_size--;
 				_m_allocator.destroy(_m_begin + _m_size);
 			}
-			//The vector is extended by inserting new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted.
-			/* iterator insert(iterator position, const T& x)
+			// The vector is extended by inserting new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted.
+			// single element inserts
+			iterator insert(iterator position, const T& x)
 			{
-				// iterator it = begin();
-				// size_type i = 0;
-				// while (it != position)
-				// {
-				// 	it++;
-				// 	i++;
-				// }
-				// if (_m_size >= _m_capacity)
-				// {
-				// 	if (_m_capacity == 0)
-				// 		reserve(1);
-				// 	else
-				// 		reserve(_m_capacity * 2);
-				// }
-				// for (size_type j = _m_size; j > i; j--)
-				// 	_m_begin[j] = _m_begin[j - 1];
-				// _m_begin[i] = x;
-				// _m_size++;
-				// return (position);
-
 				iterator	it = begin();
 				size_type	i = 0;
-				while (it != position)
-				{
-					it++;
+				while (it++ != position)
 					i++;
-				}
 				if (_m_size >= _m_capacity)
 				{
 					if (_m_capacity == 0)
@@ -278,12 +256,19 @@ namespace	ft
 					else
 						reserve(_m_capacity * 2);
 				}
-			} */
+				for (size_type j = _m_size; j > i; j--)
+					_m_begin[j] = _m_begin[j - 1];
+				_m_begin[i] = x;
+				_m_size++;
+				return (position);
+			}
+			// fill insert
 			void insert(iterator position, size_type n, const T& x);
+			// range insert
 			template <class InputIterator>
 			void insert(iterator position,
 			InputIterator first, InputIterator last);
-			//Removes from the vector either a single element (position) or a range of elements ([first,last)).
+			// Removes from the vector either a single element (position) or a range of elements ([first,last)).
 			iterator erase(iterator position)
 			{
 				_m_allocator.destroy(position);
