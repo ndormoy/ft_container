@@ -295,7 +295,15 @@ namespace	ft
 				_m_size--;
                 return (position);
 			}
-			iterator erase(iterator first, iterator last);
+			iterator erase(iterator first, iterator last)
+			{
+				for (iterator it = first; it < last; it++)
+					_m_allocator.destroy(it);
+				for (iterator it = first; it < end() - (last - first); it++)
+					(*it) = *(it + (last - first));
+				_m_size -= last - first;
+                return (first);
+			}
 			// Exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
 			void swap(vector<T, Allocator>& x)
 			{
