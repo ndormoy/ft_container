@@ -318,7 +318,13 @@ namespace	ft
 				x._m_size = tmp_size;
 				x._m_capacity = tmp_capacity;
 			}
-			void clear();
+			//Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
+			void clear()
+			{
+				for (iterator it = begin(); it < end(); it++)
+					_m_allocator.destroy(it);
+				_m_size = 0;
+			}
 
 		private:
 
