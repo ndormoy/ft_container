@@ -29,8 +29,10 @@ int main()
 	ft::vector<int>::iterator my_it = my_test.begin();
 
 	test.insert(it, 50);
+	test.insert(it + 3, 100);
 
 	my_test.insert(my_it, 50);
+	my_test.insert(my_it + 3, 100);
 
 	std::cout << "REAL TEST" << std::endl;
 
@@ -38,6 +40,7 @@ int main()
 		std::cout << *it << std::endl;
 	std::cout << "Size = " << test.size() << std::endl;
 	std::cout << "Capacity = " << test.capacity() << std::endl;
+	std::cout << "begin = " << test.begin()[0] << std::endl;
 
 	std::cout << "MY TEST" << std::endl;
 
@@ -45,4 +48,5 @@ int main()
 		std::cout << *my_it << std::endl;
 	std::cout << "Size = " << my_test.size() << std::endl;
 	std::cout << "Capacity = " << my_test.capacity() << std::endl;
+	std::cout << "begin = " << my_test.begin()[0] << std::endl;
 }

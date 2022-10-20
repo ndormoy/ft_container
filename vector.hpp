@@ -41,7 +41,7 @@ namespace	ft
 
 			//default constructor
 			explicit vector(const allocator_type& my_alloc = allocator_type()) :
-				_m_allocator(my_alloc), _m_size(0), _m_capacity(0), _m_begin(NULL), _m_end(NULL)
+				_m_allocator(my_alloc), _m_size(0), _m_capacity(0), _m_begin(NULL)
 			{
 			}
 			explicit vector(size_type n, const T& value = T(), const Allocator& = Allocator()); //fill constructor
@@ -254,21 +254,69 @@ namespace	ft
 					if (_m_capacity == 0)
 						reserve(1);
 					else
-						reserve(_m_capacity * 2);
+						reserve(_m_size * 2);
 				}
-				for (size_type j = _m_size; j > i; j--)
-					_m_begin[j] = _m_begin[j - 1];
-				_m_begin[i] = x;
+				for (size_type pos = _m_size; pos > i; pos--)
+				{
+					_m_allocator.construct(_m_begin + (pos), *(_m_begin + pos - 1));
+					_m_allocator.destroy(_m_begin + (pos - 1));
+				}
+				_m_allocator.construct(_m_begin + i, x);
 				_m_size++;
 				return (position);
 			}
 			// fill insert
-			void insert(iterator position, size_type n, const T& x);
+			void insert(iterator position, size_type n, const T& x)
+			{
+				iterator	it = begin();
+				size_type	i = 0;
+				while (it++ != position)
+					i++;
+				if (_m_size + n >= _m_capacity)
+				{
+					if (_m_capacity == 0)
+						reserve(n + _m_size);
+					else
+						reserve((_m_size + n) /* * 2 */);
+				}
+				for (size_type pos = _m_size; pos > i; pos--)
+				{
+					_m_allocator.construct(_m_begin + (pos + n - 1), *(_m_begin + pos - 1));
+					_m_allocator.destroy(_m_begin + (pos + n - 1));
+				}
+				for (size_type pos = i; pos < i + n; pos++)
+					_m_allocator.construct(_m_begin + pos, x);
+				_m_size += n;
+			}
 			// range insert
 			template <class InputIterator>
 			void insert(iterator position,
-			InputIterator first, InputIterator last);
-			// Removes from the vector either a single element (position) or a range of elements ([first,last)).
+			InputIterator first, InputIterator last)
+			{
+				iterator	it = begin();
+				size_type	i = 0;
+				size_type	n;
+				(void)n;
+				while (it++ != position)
+					i++;
+				std::cout << last - first << std::endl;
+				// for (; &first[n] != last; first++)
+				// {
+				// 	n++;
+				// 	std::cout << "n = "	<< n << std::endl;
+				// 	std::cout << &first[n] << std::endl;
+				// }
+
+				
+				// if (_m_size + n >= _m_capacity)
+				// {
+				// 	if (_m_capacity == 0)
+				// 		reserve(n + _m_size);
+				// 	else
+				// 		reserve((_m_size + n) /* * 2 */);
+				// }
+			}
+			//Removes from the vector either a single element (position) or a range of elements ([first,last)).
 			iterator erase(iterator position)
 			{
 				_m_allocator.destroy(position);
@@ -296,12 +344,15 @@ namespace	ft
 				pointer tmp_begin = _m_begin;
 				size_type tmp_size = _m_size;
 				size_type tmp_capacity = _m_capacity;
+				allocator_type tmp_allocator = _m_allocator;
 				_m_begin = x._m_begin;
 				_m_size = x._m_size;
 				_m_capacity = x._m_capacity;
+				_m_allocator = x._m_allocator;
 				x._m_begin = tmp_begin;
 				x._m_size = tmp_size;
 				x._m_capacity = tmp_capacity;
+				x._m_allocator = tmp_allocator;
 			}
 			//Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
 			void clear()
@@ -317,7 +368,6 @@ namespace	ft
             size_type		_m_size; // current number of stored elements
 			size_type		_m_capacity; //a value at least as large as size. Currently allocated storage space
 			pointer			_m_begin;//pointer to the first element of the vector
-			pointer 		_m_end;//pointer to the last element of the vector
 	
 	};
 
