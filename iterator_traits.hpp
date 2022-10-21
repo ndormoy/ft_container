@@ -29,7 +29,7 @@ namespace	ft
 	template <typename Category, typename Tp, typename Distance, typename Pointer, typename Reference>
 	struct iterator
 	{
-		// public:
+		public:
 			typedef Category iterator_category; // 	the category of the iterator, one of the iterator tags : input/output/forward/bidirectional/random_access -->_iterator_tag
 			typedef Tp iterator_type; //the type of the values that can be obtained by dereferencing the iterator. This type should be void for output iterators.
 			typedef Distance difference_type; //	a type that can be used to identify distance between iterators
@@ -40,7 +40,7 @@ namespace	ft
 	template <class Iterator>
 	class iterator_traits
 	{
-		// public:
+		public:
 			typedef typename Iterator::difference_type		difference_type; //Type to express the result of subtracting one iterator from another
 			typedef typename Iterator::value_type			value_type; //The type of the element the iterator can point to
 			typedef typename Iterator::pointer				pointer; //The type of a pointer to an element the iterator can point to
@@ -51,7 +51,7 @@ namespace	ft
 	template <class T>
 	class iterator_traits<T*>
 	{
-		// public:
+		public:
 			typedef ptrdiff_t								difference_type;
 			typedef T										value_type;
 			typedef T*										pointer;
@@ -62,7 +62,7 @@ namespace	ft
 	template <class T>
 	class iterator_traits<const T*>
 	{
-		// public:
+		public:
 			typedef ptrdiff_t								difference_type;
 			typedef T										value_type;
 			typedef const T*								pointer;

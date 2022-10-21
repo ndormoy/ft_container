@@ -4,6 +4,8 @@
 #include <memory>
 #include <iostream>
 #include "reverse_iterator.hpp"
+#include "iterator_traits.hpp"
+#include "iterator_utils.hpp"
 
 namespace	ft
 {
@@ -296,25 +298,24 @@ namespace	ft
 				iterator	it = begin();
 				size_type	i = 0;
 				size_type	n;
-				(void)n;
 				while (it++ != position)
 					i++;
-				std::cout << last - first << std::endl;
-				// for (; &first[n] != last; first++)
-				// {
-				// 	n++;
-				// 	std::cout << "n = "	<< n << std::endl;
-				// 	std::cout << &first[n] << std::endl;
-				// }
-
-				
-				// if (_m_size + n >= _m_capacity)
-				// {
-				// 	if (_m_capacity == 0)
-				// 		reserve(n + _m_size);
-				// 	else
-				// 		reserve((_m_size + n) /* * 2 */);
-				// }
+				n = distance(first, last);
+				if (_m_size + n >= _m_capacity)
+				{
+					if (_m_capacity == 0)
+						reserve(n + _m_size);
+					else
+						reserve((_m_size + n) * 2);
+				}
+				for (size_type pos = _m_size; pos > i; pos--)
+				{
+					_m_allocator.construct(_m_begin + (pos + n - 1), *(_m_begin + pos - 1));
+					_m_allocator.destroy(_m_begin + (pos + n - 1));
+				}
+				for (size_type pos = i; pos < i + n; pos++)
+					_m_allocator.construct(_m_begin + pos, *(first)++);
+				_m_size += n;
 			}
 			//Removes from the vector either a single element (position) or a range of elements ([first,last)).
 			iterator erase(iterator position)

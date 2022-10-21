@@ -37,7 +37,7 @@ back const               [X]                  [ ]
 
 push_back                [X]                  [ ]
 pop_back                 [X]                  [ ]
-insert                   [ ]                  [ ]
+insert                   [X]                  [ ]
 erase                    [X]                  [ ]
 swap                     [X]                  [ ]
 clear                    [X]                  [ ]

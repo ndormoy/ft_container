@@ -16,10 +16,14 @@ int main()
 	another_test.push_back(61);
 	another_test.push_back(62);
 	another_test.push_back(63);
+	another_test.push_back(64);
+	another_test.push_back(65);
+	another_test.push_back(66);
+	another_test.push_back(67);
 
 	std::vector<int>::iterator it = test.begin();
 
-	test.insert(it + 1, another_test.begin(), another_test.end() - 1);
+	test.insert(it + 1, another_test.begin(), another_test.end());
 
 	ft::vector<int> my_test;
 	ft::vector<int> my_another_test;
