@@ -57,6 +57,7 @@ namespace	ft
 	template <class T1, class T2>
 	inline bool operator<(const pair<T1, T2>& x, const pair<T1, T2>& y)
 	{
+		return (x.first < y.first) || (!(y.first < x.first) && x.second < y.second);
 	}
 	//operator<=
 	template <class T1, class T2>

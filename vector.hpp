@@ -3,9 +3,14 @@
 
 #include <memory>
 #include <iostream>
-#include "reverse_iterator.hpp"
+#include "enable_if.hpp"
+#include "equal.hpp"
+#include "is_integral.hpp"
 #include "iterator_traits.hpp"
 #include "iterator_utils.hpp"
+#include "pair.hpp"
+#include "reverse_iterator.hpp"
+#include "reverse_iterator.hpp"
 
 namespace	ft
 {
@@ -59,10 +64,36 @@ namespace	ft
 			vector<T,Allocator>& operator=(const vector<T,Allocator>& x)
 			{
 				(void)x;
+				// if (this != &x)
+				// {
+				// 	this->clear();
+
+				// }
+				// return (*this);
 			}
+			//range assign : Assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
 			template <class InputIterator>
-			void assign(InputIterator first, InputIterator last); //range assign
-			void assign(size_type n, const T& u); //fill assign
+			void assign(typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type first, InputIterator last)
+			{
+				difference_type	nb = ft::distance(first, last);
+				this->clear();
+				reserve(nb);
+				for (difference_type i = 0; i < nb; i++)
+				{
+					_m_allocator.construct(_m_begin + i, *first);
+					first++;
+				}
+				_m_size = nb;
+			}
+			//fill assign : In the fill version (2), the new contents are n elements, each initialized to a copy of val.
+			void assign(size_type n, const value_type& u)
+			{
+				this->clear();
+				reserve(n);
+				for (size_type i = 0; i < n; i++)
+					_m_allocator.construct(_m_begin + i, u);
+				_m_size = n;
+			}
 			//get allocator
 			allocator_type get_allocator() const
 			{
@@ -300,7 +331,7 @@ namespace	ft
 				size_type	n;
 				while (it++ != position)
 					i++;
-				n = distance(first, last);
+				n = ft::distance(first, last);
 				if (_m_size + n >= _m_capacity)
 				{
 					if (_m_capacity == 0)
@@ -377,10 +408,18 @@ namespace	ft
 	overload operator of vector<T,Allocator>
 	*/
 
-	// template <class T, class Allocator>
-	// bool operator==(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
-	// {	
-	// }
+	template <class T, class Allocator>
+	bool operator==(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+		if (lhs.size() != rhs.size())
+			return (false);
+		for (size_t i = 0; i < lhs.size(); i++)
+		{
+			if (lhs[i] != rhs[i])
+				return (false);
+		}
+		return (true);	
+	}
 
 	// template <class T, class Allocator>
 	// bool operator!=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
