@@ -64,12 +64,12 @@ namespace	ft
 			vector<T,Allocator>& operator=(const vector<T,Allocator>& x)
 			{
 				(void)x;
-				// if (this != &x)
-				// {
-				// 	this->clear();
-
-				// }
-				// return (*this);
+				if (this != &x)
+				{
+					this->clear();
+					assign(x.begin(), x.end());
+				}
+				return (*this);
 			}
 			//range assign : Assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
 			template <class InputIterator>
