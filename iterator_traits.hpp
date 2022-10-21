@@ -29,12 +29,12 @@ namespace	ft
 	template <typename Category, typename Tp, typename Distance, typename Pointer, typename Reference>
 	struct iterator
 	{
-		public:
-			typedef Category iterator_category; // 	the category of the iterator, one of the iterator tags : input/output/forward/bidirectional/random_access -->_iterator_tag
-			typedef Tp iterator_type; //the type of the values that can be obtained by dereferencing the iterator. This type should be void for output iterators.
-			typedef Distance difference_type; //	a type that can be used to identify distance between iterators
-			typedef Pointer pointer; //defines a pointer to the type iterated over (T)
-			typedef Reference reference; //	defines a reference to the type iterated over (T)
+
+		typedef Category iterator_category; // 	the category of the iterator, one of the iterator tags : input/output/forward/bidirectional/random_access -->_iterator_tag
+		typedef Tp iterator_type; //the type of the values that can be obtained by dereferencing the iterator. This type should be void for output iterators.
+		typedef Distance difference_type; //	a type that can be used to identify distance between iterators
+		typedef Pointer pointer; //defines a pointer to the type iterated over (T)
+		typedef Reference reference; //	defines a reference to the type iterated over (T)
 	};
 
 	template <class Iterator>
