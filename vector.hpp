@@ -43,27 +43,47 @@ namespace	ft
 			typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
 			/*
-			construct/copy/destroy:
+			------------------------------------------------------------------------------------------------------------------------------
+			                                     construct/copy/destroy:
+			------------------------------------------------------------------------------------------------------------------------------
 			*/
 
-			//default constructor
+			//default constructor : Constructs an empty container, with no elements.
 			explicit vector(const allocator_type& my_alloc = allocator_type()) :
 				_m_allocator(my_alloc), _m_size(0), _m_capacity(0), _m_begin(NULL)
 			{
 			}
-			explicit vector(size_type n, const T& value = T(), const Allocator& = Allocator()); //fill constructor
+			//fill constructor : Constructs a container with n elements. Each element is a copy of val.
+			explicit vector(size_type n, const T& value = T(), const Allocator& my_alloc = Allocator()) :
+				_m_size(n), _m_capacity(n), _m_begin(NULL), _m_allocator(my_alloc)
+			{
+				_m_begin = _m_allocator.allocate(_m_capacity);
+				for (size_type i = 0; i < n; i++)
+					_m_allocator.construct(_m_begin + i, value);
+			}
+			//range constructor : Constructs a container with as many elements as the range [first,last), with each element constructed from
+			//its corresponding element in that range, in the same order.
 			template <class InputIterator>
-			vector(InputIterator first, InputIterator last, const Allocator& = Allocator()); //range constructor
-			vector(const vector<T,Allocator>& x); //copy constructor
-			//destructor
+			vector(InputIterator first, InputIterator last, const Allocator& = Allocator()) :
+				_m_size(0), _m_capacity(0), _m_begin(NULL)
+			{
+				assign(first, last);
+			}
+			//copy constructor : Constructs a container with a copy of each of the elements in x, in the same order.
+			vector(const vector<T,Allocator>& x)
+			{
+				*this = x;
+			}
+			//destructor : This destroys all container elements, and deallocates all the storage capacity allocated by the vector using its allocator.
 			~vector()
 			{
-				
+				this->clear();
+				if (_m_begin != NULL && _m_capacity != 0)
+					_m_allocator.deallocate(_m_begin, _m_capacity);
 			} 
 			//copy assignment operator
 			vector<T,Allocator>& operator=(const vector<T,Allocator>& x)
 			{
-				(void)x;
 				if (this != &x)
 				{
 					this->clear();
@@ -101,7 +121,9 @@ namespace	ft
 			}
 
 			/*
-			iterators:
+			------------------------------------------------------------------------------------------------------------------------------
+			                                     iterators:
+			------------------------------------------------------------------------------------------------------------------------------
 			*/
 
 			//Returns an iterator pointing to the first element in the vector
@@ -146,7 +168,9 @@ namespace	ft
 			}
 
 			/*
-			capacity:
+			------------------------------------------------------------------------------------------------------------------------------
+			                                     capacity:
+			------------------------------------------------------------------------------------------------------------------------------
 			*/
 
 			// Returns the number of elements in the vector.
@@ -209,7 +233,9 @@ namespace	ft
 			}
 
 			/*
-			element access:
+			------------------------------------------------------------------------------------------------------------------------------
+			                                     element access:
+			------------------------------------------------------------------------------------------------------------------------------
 			*/
 
 			// returns a reference to the element at position n in the vector container.
@@ -254,7 +280,9 @@ namespace	ft
 			}
 
 			/*
-			modifiers:
+			------------------------------------------------------------------------------------------------------------------------------
+			                                     modifiers:
+			------------------------------------------------------------------------------------------------------------------------------
 			*/
 
 			void push_back(const value_type& x)
@@ -353,9 +381,7 @@ namespace	ft
 			{
 				_m_allocator.destroy(position);
 				for (iterator it = position; it < end() - 1; it++)
-				{
 					(*it) = *(it + 1);
-				}
 				_m_allocator.destroy(end());
 				_m_size--;
                 return (position);
@@ -405,8 +431,11 @@ namespace	ft
 
 	//ATTENTION : TO FILL
 	/*
-	overload operator of vector<T,Allocator>
+	------------------------------------------------------------------------------------------------------------------------------
+	                                     NON MEMBER OVERLOADS OPERATORS
+	------------------------------------------------------------------------------------------------------------------------------
 	*/
+
 
 	template <class T, class Allocator>
 	bool operator==(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
