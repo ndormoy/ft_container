@@ -11,6 +11,7 @@
 #include "pair.hpp"
 #include "reverse_iterator.hpp"
 #include "reverse_iterator.hpp"
+#include "vector_utils.hpp"
 
 namespace	ft
 {
@@ -457,7 +458,7 @@ namespace	ft
 	//ATTENTION : TO FILL
 	/*
 	------------------------------------------------------------------------------------------------------------------------------
-	                                     NON MEMBER OVERLOADS OPERATORS
+	                                     NON MEMBER RElATIONAL OVERLOADS OPERATORS
 	------------------------------------------------------------------------------------------------------------------------------
 	*/
 
@@ -465,80 +466,41 @@ namespace	ft
 	template <class T, class Allocator>
 	bool operator==(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
 	{
-		if (lhs.size() != rhs.size())
-			return (false);
-		for (size_t i = 0; i < lhs.size(); i++)
-		{
-			if (lhs[i] != rhs[i])
-				return (false);
-		}
-		return (true);	
+		if (lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin()) == true)
+			return (true);
+		return (false);
 	}
 
 	template <class T, class Allocator>
 	bool operator!=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
 	{
-
-		if (lhs.size()!= rhs.size())
+		if (lhs.size() != rhs.size() || !ft::equal(lhs.begin(), lhs.end(), rhs.begin()))
 			return (true);
-		for (size_t i = 0; i < lhs.size(); i++)
-		{
-			if (lhs[i] != rhs[i])
-				return (true);
-		}
-
+		return (false);
 	}
 
 	template <class T, class Allocator>
 	bool operator<(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
 	{
-		if (lhs.size() < rhs.size())
-			return (true);
-		for (size_t i = 0; i < lhs.size(); i++)
-		{
-            if (lhs[i] < rhs[i])
-				return (true);
-		}
-		return (false);
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
 	}
 
 	template <class T, class Allocator>
 	bool operator<=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
 	{
-		if (lhs.size() <= rhs.size())
-			return (true);
-		for (size_t i = 0; i < lhs.size(); i++)
-		{
-			if (lhs[i] <= rhs[i])
-				return (true);
-		}
-		return (false);
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()) || lhs == rhs);
 	}
 
 	template <class T, class Allocator>
 	bool operator>(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
 	{
-		if (lhs.size() > rhs.size())
-			return (true);
-		for (size_t i = 0; i < lhs.size(); i++)
-		{
-            if (lhs[i] > rhs[i])
-				return (true);
-		}
-		return (false);
+		return (ft::lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end()));
     }
 
 	template <class T, class Allocator>
 	bool operator>=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
 	{
-		if (lhs.size() >= rhs.size())
-			return (true);
-		for (size_t i = 0; i < lhs.size(); i++)
-		{
-            if (lhs[i] >= rhs[i])
-				return (true);
-		}
-		return (false);
+		return (ft::lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end()) || lhs == rhs);
     }
 
 };
