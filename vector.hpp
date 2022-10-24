@@ -117,9 +117,9 @@ namespace	ft
 			void assign(typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type first, InputIterator last)
 			{
 				difference_type	nb = ft::distance(first, last);
-				// this->clear();
-				reserve(nb);
 				this->clear();
+				reserve(nb);
+				// this->clear();
 				_m_size = nb;
 				for (difference_type i = 0; i < nb; i++)
 				{
@@ -131,9 +131,9 @@ namespace	ft
 			//fill assign : In the fill version (2), the new contents are n elements, each initialized to a copy of val.
 			void assign(size_type n, const value_type& u)
 			{
-				// this->clear();
-				reserve(n);
 				this->clear();
+				reserve(n);
+				// this->clear();
 				for (size_type i = 0; i < n; i++)
 					_m_allocator.construct(_m_begin + i, u);
 				_m_size = n;
