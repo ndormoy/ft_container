@@ -55,7 +55,7 @@ namespace	ft
 			}
 			//fill constructor : Constructs a container with n elements. Each element is a copy of val.
 			explicit vector(size_type n, const T& value = T(), const Allocator& my_alloc = Allocator()) :
-				_m_size(n), _m_capacity(n), _m_begin(NULL), _m_allocator(my_alloc)
+				_m_allocator(my_alloc), _m_size(n), _m_capacity(n), _m_begin(NULL)
 			{
 				_m_begin = _m_allocator.allocate(_m_capacity);
 				for (size_type i = 0; i < n; i++)
@@ -63,15 +63,36 @@ namespace	ft
 			}
 			//range constructor : Constructs a container with as many elements as the range [first,last), with each element constructed from
 			//its corresponding element in that range, in the same order.
+			// vector(InputIterator first, InputIterator last, const Allocator& = Allocator()) :
 			template <class InputIterator>
-			vector(InputIterator first, InputIterator last, const Allocator& = Allocator()) :
-				_m_size(0), _m_capacity(0), _m_begin(NULL)
+			vector(typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type first, InputIterator last, const Allocator& my_alloc = Allocator())
 			{
+				difference_type	nb = ft::distance(first, last);
+				_m_allocator = my_alloc;
+				_m_size = nb;
+				_m_capacity = nb;
+				_m_begin = _m_allocator.allocate(_m_capacity);
+				// reserve(nb);
+				// for (difference_type i = 0; i < nb; i++)
+				// {
+				// 	std::cout << "NB =  " << nb << std::endl;
+				// 	_m_allocator.construct(_m_begin + i, *first);
+				// 	first++;
+				// }
+				// _m_size = nb;
+
 				assign(first, last);
 			}
 			//copy constructor : Constructs a container with a copy of each of the elements in x, in the same order.
 			vector(const vector<T,Allocator>& x)
 			{
+				_m_allocator = x._m_allocator;
+				_m_size = x._m_size;
+				_m_capacity = x._m_capacity;
+				_m_begin = _m_allocator.allocate(_m_capacity);
+
+				// for (size_type i = 0; i < _m_size; i++)
+				// 	_m_allocator.construct(_m_begin + i, x._m_begin[i]);
 				*this = x;
 			}
 			//destructor : This destroys all container elements, and deallocates all the storage capacity allocated by the vector using its allocator.
@@ -96,8 +117,10 @@ namespace	ft
 			void assign(typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type first, InputIterator last)
 			{
 				difference_type	nb = ft::distance(first, last);
-				this->clear();
+				// this->clear();
 				reserve(nb);
+				this->clear();
+				_m_size = nb;
 				for (difference_type i = 0; i < nb; i++)
 				{
 					_m_allocator.construct(_m_begin + i, *first);
@@ -108,8 +131,9 @@ namespace	ft
 			//fill assign : In the fill version (2), the new contents are n elements, each initialized to a copy of val.
 			void assign(size_type n, const value_type& u)
 			{
-				this->clear();
+				// this->clear();
 				reserve(n);
+				this->clear();
 				for (size_type i = 0; i < n; i++)
 					_m_allocator.construct(_m_begin + i, u);
 				_m_size = n;
@@ -221,6 +245,7 @@ namespace	ft
 			// construct : first arg = pointer to allocated uninitialized storage, second arg = the value to use as the copy constructor argument
 			void reserve(size_type n)
 			{
+				//TODO throw exception if n > max_size()
 				if (n > _m_capacity)
 				{
 					pointer tmp = _m_allocator.allocate(n);
