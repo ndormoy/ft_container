@@ -1,10 +1,10 @@
 NAME                    |    implemented    |  tested
 
 default constructor      [X]                  [ ]
-fill constructor         [ ]                  [ ]
-range constructor        [ ]                  [ ]
-copy constructor         [ ]                  [ ]
-destructor               [ ]                  [ ]
+fill constructor         [X]                  [ ]
+range constructor        [X]                  [ ]
+copy constructor         [X]                  [ ]
+destructor               [X]                  [ ]
 copy assignment operator=[X]                  [ ]
 range assign             [X]                  [ ]
 fill assign              [X]                  [ ]

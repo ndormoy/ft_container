@@ -475,30 +475,71 @@ namespace	ft
 		return (true);	
 	}
 
-	// template <class T, class Allocator>
-	// bool operator!=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
-	// {
-	// }
+	template <class T, class Allocator>
+	bool operator!=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
 
-	// template <class T, class Allocator>
-	// bool operator<(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
-	// {
-	// }
+		if (lhs.size()!= rhs.size())
+			return (true);
+		for (size_t i = 0; i < lhs.size(); i++)
+		{
+			if (lhs[i] != rhs[i])
+				return (true);
+		}
 
-	// template <class T, class Allocator>
-	// bool operator<=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
-	// {
-	// }
+	}
 
-	// template <class T, class Allocator>
-	// bool operator>(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
-	// {
-    // }
+	template <class T, class Allocator>
+	bool operator<(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+		if (lhs.size() < rhs.size())
+			return (true);
+		for (size_t i = 0; i < lhs.size(); i++)
+		{
+            if (lhs[i] < rhs[i])
+				return (true);
+		}
+		return (false);
+	}
 
-	// template <class T, class Allocator>
-	// bool operator>=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
-	// {
-    // }
+	template <class T, class Allocator>
+	bool operator<=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+		if (lhs.size() <= rhs.size())
+			return (true);
+		for (size_t i = 0; i < lhs.size(); i++)
+		{
+			if (lhs[i] <= rhs[i])
+				return (true);
+		}
+		return (false);
+	}
+
+	template <class T, class Allocator>
+	bool operator>(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+		if (lhs.size() > rhs.size())
+			return (true);
+		for (size_t i = 0; i < lhs.size(); i++)
+		{
+            if (lhs[i] > rhs[i])
+				return (true);
+		}
+		return (false);
+    }
+
+	template <class T, class Allocator>
+	bool operator>=(const ft::vector<T,Allocator>& lhs, const ft::vector<T,Allocator>& rhs)
+	{
+		if (lhs.size() >= rhs.size())
+			return (true);
+		for (size_t i = 0; i < lhs.size(); i++)
+		{
+            if (lhs[i] >= rhs[i])
+				return (true);
+		}
+		return (false);
+    }
 
 };
 
