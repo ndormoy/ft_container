@@ -1,6 +1,8 @@
 #ifndef ITERATOR_TRAITS_HPP
 #define ITERATOR_TRAITS_HPP
 
+#include <cstddef>
+
 /*
 
 std::iterator_traits is the type trait class that provides uniform interface to
@@ -26,14 +28,14 @@ namespace	ft
 	struct bidirectional_iterator_tag : public forward_iterator_tag {}; //is a LegacyForwardIterator that can be moved in both directions (i.e. incremented and decremented).
 	struct random_access_iterator_tag : public bidirectional_iterator_tag {}; //is a LegacyBidirectionalIterator that can be moved to point to any element in constant time.
 
-	template <typename Category, typename Tp, typename Distance, typename Pointer, typename Reference>
+	template<typename Category, typename Tp, typename Distance = ptrdiff_t, typename Pointer = Tp*, typename Reference = Tp&>
 	struct iterator
 	{
-		typedef Category iterator_category; // 	the category of the iterator, one of the iterator tags : input/output/forward/bidirectional/random_access -->_iterator_tag
-		typedef Tp iterator_type; //the type of the values that can be obtained by dereferencing the iterator. This type should be void for output iterators.
-		typedef Distance difference_type; //	a type that can be used to identify distance between iterators
-		typedef Pointer pointer; //defines a pointer to the type iterated over (T)
-		typedef Reference reference; //	defines a reference to the type iterated over (T)
+		typedef Category									iterator_category; // 	the category of the iterator, one of the iterator tags : input/output/forward/bidirectional/random_access -->_iterator_tag
+		typedef Tp											iterator_type; //the type of the values that can be obtained by dereferencing the iterator. This type should be void for output iterators.
+		typedef Distance									difference_type; //	a type that can be used to identify distance between iterators
+		typedef Pointer										pointer; //defines a pointer to the type iterated over (T)
+		typedef Reference									reference; //	defines a reference to the type iterated over (T)
 	};
 
 	template <class Iterator>

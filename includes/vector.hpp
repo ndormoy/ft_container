@@ -206,7 +206,7 @@ namespace	ft
 			// Returns the maximum number of elements that the vector can hold.
 			size_type max_size() const
 			{
-				return (allocator_type::max_size());
+				return (_m_allocator.max_size());
 			}
 			// void resize(size_type sz, T c = T());
 			// Resizes the container so that it contains ‘size’ elements.
@@ -247,6 +247,8 @@ namespace	ft
 			void reserve(size_type n)
 			{
 				//TODO throw exception if n > max_size()
+				if (n > _m_allocator.max_size())
+					throw std::length_error("vector::reserve");
 				if (n > _m_capacity)
 				{
 					pointer tmp = _m_allocator.allocate(n);
@@ -378,7 +380,7 @@ namespace	ft
 			// range insert
 			template <class InputIterator>
 			void insert(iterator position,
-			InputIterator first, InputIterator last)
+			typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type first, InputIterator last)
 			{
 				iterator	it = begin();
 				size_type	i = 0;
@@ -414,11 +416,13 @@ namespace	ft
 			}
 			iterator erase(iterator first, iterator last)
 			{
+				//TODO BELEC PTRDIFF
+				ptrdiff_t	n = last - first;
 				for (iterator it = first; it < last; it++)
 					_m_allocator.destroy(it);
-				for (iterator it = first; it < end() - (last - first); it++)
-					(*it) = *(it + (last - first));
-				_m_size -= last - first;
+				for (iterator it = first; it < end() - n; it++)
+					(*it) = *(it + n);
+				_m_size -= n;
                 return (first);
 			}
 			// Exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
