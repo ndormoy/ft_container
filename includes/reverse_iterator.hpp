@@ -57,7 +57,8 @@ namespace	ft
 			}
 			reverse_iterator& operator=(const reverse_iterator& x)
 			{
-				// if (*this != &x)
+				// TODO REmettre ca
+				// if (this != &x)
 				// 	_current = x._current;
 				// return (*this);
 				_current = x.base();
@@ -167,7 +168,7 @@ namespace	ft
 	{ return (y.base() - x.base()); }
 
 	template<typename Iterator>
-	inline typename ft::reverse_iterator<Iterator> operator+(typename reverse_iterator<Iterator>::difference_type n,const reverse_iterator<Iterator>& x)
+	inline typename ft::reverse_iterator<Iterator> operator+(typename reverse_iterator<Iterator>::difference_type n, const reverse_iterator<Iterator>& x)
 	{ return (reverse_iterator<Iterator>(x.base() - n)); }
 
 	//Not sure about the implementation of the following functions
