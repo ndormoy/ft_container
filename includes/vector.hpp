@@ -208,7 +208,6 @@ namespace	ft
 			{
 				return (_m_allocator.max_size());
 			}
-			// void resize(size_type sz, T c = T());
 			// Resizes the container so that it contains ‘size’ elements.
 			void	resize(size_type size, value_type val = value_type())
 			{
@@ -216,8 +215,10 @@ namespace	ft
 				{
 					//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
 					//If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
-					if (size > _m_capacity)
+					if (size > 2 * _m_capacity)
 						reserve(size);
+					else
+						reserve(2 * _m_size);
 					for (size_type i = _m_size; i < size; i++)
 						_m_allocator.construct(_m_begin + i, val);
 				}
@@ -251,6 +252,7 @@ namespace	ft
 					throw std::length_error("vector::reserve");
 				if (n > _m_capacity)
 				{
+					// std::cout << "mdr" << std::endl;
 					pointer tmp = _m_allocator.allocate(n);
 					for (size_type i = 0; i < _m_size; i++)
 						_m_allocator.construct(tmp + i, _m_begin[i]);
@@ -369,8 +371,10 @@ namespace	ft
 				{
 					if (_m_capacity == 0)
 						reserve(n + _m_size);
+					else if (_m_size + n > 2 * _m_capacity)
+						reserve(_m_size + n);
 					else
-						reserve((_m_size + n));
+						reserve(2 * _m_size);
 				}
 				for (size_type pos = _m_size; pos > i; pos--)
 				{
