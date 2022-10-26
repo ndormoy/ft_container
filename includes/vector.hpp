@@ -214,17 +214,10 @@ namespace	ft
 				{
 					//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
 					//If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
-					// if (size > 2 * _m_capacity)
-					// 	reserve(size);
-					// else
-					// 	reserve(2 * _m_size);
-
 					if (size > 2 * _m_size)
 						reserve(size);
 					else
 						reserve(2 * _m_size);
-
-					// reserve(size);
 					for (size_type i = _m_size; i < size; i++)
 						_m_allocator.construct(_m_begin + i, val);
 				}
