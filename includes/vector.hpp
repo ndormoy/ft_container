@@ -73,16 +73,15 @@ namespace	ft
 				_m_size = nb;
 				_m_capacity = nb;
 				_m_begin = _m_allocator.allocate(_m_capacity);
-				// reserve(nb);
-				// for (difference_type i = 0; i < nb; i++)
-				// {
-				// 	std::cout << "NB =  " << nb << std::endl;
-				// 	_m_allocator.construct(_m_begin + i, *first);
-				// 	first++;
-				// }
-				// _m_size = nb;
 
-				assign(first, last);
+				reserve(nb);
+				_m_size = nb;
+				for (difference_type i = 0; i < nb; i++)
+				{
+					_m_allocator.construct(_m_begin + i, *first);
+					first++;
+				}
+				_m_size = nb;
 			}
 			//copy constructor : Constructs a container with a copy of each of the elements in x, in the same order.
 			vector(const vector<T,Allocator>& x)
