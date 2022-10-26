@@ -1,4 +1,4 @@
-#include "vector.hpp"
+#include "includes/vector.hpp"
 #include <vector>
 
 int main()
@@ -28,11 +28,13 @@ int main()
 
 	ft::vector<int>::iterator my_it = my_test.begin();
 
-	test.insert(it, 50);
-	test.insert(it + 3, 100);
+	// test.insert(it, 50);
+	test.insert(it + 3, 70);
+	// test.insert(it + 3, 100);
 
-	my_test.insert(my_it, 50);
-	my_test.insert(my_it + 3, 100);
+	// my_test.insert(my_it, 50);
+	my_test.insert(my_it + 3, 70);
+	// my_test.insert(my_it + 3, 100);
 
 	std::cout << "REAL TEST" << std::endl;
 

@@ -92,9 +92,9 @@ namespace	ft
 				_m_capacity = x._m_capacity;
 				_m_begin = _m_allocator.allocate(_m_capacity);
 
-				// for (size_type i = 0; i < _m_size; i++)
-				// 	_m_allocator.construct(_m_begin + i, x._m_begin[i]);
-				*this = x;
+				for (size_type i = 0; i < _m_size; i++)
+					_m_allocator.construct(_m_begin + i, x._m_begin[i]);
+				// *this = x;
 			}
 			//destructor : This destroys all container elements, and deallocates all the storage capacity allocated by the vector using its allocator.
 			~vector()
@@ -254,6 +254,8 @@ namespace	ft
 					pointer tmp = _m_allocator.allocate(n);
 					for (size_type i = 0; i < _m_size; i++)
 						_m_allocator.construct(tmp + i, _m_begin[i]);
+					for (size_type i = 0; i < _m_size; i++)
+						_m_allocator.destroy(_m_begin + i);
 					_m_allocator.deallocate(_m_begin, _m_capacity);
 					_m_begin = tmp;
 					_m_capacity = n;
@@ -348,18 +350,24 @@ namespace	ft
 				for (size_type pos = _m_size; pos > i; pos--)
 				{
 					_m_allocator.construct(_m_begin + (pos), *(_m_begin + pos - 1));
+					// std::cout << "_m_begin + pos = " << *(_m_begin + pos - 1) << std::endl;
 					_m_allocator.destroy(_m_begin + (pos - 1));
+					// _m_allocator.destroy(_m_begin + (pos));
 				}
 				_m_allocator.construct(_m_begin + i, x);
 				_m_size++;
 				return (position);
 			}
+			//make function vector fill insert
+
 			// fill insert
 			void insert(iterator position, size_type n, const T& x)
 			{
 				iterator	it = begin();
 				size_type	i = 0;
-				while (it++ != position)
+				// while (it++ != position)
+				// 	i++;
+				while (it[i] != *(position))
 					i++;
 				if (_m_size + n >= _m_capacity)
 				{
@@ -371,7 +379,8 @@ namespace	ft
 				for (size_type pos = _m_size; pos > i; pos--)
 				{
 					_m_allocator.construct(_m_begin + (pos + n - 1), *(_m_begin + pos - 1));
-					_m_allocator.destroy(_m_begin + (pos + n - 1));
+					// std::cout << "_m_begin + pos = " << *(_m_begin + pos - 1) << std::endl;
+					_m_allocator.destroy(_m_begin + (pos - 1));
 				}
 				for (size_type pos = i; pos < i + n; pos++)
 					_m_allocator.construct(_m_begin + pos, x);
@@ -398,7 +407,8 @@ namespace	ft
 				for (size_type pos = _m_size; pos > i; pos--)
 				{
 					_m_allocator.construct(_m_begin + (pos + n - 1), *(_m_begin + pos - 1));
-					_m_allocator.destroy(_m_begin + (pos + n - 1));
+					// std::cout << "_m_begin + pos - 1 = " << *(_m_begin + pos - 1) << std::endl;
+					_m_allocator.destroy(_m_begin + (pos - 1));
 				}
 				for (size_type pos = i; pos < i + n; pos++)
 					_m_allocator.construct(_m_begin + pos, *(first)++);
@@ -409,8 +419,11 @@ namespace	ft
 			{
 				_m_allocator.destroy(position);
 				for (iterator it = position; it < end() - 1; it++)
-					(*it) = *(it + 1);
-				_m_allocator.destroy(end());
+				{
+					_m_allocator.construct(it, *(it + 1));
+					_m_allocator.destroy(it + 1);
+				}
+
 				_m_size--;
                 return (position);
 			}
@@ -421,7 +434,10 @@ namespace	ft
 				for (iterator it = first; it < last; it++)
 					_m_allocator.destroy(it);
 				for (iterator it = first; it < end() - n; it++)
-					(*it) = *(it + n);
+				{
+					_m_allocator.construct(it, *(it + n));
+					_m_allocator.destroy(it + n);
+				}
 				_m_size -= n;
                 return (first);
 			}
