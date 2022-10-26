@@ -365,6 +365,8 @@ namespace	ft
 			{
 				iterator	it = begin();
 				size_type	i = 0;
+				if (n == 0)
+					return ;
 				while (it++ != position)
 					i++;
 				if (_m_size + n >= _m_capacity)
