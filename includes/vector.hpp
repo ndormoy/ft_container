@@ -350,13 +350,11 @@ namespace	ft
 				for (size_type pos = _m_size; pos > i; pos--)
 				{
 					_m_allocator.construct(_m_begin + (pos), *(_m_begin + pos - 1));
-					// std::cout << "_m_begin + pos = " << *(_m_begin + pos - 1) << std::endl;
 					_m_allocator.destroy(_m_begin + (pos - 1));
-					// _m_allocator.destroy(_m_begin + (pos));
 				}
 				_m_allocator.construct(_m_begin + i, x);
 				_m_size++;
-				return (position);
+				return(_m_begin + i);
 			}
 			//make function vector fill insert
 
@@ -365,21 +363,18 @@ namespace	ft
 			{
 				iterator	it = begin();
 				size_type	i = 0;
-				// while (it++ != position)
-				// 	i++;
-				while (it[i] != *(position))
+				while (it++ != position)
 					i++;
 				if (_m_size + n >= _m_capacity)
 				{
 					if (_m_capacity == 0)
 						reserve(n + _m_size);
 					else
-						reserve((_m_size + n) /* * 2 */);
+						reserve((_m_size + n));
 				}
 				for (size_type pos = _m_size; pos > i; pos--)
 				{
 					_m_allocator.construct(_m_begin + (pos + n - 1), *(_m_begin + pos - 1));
-					// std::cout << "_m_begin + pos = " << *(_m_begin + pos - 1) << std::endl;
 					_m_allocator.destroy(_m_begin + (pos - 1));
 				}
 				for (size_type pos = i; pos < i + n; pos++)

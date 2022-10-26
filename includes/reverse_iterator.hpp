@@ -172,9 +172,9 @@ namespace	ft
 	{ return (reverse_iterator<Iterator>(x.base() - n)); }
 
 	//Not sure about the implementation of the following functions
-	// template<typename IteratorL, typename IteratorR>
-	// inline typename ft::reverse_iterator<IteratorL> operator+(typename reverse_iterator<IteratorL>::difference_type n,const reverse_iterator<IteratorR>& x)
-	// { return (reverse_iterator<IteratorL>(x.base() - n)); }
+	template<typename IteratorL, typename IteratorR>
+	inline typename ft::reverse_iterator<IteratorL> operator+(typename reverse_iterator<IteratorL>::difference_type n,const reverse_iterator<IteratorR>& x)
+	{ return (reverse_iterator<IteratorL>(x.base() - n)); }
 }
 
 #endif
