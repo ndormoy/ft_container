@@ -523,6 +523,19 @@ namespace	ft
 		return (ft::lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end()) || lhs == rhs);
     }
 
+	/*
+	------------------------------------------------------------------------------------------------------------------------------
+	                                     NON MEMBER FUNCTIONS
+	------------------------------------------------------------------------------------------------------------------------------
+	*/
+
+	// on appelle la fonction swap de la classe vector (On peut car elle est en public)
+	template <class T, class Allocator>
+	void swap (ft::vector<T,Allocator>& x, ft::vector<T,Allocator>& y)
+	{
+		x.swap(y);
+	}
+
 };
 
 #endif
