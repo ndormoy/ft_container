@@ -307,8 +307,8 @@ int main()
 	push_pop_back_tests<int>();
 	resize_tests<int>();
 	insert_tests<int>();
-	// reserve_tests<int>();
-	// copy_swap_tests<int>();
+	reserve_tests<int>();
+	copy_swap_tests<int>();
 	// reverse_it_tests<int>();
 	// erase_clear_tests<int>();
 	// max_size_tests();

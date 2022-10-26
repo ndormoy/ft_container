@@ -89,7 +89,7 @@ namespace	ft
 			{
 				_m_allocator = x._m_allocator;
 				_m_size = x._m_size;
-				_m_capacity = x._m_capacity;
+				_m_capacity = _m_size;
 				_m_begin = _m_allocator.allocate(_m_capacity);
 
 				for (size_type i = 0; i < _m_size; i++)
