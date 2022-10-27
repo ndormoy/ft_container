@@ -388,7 +388,7 @@ namespace	ft
 			// range insert
 			template <class InputIterator>
 			void insert(iterator position,
-			typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type first, InputIterator last)
+			InputIterator first, typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type last)
 			{
 				iterator	it = begin();
 				size_type	i = 0;
@@ -406,7 +406,6 @@ namespace	ft
 				for (size_type pos = _m_size; pos > i; pos--)
 				{
 					_m_allocator.construct(_m_begin + (pos + n - 1), *(_m_begin + pos - 1));
-					// std::cout << "_m_begin + pos - 1 = " << *(_m_begin + pos - 1) << std::endl;
 					_m_allocator.destroy(_m_begin + (pos - 1));
 				}
 				for (size_type pos = i; pos < i + n; pos++)
