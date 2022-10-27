@@ -3,12 +3,6 @@
 
 #include "vector.hpp"
 #include <stack>
-#include <queue>
-
-std::stack<int>		ft_stack;
-std::queue<int>		ft_queue;
-std::deque<int>		ft_deque;
-std::_Deque_base<int, std::allocator<int> >	ft_deque_base;
 
 namespace	ft
 {
@@ -28,17 +22,29 @@ namespace	ft
 			Container c;
 		public:
 
-			// stack() : c() {};
-			explicit			stack(const Container& ctnr) : c(ctnr) {};
-			bool				empty() const { return c.empty(); };
-			size_type			size() const { return c.size(); };
-			value_type&			top() { return c.back(); };
-			const value_type&	top() const { return c.back(); };
-			void				push(const value_type& val) { c.push_back(val); };
-			void				pop() { c.pop_back(); };
+			stack() : c() {}; // default constructor
+			explicit			stack(const Container& ctnr) : c(ctnr) {}; // copy constructor
+			bool				empty() const { return c.empty(); }; // returns whether the stack is empty
+			size_type			size() const { return c.size(); }; // returns the number of elements
+			value_type&			top() { return c.back(); }; // returns a reference to the top element in the stack
+			const value_type&	top() const { return c.back(); }; // returns a reference to the top element in the stack
+			void				push(const value_type& val) { c.push_back(val); }; // adds a new element on top of the stack, above its current top element
+			void				pop() { c.pop_back(); }; // removes the element on top of the stack, effectively reducing its size by one
 
+			// We change to T1 instead of T because of the shadow template  
+			template <class T1, class Container1>
+			friend bool operator== (const stack<T1,Container1>& lhs, const stack<T1,Container1>& rhs);
+
+			template <class T1, class Container1>
+			friend bool operator< (const stack<T1,Container1>& lhs, const stack<T1,Container1>& rhs);
 
 	};
+	
+	/*
+	----------------------------------------------------------------------------------------------------------------------
+										RELATIONAL NON MEMBER OPERATORS
+	----------------------------------------------------------------------------------------------------------------------
+	*/
 
 	template <class T, class Container>
 	bool operator==(const stack<T, Container>& lhs, const stack<T, Container>& rhs)
@@ -49,8 +55,9 @@ namespace	ft
 	template <class T, class Container>
 	bool operator!=(const stack<T, Container>& lhs, const stack<T, Container>& rhs)
 	{
-		return (lhs.c != rhs.c);
+		return (!(lhs == rhs));
 	}
+
 
 	template <class T, class Container>
 	bool operator<(const stack<T, Container>& lhs, const stack<T, Container>& rhs)
@@ -61,19 +68,19 @@ namespace	ft
 	template <class T, class Container>
 	bool operator<=(const stack<T, Container>& lhs, const stack<T, Container>& rhs)
 	{
-		return (lhs.c <= rhs.c);
+		return ((lhs < rhs) || (lhs == rhs));
 	}
 
 	template <class T, class Container>
 	bool operator>(const stack<T, Container>& lhs, const stack<T, Container>& rhs)
 	{
-		return (lhs.c > rhs.c);
+		return ((rhs < lhs));
 	}
 
 	template <class T, class Container>
 	bool operator>=(const stack<T, Container>& lhs, const stack<T, Container>& rhs)
 	{
-		return (lhs.c >= rhs.c);
+		return ((rhs < lhs) || (lhs == rhs));
 	}
 
 };
