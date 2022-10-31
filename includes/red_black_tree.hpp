@@ -70,12 +70,12 @@ class	RedBlackTree
 	{
 		if (node == TNULL || key == node->data)
 		{
-			return node;
+			return (node);
 		}	
 		if (key < node->data) {
-			return searchTreeHelper(node->left, key);
+			return (searchTreeHelper(node->left, key));
 		}
-		return searchTreeHelper(node->right, key);
+		return (searchTreeHelper(node->right, key));
 	}
 
 	// For balancing the tree after deletion
@@ -86,57 +86,65 @@ class	RedBlackTree
 			if (x == x->parent->left)
 			{
 				s = x->parent->right;
-				if (s->color == 1) {
-				s->color = 0;
-				x->parent->color = 1;
-				leftRotate(x->parent);
-				s = x->parent->right;
-				}
-
-				if (s->left->color == 0 && s->right->color == 0) {
-				s->color = 1;
-				x = x->parent;
-				} else {
-				if (s->right->color == 0) {
-					s->left->color = 0;
-					s->color = 1;
-					rightRotate(s);
+				if (s->color == 1)
+				{
+					s->color = 0;
+					x->parent->color = 1;
+					leftRotate(x->parent);
 					s = x->parent->right;
 				}
 
-				s->color = x->parent->color;
-				x->parent->color = 0;
-				s->right->color = 0;
-				leftRotate(x->parent);
-				x = root;
+				if (s->left->color == 0 && s->right->color == 0)
+				{
+					s->color = 1;
+					x = x->parent;
+				}
+				else
+				{
+					if (s->right->color == 0)
+					{
+						s->left->color = 0;
+						s->color = 1;
+						rightRotate(s);
+						s = x->parent->right;
+					}
+					s->color = x->parent->color;
+					x->parent->color = 0;
+					s->right->color = 0;
+					leftRotate(x->parent);
+					x = root;
 				}
 			}
 			else
 			{
 				s = x->parent->left;
-				if (s->color == 1) {
-				s->color = 0;
-				x->parent->color = 1;
-				rightRotate(x->parent);
-				s = x->parent->left;
-				}
-
-				if (s->right->color == 0 && s->right->color == 0) {
-				s->color = 1;
-				x = x->parent;
-				} else {
-				if (s->left->color == 0) {
-					s->right->color = 0;
-					s->color = 1;
-					leftRotate(s);
+				if (s->color == 1)
+				{
+					s->color = 0;
+					x->parent->color = 1;
+					rightRotate(x->parent);
 					s = x->parent->left;
 				}
 
-				s->color = x->parent->color;
-				x->parent->color = 0;
-				s->left->color = 0;
-				rightRotate(x->parent);
-				x = root;
+				if (s->right->color == 0 && s->right->color == 0)
+				{
+					s->color = 1;
+					x = x->parent;
+				}
+				else
+				{
+					if (s->left->color == 0)
+					{
+						s->right->color = 0;
+						s->color = 1;
+						leftRotate(s);
+						s = x->parent->left;
+					}
+					s->color = x->parent->color;
+					x->parent->color = 0;
+					s->left->color = 0;
+					rightRotate(x->parent);
+					x = root;
 				}
 			}
 		}
@@ -173,7 +181,7 @@ class	RedBlackTree
 			return;
 		}
 		y = z;
-		int y_original_color = y->color;
+		int	y_original_color = y->color;
 		if (z->left == TNULL)
 		{
 			x = z->right;
@@ -203,7 +211,7 @@ class	RedBlackTree
 			y->left->parent = y;
 			y->color = z->color;
 		}
-		delete z;
+		delete (z);
 		if (y_original_color == 0)
 			deleteFix(x);
 	}
@@ -221,14 +229,16 @@ class	RedBlackTree
 				k->parent->color = 0;
 				k->parent->parent->color = 1;
 				k = k->parent->parent;
-				} else {
-				if (k == k->parent->left) {
-					k = k->parent;
-					rightRotate(k);
-				}
-				k->parent->color = 0;
-				k->parent->parent->color = 1;
-				leftRotate(k->parent->parent);
+				} else
+				{
+					if (k == k->parent->left)
+					{
+						k = k->parent;
+						rightRotate(k);
+					}
+					k->parent->color = 0;
+					k->parent->parent->color = 1;
+					leftRotate(k->parent->parent);
 				}
 			}
 			else
@@ -240,14 +250,17 @@ class	RedBlackTree
 				k->parent->color = 0;
 				k->parent->parent->color = 1;
 				k = k->parent->parent;
-				} else {
-				if (k == k->parent->right) {
-					k = k->parent;
-					leftRotate(k);
 				}
-				k->parent->color = 0;
-				k->parent->parent->color = 1;
-				rightRotate(k->parent->parent);
+				else
+				{
+					if (k == k->parent->right)
+					{
+						k = k->parent;
+						leftRotate(k);
+					}
+					k->parent->color = 0;
+					k->parent->parent->color = 1;
+					rightRotate(k->parent->parent);
 				}
 			}
 			if (k == root)
@@ -261,10 +274,13 @@ class	RedBlackTree
 		if (root != TNULL)
 		{
 			cout << indent;
-			if (last) {
+			if (last)
+			{
 				cout << "R----";
 				indent += "   ";
-			} else {
+			}
+			else
+			{
 				cout << "L----";
 				indent += "|  ";
 			}
