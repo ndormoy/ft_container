@@ -1,12 +1,8 @@
 #ifndef RED_BLACK_TREE_HPP
 #define RED_BLACK_TREE_HPP
 
-namespace	ft
-{
-	// Implementing Red-Black Tree in C++
-
 #include <iostream>
-using namespace std;
+// using namespace std;
 
 struct	Node {
 	int	data;
@@ -35,13 +31,14 @@ class	RedBlackTree
 		}
 
 	// Preorder
-	void preOrderHelper(NodePtr node) {
-	if (node != TNULL)
+	void preOrderHelper(NodePtr node)
 	{
-		cout << node->data << " ";
-		preOrderHelper(node->left);
-		preOrderHelper(node->right);
-	}
+		if (node != TNULL)
+		{
+			std::cout << node->data << " ";
+			preOrderHelper(node->left);
+			preOrderHelper(node->right);
+		}
 	}
 
 	// Inorder
@@ -50,7 +47,7 @@ class	RedBlackTree
 		if (node != TNULL)
 		{
 			inOrderHelper(node->left);
-			cout << node->data << " ";
+			std::cout << node->data << " ";
 			inOrderHelper(node->right);
 		}
 	}
@@ -62,7 +59,7 @@ class	RedBlackTree
 		{
 			postOrderHelper(node->left);
 			postOrderHelper(node->right);
-			cout << node->data << " ";
+			std::cout << node->data << " ";
 		}
 	}
 
@@ -162,7 +159,8 @@ class	RedBlackTree
 		v->parent = u->parent;
 	}
 
-	void deleteNodeHelper(NodePtr node, int key) {
+	void deleteNodeHelper(NodePtr node, int key)
+	{
 		NodePtr z = TNULL;
 		NodePtr x, y;
 		while (node != TNULL)
@@ -177,7 +175,7 @@ class	RedBlackTree
 
 		if (z == TNULL)
 		{
-			cout << "Key not found in the tree" << endl;
+			std::cout << "Key not found in the tree" << std::endl;
 			return;
 		}
 		y = z;
@@ -217,7 +215,8 @@ class	RedBlackTree
 	}
 
 	// For balancing the tree after insertion
-	void insertFix(NodePtr k) {
+	void insertFix(NodePtr k)
+	{
 		NodePtr u;
 		while (k->parent->color == 1)
 		{
@@ -269,24 +268,24 @@ class	RedBlackTree
 		root->color = 0;
 	}
 
-	void printHelper(NodePtr root, string indent, bool last)
+	void printHelper(NodePtr root, std::string indent, bool last)
 	{
 		if (root != TNULL)
 		{
-			cout << indent;
+			std::cout << indent;
 			if (last)
 			{
-				cout << "R----";
+				std::cout << "R----";
 				indent += "   ";
 			}
 			else
 			{
-				cout << "L----";
+				std::cout << "L----";
 				indent += "|  ";
 			}
 
-			string sColor = root->color ? "RED" : "BLACK";
-			cout << root->data << "(" << sColor << ")" << endl;
+			std::string sColor = root->color ? "RED" : "BLACK";
+			std::cout << root->data << "(" << sColor << ")" << std::endl;
 			printHelper(root->left, indent, false);
 			printHelper(root->right, indent, true);
 		}
@@ -457,23 +456,22 @@ class	RedBlackTree
 	}
 };
 
-	int main()
-	{
-		RedBlackTree bst;
-		bst.insert(55);
-		bst.insert(40);
-		bst.insert(65);
-		bst.insert(60);
-		bst.insert(75);
-		bst.insert(57);
+	// int main()
+	// {
+	// 	RedBlackTree bst;
+	// 	bst.insert(55);
+	// 	bst.insert(40);
+	// 	bst.insert(65);
+	// 	bst.insert(60);
+	// 	bst.insert(75);
+	// 	bst.insert(57);
 
-		bst.printTree();
-		cout << endl
-			<< "After deleting" << endl;
-		bst.deleteNode(40);
-		bst.printTree();
-	}
+	// 	bst.printTree();
+	// 	std::cout << std::endl
+	// 		<< "After deleting" << std::endl;
+	// 	bst.deleteNode(40);
+	// 	bst.printTree();
+	// }
 
-}
 
 	#endif
