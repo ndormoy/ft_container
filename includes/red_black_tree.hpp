@@ -78,7 +78,8 @@ class	RedBlackTree
 	}
 
 	// For balancing the tree after deletion
-	void deleteFix(NodePtr x) {
+	void deleteFix(NodePtr x)
+	{
 		NodePtr s;
 		while (x != root && x->color == BLACK)
 		{
@@ -150,6 +151,8 @@ class	RedBlackTree
 		x->color = BLACK;
 	}
 
+	// Delete the node U and raccord the node V to U parent
+
 	void rbTransplant(NodePtr u, NodePtr v)
 	{
 		if (u->parent == my_nullptr)
@@ -165,7 +168,7 @@ class	RedBlackTree
 	{
 		NodePtr z = TNULL;
 		NodePtr x, y;
-		while (node != TNULL)
+		while (node != TNULL) // find the node
 		{
 			if (node->data == key)
 				z = node;
@@ -174,20 +177,19 @@ class	RedBlackTree
 			else
 				node = node->left;
 		}
-
-		if (z == TNULL)
+		if (z == TNULL) // if node not found
 		{
 			std::cout << "Key not found in the tree" << std::endl;
 			return ;
 		}
 		y = z;
 		int	y_original_color = y->color;
-		if (z->left == TNULL)
+		if (z->left == TNULL) // Swap the node with the right child because de the left child is NULL
 		{
 			x = z->right;
 			rbTransplant(z, z->right);
 		}
-		else if (z->right == TNULL)
+		else if (z->right == TNULL) // Swap the node with the left child because the right child is NULL
 		{
 			x = z->left;
 			rbTransplant(z, z->left);
@@ -328,21 +330,25 @@ class	RedBlackTree
 
 	NodePtr searchTree(int k)
 	{
-		return searchTreeHelper(this->root, k);
+		return (searchTreeHelper(this->root, k));
 	}
+
+	// return the last left node ( the minimum node )
 
 	NodePtr minimum(NodePtr node)
 	{
 		while (node->left != TNULL)
 			node = node->left;
-		return node;
+		return (node);
 	}
+
+	// return the last right node ( the maximum node )
 
 	NodePtr maximum(NodePtr node)
 	{
 		while (node->right != TNULL) 
 			node = node->right;
-		return node;
+		return (node);
 	}
 
 	NodePtr successor(NodePtr x)
@@ -356,7 +362,7 @@ class	RedBlackTree
 			x = y;
 			y = y->parent;
 		}
-		return y;
+		return (y);
 	}
 
 	NodePtr predecessor(NodePtr x)
