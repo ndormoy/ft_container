@@ -8,19 +8,29 @@
 #include "nullptr.hpp"
 // using namespace std;
 
-struct	Node
-{
-	int		data;
-	Node	*parent;
-	Node	*left;
-	Node	*right;
-	int		color;
-};
 
-typedef Node	*NodePtr;
 
+
+
+
+
+template <typename T>
 class	RedBlackTree
 {
+	public:
+
+		struct	Node
+		{
+			T		data;
+			Node	*parent;
+			Node	*left;
+			Node	*right;
+			int		color;
+		};
+
+		typedef Node	*NodePtr;
+
+
 	private:
 
 		NodePtr	root;
@@ -459,7 +469,7 @@ class	RedBlackTree
 		return this->root;
 	}
 
-	void deleteNode(int data)
+	void deleteNode(T data)
 	{
 		deleteNodeHelper(this->root, data);
 	}

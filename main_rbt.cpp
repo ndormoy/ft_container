@@ -16,7 +16,7 @@ using namespace std;
 
 int main()
 {
-	RedBlackTree bst;
+	RedBlackTree <int>bst;
 	bst.insert(55);
 	bst.insert(40);
 	bst.insert(65);
