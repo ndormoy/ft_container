@@ -93,7 +93,6 @@ class	RedBlackTree
 					leftRotate(x->parent);
 					s = x->parent->right;
 				}
-
 				if (s->left->color == BLACK && s->right->color == BLACK)
 				{
 					s->color = RED;

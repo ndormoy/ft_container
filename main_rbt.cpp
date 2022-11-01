@@ -1,4 +1,5 @@
 #include "includes/red_black_tree.hpp"
+#include "includes/color.hpp"
 // #include <iostream>
 // #include <string>
 // #include <vector>
