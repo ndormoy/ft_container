@@ -1,22 +1,23 @@
 #include "includes/red_black_tree.hpp"
 #include "includes/color.hpp"
-// #include <iostream>
-// #include <string>
-// #include <vector>
-// #include <list>
-// #include <memory>
-// #include <cassert>
-// #include <limits>
-// #include <algorithm>
-// #include <iterator>
-// #include <utility>
-
+#include <iostream>
+#include <string>
+#include <vector>
+#include <list>
+#include <memory>
+#include <cassert>
+#include <limits>
+#include <algorithm>
+#include <iterator>
+#include <utility>
 
 using namespace std;
 
 int main()
 {
 	RedBlackTree <int>bst;
+	// RedBlackTree<int, std::pair<int, std::string>, std::less<int>, std::allocator<std::pair<int, std::string> > >bst;
+
 	bst.insert(55);
 	bst.insert(40);
 	bst.insert(65);

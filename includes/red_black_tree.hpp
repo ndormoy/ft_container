@@ -14,7 +14,8 @@
 
 
 
-template <typename T>
+// template <typename T>
+template<typename Key, typename T, typename Compare, typename Alloc>
 class	RedBlackTree
 {
 	public:
