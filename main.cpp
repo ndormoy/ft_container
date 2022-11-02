@@ -62,4 +62,8 @@ int main()
 		// bst.deleteNode(16);
 		bst.printTree();
 
+		bst.deleteNode(8);
+
+		bst.printTree();
+
 }
