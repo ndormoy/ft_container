@@ -32,7 +32,6 @@ namespace	ft
 			typedef typename allocator_type::pointer								pointer;
 			typedef typename allocator_type::const_pointer							const_pointer;
 			typedef RedBlackTree<value_type, key_compare, allocator_type>			tree_type;
-			// typedef RedBlackTree<value_type, allocator_type>						tree_type;
 			typedef tree_type::iterator												iterator;
 			typedef tree_type::const_iterator										const_iterator;
 			typedef typename tree_type::difference_type								difference_type;

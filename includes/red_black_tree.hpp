@@ -6,15 +6,9 @@
 #define RED 1
 
 #include "nullptr.hpp"
+#include "red_black_tree_iterator.hpp"
 // using namespace std;
 
-
-
-
-
-
-
-// template <typename T>
 template<typename Key, typename T, typename Compare, typename Alloc>
 class	RedBlackTree
 {
@@ -22,6 +16,12 @@ class	RedBlackTree
 
 		struct	Node
 		{
+			// default constructor
+			Node(const T& x=T(), color c=RED) :
+				data(x), color(c), left(nullptr), right(nullptr), parent(nullptr)
+			{
+
+			}
 			T		data;
 			Node	*parent;
 			Node	*left;
@@ -30,7 +30,6 @@ class	RedBlackTree
 		};
 
 		typedef Node	*NodePtr;
-
 
 	private:
 
