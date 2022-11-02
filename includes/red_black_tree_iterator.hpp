@@ -30,19 +30,49 @@ namespace	ft
 
 			RedBlackTreeIterator();
 			RedBlackTreeIterator(const RedBlackTreeIterator &other);
-			RedBlackTreeIterator &operator=(const RedBlackTreeIterator &other)
-			{
+			// RedBlackTreeIterator &operator=(const RedBlackTreeIterator &other)
+			// {
 
-			}
+			// }
 			~RedBlackTreeIterator();
-			RedBlackTreeIterator &operator++();
-			RedBlackTreeIterator operator++(int);
-			RedBlackTreeIterator &operator--();
-			RedBlackTreeIterator operator--(int);
-			bool operator==(const RedBlackTreeIterator &other) const;
-			bool operator!=(const RedBlackTreeIterator &other) const;
-			T &operator*() const;
-			T *operator->() const;
+			self &operator++()
+			{
+				_increment();
+				return (*this);
+			}
+			self &operator++(int)
+			{
+				RedBlackTreeIterator tmp(*this);
+				_increment();
+				return (tmp);
+			}
+			RedBlackTreeIterator &operator--()
+			{
+				_decrement();
+				return (*this);
+			}
+			RedBlackTreeIterator operator--(int)
+			{
+				RedBlackTreeIterator tmp(*this);
+				_decrement();
+				return (tmp);
+			}
+			bool operator==(const RedBlackTreeIterator &other) const
+			{
+				return (this->_node == other._node);
+			}
+			bool operator!=(const RedBlackTreeIterator &other) const
+			{
+				return (this->_node != other._node);
+			}
+			T &operator*() const
+			{
+				return (this->_node->data);
+			}
+			T *operator->() const
+			{
+				return (&(this->_node->data));
+			}
 
 		private:
 
