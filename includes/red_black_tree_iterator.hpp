@@ -3,7 +3,7 @@
 
 #include "map.hpp"
 #include "red_black_tree.hpp"
-
+#include "nullptr.hpp"
 
 
 namespace	ft
@@ -21,15 +21,14 @@ namespace	ft
 			typedef std::ptrdiff_t											difference_type;
 			typedef std::bidirectional_iterator_tag							iterator_category;
 
-
-			typedef typename RedBlackTree<Key, T, Compare, Alloc>::node		node_type;
-			typedef typename RedBlackTree<Key, T, Compare, Alloc>::NodePtr	node_ptr_type;
+			typedef key_type										*node_ptr_type;
+			
 			typedef RedBlackTreeIterator<Key, T, Compare, Alloc>			self;
 
 
 
-			RedBlackTreeIterator(node_ptr_type ptr = nullptr)
-				: _ptr(ptr)
+			RedBlackTreeIterator(node_ptr_type node = my_nullptr)
+				: _node(node)
 			{
 
 			}
