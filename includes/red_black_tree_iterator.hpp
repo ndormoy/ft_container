@@ -13,19 +13,17 @@ namespace	ft
 	{
 		public:
 
-			typedef Key														key_type;
-			typedef T														mapped_type;
-			typedef std::pair<const Key, T>									value_type;
-			typedef Compare													key_compare;
-			typedef Alloc													allocator_type;
-			typedef std::ptrdiff_t											difference_type;
-			typedef std::bidirectional_iterator_tag							iterator_category;
+			typedef Key												key_type;
+			typedef T												mapped_type;
+			typedef std::pair<const Key, T>							value_type;
+			typedef Compare											key_compare;
+			typedef Alloc											allocator_type;
+			typedef std::ptrdiff_t									difference_type;
+			typedef std::bidirectional_iterator_tag					iterator_category;
 
 			typedef key_type										*node_ptr_type;
 			
-			typedef RedBlackTreeIterator<Key, T, Compare, Alloc>			self;
-
-
+			typedef RedBlackTreeIterator<Key, T, Compare, Alloc>	self;
 
 			RedBlackTreeIterator(node_ptr_type node = my_nullptr)
 				: _node(node)
