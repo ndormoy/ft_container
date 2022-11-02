@@ -32,7 +32,7 @@ namespace	ft
 			typedef typename allocator_type::const_reference	const_reference; // The type of the const reference
 			typedef typename allocator_type::pointer			pointer;
 			typedef typename allocator_type::const_pointer		const_pointer;
-			typedef RedBlackTree<Key, T, Compare, Alloc>		tree_type;
+			typedef RedBlackTree<value_type, Compare, Alloc>	tree_type;
 			typedef typename tree_type::RedBlackTreeIterator	iterator;
 			typedef typename tree_type::const_iterator			const_iterator;
 			typedef typename tree_type::difference_type			difference_type;
