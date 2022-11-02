@@ -52,9 +52,9 @@ namespace	ft
 
 				}
 				Node(const value_type &val, Node *parent = my_nullptr, Node *left = my_nullptr, Node *right = my_nullptr, int color = RED)
-					: parent(parent), left(left), right(right), color(color)/* , _comp(key_compare()), _allocator(allocator_type()) */
+					: parent(parent), left(left), right(right), color(color), data(val)/* , _comp(key_compare()), _allocator(allocator_type()) */
 				{
-					_allocator.construct(&data, val);
+
 				}
 
 				value_type	data;
