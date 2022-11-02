@@ -81,20 +81,15 @@ namespace	ft
 			allocator_type_rebinded	_allocator;
 			key_compare				_comp;
 
-			/* This function traverses tree 
-			in post order to delete each 
-			and every node of the tree */
-			void deleteTree(node* node) 
+			
+			void clear(NodePtr node) 
 			{ 
-			    if (node == NULL) return; 
-			
-			    /* first delete both subtrees */
-			    deleteTree(node->left); 
-			    deleteTree(node->right); 
-			
-			    /* then delete the node */
-			    cout << "\n Deleting node: " << node->data; 
-			    delete node;
+				if (node == TNULL)
+					return ; 
+				clear(node->left); 
+				clear(node->right); 
+				_allocator.destroy(node);
+				_allocator.deallocate(node, 1);
 			} 
 
 			void	initializeNULLNode(NodePtr node, NodePtr parent)
@@ -377,13 +372,19 @@ namespace	ft
 
 			RedBlackTree()
 			{
-				// TNULL = new Node;
 				TNULL = _allocator.allocate(1);
 				_allocator.construct(TNULL, Node());
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
 				root = TNULL;
+			}
+
+			~RedBlackTree()
+			{
+				clear(root);
+				_allocator.destroy(TNULL);
+				_allocator.deallocate(TNULL, 1);
 			}
 	
 			void preorder()
