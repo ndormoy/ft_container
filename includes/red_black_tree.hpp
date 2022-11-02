@@ -455,18 +455,18 @@ class	RedBlackTree
 		if (node->parent == my_nullptr)
 		{
 			node->color = BLACK;
-			return;
+			return ;
 		}
 
 		if (node->parent->parent == my_nullptr)
-			return;
+			return ;
 
 		insertFix(node);
 	}
 
 	NodePtr getRoot()
 	{
-		return this->root;
+		return (this->root);
 	}
 
 	void deleteNode(T data)
