@@ -47,12 +47,12 @@ namespace	ft
 			{
 				// default constructor
 				Node()
-					: parent(my_nullptr), left(my_nullptr), right(my_nullptr), color(RED)/* , _comp(key_compare()), _allocator(allocator_type()) */
+					: parent(my_nullptr), left(my_nullptr), right(my_nullptr), color(RED)
 				{
 
 				}
 				Node(const value_type &val, Node *parent = my_nullptr, Node *left = my_nullptr, Node *right = my_nullptr, int color = RED)
-					: parent(parent), left(left), right(right), color(color), data(val)/* , _comp(key_compare()), _allocator(allocator_type()) */
+					: parent(parent), left(left), right(right), color(color), data(val)
 				{
 
 				}
@@ -74,6 +74,37 @@ namespace	ft
 			// Permet d'avoir tout le temps un type node pour que allocator::construct() puisse fonctionner
 			typedef typename Alloc::template rebind<Node>::other	allocator_type_rebinded;
 
+			/*
+			---------------------------------------------------------------------------------------------------------------
+															CONSTRUCTOR AND DESTRUCTOR RBT
+			---------------------------------------------------------------------------------------------------------------
+			*/
+
+			RedBlackTree()
+			{
+				_allocator = allocator_type();
+				_comp = key_compare();
+				TNULL = _allocator.allocate(1);
+				_allocator.construct(TNULL, Node());
+				TNULL->color = BLACK;
+				TNULL->left = my_nullptr;
+				TNULL->right = my_nullptr;
+				root = TNULL;
+			}
+
+			~RedBlackTree()
+			{
+				clear(root);
+				_allocator.destroy(TNULL);
+				_allocator.deallocate(TNULL, 1);
+			}
+
+		/*
+		----------------------------------------------------------------------------------------------------------------
+														PRIVATE VARIABLES
+		----------------------------------------------------------------------------------------------------------------
+		*/
+
 		private:
 
 			NodePtr					root;
@@ -81,7 +112,14 @@ namespace	ft
 			allocator_type_rebinded	_allocator;
 			key_compare				_comp;
 
-			
+		/*
+		----------------------------------------------------------------------------------------------------------------
+														PRIVATE FUNCTIONS
+		----------------------------------------------------------------------------------------------------------------
+		*/
+
+		private:
+
 			void clear(NodePtr node) 
 			{ 
 				if (node == TNULL)
@@ -370,25 +408,6 @@ namespace	ft
 			}
 
 		public:
-
-			RedBlackTree()
-			{
-				_allocator = allocator_type();
-				_comp = key_compare();
-				TNULL = _allocator.allocate(1);
-				_allocator.construct(TNULL, Node());
-				TNULL->color = BLACK;
-				TNULL->left = my_nullptr;
-				TNULL->right = my_nullptr;
-				root = TNULL;
-			}
-
-			~RedBlackTree()
-			{
-				clear(root);
-				_allocator.destroy(TNULL);
-				_allocator.deallocate(TNULL, 1);
-			}
 	
 			void preorder()
 			{
