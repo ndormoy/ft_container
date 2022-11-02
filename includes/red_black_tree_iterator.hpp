@@ -28,12 +28,12 @@ namespace	ft
 
 
 
-			RedBlackTreeIterator();
-			RedBlackTreeIterator(const RedBlackTreeIterator &other);
-			// RedBlackTreeIterator &operator=(const RedBlackTreeIterator &other)
-			// {
+			RedBlackTreeIterator(node_ptr_type ptr = nullptr)
+				: _ptr(ptr)
+			{
 
-			// }
+			}
+
 			~RedBlackTreeIterator();
 			self &operator++()
 			{
@@ -120,8 +120,6 @@ namespace	ft
 
 		private:
 
-			// RedBlackTree<Key, T, Compare, Alloc>	*_tree;
-			// typename RedBlackTree<Key, T, Compare, Alloc>::NodePtr	_node;
 			node_ptr_type	_node;
 	};
 };
