@@ -9,6 +9,8 @@
 #include "red_black_tree_iterator.hpp"
 // using namespace std;
 
+//TODO change comp to compare every operations
+
 namespace	ft
 {
 	template<typename value_type, typename Compare, typename Alloc>
@@ -106,7 +108,7 @@ namespace	ft
 
 			~RedBlackTree()
 			{
-				clear(root);
+				remove_node(root);
 				_allocator.destroy(TNULL);
 				_allocator.deallocate(TNULL, 1);
 			}
@@ -129,18 +131,24 @@ namespace	ft
 														PRIVATE FUNCTIONS
 		----------------------------------------------------------------------------------------------------------------
 		*/
+		public:
+
+			void clear() 
+			{ 
+				remove_node(this->root);
+			}
 
 		private:
 
-			void clear(NodePtr node) 
+			void remove_node(NodePtr node) 
 			{ 
 				if (node == TNULL)
 					return ; 
-				clear(node->left); 
-				clear(node->right); 
+				remove_node(node->left); 
+				remove_node(node->right); 
 				_allocator.destroy(node);
 				_allocator.deallocate(node, 1);
-			} 
+			}
 
 			void	initializeNULLNode(NodePtr node, NodePtr parent)
 			{

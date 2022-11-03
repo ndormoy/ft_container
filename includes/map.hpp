@@ -42,20 +42,37 @@ namespace	ft
 			typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
 
 			// empty container constructor (default constructor) --> construct an empty container with no elements.
-			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type())
+			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
+			 _size(0), _root(), _comp(comp), _allocator(alloc)
 			{
-				(void)comp;
-				(void)alloc;
+
 			}
 			// range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
 			template <class InputIterator>
-			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type());
+			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
+				_size(0), _root(), _comp(comp), _allocator(alloc)
+			{
+				insert (first, last, comp, alloc);
+			}
 			// copy constructor --> Constructs a container with a copy of each of the elements in x.
-			map (const map& x);
+			map (const map& x) :
+			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
+			{
+				insert (x.begin(), x.end(), x._comp, x._allocator);
+			}
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
-			~map();
+			~map()
+			{
+				_root.clear();
+			}
 
 		private:
+
+
+			size_type		_size;
+			tree_type		_root;
+			key_compare		_comp;
+			allocator_type	_allocator;
 
 		public:
 
