@@ -104,7 +104,25 @@ namespace	ft
 				_size = 0;
 			}
 
-			
+			size_type	count(const key_type& k) const
+			{
+				return (_root.count(k));
+			}
+
+			// Returns whether the map container is empty (i.e. whether its size is 0).
+			bool	empty() const
+			{
+				return (_size == 0);
+			}
+
+			pair<iterator, bool> insert	(const value_type& val)
+			{
+				pair<iterator, bool>	ret;
+				ret.first = _root.insert(val);
+				ret.second = true;
+				_size++;
+				return (ret);
+			}
 
 
 

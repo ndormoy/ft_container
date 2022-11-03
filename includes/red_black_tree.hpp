@@ -152,6 +152,27 @@ namespace	ft
 				return (iterator(maximum(root))++);
 			}
 
+
+			size_type 	count(const value_type &val) const
+			{
+				if (root == TNULL || val == root->data)
+					return (root);
+				if (val < root->data)
+					return (count(root->left, val));
+				return (count(root->right, val));
+			}
+
+
+
+			// NodePtr	searchTreeHelper(NodePtr node, int key)
+			// {
+			// 	if (node == TNULL || key == node->data)
+			// 		return (node);
+			// 	if (key < node->data)
+			// 		return (searchTreeHelper(node->left, key));
+			// 	return (searchTreeHelper(node->right, key));
+			// }
+
 		private:
 
 			void remove_node(NodePtr node) 
