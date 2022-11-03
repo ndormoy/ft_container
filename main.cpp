@@ -28,9 +28,32 @@
 
 int main()
 {
-	ft::map<int, int> m;
-	// std::map<int, int> m;
+	// ft::vector<int> v;
+	// v.push_back(1);
+    // v.push_back(2);
+	// v.push_back(3);
+    // v.push_back(4);
+	// // ft::map<int, int> m;
+	// ft::vector<int>::iterator it = v.begin();
+	// ft::map(it, it + 2);
 
+	std::map<int, int> m;
+
+
+	m.insert(std::pair<int, int>(3, 3));
+	m.insert(std::pair<int, int>(1, 1));
+	m.insert(std::pair<int, int>(2, 2));
+	m.insert(std::pair<int, int>(4, 4));
+	m.insert(std::pair<int, int>(7, 7));
+	m.insert(std::pair<int, int>(5, 5));
+	m.insert(std::pair<int, int>(6, 6));
+
+
+	std::map<int, int>::iterator it = m.end();
+	it--;
+	// it--;
+	std::cout << "BEGIN = " << m.begin()->first << std::endl;
+	std::cout << "END = " << it->first << std::endl;
 }
 
 

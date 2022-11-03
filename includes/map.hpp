@@ -52,6 +52,8 @@ namespace	ft
 			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 				_size(0), _root(), _comp(comp), _allocator(alloc)
 			{
+				difference_type	nb = ft::distance(first, last);
+				_size = nb;
 				insert (first, last, comp, alloc);
 			}
 			// copy constructor --> Constructs a container with a copy of each of the elements in x.
@@ -76,7 +78,37 @@ namespace	ft
 
 		public:
 
-			iterator	begin();
+			iterator	begin()
+			{
+				return (_root.begin());
+			}
+
+			const_iterator	begin() const
+			{
+				return (_root.begin());
+			}
+
+			iterator	end()
+			{
+				return (_root.end());
+			}
+
+			const_iterator	end() const
+			{
+				return (_root.end());
+			}
+
+			void	clear()
+			{
+				_root.clear();
+				_size = 0;
+			}
+
+			
+
+
+
+
 			
 
 

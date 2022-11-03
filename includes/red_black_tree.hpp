@@ -133,9 +133,23 @@ namespace	ft
 		*/
 		public:
 
+			// Clear, all the tree --> destroy and deallocate all nodes in the tree
 			void clear() 
 			{ 
 				remove_node(this->root);
+			}
+
+			// Return the first element in the tree (The minimum)
+			iterator	begin()
+			{
+				return (iterator(minimum(root)));
+			}
+
+			// Return the last element in the tree (The maximum)
+			iterator	end()
+			{
+				//TODO CARE TO END(), IT'S NOT THE LAST ELEMENT BUT THE NEXT ELEMENT AFTER THE LAST ELEMENT
+				return (iterator(maximum(root))++);
 			}
 
 		private:
