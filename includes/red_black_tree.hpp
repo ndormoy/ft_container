@@ -26,7 +26,7 @@ namespace	ft
 
 			typedef Compare													key_compare;
 			typedef Alloc													allocator_type;
-			typedef std::ptrdiff_t											difference_type;
+			// typedef std::ptrdiff_t											difference_type;
 			typedef std::bidirectional_iterator_tag							iterator_category;
 			typedef typename allocator_type::reference						reference;
 			typedef typename allocator_type::const_reference				const_reference;
@@ -39,15 +39,13 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-			// RedBlackTreeIterator<value_type, Compare, Alloc>				begin()
-			// {
-			// 	RedBlackTreeIterator<value_type, Compare, Alloc> it(_root);
-			// 	while (it._node->left != my_nullptr)
-			// 		it._node = it._node->left;
-			// 	return (it);
-			// }
+			typedef RedBlackTreeIterator<value_type, Compare, Alloc>		*iterator;
+			typedef RedBlackTreeIterator<const value_type, Compare, Alloc>	*const_iterator;
 
-
+			typedef std::size_t												size_type;
+			typedef std::ptrdiff_t											difference_type;
+			typedef ft::reverse_iterator<iterator>							reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
 
 		public:
 

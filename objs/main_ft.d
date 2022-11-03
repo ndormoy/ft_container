@@ -140,7 +140,10 @@ objs/main_ft.o: main.cpp /usr/include/stdc-predef.h includes/vector.hpp \
  /usr/include/c++/11/bits/stl_heap.h /usr/include/memory.h \
  /usr/include/string.h /usr/include/strings.h includes/red_black_tree.hpp \
  includes/nullptr.hpp includes/red_black_tree_iterator.hpp \
- includes/map.hpp includes/red_black_tree.hpp \
+ includes/map.hpp /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h \
+ /usr/include/c++/11/bits/erase_if.h includes/red_black_tree.hpp \
  includes/red_black_tree_iterator.hpp includes/nullptr.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \

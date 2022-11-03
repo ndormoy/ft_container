@@ -28,7 +28,6 @@
 
 int main()
 {
-		// ft::RedBlackTreeIterator<int, int, int, std::allocator<std::pair<int, int> > > bst;
 		ft::RedBlackTree<int, int, std::allocator<std::pair<int, int> > > bst;
 		(void)bst;
 		bst.insert(10);

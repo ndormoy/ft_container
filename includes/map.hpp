@@ -10,6 +10,7 @@
 #include "pair.hpp"
 // #include "nullptr.hpp"
 
+#include <map>
 
 namespace	ft
 {
@@ -33,7 +34,7 @@ namespace	ft
 			typedef typename allocator_type::pointer			pointer;
 			typedef typename allocator_type::const_pointer		const_pointer;
 			typedef RedBlackTree<value_type, Compare, Alloc>	tree_type;
-			typedef typename tree_type::RedBlackTreeIterator	iterator;
+			typedef typename tree_type::iterator				iterator;
 			typedef typename tree_type::const_iterator			const_iterator;
 			typedef typename tree_type::difference_type			difference_type;
 			typedef typename tree_type::size_type				size_type;
