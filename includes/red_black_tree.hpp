@@ -33,6 +33,20 @@ namespace	ft
 			typedef typename allocator_type::pointer						pointer;
 			typedef typename allocator_type::const_pointer					const_pointer;
 
+			/*
+			----------------------------------------------------------------------------------------------------------------
+														ITERATORS
+			----------------------------------------------------------------------------------------------------------------
+			*/
+
+			// RedBlackTreeIterator<value_type, Compare, Alloc>				begin()
+			// {
+			// 	RedBlackTreeIterator<value_type, Compare, Alloc> it(_root);
+			// 	while (it._node->left != my_nullptr)
+			// 		it._node = it._node->left;
+			// 	return (it);
+			// }
+
 
 
 		public:

@@ -8,22 +8,25 @@
 
 namespace	ft
 {
-	template<typename Key, typename T, typename Compare, typename Alloc>
+	// template<typename Key, typename T, typename Compare, typename Alloc>
+	template<typename value_type, typename Compare, typename Alloc>
 	class RedBlackTreeIterator
 	{
 		public:
 
-			typedef Key												key_type;
-			typedef T												mapped_type;
-			typedef std::pair<const Key, T>							value_type;
+			// typedef Key												key_type;
+			// typedef T												mapped_type;
+			// typedef std::pair<const Key, T>							value_type;
 			typedef Compare											key_compare;
 			typedef Alloc											allocator_type;
 			typedef std::ptrdiff_t									difference_type;
 			typedef std::bidirectional_iterator_tag					iterator_category;
 
-			typedef key_type										*node_ptr_type;
-			
-			typedef RedBlackTreeIterator<Key, T, Compare, Alloc>	self;
+			// typedef	key_type								*node_ptr_type;
+			typedef value_type										*node_ptr_type;
+
+			// typedef RedBlackTreeIterator<Key, T, Compare, Alloc>	self;
+			typedef RedBlackTreeIterator<value_type, Compare, Alloc>	self;
 
 			RedBlackTreeIterator(node_ptr_type node = my_nullptr)
 				: _node(node)
@@ -62,14 +65,22 @@ namespace	ft
 			{
 				return (this->_node != other._node);
 			}
-			T &operator*() const
-			{
+			value_type &operator*() const
+            {
 				return (this->_node->data);
 			}
-			T *operator->() const
-			{
+            value_type *operator->() const
+            {
 				return (&(this->_node->data));
 			}
+			// T &operator*() const
+			// {
+			// 	return (this->_node->data);
+			// }
+			// T *operator->() const
+			// {
+			// 	return (&(this->_node->data));
+			// }
 
 		private:
 
