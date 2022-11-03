@@ -41,6 +41,8 @@ namespace	ft
 			typedef typename tree_type::reverse_iterator		reverse_iterator;
 			typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
 
+			// create typename to have first in map class
+
 			// empty container constructor (default constructor) --> construct an empty container with no elements.
 			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 			 _size(0), _root(), _comp(comp), _allocator(alloc)
@@ -65,7 +67,8 @@ namespace	ft
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
 			~map()
 			{
-				_root.clear();
+				if (_size)
+					_root.clear();
 			}
 
 		private:
@@ -118,11 +121,16 @@ namespace	ft
 			pair<iterator, bool> insert	(const value_type& val)
 			{
 				pair<iterator, bool>	ret;
-				ret.first = _root.insert(val);
+
+				ret.first = _root.insert(val).first;
 				ret.second = true;
+				// ret = _root.insert(val);
 				_size++;
 				return (ret);
+				// return (_root.insert(val));
 			}
+
+			// make function insert in ft::map with this prototype  pair<iterator, bool> insert	(const value_type& val)
 
 
 
@@ -149,6 +157,7 @@ namespace	ft
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator>= (const map<Key,T,Compare,Alloc>& lhs, const map<Key,T,Compare,Alloc>& rhs);
+
 
 };
 

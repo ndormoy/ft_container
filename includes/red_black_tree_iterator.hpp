@@ -17,22 +17,23 @@ namespace	ft
 			// typedef Key												key_type;
 			// typedef T												mapped_type;
 			// typedef std::pair<const Key, T>							value_type;
-			typedef Compare																		key_compare;
-			typedef Alloc																		allocator_type;
+			typedef Compare																					key_compare;
+			typedef Alloc																					allocator_type;
 			// typedef std::ptrdiff_t									difference_type;
 			// typedef std::bidirectional_iterator_tag					iterator_category;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type	difference_type;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer			pointer;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_type		iterator_type;
 
 			// typedef	key_type								*node_ptr_type;
 			// typedef value_type																	*node_ptr_type;
-			typedef pointer 																	node_ptr_type;
+
+			typedef pointer 																				node_ptr_type;
 
 			// typedef RedBlackTreeIterator<Key, T, Compare, Alloc>	self;
-			typedef RedBlackTreeIterator<value_type, Compare, Alloc>	self;
+			typedef RedBlackTreeIterator<value_type, Compare, Alloc>										self;
 
 			RedBlackTreeIterator(node_ptr_type node = my_nullptr)
 				: _node(node)
@@ -71,6 +72,7 @@ namespace	ft
 			{
 				return (this->_node != other._node);
 			}
+
 			value_type &operator*() const
             {
 				return (this->_node->data);
@@ -79,6 +81,8 @@ namespace	ft
             {
 				return (&(this->_node->data));
 			}
+
+
 			// T &operator*() const
 			// {
 			// 	return (this->_node->data);
@@ -87,6 +91,15 @@ namespace	ft
 			// {
 			// 	return (&(this->_node->data));
 			// }
+			// value_type	first()
+			// {
+			// 	return (this->_node->first);
+			// }
+			
+			// value_type	second()
+			// {
+            //     return (this->_node->second);
+            // }
 
 		private:
 
@@ -135,6 +148,8 @@ namespace	ft
 		private:
 
 			node_ptr_type	_node;
+
+
 	};
 };
 

@@ -66,7 +66,7 @@ namespace	ft
 
 				}
 				Node(const value_type &val, Node *parent = my_nullptr, Node *left = my_nullptr, Node *right = my_nullptr, int color = RED)
-					: parent(parent), left(left), right(right), color(color), data(val)
+					: data(val), parent(parent), left(left), right(right), color(color)
 				{
 
 				}
@@ -108,9 +108,9 @@ namespace	ft
 
 			~RedBlackTree()
 			{
-				remove_node(root);
-				_allocator.destroy(TNULL);
-				_allocator.deallocate(TNULL, 1);
+				// remove_node(root);
+				// _allocator.destroy(TNULL);
+				// _allocator.deallocate(TNULL, 1);
 			}
 
 		/*
@@ -149,7 +149,8 @@ namespace	ft
 			iterator	end()
 			{
 				//TODO CARE TO END(), IT'S NOT THE LAST ELEMENT BUT THE NEXT ELEMENT AFTER THE LAST ELEMENT
-				return (iterator(maximum(root))++);
+				// return (iterator(maximum(root))++);
+				return (iterator(maximum(root)));
 			}
 
 
@@ -564,15 +565,15 @@ namespace	ft
 				x->parent = y;
 			}
 	
-			void insert(int key)
+			ft::pair<iterator, bool>	insert(value_type key)
 			{
-				// NodePtr node = new Node;
-				NodePtr node = new Node();
-				node->parent = my_nullptr;
-				node->data = key;
-				node->left = TNULL;
-				node->right = TNULL;
-				node->color = RED;
+				NodePtr node = _allocator.allocate(1);
+				_allocator.construct(node, Node(key, TNULL, TNULL, TNULL, RED));
+				// node->parent = my_nullptr;
+				// node->data = key;
+				// node->left = TNULL;
+				// node->right = TNULL;
+				// node->color = RED;
 	
 				NodePtr y = my_nullptr;
 				NodePtr x = this->root;
@@ -593,19 +594,62 @@ namespace	ft
 					y->left = node;
 				else
 					y->right = node;
-	
+				pair<iterator, bool> ret;
+				ret = ft::make_pair(iterator(node), true);
+				std::cout << "RET = " << ret.first << std::endl;
 				if (node->parent == my_nullptr)
 				{
 					node->color = BLACK;
-					return ;
+					return (ft::make_pair(iterator(node), true));
 				}
-	
 				if (node->parent->parent == my_nullptr)
-					return ;
-	
-				insertFix(node);
+					return (ft::make_pair(iterator(node), true));
+				insertFix(node);	
+				return (ft::make_pair(iterator(node), true));
 			}
 	
+			// void insert(int key)
+			// {
+			// 	// NodePtr node = new Node;
+			// 	NodePtr node = new Node();
+			// 	node->parent = my_nullptr;
+			// 	node->data = key;
+			// 	node->left = TNULL;
+			// 	node->right = TNULL;
+			// 	node->color = RED;
+	
+			// 	NodePtr y = my_nullptr;
+			// 	NodePtr x = this->root;
+	
+			// 	while (x != TNULL)
+			// 	{
+			// 		y = x;
+			// 		if (node->data < x->data)
+			// 			x = x->left;
+			// 		else
+			// 			x = x->right;
+			// 	}
+	
+			// 	node->parent = y;
+			// 	if (y == my_nullptr)
+			// 		root = node;
+			// 	else if (node->data < y->data)
+			// 		y->left = node;
+			// 	else
+			// 		y->right = node;
+	
+			// 	if (node->parent == my_nullptr)
+			// 	{
+			// 		node->color = BLACK;
+			// 		return ;
+			// 	}
+	
+			// 	if (node->parent->parent == my_nullptr)
+			// 		return ;
+	
+			// 	insertFix(node);
+			// }
+
 			NodePtr getRoot()
 			{
 				return (this->root);
