@@ -59,7 +59,6 @@ clean:
 fclean: clean
 	@echo  "Removing files\c"
 	@rm -rf ${FT_NAME} ${STD_NAME}
-	@rm ft_test.txt std_test.txt
 	@echo "\033[32m\t[OK]\033[0m"
 
 diff: all

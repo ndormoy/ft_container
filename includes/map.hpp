@@ -35,11 +35,11 @@ namespace	ft
 			typedef typename allocator_type::const_pointer		const_pointer;
 			typedef RedBlackTree<value_type, Compare, Alloc>	tree_type;
 			typedef typename tree_type::iterator				iterator;
-			typedef typename tree_type::const_iterator			const_iterator;
+			// typedef typename tree_type::const_iterator			const_iterator;
 			typedef typename tree_type::difference_type			difference_type;
 			typedef typename tree_type::size_type				size_type;
-			typedef typename tree_type::reverse_iterator		reverse_iterator;
-			typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
+			// typedef typename tree_type::reverse_iterator		reverse_iterator;
+			// typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
 
 			// create typename to have first in map class
 
@@ -86,20 +86,20 @@ namespace	ft
 				return (_root.begin());
 			}
 
-			const_iterator	begin() const
-			{
-				return (_root.begin());
-			}
+			// const_iterator	begin() const
+			// {
+			// 	return (_root.begin());
+			// }
 
 			iterator	end()
 			{
 				return (_root.end());
 			}
 
-			const_iterator	end() const
-			{
-				return (_root.end());
-			}
+			// const_iterator	end() const
+			// {
+			// 	return (_root.end());
+			// }
 
 			void	clear()
 			{
@@ -129,6 +129,12 @@ namespace	ft
 				return (ret);
 				// return (_root.insert(val));
 			}
+
+			// pair<iterator, bool> insert (const value_type &val)
+			// {
+			// 	pair<iterator, bool>	ret;
+			// 	return (_root.insert(val));
+			// }
 
 			// make function insert in ft::map with this prototype  pair<iterator, bool> insert	(const value_type& val)
 

@@ -17,7 +17,6 @@ namespace	ft
 	class	RedBlackTree
 	{
 
-
 		public:
 
 			/*
@@ -32,8 +31,9 @@ namespace	ft
 			typedef std::bidirectional_iterator_tag							iterator_category;
 			typedef typename allocator_type::reference						reference;
 			typedef typename allocator_type::const_reference				const_reference;
-			typedef typename allocator_type::pointer						pointer;
-			typedef typename allocator_type::const_pointer					const_pointer;
+			// typedef typename allocator_type::pointer						pointer;
+			
+			// typedef typename allocator_type::const_pointer					const_pointer;
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
@@ -41,13 +41,15 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-			typedef RedBlackTreeIterator<value_type, Compare, Alloc>		*iterator;
-			typedef RedBlackTreeIterator<const value_type, Compare, Alloc>	*const_iterator;
+			// typedef RedBlackTreeIterator<value_type, Compare, Alloc>		*iterator;
+			// typedef RedBlackTreeIterator<const value_type, Compare, Alloc>	*const_iterator;
+			
 
 			typedef std::size_t												size_type;
 			typedef std::ptrdiff_t											difference_type;
-			typedef ft::reverse_iterator<iterator>							reverse_iterator;
-			typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
+			// typedef ft::reverse_iterator<iterator>							reverse_iterator;
+			// typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
+
 
 		public:
 
@@ -76,6 +78,7 @@ namespace	ft
 				Node		*left;
 				Node		*right;
 				int			color;
+				typedef value_type my_data;
 			};
 
 			/*
@@ -86,7 +89,18 @@ namespace	ft
 
 			typedef Node	*NodePtr;
 			// Permet d'avoir tout le temps un type node pour que allocator::construct() puisse fonctionner
-			typedef typename Alloc::template rebind<Node>::other	allocator_type_rebinded;
+			typedef typename Alloc::template rebind<Node>::other			allocator_type_rebinded;
+
+
+			//TODO TEST PAS SUR QUE CA MARCHE
+			typedef typename std::allocator<Node>::pointer					pointer;
+			typedef RedBlackTreeIterator<Node, Compare, Alloc>				iterator;
+			// typedef RedBlackTreeIterator<const Node, Compare, Alloc>		*const_iterator;
+			// typedef RedBlackTreeIterator<Node, Compare, Alloc>				iterator;
+			// typedef RedBlackTreeIterator<const Node, Compare, Alloc>		const_iterator;
+			// typedef ft::reverse_iterator<iterator>							reverse_iterator;
+			// typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
+
 
 			/*
 			---------------------------------------------------------------------------------------------------------------
@@ -142,7 +156,10 @@ namespace	ft
 			// Return the first element in the tree (The minimum)
 			iterator	begin()
 			{
-				return (iterator(minimum(root)));
+				// return (iterator(minimum(root)));
+
+				iterator it = iterator(minimum(root));
+				return (it);
 			}
 
 			// Return the last element in the tree (The maximum)
@@ -150,7 +167,11 @@ namespace	ft
 			{
 				//TODO CARE TO END(), IT'S NOT THE LAST ELEMENT BUT THE NEXT ELEMENT AFTER THE LAST ELEMENT
 				// return (iterator(maximum(root))++);
-				return (iterator(maximum(root)));
+				// return (iterator(maximum(root)));
+
+				iterator it = iterator(maximum(root));
+				it++;
+				return (it);
 			}
 
 
@@ -457,7 +478,8 @@ namespace	ft
 					}
 
 					std::string sColor = root->color ? "RED" : "BLACK";
-					std::cout << root->data << "(" << sColor << ")" << std::endl;
+					// std::cout << root->data << "(" << sColor << ")" << std::endl;
+					std::cout << root->data.first << std::endl;
 					printHelper(root->left, indent, false);
 					printHelper(root->right, indent, true);
 				}
@@ -530,7 +552,7 @@ namespace	ft
 				}
 				return y;
 			}
-	
+
 			void leftRotate(NodePtr x)
 			{
 				NodePtr y = x->right;
@@ -565,16 +587,11 @@ namespace	ft
 				x->parent = y;
 			}
 	
-			ft::pair<iterator, bool>	insert(value_type key)
+			// ft::pair<iterator, bool>	insert(value_type key)
+			pointer	insert(value_type key)
 			{
 				NodePtr node = _allocator.allocate(1);
 				_allocator.construct(node, Node(key, TNULL, TNULL, TNULL, RED));
-				// node->parent = my_nullptr;
-				// node->data = key;
-				// node->left = TNULL;
-				// node->right = TNULL;
-				// node->color = RED;
-	
 				NodePtr y = my_nullptr;
 				NodePtr x = this->root;
 	
@@ -586,7 +603,6 @@ namespace	ft
 					else
 						x = x->right;
 				}
-	
 				node->parent = y;
 				if (y == my_nullptr)
 					root = node;
@@ -594,18 +610,17 @@ namespace	ft
 					y->left = node;
 				else
 					y->right = node;
-				pair<iterator, bool> ret;
-				ret = ft::make_pair(iterator(node), true);
-				std::cout << "RET = " << ret.first << std::endl;
+				std::cout << "inserted key: " << node->data.first << std::endl;
+				std::cout << "insert key address: " << &node->data.first << std::endl;
 				if (node->parent == my_nullptr)
 				{
 					node->color = BLACK;
-					return (ft::make_pair(iterator(node), true));
+					return (node);
 				}
-				if (node->parent->parent == my_nullptr)
-					return (ft::make_pair(iterator(node), true));
+				if (node->parent->parent != my_nullptr)
+					return (node);
 				insertFix(node);	
-				return (ft::make_pair(iterator(node), true));
+				return (node);
 			}
 	
 			// void insert(int key)

@@ -29,45 +29,14 @@
 
 int main()
 {
-	// ft::vector<int> v;
-	// v.push_back(1);
-    // v.push_back(2);
-	// v.push_back(3);
-    // v.push_back(4);
-	// // ft::map<int, int> m;
-	// ft::vector<int>::iterator it = v.begin();
-	// ft::map(it, it + 2);
+	ft::RedBlackTree<ft::pair<int, bool>, std::less<int>, std::allocator<ft::pair<int, bool> > > tree;
 
-	ft::map<int, int> m;
+	tree.insert(ft::pair<int, bool>(1, true));
+	// std::cout << "insert return = " << tree.insert(ft::pair<int, bool>(2, true))->data.first << std::endl;
 
+	// ft::RedBlackTree<ft::pair<int, bool>, std::less<int>, std::allocator<ft::pair<int, bool> > >::iterator it = tree.begin();
 
-	m.insert(ft::pair<int, int>(3, 3));
-	// m.insert(ft::pair<int, int>(1, 1));
+	tree.insert(ft::pair<int, bool>(2, true));
 
-	// m.insert(ft::pair<int, int>(2, 2));
-	// m.insert(ft::pair<int, int>(4, 4));
-	// m.insert(ft::pair<int, int>(7, 7));
-	// m.insert(ft::pair<int, int>(5, 5));
-	// m.insert(ft::pair<int, int>(6, 6));
-
-
-	// ft::map<int, int>::iterator it = m.end();
-	// it--;
-	// // it--;
-	// std::cout << "BEGIN = " << m.begin()->first << std::endl;
-	// std::cout << "END = " << it->first << std::endl;
-
-	// for(ft::map<int, int>::iterator it = m.begin(); it != m.end(); it++)
-	// {
-	// 	// std::cout << it->first << std::endl;
-	// 	std::cout << it->first << std::endl;
-	// }
-
-
-	std::pair<int, bool> p;
-
-	p.first = 1;
-    p.second = true;
-
-	std::cout << p.first << std::endl;
+	tree.printTree();
 }
