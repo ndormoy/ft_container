@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include "red_black_tree.hpp"
+#include "red_black_tree_iterator.hpp"
 #include "pair.hpp"
 #include "node.hpp"
 // #include "nullptr.hpp"
@@ -35,12 +36,14 @@ namespace	ft
 			typedef typename allocator_type::pointer			pointer;
 			typedef typename allocator_type::const_pointer		const_pointer;
 			typedef RedBlackTree<value_type, Compare, Alloc>	tree_type;
-			typedef typename tree_type::iterator				iterator;
-			// typedef typename tree_type::const_iterator			const_iterator;
 			typedef typename tree_type::difference_type			difference_type;
 			typedef typename tree_type::size_type				size_type;
 			// typedef typename tree_type::reverse_iterator		reverse_iterator;
 			// typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
+
+			//TODO Trying to make iterator works
+
+			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
 
 			// create typename to have first in map class
 
@@ -86,7 +89,7 @@ namespace	ft
 
 			iterator	begin()
 			{
-				return (_root.begin());
+				return (iterator(_root.begin()));
 			}
 
 			// const_iterator	begin() const
@@ -123,12 +126,10 @@ namespace	ft
 
 			pair<iterator, bool> insert	(const value_type& val)
 			{
-				//TODO Make it work
 				pair<iterator, bool>	ret;
 
 				ret = make_pair(_root.insert(val), true);
 				_size++;
-				// _root.printTree();
 				return (ret);
 			}
 

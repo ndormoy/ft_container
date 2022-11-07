@@ -29,32 +29,36 @@
 
 int main()
 {
-	ft::RedBlackTree<ft::pair<int, int>, std::less<int>, std::allocator<ft::pair<int, bool> > > tree;
+	// ft::RedBlackTree<ft::pair<int, int>, std::less<int>, std::allocator<ft::pair<int, bool> > > tree;
 
-	tree.insert(ft::pair<int, int>(1, 1));
+	// tree.insert(ft::pair<int, int>(1, 1));
 
-	ft::RedBlackTree<ft::pair<int, int>, std::less<int>, std::allocator<ft::pair<int, bool> > >::iterator it = tree.begin();
+	// ft::RedBlackTree<ft::pair<int, int>, std::less<int>, std::allocator<ft::pair<int, bool> > >::iterator it = tree.begin();
 
-	tree.insert(ft::pair<int, int>(2, 2));
+	// tree.insert(ft::pair<int, int>(2, 2));
 
-	tree.insert(ft::pair<int, int>(3, 3));
+	// tree.insert(ft::pair<int, int>(3, 3));
 
-	tree.insert(ft::pair<int, int>(4, 4));
+	// tree.insert(ft::pair<int, int>(4, 4));
 	
 
-	tree.printTree();
+	// tree.printTree();
 
 
-	// ft::map<int, bool> map;
+	ft::map<int, bool> map;
 
-	// map.insert(ft::pair<int, bool>(1, true));
-	// map.insert(ft::pair<int, bool>(2, true));
-	// map.insert(ft::pair<int, bool>(3, true));
-	// map.insert(ft::pair<int, bool>(4, true));
-	// map.insert(ft::pair<int, bool>(5, true));
-	// map.insert(ft::pair<int, bool>(6, true));
+	map.insert(ft::pair<int, bool>(1, true));
+	map.insert(ft::pair<int, bool>(2, true));
+	map.insert(ft::pair<int, bool>(3, true));
+	map.insert(ft::pair<int, bool>(4, true));
 
-	// map.print_map();
+	ft::map<int, bool>::iterator it = map.begin();
+
+	// std::cout << "it: " << *(it)->first << std::endl;
+
+	std::cout << it->first << std::endl;
+
+	map.print_map();
 
 }
 

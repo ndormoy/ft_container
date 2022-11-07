@@ -8,21 +8,22 @@
 
 namespace	ft
 {
-	template<typename value_type>
+	template<typename value_type, typename node>
 	class RedBlackTreeIterator
 	{
 		public:
 
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
+			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, NodePtr>::pointer					pointer;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, node >::pointer					pointer;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_type		iterator_type;
 			typedef pointer 																				node_ptr_type;
-			typedef RedBlackTreeIterator<value_type>														self;
+			typedef RedBlackTreeIterator<value_type, node >													self;
 
-			RedBlackTreeIterator(node_ptr_type node = my_nullptr)
-				: _node(node)
+			RedBlackTreeIterator(node_ptr_type my_node = my_nullptr)
+				: _node(my_node)
 			{
 				std::cout << "RBT iterator constructor 1" << std::endl;
 			}
@@ -74,30 +75,18 @@ namespace	ft
 				std::cout << "operator*" << std::endl;
 				return (this->_node->data);
 			}
-            pointer		operator->() const
-            {
+
+			// pointer		operator->() const
+			// {
+			// 	std::cout << "operator->" << std::endl;
+			// 	return (&(this->_node->data));
+			// }
+
+			value_type	*operator->() const
+			{
 				std::cout << "operator->" << std::endl;
 				return (&(this->_node->data));
 			}
-
-
-			// T &operator*() const
-			// {
-			// 	return (this->_node->data);
-			// }
-			// T *operator->() const
-			// {
-			// 	return (&(this->_node->data));
-			// }
-			// value_type	first()
-			// {
-			// 	return (this->_node->first);
-			// }
-			
-			// value_type	second()
-			// {
-            //     return (this->_node->second);
-            // }
 
 		private:
 
@@ -146,7 +135,6 @@ namespace	ft
 		private:
 
 			node_ptr_type	_node;
-
 
 	};
 };

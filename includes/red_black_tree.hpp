@@ -66,15 +66,7 @@ namespace	ft
 			// Permet d'avoir tout le temps un type node pour que allocator::construct() puisse fonctionner
 			typedef typename Alloc::template rebind<Node<value_type> >::other	allocator_type_rebinded;
 
-			//TODO TEST PAS SUR QUE CA MARCHE
 			typedef typename std::allocator<Node<value_type> >::pointer			pointer;
-			typedef RedBlackTreeIterator<Node<value_type> >						iterator;
-			// typedef RedBlackTreeIterator<const Node, Compare, Alloc>		*const_iterator;
-			// typedef RedBlackTreeIterator<Node, Compare, Alloc>				iterator;
-			// typedef RedBlackTreeIterator<const Node, Compare, Alloc>		const_iterator;
-			// typedef ft::reverse_iterator<iterator>							reverse_iterator;
-			// typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
-
 
 			/*
 			---------------------------------------------------------------------------------------------------------------
@@ -126,24 +118,22 @@ namespace	ft
 			}
 
 			// Return the first element in the tree (The minimum)
-			iterator	begin()
+			pointer	begin()
 			{
-				// return (iterator(minimum(root)));
-
-				iterator it = iterator(minimum(root));
-				return (it);
+				return (minimum(root));
 			}
 
 			// Return the last element in the tree (The maximum)
-			iterator	end()
+			pointer	end()
 			{
 				//TODO CARE TO END(), IT'S NOT THE LAST ELEMENT BUT THE NEXT ELEMENT AFTER THE LAST ELEMENT
 				// return (iterator(maximum(root))++);
 				// return (iterator(maximum(root)));
 
-				iterator it = iterator(maximum(root));
-				it++;
-				return (it);
+				// iterator it = iterator(maximum(root));
+				// it++;
+				// return (it);
+				return (maximum(root));
 			}
 
 
