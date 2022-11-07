@@ -8,6 +8,7 @@
 #include <string>
 #include "red_black_tree.hpp"
 #include "pair.hpp"
+#include "node.hpp"
 // #include "nullptr.hpp"
 
 #include <map>
@@ -47,13 +48,14 @@ namespace	ft
 			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 			 _size(0), _root(), _comp(comp), _allocator(alloc)
 			{
-
+				std::cout << "default constructor Map" << std::endl;
 			}
 			// range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
 			template <class InputIterator>
 			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 				_size(0), _root(), _comp(comp), _allocator(alloc)
 			{
+				std::cout << "range constructor Map" << std::endl;
 				difference_type	nb = ft::distance(first, last);
 				_size = nb;
 				insert (first, last, comp, alloc);
@@ -62,6 +64,7 @@ namespace	ft
 			map (const map& x) :
 			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
 			{
+				std::cout << "copy constructor Map" << std::endl;
 				insert (x.begin(), x.end(), x._comp, x._allocator);
 			}
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
@@ -120,25 +123,29 @@ namespace	ft
 
 			pair<iterator, bool> insert	(const value_type& val)
 			{
+				//TODO Make it work
 				pair<iterator, bool>	ret;
 
-				ret.first = _root.insert(val).first;
-				ret.second = true;
-				// ret = _root.insert(val);
+				ret = make_pair(_root.insert(val), true);
 				_size++;
+				// _root.printTree();
 				return (ret);
-				// return (_root.insert(val));
 			}
+
+
 
 			// pair<iterator, bool> insert (const value_type &val)
 			// {
-			// 	pair<iterator, bool>	ret;
 			// 	return (_root.insert(val));
 			// }
 
 			// make function insert in ft::map with this prototype  pair<iterator, bool> insert	(const value_type& val)
 
-
+			void	print_map()
+			{
+				// _root.print_tree();
+				_root.printTree();
+			}
 
 
 			

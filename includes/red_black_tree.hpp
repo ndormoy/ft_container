@@ -7,6 +7,7 @@
 
 #include "nullptr.hpp"
 #include "red_black_tree_iterator.hpp"
+#include "node.hpp"
 // using namespace std;
 
 //TODO change comp to compare every operations
@@ -27,13 +28,9 @@ namespace	ft
 
 			typedef Compare													key_compare;
 			typedef Alloc													allocator_type;
-			// typedef std::ptrdiff_t											difference_type;
 			typedef std::bidirectional_iterator_tag							iterator_category;
 			typedef typename allocator_type::reference						reference;
 			typedef typename allocator_type::const_reference				const_reference;
-			// typedef typename allocator_type::pointer						pointer;
-			
-			// typedef typename allocator_type::const_pointer					const_pointer;
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
@@ -41,45 +38,24 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-			// typedef RedBlackTreeIterator<value_type, Compare, Alloc>		*iterator;
-			// typedef RedBlackTreeIterator<const value_type, Compare, Alloc>	*const_iterator;
-			
-
 			typedef std::size_t												size_type;
 			typedef std::ptrdiff_t											difference_type;
-			// typedef ft::reverse_iterator<iterator>							reverse_iterator;
-			// typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
+			typedef Node<value_type>										*NodePtr;
 
-
-		public:
+		private:
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
-															NODE
+															ATTRIBUTES
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-			struct	Node
-			{
-				// default constructor
-				Node()
-					: parent(my_nullptr), left(my_nullptr), right(my_nullptr), color(RED)
-				{
+			NodePtr	root;
+			NodePtr	TNULL;
 
-				}
-				Node(const value_type &val, Node *parent = my_nullptr, Node *left = my_nullptr, Node *right = my_nullptr, int color = RED)
-					: data(val), parent(parent), left(left), right(right), color(color)
-				{
+		public:
 
-				}
-
-				value_type	data;
-				Node		*parent;
-				Node		*left;
-				Node		*right;
-				int			color;
-				typedef value_type my_data;
-			};
+			
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
@@ -87,14 +63,12 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-			typedef Node	*NodePtr;
 			// Permet d'avoir tout le temps un type node pour que allocator::construct() puisse fonctionner
-			typedef typename Alloc::template rebind<Node>::other			allocator_type_rebinded;
-
+			typedef typename Alloc::template rebind<Node<value_type> >::other	allocator_type_rebinded;
 
 			//TODO TEST PAS SUR QUE CA MARCHE
-			typedef typename std::allocator<Node>::pointer					pointer;
-			typedef RedBlackTreeIterator<Node, Compare, Alloc>				iterator;
+			typedef typename std::allocator<Node<value_type> >::pointer			pointer;
+			typedef RedBlackTreeIterator<Node<value_type> >						iterator;
 			// typedef RedBlackTreeIterator<const Node, Compare, Alloc>		*const_iterator;
 			// typedef RedBlackTreeIterator<Node, Compare, Alloc>				iterator;
 			// typedef RedBlackTreeIterator<const Node, Compare, Alloc>		const_iterator;
@@ -113,7 +87,7 @@ namespace	ft
 				_allocator = allocator_type();
 				_comp = key_compare();
 				TNULL = _allocator.allocate(1);
-				_allocator.construct(TNULL, Node());
+				_allocator.construct(TNULL, Node<value_type>());
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
@@ -135,8 +109,6 @@ namespace	ft
 
 		private:
 
-			NodePtr					root;
-			NodePtr					TNULL;
 			allocator_type_rebinded	_allocator;
 			key_compare				_comp;
 
@@ -184,18 +156,8 @@ namespace	ft
 				return (count(root->right, val));
 			}
 
-
-
-			// NodePtr	searchTreeHelper(NodePtr node, int key)
-			// {
-			// 	if (node == TNULL || key == node->data)
-			// 		return (node);
-			// 	if (key < node->data)
-			// 		return (searchTreeHelper(node->left, key));
-			// 	return (searchTreeHelper(node->right, key));
-			// }
-
-		private:
+		// private: // need to be in private
+		public:
 
 			void remove_node(NodePtr node) 
 			{ 
@@ -404,6 +366,7 @@ namespace	ft
 			// For balancing the tree after insertion
 			void insertFix(NodePtr k)
 			{
+				std::cout << "InsertFix" << std::endl;
 				NodePtr u;
 				while (k->parent->color == RED) // case 3 : P is RED
 				{
@@ -587,83 +550,42 @@ namespace	ft
 				x->parent = y;
 			}
 	
-			// ft::pair<iterator, bool>	insert(value_type key)
 			pointer	insert(value_type key)
 			{
 				NodePtr node = _allocator.allocate(1);
-				_allocator.construct(node, Node(key, TNULL, TNULL, TNULL, RED));
+				_allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
 				NodePtr y = my_nullptr;
 				NodePtr x = this->root;
-	
-				while (x != TNULL)
-				{
-					y = x;
-					if (node->data < x->data)
-						x = x->left;
+
+					while (x != TNULL)
+					{
+						y = x;
+						if (node->data < x->data)
+							x = x->left;
+						else
+							x = x->right;
+					}
+
+					node->parent = y;
+					if (y == my_nullptr)
+						root = node;
+					else if (node->data < y->data)
+						y->left = node;
 					else
-						x = x->right;
-				}
-				node->parent = y;
-				if (y == my_nullptr)
-					root = node;
-				else if (node->data < y->data)
-					y->left = node;
-				else
-					y->right = node;
-				std::cout << "inserted key: " << node->data.first << std::endl;
-				std::cout << "insert key address: " << &node->data.first << std::endl;
-				if (node->parent == my_nullptr)
-				{
-					node->color = BLACK;
+						y->right = node;
+
+					if (node->parent == my_nullptr)
+					{
+						node->color = BLACK;
+						return node;
+					}
+
+					if (node->parent->parent == my_nullptr)
+						return node;
+
+					insertFix(node);
 					return (node);
-				}
-				if (node->parent->parent != my_nullptr)
-					return (node);
-				insertFix(node);	
-				return (node);
 			}
-	
-			// void insert(int key)
-			// {
-			// 	// NodePtr node = new Node;
-			// 	NodePtr node = new Node();
-			// 	node->parent = my_nullptr;
-			// 	node->data = key;
-			// 	node->left = TNULL;
-			// 	node->right = TNULL;
-			// 	node->color = RED;
-	
-			// 	NodePtr y = my_nullptr;
-			// 	NodePtr x = this->root;
-	
-			// 	while (x != TNULL)
-			// 	{
-			// 		y = x;
-			// 		if (node->data < x->data)
-			// 			x = x->left;
-			// 		else
-			// 			x = x->right;
-			// 	}
-	
-			// 	node->parent = y;
-			// 	if (y == my_nullptr)
-			// 		root = node;
-			// 	else if (node->data < y->data)
-			// 		y->left = node;
-			// 	else
-			// 		y->right = node;
-	
-			// 	if (node->parent == my_nullptr)
-			// 	{
-			// 		node->color = BLACK;
-			// 		return ;
-			// 	}
-	
-			// 	if (node->parent->parent == my_nullptr)
-			// 		return ;
-	
-			// 	insertFix(node);
-			// }
 
 			NodePtr getRoot()
 			{

@@ -4,35 +4,22 @@
 #include "map.hpp"
 #include "red_black_tree.hpp"
 #include "nullptr.hpp"
-
+#include "node.hpp"
 
 namespace	ft
 {
-	// template<typename Key, typename T, typename Compare, typename Alloc>
-	template<typename value_type, typename Compare, typename Alloc>
+	template<typename value_type>
 	class RedBlackTreeIterator
 	{
 		public:
 
-			typedef Compare																					key_compare;
-			typedef Alloc																					allocator_type;
-			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
-			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
-			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
-			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
-			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_type		iterator_type;
-			// typedef pointer 																				node_ptr_type;
-			typedef RedBlackTreeIterator<value_type, Compare, Alloc>										self;
-
-			//TODO TEST
-			typedef typename value_type::my_data															ok;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, ok>::difference_type				difference_type;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, ok>::iterator_category			iterator_category;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, ok>::pointer						pointer;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, ok>::reference					reference;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, ok>::iterator_type				iterator_type;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_type		iterator_type;
 			typedef pointer 																				node_ptr_type;
-
+			typedef RedBlackTreeIterator<value_type>														self;
 
 			RedBlackTreeIterator(node_ptr_type node = my_nullptr)
 				: _node(node)
@@ -46,9 +33,11 @@ namespace	ft
 				std::cout << "RBT iterator constructor 2" << std::endl;
 			}
 
+			~RedBlackTreeIterator()
+			{
 
+			}
 
-			~RedBlackTreeIterator();
 			self &operator++()
 			{
 				_increment();
@@ -80,14 +69,6 @@ namespace	ft
 				return (this->_node != other._node);
 			}
 
-			// value_type &operator*() const
-            // {
-			// 	return (this->_node->data);
-			// }
-			// value_type *operator->() const
-            // {
-			// 	return (&(this->_node->data));
-			// }
 			reference	operator*() const
 			{
 				std::cout << "operator*" << std::endl;
@@ -96,7 +77,7 @@ namespace	ft
             pointer		operator->() const
             {
 				std::cout << "operator->" << std::endl;
-				return (&(this->_node));
+				return (&(this->_node->data));
 			}
 
 
