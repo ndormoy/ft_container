@@ -44,6 +44,7 @@ namespace	ft
 			//TODO Trying to make iterator works
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
+			typedef RedBlackTreeIterator<value_type, const Node<value_type> >	const_iterator;
 
 			// create typename to have first in map class
 
@@ -51,14 +52,14 @@ namespace	ft
 			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 			 _size(0), _root(), _comp(comp), _allocator(alloc)
 			{
-				std::cout << "default constructor Map" << std::endl;
+				// std::cout << "default constructor Map" << std::endl;
 			}
 			// range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
 			template <class InputIterator>
 			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 				_size(0), _root(), _comp(comp), _allocator(alloc)
 			{
-				std::cout << "range constructor Map" << std::endl;
+				// std::cout << "range constructor Map" << std::endl;
 				difference_type	nb = ft::distance(first, last);
 				_size = nb;
 				insert (first, last, comp, alloc);
@@ -67,7 +68,7 @@ namespace	ft
 			map (const map& x) :
 			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
 			{
-				std::cout << "copy constructor Map" << std::endl;
+				// std::cout << "copy constructor Map" << std::endl;
 				insert (x.begin(), x.end(), x._comp, x._allocator);
 			}
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
@@ -89,22 +90,23 @@ namespace	ft
 
 			iterator	begin()
 			{
+				std::cout << "begin" << std::endl;
 				return (iterator(_root.begin()));
 			}
 
 			// const_iterator	begin() const
 			// {
-			// 	return (_root.begin());
+			// 	return (const_iterator(_root.begin()));
 			// }
 
 			iterator	end()
 			{
-				return (_root.end());
+				return (iterator(_root.end()));
 			}
 
-			// const_iterator	end() const
+			// iterator	end() const
 			// {
-			// 	return (_root.end());
+			// 	return (const_iterator(_root.end()));
 			// }
 
 			void	clear()
@@ -142,14 +144,21 @@ namespace	ft
 
 			// make function insert in ft::map with this prototype  pair<iterator, bool> insert	(const value_type& val)
 
+			// iterator	find(const key_type& k)
+			// {
+			// 	return (iterator(_root.searchTree(k)));
+			// }
+
+			const_iterator	find(const key_type& k) const
+			{
+				return (iterator(_root.searchTree(k)));
+			}
+
 			void	print_map()
 			{
 				// _root.print_tree();
 				_root.printTree();
 			}
-
-
-			
 
 
 	};

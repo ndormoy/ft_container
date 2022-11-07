@@ -80,9 +80,10 @@ namespace	ft
 				_comp = key_compare();
 				TNULL = _allocator.allocate(1);
 				_allocator.construct(TNULL, Node<value_type>());
-				TNULL->color = BLACK;
-				TNULL->left = my_nullptr;
-				TNULL->right = my_nullptr;
+				// TNULL->color = BLACK;
+				// TNULL->left = my_nullptr;
+				// TNULL->right = my_nullptr;
+				//// TNULL->parent = my_nullptr;
 				root = TNULL;
 			}
 
@@ -201,7 +202,16 @@ namespace	ft
 				}
 			}
 
-			NodePtr	searchTreeHelper(NodePtr node, int key)
+			// NodePtr	searchTreeHelper(NodePtr node, int key)
+			// {
+			// 	if (node == TNULL || key == node->data)
+			// 		return (node);
+			// 	if (key < node->data)
+			// 		return (searchTreeHelper(node->left, key));
+			// 	return (searchTreeHelper(node->right, key));
+			// }
+
+			NodePtr	searchTreeHelper(NodePtr node, value_type key)
 			{
 				if (node == TNULL || key == node->data)
 					return (node);
@@ -356,7 +366,7 @@ namespace	ft
 			// For balancing the tree after insertion
 			void insertFix(NodePtr k)
 			{
-				std::cout << "InsertFix" << std::endl;
+				// std::cout << "InsertFix" << std::endl;
 				NodePtr u;
 				while (k->parent->color == RED) // case 3 : P is RED
 				{
@@ -431,8 +441,8 @@ namespace	ft
 					}
 
 					std::string sColor = root->color ? "RED" : "BLACK";
-					// std::cout << root->data << "(" << sColor << ")" << std::endl;
-					std::cout << root->data.first << std::endl;
+					std::cout << root->data.first/*  << std::endl */;
+					std::cout << /* root->color << */ "(" << sColor << ")" << std::endl;
 					printHelper(root->left, indent, false);
 					printHelper(root->right, indent, true);
 				}
@@ -455,7 +465,12 @@ namespace	ft
 				postOrderHelper(this->root);
 			}
 	
-			NodePtr searchTree(int k)
+			// NodePtr searchTree(int k)
+			// {
+			// 	return (searchTreeHelper(this->root, k));
+			// }
+
+			NodePtr searchTree(value_type k)
 			{
 				return (searchTreeHelper(this->root, k));
 			}

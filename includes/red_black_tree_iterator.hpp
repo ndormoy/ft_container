@@ -15,12 +15,12 @@ namespace	ft
 
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
-			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, NodePtr>::pointer					pointer;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, node >::pointer					pointer;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_type		iterator_type;
 			typedef pointer 																				node_ptr_type;
 			typedef RedBlackTreeIterator<value_type, node >													self;
+
 
 			RedBlackTreeIterator(node_ptr_type my_node = my_nullptr)
 				: _node(my_node)
@@ -36,7 +36,7 @@ namespace	ft
 
 			~RedBlackTreeIterator()
 			{
-
+				// std::cout << "RBT iterator destructor" << std::endl;
 			}
 
 			self &operator++()
@@ -44,12 +44,15 @@ namespace	ft
 				_increment();
 				return (*this);
 			}
-			self &operator++(int)
+
+
+			self operator++(int)
 			{
-				RedBlackTreeIterator tmp(*this);
+				self tmp(*this);
 				_increment();
 				return (tmp);
 			}
+
 			RedBlackTreeIterator &operator--()
 			{
 				_decrement();
@@ -72,44 +75,61 @@ namespace	ft
 
 			reference	operator*() const
 			{
-				std::cout << "operator*" << std::endl;
+				// std::cout << "operator*" << std::endl;
 				return (this->_node->data);
 			}
 
-			// pointer		operator->() const
-			// {
-			// 	std::cout << "operator->" << std::endl;
-			// 	return (&(this->_node->data));
-			// }
-
 			value_type	*operator->() const
 			{
-				std::cout << "operator->" << std::endl;
+				// std::cout << "operator->" << std::endl;
 				return (&(this->_node->data));
 			}
 
 		private:
 
-			void	_increment()
-			{
-				if (_node->right)
+			// void	_increment()
+			// {
+			// 	if (this->_node->right != my_nullptr)
+			// 	{
+			// 		this->_node = this->_node->right;
+			// 		while (this->_node->left != my_nullptr)
+			// 			this->_node = this->_node->left;
+			// 	}
+			// 	else
+			// 	{
+			// 		node_ptr_type tmp = this->_node;
+			// 		this->_node = this->_node->parent;
+			// 		while (this->_node->right == tmp)
+			// 		{
+			// 			tmp = this->_node;
+			// 			this->_node = this->_node->parent;
+			// 		}
+			// 		if (this->_node->right != tmp)
+			// 			this->_node = this->_node->parent;
+			// 	}
+			// }
+
+			void _increment()
+            {
+				if (_node->right != my_nullptr)
 				{
 					_node = _node->right;
-					while (_node->left)
+					while (_node->left != my_nullptr)
 						_node = _node->left;
 				}
 				else
 				{
-					node_ptr_type tmp = _node->parent;
-					while (_node == tmp->right)
+					node_ptr_type y = _node->parent;
+					while (_node == y->right)
 					{
-						_node = tmp;
-						tmp = tmp->parent;
+						_node = y;
+						y = y->parent;
 					}
-					if (_node->right != tmp)
-						_node = tmp;
+					if (_node->right != y)
+						_node = y;
 				}
 			}
+
 
 			void	_decrement()
 			{
