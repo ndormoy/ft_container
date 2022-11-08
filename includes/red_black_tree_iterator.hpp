@@ -115,28 +115,6 @@ namespace	ft
 
 		private:
 
-			// void	_increment()
-			// {
-			// 	if (this->_node->right != _TNULL)
-			// 	{
-			// 		this->_node = this->_node->right;
-			// 		while (this->_node->left != _TNULL)
-			// 			this->_node = this->_node->left;
-			// 	}
-			// 	else
-			// 	{
-			// 		node_ptr_type tmp = this->_node;
-			// 		this->_node = this->_node->parent;
-			// 		while (this->_node->right == tmp)
-			// 		{
-			// 			tmp = this->_node;
-			// 			this->_node = this->_node->parent;
-			// 		}
-			// 		if (this->_node->right != tmp)
-			// 			this->_node = this->_node->parent;
-			// 	}
-			// }
-
 			void _increment()
             {
 				if (_node->right != _TNULL)
