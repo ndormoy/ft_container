@@ -98,7 +98,7 @@ namespace	ft
 		private:
 
 			void _increment()
-            {
+			{
 				if (_node->right != _TNULL)
 				{
 					_node = _node->right;
@@ -117,6 +117,7 @@ namespace	ft
 						_node = y;
 				}
 			}
+
 
 			void	_decrement()
 			{

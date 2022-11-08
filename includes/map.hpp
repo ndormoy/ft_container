@@ -28,7 +28,7 @@ namespace	ft
 
 			typedef Key											key_type; // the key of the map
 			typedef T											mapped_type; // The type of the mapped value
-			typedef ft::pair<const key_type, mapped_type>		value_type; // The type of the value
+			typedef ft::pair<const key_type, mapped_type>		value_type; // The type of the value (A pair of const key_type and mapped_type)
 			typedef Compare										key_compare; // The type of the comparison function
 			typedef Alloc										allocator_type; // The type of the allocator
 			typedef typename allocator_type::reference			reference; // The type of the reference
@@ -42,6 +42,7 @@ namespace	ft
 			// typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
 
 			typedef typename tree_type::NodePtr 				TNULL_type;
+			typedef typename tree_type::NodePtr 				NodePtr;
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
 			typedef RedBlackTreeIterator<value_type, const Node<value_type> >	const_iterator;
@@ -109,12 +110,12 @@ namespace	ft
 				return (it);
 			}
 
-			iterator	end() const
-			{
-				iterator it = const_iterator(_root.end(), _TNULL);
-				it++;
-				return (it);
-			}
+			// iterator	end() const
+			// {
+			// 	iterator it = const_iterator(_root.end(), _TNULL);
+			// 	it++;
+			// 	return (it);
+			// }
 
 			void	clear()
 			{
@@ -133,25 +134,66 @@ namespace	ft
 				return (_size == 0);
 			}
 
-			pair<iterator, bool> insert	(const value_type& val)
-			{
-				pair<iterator, bool>	ret;
+			// pair<iterator, bool> insert (const value_type& val)
+			// {
+			// 	pair<iterator, bool> ret;
+			// 	iterator it = find(val.first);
 
-				ret = make_pair(_root.insert(val), true);
+			// 	if (it != end())
+			// 	{
+			// 		ret = make_pair(_root.insert(val), false);
+			// 	}
+			// 	else
+			// 	{
+			// 		ret = make_pair(_root.insert(val), true);
+			// 		_size++;
+			// 	}
+			// 	return (ret);
+			// }
+
+			// pair<iterator, bool> insert	(const value_type& val)
+			// {
+			// 	pair<iterator, bool>	ret;
+
+			// 	ret = make_pair(_root.insert(val), true);
+			// 	_size++;
+			// 	return (ret);
+			// }
+			
+			// iterator	find(const key_type& k)
+			// {
+			// 	return (iterator(_root.searchTree(k), _TNULL));
+			// }
+
+			iterator find(const key_type& k)
+			{
+				if (_size == 0)
+					return (_TNULL);
+				// Node<value_type> *node = _root.searchTree(k);
+				NodePtr node = _root.searchTree(k);
+				if (node == _TNULL)
+				{
+					std::cout << "here" << std::endl;
+					return (_TNULL);
+				}
+				return (iterator(node, _TNULL));
+			}
+
+			// const_iterator	find(const key_type& k) const
+			// {
+			// 	return (const_iterator(_root.searchTree(k), _TNULL));
+			// }
+
+			// void insert (const value_type& val)
+			ft::pair<iterator,bool> insert (const value_type& val)
+			{
+				if (_root.insert(val) == NULL)
+					return make_pair(iterator(_root.searchTree(val.first), _TNULL),  false);
 				_size++;
-				return (ret);
+				return make_pair(iterator(_root.searchTree(val.first), _TNULL), true);
 			}
 
-
-			iterator	find(const key_type& k)
-			{
-				return (iterator(_root.searchTree(k)));
-			}
-
-			const_iterator	find(const key_type& k) const
-			{
-				return (const_iterator(_root.searchTree(k)));
-			}
+			
 
 			void	print_map()
 			{

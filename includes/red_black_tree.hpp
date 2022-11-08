@@ -30,7 +30,7 @@ namespace	ft
 			typedef typename allocator_type::reference						reference;
 			typedef typename allocator_type::const_reference				const_reference;
 
-			typedef typename value_type::first_type							key_type;
+			typedef typename value_type::first_type							key_type; // We take the first element of the pair
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
@@ -65,7 +65,6 @@ namespace	ft
 
 			// Permet d'avoir tout le temps un type node pour que allocator::construct() puisse fonctionner
 			typedef typename Alloc::template rebind<Node<value_type> >::other	allocator_type_rebinded;
-
 			typedef typename std::allocator<Node<value_type> >::pointer			pointer;
 
 			/*
@@ -83,7 +82,7 @@ namespace	ft
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
-				TNULL->parent = my_nullptr;
+				// TNULL->parent = my_nullptr;
 				root = TNULL;
 			}
 
@@ -211,8 +210,10 @@ namespace	ft
 
 			NodePtr searchTreeHelper(NodePtr node, key_type key)
 			{
-				if (node == TNULL || key == node->data.first)
+				if (key == node->data.first)
 					return (node);
+				else if (node == TNULL)
+					return (TNULL);
 				if (key < node->data.first)
 					return (searchTreeHelper(node->left, key));
 				return (searchTreeHelper(node->right, key));
@@ -560,8 +561,10 @@ namespace	ft
 						y = x;
 						if (node->data < x->data)
 							x = x->left;
-						else
+						else if (node->data > x->data)
 							x = x->right;
+						else
+							return NULL;
 					}
 
 					node->parent = y;
