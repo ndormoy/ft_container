@@ -15,51 +15,33 @@ namespace	ft
 
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
-			typedef typename ft::iterator<ft::bidirectional_iterator_tag, node >::pointer					pointer;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, node >::pointer					node_ptr_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_type		iterator_type;
-			typedef pointer 																				node_ptr_type;
-			// typedef RedBlackTreeIterator<value_type, node >													self;
-			typedef RedBlackTreeIterator<value_type, node/* , node_ptr_type  */>									self;
-
-
-			// RedBlackTreeIterator(node_ptr_type my_node = _TNULL)
-			// 	: _node(my_node)
-			// {
-			// 	std::cout << "RBT iterator constructor 1" << std::endl;
-			// }
-
-			// RedBlackTreeIterator(const RedBlackTreeIterator &other)
-			// 	: _node(other._node)
-			// {
-			// 	std::cout << "RBT iterator constructor 2" << std::endl;
-			// }
-
-			//TODO TNULL
-
+			typedef RedBlackTreeIterator<value_type, node>													self;
 
 			RedBlackTreeIterator()
 			: _node(), _TNULL()
 			{
-				std::cout << "RBT iterator constructor empty" << std::endl;
+				// std::cout << "RBT iterator constructor empty" << std::endl;
 			}
 
 			RedBlackTreeIterator(node_ptr_type my_node)
 			: _node(my_node), _TNULL()
             {
-				std::cout << "RBT iterator constructor 0" << std::endl;
+				// std::cout << "RBT iterator constructor 0" << std::endl;
 			}
 
 			RedBlackTreeIterator(const node_ptr_type &my_node, const node_ptr_type &my_TNULL)
 				: _node(my_node), _TNULL(my_TNULL)
 			{
-				std::cout << "RBT iterator constructor 1" << std::endl;
+				// std::cout << "RBT iterator constructor 1" << std::endl;
 			}
 
 			RedBlackTreeIterator(const RedBlackTreeIterator &other)
 				: _node(other._node), _TNULL(other._TNULL)
 			{
-				std::cout << "RBT iterator constructor 2" << std::endl;
+				// std::cout << "RBT iterator constructor 2" << std::endl;
 			}
 
 			~RedBlackTreeIterator()
@@ -126,10 +108,8 @@ namespace	ft
 				else
 				{
 					node_ptr_type y = _node->parent;
-					std::cout << "here" << std::endl;
 					while (y && y != _TNULL && _node == y->right)
 					{
-						std::cout << "pouet" << std::endl;
 						_node = y;
 						y = y->parent;
 					}

@@ -127,13 +127,6 @@ namespace	ft
 			// Return the last element in the tree (The maximum)
 			pointer	end()
 			{
-				//TODO CARE TO END(), IT'S NOT THE LAST ELEMENT BUT THE NEXT ELEMENT AFTER THE LAST ELEMENT
-				// return (iterator(maximum(root))++);
-				// return (iterator(maximum(root)));
-
-				// iterator it = iterator(maximum(root));
-				// it++;
-				// return (it);
 				return (maximum(root));
 			}
 
@@ -216,16 +209,7 @@ namespace	ft
 				}
 			}
 
-			// NodePtr	searchTreeHelper(NodePtr node, int key)
-			// {
-			// 	if (node == TNULL || key == node->data)
-			// 		return (node);
-			// 	if (key < node->data)
-			// 		return (searchTreeHelper(node->left, key));
-			// 	return (searchTreeHelper(node->right, key));
-			// }
-
-			NodePtr	searchTreeHelper(NodePtr node, value_type key)
+			NodePtr	searchTreeHelper(NodePtr node, int key)
 			{
 				if (node == TNULL || key == node->data)
 					return (node);
@@ -233,6 +217,15 @@ namespace	ft
 					return (searchTreeHelper(node->left, key));
 				return (searchTreeHelper(node->right, key));
 			}
+
+			// NodePtr	searchTreeHelper(NodePtr node, value_type key)
+			// {
+			// 	if (node == TNULL || key == node->data)
+			// 		return (node);
+			// 	if (key < node->data)
+			// 		return (searchTreeHelper(node->left, key));
+			// 	return (searchTreeHelper(node->right, key));
+			// }
 
 			// For balancing the tree after deletion
 			void deleteFix(NodePtr x)
@@ -479,15 +472,15 @@ namespace	ft
 				postOrderHelper(this->root);
 			}
 	
-			// NodePtr searchTree(int k)
-			// {
-			// 	return (searchTreeHelper(this->root, k));
-			// }
-
-			NodePtr searchTree(value_type k)
+			NodePtr searchTree(int k)
 			{
 				return (searchTreeHelper(this->root, k));
 			}
+
+			// NodePtr searchTree(value_type k)
+			// {
+			// 	return (searchTreeHelper(this->root, k));
+			// }
 	
 			// return the last left node ( the minimum node )
 	

@@ -22,7 +22,6 @@ namespace	ft
 				: data(val), parent(parent), left(left), right(right), color(color)
 			{
 				color = RED;
-				// std::cout << "Node constructor 2" << std::endl;
 			}
 
 			~Node()
