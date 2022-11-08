@@ -10,8 +10,6 @@
 #include "node.hpp"
 // using namespace std;
 
-//TODO change comp to compare every operations
-
 namespace	ft
 {
 	template<typename value_type, typename Compare, typename Alloc>
@@ -31,6 +29,8 @@ namespace	ft
 			typedef std::bidirectional_iterator_tag							iterator_category;
 			typedef typename allocator_type::reference						reference;
 			typedef typename allocator_type::const_reference				const_reference;
+
+			typedef typename value_type::first_type							key_type;
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
@@ -209,14 +209,14 @@ namespace	ft
 				}
 			}
 
-			NodePtr	searchTreeHelper(NodePtr node, int key)
-			{
-				if (node == TNULL || key == node->data)
-					return (node);
-				if (key < node->data)
-					return (searchTreeHelper(node->left, key));
-				return (searchTreeHelper(node->right, key));
-			}
+			// NodePtr	searchTreeHelper(NodePtr node, int key)
+			// {
+			// 	if (node == TNULL || key == node->data)
+			// 		return (node);
+			// 	if (key < node->data)
+			// 		return (searchTreeHelper(node->left, key));
+			// 	return (searchTreeHelper(node->right, key));
+			// }
 
 			// NodePtr	searchTreeHelper(NodePtr node, value_type key)
 			// {
@@ -226,6 +226,15 @@ namespace	ft
 			// 		return (searchTreeHelper(node->left, key));
 			// 	return (searchTreeHelper(node->right, key));
 			// }
+
+			NodePtr searchTreeHelper(NodePtr node, key_type key)
+			{
+				if (node == TNULL || key == node->data.first)
+					return (node);
+				if (key < node->data.first)
+					return (searchTreeHelper(node->left, key));
+				return (searchTreeHelper(node->right, key));
+			}
 
 			// For balancing the tree after deletion
 			void deleteFix(NodePtr x)
@@ -472,15 +481,20 @@ namespace	ft
 				postOrderHelper(this->root);
 			}
 	
-			NodePtr searchTree(int k)
-			{
-				return (searchTreeHelper(this->root, k));
-			}
+			// NodePtr searchTree(int k)
+			// {
+			// 	return (searchTreeHelper(this->root, k));
+			// }
 
 			// NodePtr searchTree(value_type k)
 			// {
 			// 	return (searchTreeHelper(this->root, k));
 			// }
+
+			NodePtr searchTree(key_type k)
+			{
+				return (searchTreeHelper(this->root, k));
+			}
 	
 			// return the last left node ( the minimum node )
 	

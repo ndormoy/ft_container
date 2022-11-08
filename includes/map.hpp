@@ -143,11 +143,10 @@ namespace	ft
 			}
 
 
-
-			// iterator	find(const key_type& k)
-			// {
-			// 	return (iterator(_root.searchTree(k)));
-			// }
+			iterator	find(const key_type& k)
+			{
+				return (iterator(_root.searchTree(k)));
+			}
 
 			// const_iterator	find(const key_type& k) const
 			// {
