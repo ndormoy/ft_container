@@ -58,17 +58,20 @@ int main()
 
 	ft::map<int, bool>::iterator it = map.begin();
 	// ft::map<int, bool>::iterator it = map.find(2);
-	ft::map<int, bool>::iterator it_end = map.end();
+	// ft::map<int, bool>::iterator it_end = map.end();
 
+	// // it++;
 	it++;
-	// it++;
+	it++;
+	it++;
+	it++;
 
-	// std::cout << "it: " << *(it)->first << std::endl;
+	// // std::cout << "it: " << *(it)->first << std::endl;
 
 	std::cout << "it->begin = " << it->first << std::endl;
-	std::cout << "it->end = " << it_end->first << std::endl;
+	// std::cout << "it->end = " << it_end->first << std::endl;
 
-	map.print_map();
+	// map.print_map();
 
 
 	// std::map<int, bool> map;

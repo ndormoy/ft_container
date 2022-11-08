@@ -19,17 +19,45 @@ namespace	ft
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_type		iterator_type;
 			typedef pointer 																				node_ptr_type;
-			typedef RedBlackTreeIterator<value_type, node >													self;
+			// typedef RedBlackTreeIterator<value_type, node >													self;
+			typedef RedBlackTreeIterator<value_type, node/* , node_ptr_type  */>									self;
 
 
-			RedBlackTreeIterator(node_ptr_type my_node = my_nullptr)
-				: _node(my_node)
+			// RedBlackTreeIterator(node_ptr_type my_node = _TNULL)
+			// 	: _node(my_node)
+			// {
+			// 	std::cout << "RBT iterator constructor 1" << std::endl;
+			// }
+
+			// RedBlackTreeIterator(const RedBlackTreeIterator &other)
+			// 	: _node(other._node)
+			// {
+			// 	std::cout << "RBT iterator constructor 2" << std::endl;
+			// }
+
+			//TODO TNULL
+
+
+			RedBlackTreeIterator()
+			: _node(), _TNULL()
+			{
+				std::cout << "RBT iterator constructor empty" << std::endl;
+			}
+
+			RedBlackTreeIterator(node_ptr_type my_node)
+			: _node(my_node), _TNULL()
+            {
+				std::cout << "RBT iterator constructor 0" << std::endl;
+			}
+
+			RedBlackTreeIterator(node_ptr_type my_node, node_ptr_type my_TNULL)
+				: _node(my_node), _TNULL(my_TNULL)
 			{
 				std::cout << "RBT iterator constructor 1" << std::endl;
 			}
 
 			RedBlackTreeIterator(const RedBlackTreeIterator &other)
-				: _node(other._node)
+				: _node(other._node), _TNULL(other._TNULL)
 			{
 				std::cout << "RBT iterator constructor 2" << std::endl;
 			}
@@ -89,10 +117,10 @@ namespace	ft
 
 			// void	_increment()
 			// {
-			// 	if (this->_node->right != my_nullptr)
+			// 	if (this->_node->right != _TNULL)
 			// 	{
 			// 		this->_node = this->_node->right;
-			// 		while (this->_node->left != my_nullptr)
+			// 		while (this->_node->left != _TNULL)
 			// 			this->_node = this->_node->left;
 			// 	}
 			// 	else
@@ -111,10 +139,10 @@ namespace	ft
 
 			void _increment()
             {
-				if (_node->right != my_nullptr)
+				if (_node->right != _TNULL)
 				{
 					_node = _node->right;
-					while (_node->left != my_nullptr)
+					while (_node->left != _TNULL)
 						_node = _node->left;
 				}
 				else
@@ -155,6 +183,7 @@ namespace	ft
 		private:
 
 			node_ptr_type	_node;
+			node_ptr_type		_TNULL;
 
 	};
 };

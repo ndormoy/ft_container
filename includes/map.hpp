@@ -41,7 +41,11 @@ namespace	ft
 			// typedef typename tree_type::reverse_iterator		reverse_iterator;
 			// typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
 
-			//TODO Trying to make iterator works
+			//TODO add TNULL
+			typedef typename tree_type::NodePtr 				TNULL_type;
+
+			// typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
+			// typedef RedBlackTreeIterator<value_type, const Node<value_type> >	const_iterator;
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
 			typedef RedBlackTreeIterator<value_type, const Node<value_type> >	const_iterator;
@@ -52,6 +56,8 @@ namespace	ft
 			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 			 _size(0), _root(), _comp(comp), _allocator(alloc)
 			{
+				//TODO TNULL
+				_TNULL = _root.getTNULL();
 				// std::cout << "default constructor Map" << std::endl;
 			}
 			// range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
@@ -68,6 +74,8 @@ namespace	ft
 			map (const map& x) :
 			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
 			{
+				//TODO TNULL
+				_TNULL = _root.getTNULL();
 				// std::cout << "copy constructor Map" << std::endl;
 				insert (x.begin(), x.end(), x._comp, x._allocator);
 			}
@@ -86,12 +94,21 @@ namespace	ft
 			key_compare		_comp;
 			allocator_type	_allocator;
 
+			//TODO TNULL
+			TNULL_type		_TNULL;
+
 		public:
+
+			// iterator	begin()
+			// {
+			// 	std::cout << "begin" << std::endl;
+			// 	return (iterator(_root.begin()));
+			// }
 
 			iterator	begin()
 			{
 				std::cout << "begin" << std::endl;
-				return (iterator(_root.begin()));
+				return (iterator(_root.begin(), _TNULL));
 			}
 
 			// const_iterator	begin() const
@@ -99,9 +116,14 @@ namespace	ft
 			// 	return (const_iterator(_root.begin()));
 			// }
 
+			// iterator	end()
+			// {
+			// 	return (iterator(_root.end()));
+			// }
+
 			iterator	end()
 			{
-				return (iterator(_root.end()));
+				return (iterator(_root.end(), _TNULL));
 			}
 
 			// iterator	end() const
@@ -149,10 +171,10 @@ namespace	ft
 			// 	return (iterator(_root.searchTree(k)));
 			// }
 
-			const_iterator	find(const key_type& k) const
-			{
-				return (iterator(_root.searchTree(k)));
-			}
+			// const_iterator	find(const key_type& k) const
+			// {
+			// 	return (iterator(_root.searchTree(k)));
+			// }
 
 			void	print_map()
 			{
