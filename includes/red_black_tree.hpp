@@ -209,24 +209,6 @@ namespace	ft
 				}
 			}
 
-			// NodePtr	searchTreeHelper(NodePtr node, int key)
-			// {
-			// 	if (node == TNULL || key == node->data)
-			// 		return (node);
-			// 	if (key < node->data)
-			// 		return (searchTreeHelper(node->left, key));
-			// 	return (searchTreeHelper(node->right, key));
-			// }
-
-			// NodePtr	searchTreeHelper(NodePtr node, value_type key)
-			// {
-			// 	if (node == TNULL || key == node->data)
-			// 		return (node);
-			// 	if (key < node->data)
-			// 		return (searchTreeHelper(node->left, key));
-			// 	return (searchTreeHelper(node->right, key));
-			// }
-
 			NodePtr searchTreeHelper(NodePtr node, key_type key)
 			{
 				if (node == TNULL || key == node->data.first)
@@ -480,16 +462,6 @@ namespace	ft
 			{
 				postOrderHelper(this->root);
 			}
-	
-			// NodePtr searchTree(int k)
-			// {
-			// 	return (searchTreeHelper(this->root, k));
-			// }
-
-			// NodePtr searchTree(value_type k)
-			// {
-			// 	return (searchTreeHelper(this->root, k));
-			// }
 
 			NodePtr searchTree(key_type k)
 			{
