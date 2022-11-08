@@ -50,7 +50,7 @@ namespace	ft
 				std::cout << "RBT iterator constructor 0" << std::endl;
 			}
 
-			RedBlackTreeIterator(node_ptr_type my_node, node_ptr_type my_TNULL)
+			RedBlackTreeIterator(const node_ptr_type &my_node, const node_ptr_type &my_TNULL)
 				: _node(my_node), _TNULL(my_TNULL)
 			{
 				std::cout << "RBT iterator constructor 1" << std::endl;
@@ -126,8 +126,10 @@ namespace	ft
 				else
 				{
 					node_ptr_type y = _node->parent;
-					while (_node == y->right)
+					std::cout << "here" << std::endl;
+					while (y && y != _TNULL && _node == y->right)
 					{
+						std::cout << "pouet" << std::endl;
 						_node = y;
 						y = y->parent;
 					}
@@ -135,7 +137,6 @@ namespace	ft
 						_node = y;
 				}
 			}
-
 
 			void	_decrement()
 			{
@@ -161,7 +162,7 @@ namespace	ft
 		private:
 
 			node_ptr_type	_node;
-			node_ptr_type		_TNULL;
+			node_ptr_type	_TNULL;
 
 	};
 };

@@ -80,10 +80,10 @@ namespace	ft
 				_comp = key_compare();
 				TNULL = _allocator.allocate(1);
 				_allocator.construct(TNULL, Node<value_type>());
-				// TNULL->color = BLACK;
-				// TNULL->left = my_nullptr;
-				// TNULL->right = my_nullptr;
-				//// TNULL->parent = my_nullptr;
+				TNULL->color = BLACK;
+				TNULL->left = my_nullptr;
+				TNULL->right = my_nullptr;
+				TNULL->parent = my_nullptr;
 				root = TNULL;
 			}
 

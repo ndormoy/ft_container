@@ -123,7 +123,9 @@ namespace	ft
 
 			iterator	end()
 			{
-				return (iterator(_root.end(), _TNULL));
+				iterator it = iterator(_root.end(), _TNULL);
+				it++;
+				return (it);
 			}
 
 			// iterator	end() const
@@ -158,13 +160,6 @@ namespace	ft
 			}
 
 
-
-			// pair<iterator, bool> insert (const value_type &val)
-			// {
-			// 	return (_root.insert(val));
-			// }
-
-			// make function insert in ft::map with this prototype  pair<iterator, bool> insert	(const value_type& val)
 
 			// iterator	find(const key_type& k)
 			// {
