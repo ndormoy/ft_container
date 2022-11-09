@@ -214,7 +214,7 @@ namespace	ft
 					return (node);
 				else if (node == TNULL)
 					return (TNULL);
-				if (key < node->data.first)
+				else if (key < node->data.first)
 					return (searchTreeHelper(node->left, key));
 				return (searchTreeHelper(node->right, key));
 			}

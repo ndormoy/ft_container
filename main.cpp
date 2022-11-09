@@ -53,7 +53,7 @@ int main()
 	map.insert(ft::pair<int, bool>(4, true));
 
 	// ft::map<int, bool>::iterator it = map.begin();
-	ft::map<int, bool>::iterator it = map.find(50);
+	ft::map<int, bool>::iterator it = map.find(3);
 	if (it != map.end())
     {
 		std::cout << "found : " << it->first << std::endl;
@@ -70,10 +70,10 @@ int main()
 	// it++;
 	// // it++;
 
-	// for (; it != map.end(); it++)
-	// {
-	// 	std::cout << it->first << std::endl;
-	// }
+	for (; it != map.end(); it++)
+	{
+		std::cout << it->first << std::endl;
+	}
 
 	// std::cout << "it->begin = " << it->first << std::endl;
 

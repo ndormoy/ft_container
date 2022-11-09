@@ -26,8 +26,14 @@ namespace	ft
 				// std::cout << "RBT iterator constructor empty" << std::endl;
 			}
 
-			RedBlackTreeIterator(node_ptr_type my_node)
-			: _node(my_node), _TNULL()
+			RedBlackTreeIterator(node_ptr_type &my_node)
+			: _node(my_node)/* , _TNULL() */
+            {
+				// std::cout << "RBT iterator constructor 0" << std::endl;
+			}
+
+			RedBlackTreeIterator(const node_ptr_type &my_node)
+			: _node(my_node)/* , _TNULL() */
             {
 				// std::cout << "RBT iterator constructor 0" << std::endl;
 			}
@@ -74,6 +80,14 @@ namespace	ft
 				_decrement();
 				return (tmp);
 			}
+
+			RedBlackTreeIterator &operator=(const RedBlackTreeIterator &other)
+			{
+				this->_node = other._node;
+				this->_TNULL = other._TNULL;
+				return (*this);
+			}
+
 			bool operator==(const RedBlackTreeIterator &other) const
 			{
 				return (this->_node == other._node);
@@ -99,6 +113,9 @@ namespace	ft
 
 			void _increment()
 			{
+				//TODO TODEL
+				// if (_node == _TNULL)
+				// 	return ;
 				if (_node->right != _TNULL)
 				{
 					_node = _node->right;

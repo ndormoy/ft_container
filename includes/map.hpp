@@ -160,23 +160,15 @@ namespace	ft
 			// 	return (ret);
 			// }
 			
-			// iterator	find(const key_type& k)
-			// {
-			// 	return (iterator(_root.searchTree(k), _TNULL));
-			// }
 
 			iterator find(const key_type& k)
 			{
 				if (_size == 0)
-					return (_TNULL);
-				// Node<value_type> *node = _root.searchTree(k);
-				NodePtr node = _root.searchTree(k);
-				if (node == _TNULL)
-				{
-					std::cout << "here" << std::endl;
-					return (_TNULL);
-				}
-				return (iterator(node, _TNULL));
+					return (end());
+				Node<value_type> *node = _root.searchTree(k);
+				if (node == _root.getTNULL())
+					return (end());
+				return (iterator(node, _root.getTNULL()));
 			}
 
 			// const_iterator	find(const key_type& k) const
@@ -184,14 +176,23 @@ namespace	ft
 			// 	return (const_iterator(_root.searchTree(k), _TNULL));
 			// }
 
-			// void insert (const value_type& val)
 			ft::pair<iterator,bool> insert (const value_type& val)
 			{
+				bool ret = true;
 				if (_root.insert(val) == NULL)
-					return make_pair(iterator(_root.searchTree(val.first), _TNULL),  false);
-				_size++;
-				return make_pair(iterator(_root.searchTree(val.first), _TNULL), true);
+					ret = false;
+				else
+					_size++;
+				return (make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
 			}
+
+			// ft::pair<iterator,bool> insert (const value_type& val)
+			// {
+			// 	if (_root.insert(val) == NULL)
+			// 		return make_pair(iterator(_root.searchTree(val.first), _TNULL), false);
+			// 	_size++;
+			// 	return make_pair(iterator(_root.searchTree(val.first), _TNULL), true);
+			// }
 
 			
 
