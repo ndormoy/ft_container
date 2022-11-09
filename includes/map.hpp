@@ -284,6 +284,12 @@ namespace	ft
 				it++;
 				return (it);
 			}
+
+			//Returns a copy of the allocator object associated with the map.
+			allocator_type get_allocator() const
+			{
+				return (allocator_type());
+			}
 	
 			//Returns the bounds of a range that includes all the elements in the container which have a key equivalent to k.
 			// ft::pair<const_iterator, const_iterator> equal_range (const key_type& k) const

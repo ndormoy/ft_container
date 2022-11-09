@@ -25,9 +25,11 @@ find				[X]        [ ]
 const_find			[X]        [ ]
 count				[X]        [ ]
 lower_bound			[X]        [ ]
-upper_bound			[ ]        [ ]
-const_equal_range	[ ]        [ ]
+const_lower_bound	[X]        [ ]
+upper_bound			[X]        [ ]
+const_upper_bound	[X]        [ ]
 equal_range			[ ]        [ ]
+const_equal_range	[ ]        [ ]
 get_allocator		[ ]        [ ]
 
 WARNING --> need to change all the compare with _comp in all of Map functions ...
