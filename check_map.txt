@@ -16,7 +16,7 @@ operator[]			[ ]        [ ]
 insert				[X]        [ ]
 insert hint			[X]        [ ] --> check if size of map is ok
 insert range		[X]        [ ]
-erase				[ ]        [ ]
+erase				[ ]        [ ] --> check if size of map is ok
 swap				[ ]        [ ]
 clear				[X]        [ ]
 key_comp			[ ]        [ ]

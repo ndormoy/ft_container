@@ -203,16 +203,45 @@ namespace	ft
 				return (1);
 			}
 
+			//Removes from the map container either a single element
+			void	erase(iterator position)
+			{
+				if (_root.deleteNode(*position) == true)
+					_size--;
+			}
+
+			//Remove elements with specific key : k
+			// return the number of elements erased. (Here 1 or 0 because we can't have 2 elements with the same key)
+			size_type erase (const key_type& k)
+			{
+				iterator it = find(k);
+				if (it == end())
+					return (0);
+				_root.deleteNode(*it);
+				_size--;
+				return (1);
+			}
+
+			//erase range
+			//Removes from the map container either a range of elements ([first,last)).
+			void	erase(iterator first, iterator last)
+			{
+				iterator tmp;
+				while (first != last)
+				{
+					tmp = first;
+					first++;
+					if (_root.deleteNode(*tmp) == true)
+						_size--;
+					
+				}
+			}
+
 			void	print_map()
 			{
 				_root.printTree();
 			}
 
-			void	erase(iterator position)
-			{
-				_root.deleteNode(*position);
-				_size--;
-			}
 
 
 	};
