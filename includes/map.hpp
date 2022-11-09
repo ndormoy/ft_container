@@ -169,16 +169,6 @@ namespace	ft
 			// With hint insertion
 			//postion --> Hint for the position where the element can be inserted.
 			//return an iterator pointing to either the newly inserted element or to the element that already had an equivalent key in the map.
-			// iterator insert (iterator position, const value_type& val)
-			// {
-			// 	(void)position;
-			// 	bool ret = true;
-			// 	if (_root.insert(val) == NULL)
-			// 		ret = false;
-			// 	else
-			// 		_size++;
-			// 	return (make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
-			// }
 
 			iterator insert (iterator position, const value_type& val)
 			{
