@@ -237,6 +237,18 @@ namespace	ft
 				}
 			}
 
+			//Returns the number of elements in the map container.
+			size_type	size() const
+			{
+				return (_size);
+			}
+
+			//Returns the maximum number of elements that the map container can hold.
+			size_type	max_size() const
+			{
+				return (std::numeric_limits<size_type>::max() / sizeof(Node<value_type>));
+			}
+
 			void	print_map()
 			{
 				_root.printTree();

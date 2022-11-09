@@ -10,13 +10,13 @@ const_end			[X]        [ ]
 rebgin				[ ]        [ ]
 rend				[ ]        [ ]
 empty				[X]        [ ]
-size				[ ]        [ ]
-max_size			[ ]        [ ]
+size				[X]        [ ]
+max_size			[X]        [ ]
 operator[]			[ ]        [ ]
 insert				[X]        [ ]
 insert hint			[X]        [ ] --> check if size of map is ok
 insert range		[X]        [ ]
-erase				[ ]        [ ] --> check if size of map is ok
+erase				[X]        [ ] --> check if size of map is ok
 swap				[ ]        [ ]
 clear				[X]        [ ]
 key_comp			[ ]        [ ]
