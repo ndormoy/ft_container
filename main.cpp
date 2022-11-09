@@ -30,48 +30,45 @@
 int main()
 {
 
-	ft::map<int, bool>	map;
+	// ft::map<int, bool>	map;
 
 
-	map.insert(ft::pair<int, bool>(1, true));
-	map.insert(ft::pair<int, bool>(2, true));
-	map.insert(ft::pair<int, bool>(3, true));
-	map.insert(ft::pair<int, bool>(4, true));
+	// map.insert(ft::pair<int, bool>(1, true));
+	// map.insert(ft::pair<int, bool>(2, true));
+	// map.insert(ft::pair<int, bool>(3, true));
+	// map.insert(ft::pair<int, bool>(4, true));
 
-	for (ft::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
-	{
-		std::cout << it->first << std::endl;
-	}
-
-	ft::map<int, bool>::iterator it = map.lower_bound(4);
-	// ft::map<int, bool>::iterator it = map.lower_bound(6);
-
-	std::cout << it->first << std::endl;
-
-
-	/**************************************************************/
-
-	// std::cout << "--------REAL--------------" << std::endl;
-
-	// std::map<int, bool> map;
-
-	// map.insert(std::pair<int, bool>(1, true));
-	// map.insert(std::pair<int, bool>(2, true));
-	// map.insert(std::pair<int, bool>(3, true));
-	// map.insert(std::pair<int, bool>(4, true));
-
-
-
-	// for (std::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
+	// for (ft::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
 	// {
 	// 	std::cout << it->first << std::endl;
 	// }
 
-	// std::map<int, bool>::iterator it = map.lower_bound(4);
+	// ft::map<int, bool>::iterator it = map.upper_bound(3);
 
 	// std::cout << it->first << std::endl;
 
-// 	std::cout << "it: " << it->first << std::endl;
-// 	std::cout << "it_end: " << it_end->first << std::endl;
+
+	/**************************************************************/
+
+	std::cout << "--------REAL--------------" << std::endl;
+
+	std::map<int, bool> map;
+
+	map.insert(std::pair<int, bool>(1, true));
+	map.insert(std::pair<int, bool>(2, true));
+	map.insert(std::pair<int, bool>(3, true));
+	map.insert(std::pair<int, bool>(4, true));
+
+
+
+	for (std::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
+	{
+		std::cout << it->first << std::endl;
+	}
+
+	std::map<int, bool>::iterator it = map.upper_bound(3);
+
+	std::cout << it->first << std::endl;
+
 }
 

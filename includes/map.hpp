@@ -265,6 +265,25 @@ namespace	ft
 					return (end());
 				return (it);
 			}
+
+			//Returns an iterator pointing to the first element in the container whose key is considered to go after k.
+			iterator upper_bound (const key_type& k)
+			{
+				iterator it = find(k);
+				if (it == end())
+					return (end());
+				it++;
+				return (it);
+			}
+
+			const_iterator upper_bound (const key_type& k) const
+			{
+				const_iterator it = find(k);
+				if (it == end())
+					return (end());
+				it++;
+				return (it);
+			}
 	
 			//Returns the bounds of a range that includes all the elements in the container which have a key equivalent to k.
 			// ft::pair<const_iterator, const_iterator> equal_range (const key_type& k) const

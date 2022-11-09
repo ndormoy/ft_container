@@ -24,8 +24,10 @@ value_comp			[ ]        [ ]
 find				[X]        [ ]
 const_find			[X]        [ ]
 count				[X]        [ ]
-lower_bound			[ ]        [ ]
+lower_bound			[X]        [ ]
 upper_bound			[ ]        [ ]
 const_equal_range	[ ]        [ ]
 equal_range			[ ]        [ ]
 get_allocator		[ ]        [ ]
+
+WARNING --> need to change all the compare with _comp in all of Map functions ...
