@@ -314,61 +314,6 @@ namespace	ft
 				v->parent = u->parent;
 			}
 
-			// void deleteNodeHelper(NodePtr node, int key)
-			// {
-			// 	NodePtr z = TNULL;
-			// 	NodePtr x, y;
-			// 	while (node != TNULL) // find the node
-			// 	{
-			// 		if (node->data == key)
-			// 			z = node;
-			// 		if (node->data <= key)
-			// 			node = node->right;
-			// 		else
-			// 			node = node->left;
-			// 	}
-			// 	if (z == TNULL) // if node not found
-			// 	{
-			// 		std::cout << "Key not found in the tree" << std::endl;
-			// 		return ;
-			// 	}
-			// 	y = z;
-			// 	int	y_original_color = y->color;
-			// 	if (z->left == TNULL) // Swap the node with the right child because de the left child is NULL
-			// 	{
-			// 		x = z->right;
-			// 		rbTransplant(z, z->right);
-			// 	}
-			// 	else if (z->right == TNULL) // Swap the node with the left child because the right child is NULL
-			// 	{
-			// 		x = z->left;
-			// 		rbTransplant(z, z->left);
-			// 	}
-			// 	else
-			// 	{
-			// 		y = minimum(z->right);
-			// 		y_original_color = y->color;
-			// 		x = y->right;
-			// 		if (y->parent == z)
-			// 			x->parent = y;
-			// 		else
-			// 		{
-			// 			rbTransplant(y, y->right);
-			// 			y->right = z->right;
-			// 			y->right->parent = y;
-			// 		}
-
-			// 		rbTransplant(z, y);
-			// 		y->left = z->left;
-			// 		y->left->parent = y;
-			// 		y->color = z->color;
-			// 	}
-			// 	_allocator.destroy(z);
-			// 	_allocator.deallocate(z, 1);
-			// 	if (y_original_color == BLACK)
-			// 		deleteFix(x);
-			// }
-
 			void deleteNodeHelper(NodePtr node, value_type key)
 			{
 				NodePtr z = TNULL;
