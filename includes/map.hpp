@@ -163,12 +163,12 @@ namespace	ft
 
 			iterator find(const key_type& k)
 			{
+				NodePtr to_search = _root.searchTree(k);
 				if (_size == 0)
 					return (end());
-				Node<value_type> *node = _root.searchTree(k);
-				if (node == _root.getTNULL())
+				if (to_search == _root.getTNULL())
 					return (end());
-				return (iterator(node, _root.getTNULL()));
+				return (iterator(to_search, _root.getTNULL()));
 			}
 
 			// const_iterator	find(const key_type& k) const
@@ -185,16 +185,6 @@ namespace	ft
 					_size++;
 				return (make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
 			}
-
-			// ft::pair<iterator,bool> insert (const value_type& val)
-			// {
-			// 	if (_root.insert(val) == NULL)
-			// 		return make_pair(iterator(_root.searchTree(val.first), _TNULL), false);
-			// 	_size++;
-			// 	return make_pair(iterator(_root.searchTree(val.first), _TNULL), true);
-			// }
-
-			
 
 			void	print_map()
 			{
