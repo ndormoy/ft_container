@@ -72,39 +72,4 @@ int main()
 		std::cout << it->first << std::endl;
 	}
 
-	// ft::map<int, bool>::iterator it = map.begin();
-
-	// ft::map<int, bool>::iterator it_end = map.end();
-
-
-
-	// std::cout << "it->begin = " << it->first << std::endl;
-
-	// std::cout << "it->end = " << it_end->first << std::endl;
-
-	// map.print_map();
-
-	/**************************************************************/
-
-
-// 	std::map<int, bool> map;
-
-// 	map.insert(std::pair<int, bool>(1, true));
-// 	map.insert(std::pair<int, bool>(2, true));
-// 	map.insert(std::pair<int, bool>(3, true));
-// 	map.insert(std::pair<int, bool>(4, true));
-
-// 	// std::map<int, bool>::iterator it = map.begin();
-// 	std::map<int, bool>::iterator it = map.find(10);
-// 	std::map<int, bool>::iterator it_end = map.end();
-
-// 	// // it++;
-// 	// // it++;
-// 	// // it++;
-// 	// // it++;
-// 	// // it++;
-
-// 	std::cout << "it: " << it->first << std::endl;
-// 	std::cout << "it_end: " << it_end->first << std::endl;
 }
-

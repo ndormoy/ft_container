@@ -153,15 +153,55 @@ namespace	ft
 				return (const_iterator(to_search, _root.getTNULL()));
 			}
 
+			//Single element insertion
+			//Extends the container by inserting new elements, effectively increasing the container size by the number of elements inserted.
+			//return a pair, with its member pair::first set to an iterator pointing to either the newly inserted element or to the element with an equivalent key in the map. The pair::second element in the pair is set to true if a new element was inserted or false if an equivalent key already existed.
 			ft::pair<iterator,bool> insert (const value_type& val)
 			{
 				bool ret = true;
 				if (_root.insert(val) == NULL)
-					ret = false;
+					ret = false; // already exist in the map
 				else
 					_size++;
 				return (make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
 			}
+
+			// With hint insertion
+			//postion --> Hint for the position where the element can be inserted.
+			//return an iterator pointing to either the newly inserted element or to the element that already had an equivalent key in the map.
+			// iterator insert (iterator position, const value_type& val)
+			// {
+			// 	(void)position;
+			// 	bool ret = true;
+			// 	if (_root.insert(val) == NULL)
+			// 		ret = false;
+			// 	else
+			// 		_size++;
+			// 	return (make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
+			// }
+
+			iterator insert (iterator position, const value_type& val)
+			{
+				(void)position;
+				iterator ret;
+				if ((ret = _root.insert(val)) != NULL)
+					_size++; // already exist in the map
+				return (ret);
+				// return (iterator(_root.searchTree(val.first), _TNULL));
+			}
+
+			// range insertion
+			template <class InputIterator>
+			void insert (InputIterator first, InputIterator last)
+			{
+				while (first != last)
+				{
+					if (_root.insert(*first) != NULL)
+						_size++;
+					first++;
+				}
+			}
+
 
 			//Count elements with a specific key --> return 1 if the container contains an element whose key is equivalent to k, or zero otherwise.
 
