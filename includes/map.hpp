@@ -138,7 +138,7 @@ namespace	ft
 				NodePtr to_search = _root.searchTree(k);
 				if (_size == 0)
 					return (end());
-				if (to_search == _root.getTNULL())
+				else if (to_search == _root.getTNULL())
 					return (end());
 				return (iterator(to_search, _root.getTNULL()));
 			}
@@ -248,6 +248,32 @@ namespace	ft
 			{
 				return (std::numeric_limits<size_type>::max() / sizeof(Node<value_type>));
 			}
+
+			//Returns an iterator pointing to the first element in the container whose key is not considered to go before k or map::end if all keys are considered to go before k.
+			iterator lower_bound (const key_type& k)
+			{
+				iterator it = find(k);
+				if (it == end())
+					return (end());
+				return (it);
+			}
+
+			const_iterator lower_bound (const key_type& k) const
+			{
+				const_iterator it = find(k);
+				if (it == end())
+					return (end());
+				return (it);
+			}
+	
+			//Returns the bounds of a range that includes all the elements in the container which have a key equivalent to k.
+			// ft::pair<const_iterator, const_iterator> equal_range (const key_type& k) const
+			// {
+			// 	const_iterator it = find(k);
+			// 	if (it == end())
+			// 		return (make_pair(end(), end()));
+			// 	return (make_pair(it, ++it));
+			// }
 
 			void	print_map()
 			{
