@@ -130,6 +130,15 @@ namespace	ft
 			}
 
 
+			// size_type 	count(const value_type &val) const
+			// {
+			// 	if (root == TNULL || val == root->data)
+			// 		return (root);
+			// 	if (val < root->data)
+			// 		return (count(root->left, val));
+			// 	return (count(root->right, val));
+			// }
+
 			size_type 	count(const value_type &val) const
 			{
 				if (root == TNULL || val == root->data)

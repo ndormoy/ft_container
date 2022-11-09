@@ -45,7 +45,7 @@ namespace	ft
 			typedef typename tree_type::NodePtr 				NodePtr;
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
-			typedef RedBlackTreeIterator<value_type, const Node<value_type> >	const_iterator;
+			typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
 
 			// create typename to have first in map class
 
@@ -93,11 +93,13 @@ namespace	ft
 
 		public:
 
+			//Returns an iterator referring to the first element in the map container.
 			iterator	begin()
 			{
 				return (iterator(_root.begin(), _TNULL));
 			}
 
+			//Returns a const iterator referring to the first element in the map container.
 			const_iterator	begin() const
 			{
 				return (const_iterator(_root.begin(), _TNULL));
@@ -110,22 +112,18 @@ namespace	ft
 				return (it);
 			}
 
-			// iterator	end() const
-			// {
-			// 	iterator it = const_iterator(_root.end(), _TNULL);
-			// 	it++;
-			// 	return (it);
-			// }
+			const_iterator	end() const
+			{
+				const_iterator it = const_iterator(_root.end(), _TNULL);
+				it++;
+				return (it);
+			}
+
 
 			void	clear()
 			{
 				_root.clear();
 				_size = 0;
-			}
-
-			size_type	count(const key_type& k) const
-			{
-				return (_root.count(k));
 			}
 
 			// Returns whether the map container is empty (i.e. whether its size is 0).
@@ -134,33 +132,7 @@ namespace	ft
 				return (_size == 0);
 			}
 
-			// pair<iterator, bool> insert (const value_type& val)
-			// {
-			// 	pair<iterator, bool> ret;
-			// 	iterator it = find(val.first);
-
-			// 	if (it != end())
-			// 	{
-			// 		ret = make_pair(_root.insert(val), false);
-			// 	}
-			// 	else
-			// 	{
-			// 		ret = make_pair(_root.insert(val), true);
-			// 		_size++;
-			// 	}
-			// 	return (ret);
-			// }
-
-			// pair<iterator, bool> insert	(const value_type& val)
-			// {
-			// 	pair<iterator, bool>	ret;
-
-			// 	ret = make_pair(_root.insert(val), true);
-			// 	_size++;
-			// 	return (ret);
-			// }
-			
-
+			//Searches the container for an element with a key equivalent to k and returns an iterator to it if found, otherwise it returns an iterator to map::end.
 			iterator find(const key_type& k)
 			{
 				NodePtr to_search = _root.searchTree(k);
@@ -171,10 +143,15 @@ namespace	ft
 				return (iterator(to_search, _root.getTNULL()));
 			}
 
-			// const_iterator	find(const key_type& k) const
-			// {
-			// 	return (const_iterator(_root.searchTree(k), _TNULL));
-			// }
+			const_iterator find(const key_type& k) const
+			{
+				NodePtr to_search = _root.searchTree(k);
+				if (_size == 0)
+					return (end());
+				if (to_search == _root.getTNULL())
+					return (end());
+				return (const_iterator(to_search, _root.getTNULL()));
+			}
 
 			ft::pair<iterator,bool> insert (const value_type& val)
 			{
@@ -184,6 +161,16 @@ namespace	ft
 				else
 					_size++;
 				return (make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
+			}
+
+			//Count elements with a specific key --> return 1 if the container contains an element whose key is equivalent to k, or zero otherwise.
+
+			size_type	count(const key_type& k)
+			{
+				iterator it = find(k);
+				if (it == end())
+					return (0);
+				return (1);
 			}
 
 			void	print_map()

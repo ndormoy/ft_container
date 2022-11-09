@@ -83,6 +83,7 @@
 		"fstream": "cpp",
 		"__tree": "cpp",
 		"codecvt": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"filesystem": "cpp"
 	}
 }
