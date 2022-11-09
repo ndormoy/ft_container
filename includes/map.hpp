@@ -208,6 +208,12 @@ namespace	ft
 				_root.printTree();
 			}
 
+			void	erase(iterator position)
+			{
+				_root.deleteNode(*position);
+				_size--;
+			}
+
 
 	};
 
