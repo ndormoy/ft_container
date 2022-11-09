@@ -290,6 +290,18 @@ namespace	ft
 			{
 				return (allocator_type());
 			}
+
+			//Returns a copy of the comparison object used by the container to compare keys.
+			key_compare key_comp() const
+			{
+				return (key_compare());
+			}
+
+			//eturns a comparison object that can be used to compare two elements to get whether the key of the first one goes before the second.
+			value_compare value_comp() const
+			{
+				return (value_comp());
+			}
 	
 			//Returns the bounds of a range that includes all the elements in the container which have a key equivalent to k.
 			// ft::pair<const_iterator, const_iterator> equal_range (const key_type& k) const

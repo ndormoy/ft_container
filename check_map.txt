@@ -19,8 +19,8 @@ insert range		[X]        [ ]
 erase				[X]        [ ] --> check if size of map is ok
 swap				[ ]        [ ]
 clear				[X]        [ ]
-key_comp			[ ]        [ ]
-value_comp			[ ]        [ ]
+key_comp			[X]        [ ]
+value_comp			[X]        [ ]
 find				[X]        [ ]
 const_find			[X]        [ ]
 count				[X]        [ ]
@@ -30,6 +30,6 @@ upper_bound			[X]        [ ]
 const_upper_bound	[X]        [ ]
 equal_range			[ ]        [ ]
 const_equal_range	[ ]        [ ]
-get_allocator		[ ]        [ ]
+get_allocator		[X]        [ ]
 
 WARNING --> need to change all the compare with _comp in all of Map functions ...
