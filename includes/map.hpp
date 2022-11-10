@@ -12,6 +12,8 @@
 #include "node.hpp"
 // #include "nullptr.hpp"
 
+#include <functional> // --> binaryfunction
+
 #include <map>
 
 namespace	ft
@@ -31,6 +33,30 @@ namespace	ft
 			typedef ft::pair<const key_type, mapped_type>		value_type; // The type of the value (A pair of const key_type and mapped_type)
 			typedef Compare										key_compare; // The type of the comparison function
 			typedef Alloc										allocator_type; // The type of the allocator
+
+			/*
+			----------------------------------------------------------------------------------------------------------------
+			                                                Nested class value_compare
+			----------------------------------------------------------------------------------------------------------------
+			*/
+
+			class	value_compare : public std::binary_function<value_type, value_type, bool>
+			{
+				friend class map;
+				protected:
+					key_compare comp;
+					value_compare (key_compare c) : comp(c) {}
+				public:
+					typedef bool result_type;
+					typedef value_type first_argument_type;
+					typedef value_type second_argument_type;
+					bool operator() (const value_type& x, const value_type& y) const
+					{
+						return comp(x.first, y.first);
+					}
+			};
+
+
 			typedef typename allocator_type::reference			reference; // The type of the reference
 			typedef typename allocator_type::const_reference	const_reference; // The type of the const reference
 			typedef typename allocator_type::pointer			pointer;
@@ -47,6 +73,8 @@ namespace	ft
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
 			typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
 
+			
+
 			// create typename to have first in map class
 
 			// empty container constructor (default constructor) --> construct an empty container with no elements.
@@ -56,31 +84,36 @@ namespace	ft
 				_TNULL = _root.getTNULL();
 				// std::cout << "default constructor Map" << std::endl;
 			}
-			// range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
-			template <class InputIterator>
-			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
-				_size(0), _root(), _comp(comp), _allocator(alloc)
-			{
-				// std::cout << "range constructor Map" << std::endl;
-				_TNULL = _root.getTNULL();
-				difference_type	nb = ft::distance(first, last);
-				_size = nb;
-				insert (first, last, comp, alloc);
-			}
+
+
+
+			// // range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
+			// template <class InputIterator>
+			// map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
+			// 	_size(0), _root(), _comp(comp), _allocator(alloc)
+			// {
+			// 	// std::cout << "range constructor Map" << std::endl;
+			// 	_TNULL = _root.getTNULL();
+			// 	difference_type	nb = ft::distance(first, last);
+			// 	_size = nb;
+			// 	insert (first, last, comp, alloc);
+			// }
 			// copy constructor --> Constructs a container with a copy of each of the elements in x.
-			map (const map& x) :
-			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
-			{
-				_TNULL = _root.getTNULL();
-				// std::cout << "copy constructor Map" << std::endl;
-				insert (x.begin(), x.end(), x._comp, x._allocator);
-			}
+			// map (const map& x) :
+			// _size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
+			// {
+			// 	_TNULL = _root.getTNULL();
+			// 	// std::cout << "copy constructor Map" << std::endl;
+			// 	insert (x.begin(), x.end(), x._comp, x._allocator);
+			// }
+
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
 			~map()
 			{
 				if (_size)
 					_root.clear();
 			}
+
 
 		private:
 
@@ -300,7 +333,7 @@ namespace	ft
 			//eturns a comparison object that can be used to compare two elements to get whether the key of the first one goes before the second.
 			value_compare value_comp() const
 			{
-				return (value_comp());
+				return (value_compare(_comp));
 			}
 	
 			//Returns the bounds of a range that includes all the elements in the container which have a key equivalent to k.

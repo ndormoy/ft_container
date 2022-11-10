@@ -12,6 +12,7 @@
 
 namespace	ft
 {
+	// template<typename value_type, typename Compare, typename Alloc>
 	template<typename value_type, typename Compare, typename Alloc>
 	class	RedBlackTree
 	{
@@ -82,9 +83,9 @@ namespace	ft
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
-				// TNULL->parent = my_nullptr;
 				root = TNULL;
 			}
+
 
 			~RedBlackTree()
 			{
