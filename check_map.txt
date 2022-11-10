@@ -30,8 +30,8 @@ lower_bound			[X]        [ ]
 const_lower_bound	[X]        [ ]
 upper_bound			[X]        [ ]
 const_upper_bound	[X]        [ ]
-equal_range			[ ]        [ ]
-const_equal_range	[ ]        [ ]
+equal_range			[X]        [ ]
+const_equal_range	[X]        [ ]
 get_allocator		[X]        [ ]
 
 WARNING --> need to change all the compare with _comp in all of Map functions ...

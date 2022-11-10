@@ -29,28 +29,71 @@
 
 int main()
 {
+	ft::map<int, bool>	map;
+
+	map.insert(ft::pair<int, bool>(1, true));
+	map.insert(ft::pair<int, bool>(2, true));
+	map.insert(ft::pair<int, bool>(3, true));
+	map.insert(ft::pair<int, bool>(4, true));
+
+	// ft::map<int, bool>::iterator	it = map.find(3);
+	// it--;
+	// std::cout << it->first << std::endl;
+
+	// std::cout << "it->first: " << it->first << std::endl;
+	ft::map<int,bool>::reverse_iterator rit = map.rend();
+	std::cout << "rit->first: " << rit->first << std::endl;
+ 	 for (rit = map.rbegin(); rit != map.rend(); ++rit)
+    std::cout << rit->first << " => " << rit->second << '\n';
+
 	/**************************************************************/
 
 	// ft::map<int, bool>	map;
-	// ft::map<int, bool>	map_cpy;
 
 	// map.insert(ft::pair<int, bool>(1, true));
 	// map.insert(ft::pair<int, bool>(2, true));
 	// map.insert(ft::pair<int, bool>(3, true));
 	// map.insert(ft::pair<int, bool>(4, true));
 
-	// map_cpy = map;
+
+
+	// // for (ft::map<int, bool>::iterator it = map_cpy.begin(); it != map_cpy.end(); ++it)
+	// // {
+	// // 	std::cout << it->first << std::endl;
+	// // }
+	// // ft::map<int, bool>::iterator it = map.begin();
+	// // it++;
+	// ft::map<int, bool>::iterator it = map.rbegin();
+
+	// std::cout << it->first << std::endl;
+
+	// std::cout << it->first << std::endl;
+
+
+	/**************************************************************/
+
+	// std::map<int, bool>	map;
+
+	// map.insert(std::pair<int, bool>(1, true));
+	// map.insert(std::pair<int, bool>(2, true));
+	// map.insert(std::pair<int, bool>(3, true));
+	// map.insert(std::pair<int, bool>(4, true));
+
+	// std::map<int,bool>::reverse_iterator rit;
+ 	//  for (rit = map.rbegin(); rit != map.rend(); ++rit)
+    // std::cout << rit->first << " => " << rit->second << '\n';
+
 
 
 	// for (ft::map<int, bool>::iterator it = map_cpy.begin(); it != map_cpy.end(); ++it)
 	// {
 	// 	std::cout << it->first << std::endl;
 	// }
+	// ft::map<int, bool>::iterator it = map.begin();
+	// it++;
+	
 
 	// std::cout << it->first << std::endl;
-
-
-	/**************************************************************/
 
 	// std::cout << "--------REAL--------------" << std::endl;
 

@@ -58,21 +58,23 @@ namespace	ft
 			};
 
 
-			typedef typename allocator_type::reference			reference; // The type of the reference
-			typedef typename allocator_type::const_reference	const_reference; // The type of the const reference
-			typedef typename allocator_type::pointer			pointer;
-			typedef typename allocator_type::const_pointer		const_pointer;
-			typedef RedBlackTree<value_type, Compare, Alloc>	tree_type;
-			typedef typename tree_type::difference_type			difference_type;
-			typedef typename tree_type::size_type				size_type;
+			typedef typename allocator_type::reference							reference; // The type of the reference
+			typedef typename allocator_type::const_reference					const_reference; // The type of the const reference
+			typedef typename allocator_type::pointer							pointer;
+			typedef typename allocator_type::const_pointer						const_pointer;
+			typedef RedBlackTree<value_type, Compare, Alloc>					tree_type;
+			typedef typename tree_type::difference_type							difference_type;
+			typedef typename tree_type::size_type								size_type;
 			// typedef typename tree_type::reverse_iterator		reverse_iterator;
 			// typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
-
-			typedef typename tree_type::NodePtr 				TNULL_type;
-			typedef typename tree_type::NodePtr 				NodePtr;
+			
+			typedef typename tree_type::NodePtr 								TNULL_type;
+			typedef typename tree_type::NodePtr 								NodePtr;
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
 			typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
+			typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
+			typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
 			
 
@@ -343,7 +345,7 @@ namespace	ft
 			{
 				return (ft::make_pair(lower_bound(k), upper_bound(k)));
 			}
-			
+
 			ft::pair<const_iterator, const_iterator> equal_range (const key_type& k) const
 			{
 				return (ft::make_pair(lower_bound(k), upper_bound(k)));
@@ -385,6 +387,34 @@ namespace	ft
 					insert(x.begin(), x.end());
 				}
 				return (*this);
+			}
+
+			/*
+			----------------------------------------------------------------------------------------------------------------
+															REVERSE
+			----------------------------------------------------------------------------------------------------------------
+			*/
+
+			//Return reverse iterator to reverse beginning
+			reverse_iterator rbegin()
+			{
+				return (reverse_iterator(end()));
+			}
+
+			const_reverse_iterator rbegin() const
+			{
+				return (const_reverse_iterator(end()));
+			}
+
+			//Return reverse iterator to reverse end
+            reverse_iterator rend()
+			{
+                return (reverse_iterator(begin()));
+            }
+
+			const_reverse_iterator rend() const
+            {
+				return (const_reverse_iterator(begin()));
 			}
 
 	};

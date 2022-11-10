@@ -53,8 +53,15 @@ namespace	ft
 			{
 				Iterator tmp = _current;
 				--tmp;
-				return (tmp);
+				return (&(*tmp));
 			}
+
+			// pointer operator->() const
+			// {
+			// 	Iterator tmp = _current;
+			// 	--tmp;
+			// 	return (tmp);
+			// }
 			reverse_iterator& operator=(const reverse_iterator& x)
 			{
 				// TODO REmettre ca

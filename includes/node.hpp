@@ -7,7 +7,7 @@
 
 namespace	ft
 {
-	template <typename value_type>
+	template <typename _value_type>
 	class	Node
 	{
 		public:
@@ -18,7 +18,7 @@ namespace	ft
 			{
 
 			}
-			Node(const value_type &val, Node *parent = my_nullptr, Node *left = my_nullptr, Node *right = my_nullptr, int color = RED)
+			Node(const _value_type &val, Node *parent = my_nullptr, Node *left = my_nullptr, Node *right = my_nullptr, int color = RED)
 				: data(val), parent(parent), left(left), right(right), color(color)
 			{
 				color = RED;
@@ -29,11 +29,12 @@ namespace	ft
 			
 			}
 
-			value_type	data;
+			_value_type	data;
 			Node		*parent;
 			Node		*left;
 			Node		*right;
 			int			color;
+			typedef	_value_type value_type;
 
 			Node	operator=(const Node &other)
 			{
