@@ -196,7 +196,7 @@ namespace	ft
 					ret = false; // already exist in the map
 				else
 					_size++;
-				return (make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
+				return (ft::make_pair(iterator(_root.searchTree(val.first), _TNULL), ret));
 			}
 
 			// With hint insertion
@@ -350,7 +350,22 @@ namespace	ft
 				_root.printTree();
 			}
 
+			/*
+			----------------------------------------------------------------------------------------------------------------
+															OPERATORS
+			----------------------------------------------------------------------------------------------------------------
+			*/
 
+			mapped_type	operator[](const key_type& k)
+			{
+				iterator it = find(k);
+				if (it == end())
+				{
+					insert(ft::make_pair(k, mapped_type()));
+					it = find(k);
+				}
+				return (it->second);
+			}
 
 	};
 

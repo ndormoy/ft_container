@@ -20,7 +20,7 @@ erase				[X]        [ ] --> check if size of map is ok
 swap				[ ]        [ ]
 clear				[X]        [ ]
 key_comp			[X]        [ ]
-value_comp			[X]        [ ]
+value_comp			[X]        [ ] --> need to test_map_value_comp
 find				[X]        [ ]
 const_find			[X]        [ ]
 count				[X]        [ ]
