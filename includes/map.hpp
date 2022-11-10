@@ -28,6 +28,7 @@ namespace	ft
 	{
 		public:
 
+			typedef map															self;
 			typedef Key											key_type; // the key of the map
 			typedef T											mapped_type; // The type of the mapped value
 			typedef ft::pair<const key_type, mapped_type>		value_type; // The type of the value (A pair of const key_type and mapped_type)
@@ -62,6 +63,7 @@ namespace	ft
 			typedef typename allocator_type::pointer			pointer;
 			typedef typename allocator_type::const_pointer		const_pointer;
 			typedef RedBlackTree<value_type, Compare, Alloc>	tree_type;
+			// typedef RedBlackTree<value_type, Compare, Alloc, >	tree_type;
 			typedef typename tree_type::difference_type			difference_type;
 			typedef typename tree_type::size_type				size_type;
 			// typedef typename tree_type::reverse_iterator		reverse_iterator;
@@ -126,6 +128,32 @@ namespace	ft
 
 		public:
 
+			// //Returns an iterator referring to the first element in the map container.
+			// iterator	begin()
+			// {
+			// 	return (iterator(_root.begin(), _TNULL));
+			// }
+
+			// //Returns a const iterator referring to the first element in the map container.
+			// const_iterator	begin() const
+			// {
+			// 	return (const_iterator(_root.begin(), _TNULL));
+			// }
+
+			// iterator	end()
+			// {
+			// 	iterator it = iterator(_root.end(), _TNULL);
+			// 	it++;
+			// 	return (it);
+			// }
+
+			// const_iterator	end() const
+			// {
+			// 	const_iterator it = const_iterator(_root.end(), _TNULL);
+			// 	it++;
+			// 	return (it);
+			// }
+
 			//Returns an iterator referring to the first element in the map container.
 			iterator	begin()
 			{
@@ -135,7 +163,7 @@ namespace	ft
 			//Returns a const iterator referring to the first element in the map container.
 			const_iterator	begin() const
 			{
-				return (const_iterator(_root.begin(), _TNULL));
+				return (const_iterator(_root.const_begin(), _TNULL));
 			}
 
 			iterator	end()
@@ -147,7 +175,7 @@ namespace	ft
 
 			const_iterator	end() const
 			{
-				const_iterator it = const_iterator(_root.end(), _TNULL);
+				const_iterator it = const_iterator(_root.const_end(), _TNULL);
 				it++;
 				return (it);
 			}
@@ -356,6 +384,8 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
+			//If k matches the key of an element in the container, the function returns a reference to its mapped value.
+			//If k does not match the key of any element in the container, the function inserts a new element with that key and returns a reference to its mapped value. 
 			mapped_type	operator[](const key_type& k)
 			{
 				iterator it = find(k);
@@ -365,6 +395,19 @@ namespace	ft
 					it = find(k);
 				}
 				return (it->second);
+			}
+
+			//Assigns new contents to the container, replacing its current content.
+			map	&operator=(const map &x)
+			{
+				if (this != &x)
+				{
+					_comp = x._comp;
+					_allocator = x._allocator;
+					clear();
+					insert(x.begin(), x.end());
+				}
+				return (*this);
 			}
 
 	};

@@ -30,36 +30,21 @@
 int main()
 {
 
-	// ft::map<int, bool>	map;
-	ft::map<int, std::string>	map;
+	ft::map<int, bool>	map;
+	ft::map<int, bool>	map_cpy;
+
+	map.insert(ft::pair<int, bool>(1, true));
+	map.insert(ft::pair<int, bool>(2, true));
+	map.insert(ft::pair<int, bool>(3, true));
+	map.insert(ft::pair<int, bool>(4, true));
+
+	map_cpy = map;
 
 
-	// map.insert(ft::pair<int, bool>(1, true));
-	// map.insert(ft::pair<int, bool>(2, true));
-	// map.insert(ft::pair<int, bool>(3, true));
-	// map.insert(ft::pair<int, bool>(4, true));
-
-	map.insert(ft::pair<int, std::string>(1, "hello"));
-	map.insert(ft::pair<int, std::string>(2, "salut"));
-	map.insert(ft::pair<int, std::string>(3, "Pouet"));
-	map.insert(ft::pair<int, std::string>(4, "mdr"));
-
-	std::cout << "map[2] = " << map[2] << std::endl;
-
-
-// 	ft::map<int, bool>::iterator	it = map.begin();
-// 	ft::map<int, bool>::iterator    it_end = map.end();
-
-// 	// for (ft::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
-// 	// {
-// 	// 	std::cout << it->first << std::endl;
-// 	// }
-
-// 	do {
-//     std::cout << it->first << " => " << it->second << '\n';
-//   } while ( map.value_comp()(*it++, it_end) );
-
-
+	for (ft::map<int, bool>::iterator it = map_cpy.begin(); it != map_cpy.end(); ++it)
+	{
+		std::cout << it->first << std::endl;
+	}
 
 	// std::cout << it->first << std::endl;
 
@@ -68,30 +53,8 @@ int main()
 
 	// std::cout << "--------REAL--------------" << std::endl;
 
-	// std::map<int, std::string> map;
-
-	// map.insert(std::pair<int, std::string>(1, "hello"));
-	// map.insert(std::pair<int, std::string>(2, "salut"));
-	// map.insert(std::pair<int, std::string>(3, "Pouet"));
-	// map.insert(std::pair<int, std::string>(4, "mdr"));
-
-	// map.insert(std::pair<int, bool>(1, true));
-	// map.insert(std::pair<int, bool>(2, true));
-	// map.insert(std::pair<int, bool>(3, true));
-	// map.insert(std::pair<int, bool>(4, true));
-
-
-
-	// for (std::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
-	// {
-	// 	std::cout << it->first << std::endl;
-	// }
-
-	// std::cout << "allocator = " << map.get_allocator().max_size() << std::endl;
-
-	// std::cout << it->first << std::endl;
-
-	// std::map<int, bool>	map;
+	// std::map<int, bool> map;
+	// std::map<int, bool> map_cpy;
 
 
 	// map.insert(std::pair<int, bool>(1, true));
@@ -99,10 +62,9 @@ int main()
 	// map.insert(std::pair<int, bool>(3, true));
 	// map.insert(std::pair<int, bool>(4, true));
 
-	// std::map<int, bool>::iterator	it = map.begin();
-	// std::map<int, bool>::iterator    it_end = map.end();
+	// map_cpy = map;
 
-	// for (ft::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
+	// for (std::map<int, bool>::iterator it = map_cpy.begin(); it != map_cpy.end(); ++it)
 	// {
 	// 	std::cout << it->first << std::endl;
 	// }

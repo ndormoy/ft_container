@@ -13,7 +13,7 @@
 namespace	ft
 {
 	// template<typename value_type, typename Compare, typename Alloc>
-	template<typename value_type, typename Compare, typename Alloc>
+	template<typename value_type, typename Compare, typename Alloc/* , typename Node = ft::Node<value_type> */ >
 	class	RedBlackTree
 	{
 
@@ -41,7 +41,7 @@ namespace	ft
 
 			typedef std::size_t												size_type;
 			typedef std::ptrdiff_t											difference_type;
-			typedef Node<value_type>										*NodePtr;
+			typedef ft::Node<value_type>									*NodePtr;
 
 		private:
 
@@ -124,11 +124,46 @@ namespace	ft
 				return (minimum(root));
 			}
 
+			// Return the first element in the tree (The minimum)
+			pointer	const_begin() const
+			{
+				return (const_minimum(root));
+			}
+
 			// Return the last element in the tree (The maximum)
 			pointer	end()
 			{
 				return (maximum(root));
 			}
+
+			// Return the last element in the tree (The maximum)
+			pointer	const_end() const
+			{
+				return (const_maximum(root));
+			}
+
+			// // Return the first element in the tree (The minimum)
+			// iterator	begin()
+			// {
+			// 	return (iterator(minimum(root), TNULL));
+			// }
+
+			// const_iterator	begin()
+			// {
+			// 	return (const_iterator(minimum(root), TNULL));
+			// }
+
+			// // Return the last element in the tree (The maximum)
+			// pointer	end()
+			// {
+			// 	return (iterator(maximum(root), TNULL));
+			// }
+
+			// // Return the last element in the tree (The maximum)
+			// pointer	end()
+			// {
+			// 	return (maximum(root));
+			// }
 
 
 			// size_type 	count(const value_type &val) const
@@ -544,10 +579,24 @@ namespace	ft
 					node = node->left;
 				return (node);
 			}
+
+			NodePtr const_minimum(NodePtr node) const
+			{
+				while (node->left != TNULL)
+					node = node->left;
+				return (node);
+			}
 	
 			// return the last right node ( the maximum node )
 	
 			NodePtr maximum(NodePtr node)
+			{
+				while (node->right != TNULL) 
+					node = node->right;
+				return (node);
+			}
+
+			NodePtr const_maximum(NodePtr node) const
 			{
 				while (node->right != TNULL) 
 					node = node->right;
