@@ -34,7 +34,7 @@ namespace	ft
 			Node		*left;
 			Node		*right;
 			int			color;
-			typedef	_value_type value_type;
+			// typedef	_value_type value_type;
 
 			Node	operator=(const Node &other)
 			{

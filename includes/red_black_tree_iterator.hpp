@@ -19,8 +19,8 @@ namespace	ft
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT >::pointer				pointer;
 	
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT>::reference			reference;
-			// typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT>::iterator_type		value_type;
-			typedef typename node::value_type														value_type;
+			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT>::iterator_type		value_type;
+			// typedef typename node::value_type														value_type;
 			typedef RedBlackTreeIterator<VT, node>													self;
 
 			typedef node																			*nodePtr;
