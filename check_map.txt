@@ -1,8 +1,10 @@
 MAP                Do        Test
 
 destructor			[ ]        [ ]
-CONSTRUCTOR			[ ]        [ ]
-operator=			[ ]        [ ]
+empty CONSTRUCTOR	[X]        [ ]
+range CONSTRUCTOR   [ ]        [ ]
+copy  CONSTRUCTOR   [ ]        [ ]
+operator=			[X]        [ ]
 begin				[X]        [ ]
 const_begin			[X]        [ ]
 end					[X]        [ ]
@@ -12,7 +14,7 @@ rend				[ ]        [ ]
 empty				[X]        [ ]
 size				[X]        [ ]
 max_size			[X]        [ ]
-operator[]			[ ]        [ ]
+operator[]			[X]        [ ]
 insert				[X]        [ ]
 insert hint			[X]        [ ] --> check if size of map is ok
 insert range		[X]        [ ]

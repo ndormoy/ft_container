@@ -29,23 +29,22 @@
 
 int main()
 {
-	/**************************************************************/
 
-	// ft::map<int, bool>	map;
-	// ft::map<int, bool>	map_cpy;
+	ft::map<int, bool>	map;
+	ft::map<int, bool>	map_cpy;
 
-	// map.insert(ft::pair<int, bool>(1, true));
-	// map.insert(ft::pair<int, bool>(2, true));
-	// map.insert(ft::pair<int, bool>(3, true));
-	// map.insert(ft::pair<int, bool>(4, true));
+	map.insert(ft::pair<int, bool>(1, true));
+	map.insert(ft::pair<int, bool>(2, true));
+	map.insert(ft::pair<int, bool>(3, true));
+	map.insert(ft::pair<int, bool>(4, true));
 
-	// map_cpy = map;
+	map_cpy = map;
 
 
-	// for (ft::map<int, bool>::iterator it = map_cpy.begin(); it != map_cpy.end(); ++it)
-	// {
-	// 	std::cout << it->first << std::endl;
-	// }
+	for (ft::map<int, bool>::iterator it = map_cpy.begin(); it != map_cpy.end(); ++it)
+	{
+		std::cout << it->first << std::endl;
+	}
 
 	// std::cout << it->first << std::endl;
 
