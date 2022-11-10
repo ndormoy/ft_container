@@ -128,32 +128,6 @@ namespace	ft
 
 		public:
 
-			// //Returns an iterator referring to the first element in the map container.
-			// iterator	begin()
-			// {
-			// 	return (iterator(_root.begin(), _TNULL));
-			// }
-
-			// //Returns a const iterator referring to the first element in the map container.
-			// const_iterator	begin() const
-			// {
-			// 	return (const_iterator(_root.begin(), _TNULL));
-			// }
-
-			// iterator	end()
-			// {
-			// 	iterator it = iterator(_root.end(), _TNULL);
-			// 	it++;
-			// 	return (it);
-			// }
-
-			// const_iterator	end() const
-			// {
-			// 	const_iterator it = const_iterator(_root.end(), _TNULL);
-			// 	it++;
-			// 	return (it);
-			// }
-
 			//Returns an iterator referring to the first element in the map container.
 			iterator	begin()
 			{
