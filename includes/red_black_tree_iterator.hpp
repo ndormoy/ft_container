@@ -126,7 +126,7 @@ namespace	ft
 
 			void _increment()
 			{
-				if (_node)
+				if (_node != _TNULL)
 				{
 					if (_node->right != _TNULL)
 					{
@@ -149,10 +149,6 @@ namespace	ft
 				}
 			}
 
-			// void	_decrement()
-			// {
-
-			// }
 
 			void	_decrement()
 			{
@@ -175,6 +171,7 @@ namespace	ft
                     _node = _TNULL;
 
 			}
+
 
 		private:
 

@@ -497,9 +497,8 @@ namespace	ft
 					node = node->left;
 				return (node);
 			}
-	
+
 			// return the last right node ( the maximum node )
-	
 			NodePtr maximum(NodePtr node)
 			{
 				while (node->right != TNULL) 
@@ -578,41 +577,47 @@ namespace	ft
 	
 			pointer	insert(value_type key)
 			{
-				NodePtr node = _allocator.allocate(1);
-				_allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
+				// NodePtr node = _allocator.allocate(1);
+				NodePtr node = _allocator.allocate(sizeof(NodePtr));
+				// _allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
 				NodePtr y = my_nullptr;
 				NodePtr x = this->root;
 
-					while (x != TNULL)
-					{
-						y = x;
-						if (node->data < x->data)
-							x = x->left;
-						else if (node->data > x->data)
-							x = x->right;
-						else
-							return NULL;
-					}
-
-					node->parent = y;
-					if (y == my_nullptr)
-						root = node;
-					else if (node->data < y->data)
-						y->left = node;
+				if ( root == NULL )
+				{
+					root = _allocator.allocate(sizeof(NodePtr));
+					_allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
+					root->color = BLACK;
+					root->parent = TNULL;
+					return (root);
+				}
+				_allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
+				while (x != TNULL)
+				{
+					y = x;
+					if (node->data < x->data)
+						x = x->left;
+					else if (node->data > x->data)
+						x = x->right;
 					else
-						y->right = node;
-
-					if (node->parent == my_nullptr)
-					{
-						node->color = BLACK;
-						return node;
-					}
-
-					if (node->parent->parent == my_nullptr)
-						return node;
-
-					insertFix(node);
-					return (node);
+						return NULL;
+				}
+				node->parent = y;
+				if (y == my_nullptr)
+					root = node;
+				else if (node->data < y->data)
+					y->left = node;
+				else
+					y->right = node;
+				if (node->parent == my_nullptr)
+				{
+					node->color = BLACK;
+					return node;
+				}
+				if (node->parent->parent == my_nullptr)
+					return node;
+				insertFix(node);
+				return (node);
 			}
 
 			NodePtr getRoot()
