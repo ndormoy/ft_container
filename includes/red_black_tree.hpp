@@ -586,6 +586,7 @@ namespace	ft
 				y->right = x;
 				x->parent = y;
 			}
+
 	
 			pointer	insert(value_type key)
 			{
@@ -596,16 +597,16 @@ namespace	ft
 				// NodePtr y = TNULL;
 				NodePtr x = this->root;
 
-				if ( root == TNULL )
-				{
-					std::cout << "hey" << std::endl;
-					root = _allocator.allocate(sizeof(NodePtr));
-					// _allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
-					_allocator.construct(root, Node<value_type>(key, my_nullptr, TNULL, TNULL, BLACK));
-					root->color = BLACK;
-					// root->parent = TNULL;
-					return (root);
-				} 
+				// if ( root == TNULL )
+				// {
+				// 	std::cout << "hey" << std::endl;
+				// 	root = _allocator.allocate(sizeof(NodePtr));
+				// 	// _allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
+				// 	_allocator.construct(root, Node<value_type>(key, my_nullptr, TNULL, TNULL, BLACK));
+				// 	root->color = BLACK;
+				// 	root->parent = TNULL;
+				// 	return (root);
+				// } 
 				_allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
 				while (x != TNULL)
 				{

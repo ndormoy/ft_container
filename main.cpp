@@ -55,11 +55,12 @@ int main()
 	it_beg++;
 	std::cout << it_beg->first << std::endl;
 	it_beg++;
+	// std::cout << it_beg->first << std::endl;
 
 
 	std::cout << "-------END-------" << std::endl;
 	ft::map<int,bool>::iterator it = map.end();
-	// std::cout << it->first << std::endl;
+	std::cout << it->first << std::endl;
 	it--;
 	std::cout << it->first << std::endl;
 	it--;
