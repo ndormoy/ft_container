@@ -378,10 +378,14 @@ namespace	ft
 			// For balancing the tree after insertion
 			void insertFix(NodePtr k)
 			{
+				std::cout << "Insert fix" << std::endl;
 				// std::cout << "InsertFix" << std::endl;
 				NodePtr u;
 				while (k->parent->color == RED) // case 3 : P is RED
 				{
+					std::cout << "\n" << "Insert fix --> correcting" << std::endl;
+					printTree();
+					std::cout << "<--------------------->" << std::endl;
 					if (k->parent == k->parent->parent->right) // P is right child of G
 					{
 						u = k->parent->parent->left;
@@ -430,8 +434,16 @@ namespace	ft
 						}
 					}
 					if (k == root) // if k == root we stop de loop because the tree is balanced
+					{
+						std::cout << "After the correction" << std::endl;
+						printTree();
+						std::cout << "<--------------------->" << std::endl;
 						break;
+					}
 				}
+				std::cout << "END of the correction" << std::endl;
+				printTree();
+				std::cout << "<--------------------->" << "\n" << std::endl;
 				// rule 1 : the root is always black
 				root->color = BLACK;
 			}
@@ -581,16 +593,19 @@ namespace	ft
 				NodePtr node = _allocator.allocate(sizeof(NodePtr));
 				// _allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
 				NodePtr y = my_nullptr;
+				// NodePtr y = TNULL;
 				NodePtr x = this->root;
 
-				if ( root == NULL )
+				if ( root == TNULL )
 				{
+					std::cout << "hey" << std::endl;
 					root = _allocator.allocate(sizeof(NodePtr));
-					_allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
+					// _allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
+					_allocator.construct(root, Node<value_type>(key, my_nullptr, TNULL, TNULL, BLACK));
 					root->color = BLACK;
-					root->parent = TNULL;
+					// root->parent = TNULL;
 					return (root);
-				}
+				} 
 				_allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
 				while (x != TNULL)
 				{
