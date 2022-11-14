@@ -176,8 +176,8 @@ namespace	ft
 			}
 
 			void _increment () {
-				// if (_node == _TNULL)
-				// 	return ;
+				if (_node == _TNULL)
+					return ;
 				nodePtr x = _node;
 				// std::cout << "x->right = " << x->right << std::endl;
 				// std::cout << "x->left = " << x->left << std::endl;
@@ -233,11 +233,11 @@ namespace	ft
 
 			void	_decrement()
 			{
-				if (_node == nullptr)
-				{
-					_node = _TNULL;
-					return ;
-				}
+				// if (_node == nullptr)
+				// {
+				// 	_node = _TNULL;
+				// 	return ;
+				// }
 				nodePtr x = _node;
 				if (_node == _TNULL)
 				{
