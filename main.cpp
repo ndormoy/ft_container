@@ -31,10 +31,21 @@ int main()
 {
 	ft::map<int, bool>	map;
 
-	map.insert(ft::pair<int, bool>(1, true));
+	// map.insert(ft::pair<int, bool>(1, true));
+	// map.print_map();
+	// std::cout << "END 1st insert ----------------" << std::endl;
+	// map.insert(ft::pair<int, bool>(2, true));
+	// map.print_map();
+	// std::cout << "END 2st insert----------------" << std::endl;
+	// map.insert(ft::pair<int, bool>(3, true));
+	// map.print_map();
+	// std::cout << "END 3st insert----------------" << std::endl;
+	// map.insert(ft::pair<int, bool>(6, true));
+
+	map.insert(ft::pair<int, bool>(4, true));
 	map.print_map();
 	std::cout << "END 1st insert ----------------" << std::endl;
-	map.insert(ft::pair<int, bool>(2, true));
+	map.insert(ft::pair<int, bool>(1, true));
 	map.print_map();
 	std::cout << "END 2st insert----------------" << std::endl;
 	map.insert(ft::pair<int, bool>(3, true));
@@ -55,20 +66,20 @@ int main()
 	it_beg++;
 	std::cout << it_beg->first << std::endl;
 	it_beg++;
-	// std::cout << it_beg->first << std::endl;
+	std::cout << it_beg->first << std::endl;
 
 
 	std::cout << "-------END-------" << std::endl;
 	ft::map<int,bool>::iterator it = map.end();
 	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
 
 
 	// std::cout << "-------RBEGIN-------" << std::endl;
@@ -156,11 +167,37 @@ int main()
 	// std::map<int, bool> map;
 	// std::map<int, bool> map_cpy;
 
+	// std::cout << "-------REAL--------------" << std::endl;
 
 	// map.insert(std::pair<int, bool>(1, true));
 	// map.insert(std::pair<int, bool>(2, true));
 	// map.insert(std::pair<int, bool>(3, true));
-	// map.insert(std::pair<int, bool>(4, true));
+	// map.insert(std::pair<int, bool>(6, true));
+
+	// std::cout <<"--------BEGIN-----" << std::endl;
+	// std::map<int, bool>::iterator it_beg = map.begin();
+	// std::cout << it_beg->first << std::endl;
+	// it_beg++;
+	// std::cout << it_beg->first << std::endl;
+	// it_beg++;
+	// std::cout << it_beg->first << std::endl;
+	// it_beg++;
+	// std::cout << it_beg->first << std::endl;
+	// it_beg++;
+	// // std::cout << it_beg->first << std::endl;
+
+
+	// std::cout << "-------END-------" << std::endl;
+	// std::map<int,bool>::iterator it = map.end();
+	// // std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
+	// it--;
+	// std::cout << it->first << std::endl;
 
 	// map_cpy = map;
 

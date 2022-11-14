@@ -144,14 +144,14 @@ namespace	ft
 			iterator	end()
 			{
 				iterator it = iterator(_root.end(), _TNULL);
-				// it++;
+				it++;
 				return (it);
 			}
 
 			const_iterator	end() const
 			{
 				const_iterator it = const_iterator(_root.const_end(), _TNULL);
-				// it++;
+				it++;
 				return (it);
 			}
 
@@ -280,10 +280,10 @@ namespace	ft
 			}
 
 			//Returns the maximum number of elements that the map container can hold.
-			size_type	max_size() const
-			{
-				return (std::numeric_limits<size_type>::max() / sizeof(Node<value_type>));
-			}
+			// size_type	max_size() const
+			// {
+			// 	return (std::numeric_limits<size_type>::max() / sizeof(Node<value_type>));
+			// }
 
 			//Returns an iterator pointing to the first element in the container whose key is not considered to go before k or map::end if all keys are considered to go before k.
 			iterator lower_bound (const key_type& k)

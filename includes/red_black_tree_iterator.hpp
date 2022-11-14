@@ -124,31 +124,58 @@ namespace	ft
 
 		private:
 
-			void _increment()
-			{
-				if (_node != _TNULL)
-				{
-					if (_node->right != _TNULL)
-					{
-						_node = _node->right;
-						while (_node->left != _TNULL)
-							_node = _node->left;
-					}
-					else
-					{
-						// node_ptr_type y = _node->parent;
-						nodePtr y = _node->parent;
-						while (y && y != _TNULL && _node == y->right)
-						{
-							_node = y;
-							y = y->parent;
-						}
-						if (_node->right != y)
-							_node = y;
-					}
+			// void _increment()
+			// {
+			// 	if (_node != _TNULL)
+			// 	{
+			// 		if (_node->right != _TNULL)
+			// 		{
+			// 			std::cout << "first if" << std::endl;
+			// 			_node = _node->right;
+			// 			while (_node->left != _TNULL)
+			// 				_node = _node->left;
+			// 		}
+			// 		else
+			// 		{
+			// 			std::cout << "second if" << std::endl;
+			// 			// node_ptr_type y = _node->parent;
+			// 			nodePtr y = _node->parent;
+			// 			while (y && y != _TNULL && _node == y->right)
+			// 			{
+			// 				_node = y;
+			// 				y = y->parent;
+			// 			}
+			// 			if (_node->right != y)
+			// 				_node = y;
+			// 			// _node = y;
+			// 			std::cout << "addr: " << _node << std::endl;
+			// 		}
+			// 	}
+			// }
+			nodePtr minimum(nodePtr x) {
+				while (x->left != _TNULL) {
+					x = x->left;
 				}
+				return x;
 			}
 
+			void _increment () {
+				nodePtr x = _node;
+				if (x->right != _TNULL) {
+					_node = minimum(x->right);
+					return;
+				}
+				nodePtr y = x->parent;
+				while (y != my_nullptr && x == y->right) {
+					x = y;
+					y = y->parent;
+				}
+				if (y == my_nullptr) {
+					_node = _TNULL;
+					return;
+				}
+				_node = y;
+			}
 
 			void	_decrement()
 			{
@@ -156,12 +183,14 @@ namespace	ft
 				{
 					if (_node->left!= _TNULL)
 					{
+						std::cout << "first if" << std::endl;
 						_node = _node->left;
-						while (_node->right!= _TNULL)
+						while (_node && _node != _TNULL && _node->right != _TNULL)
 							_node = _node->right;
 					}
 					else
                     {
+						std::cout << "second if" << std::endl;
                         _node = _node->parent;
 						while (_node && _node != _TNULL && _node->left == _node)
 							_node = _node->parent;
@@ -171,6 +200,30 @@ namespace	ft
                     _node = _TNULL;
 
 			}
+
+			// void	_decrement()
+			// {
+			// 	if (_node)
+			// 	{
+			// 		if (_node->left!= _TNULL)
+			// 		{
+			// 			std::cout << "first if" << std::endl;
+			// 			_node = _node->left;
+			// 			while (_node && _node != _TNULL && _node->right != _TNULL)
+			// 				_node = _node->right;
+			// 		}
+			// 		else
+            //         {
+			// 			std::cout << "second if" << std::endl;
+            //             _node = _node->parent;
+			// 			while (_node && _node != _TNULL && _node->left == _node)
+			// 				_node = _node->parent;
+			// 		}
+			// 	}
+			// 	else
+            //         _node = _TNULL;
+
+			// }
 
 
 		private:

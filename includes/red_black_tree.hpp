@@ -78,8 +78,8 @@ namespace	ft
 			{
 				_allocator = allocator_type();
 				_comp = key_compare();
-				TNULL = _allocator.allocate(1);
-				_allocator.construct(TNULL, Node<value_type>());
+				TNULL = _allocator.allocate(sizeof(Node<value_type>));
+				_allocator.construct(TNULL, Node<value_type>(ft::make_pair(42, true), my_nullptr, my_nullptr, my_nullptr, BLACK));
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
@@ -383,9 +383,9 @@ namespace	ft
 				NodePtr u;
 				while (k->parent->color == RED) // case 3 : P is RED
 				{
-					std::cout << "\n" << "Insert fix --> correcting" << std::endl;
-					printTree();
-					std::cout << "<--------------------->" << std::endl;
+					// std::cout << "\n" << "Insert fix --> correcting" << std::endl;
+					// printTree();
+					// std::cout << "<--------------------->" << std::endl;
 					if (k->parent == k->parent->parent->right) // P is right child of G
 					{
 						u = k->parent->parent->left;
@@ -588,26 +588,88 @@ namespace	ft
 			}
 
 	
+			// pointer	insert(value_type key)
+			// {
+			// 	// NodePtr node = _allocator.allocate(1);
+			// 	NodePtr node = _allocator.allocate(sizeof(NodePtr));
+			// 	_allocator.construct(node, Node<value_type>(key, my_nullptr, TNULL, TNULL, RED));
+			// 	NodePtr x = this->root;
+
+			// 	if ( root == TNULL )
+			// 	{
+			// 		std::cout << "hey" << std::endl;
+			// 		root = node;
+			// 		// root = _allocator.allocate(sizeof(NodePtr));
+			// 		// _allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
+			// 		// _allocator.construct(root, Node<value_type>(key, my_nullptr, TNULL, TNULL, BLACK));
+			// 		root->color = BLACK;
+			// 		root->parent = TNULL;
+			// 		return (root);
+			// 	}
+
+			// 	// _allocator.construct(node, Node<value_type>(key, my_nullptr, TNULL, TNULL, RED));
+			// 	// while (x != TNULL)
+			// 	// {
+			// 	// 	y = x;
+			// 	// 	if (node->data < x->data)
+			// 	// 		x = x->left;
+			// 	// 	else if (node->data > x->data)
+			// 	// 		x = x->right;
+			// 	// 	else
+			// 	// 		return NULL;
+			// 	// }
+			// 	while (x != TNULL)
+			// 	{
+			// 		if (key < x->data)
+			// 		{
+			// 			if (x->left == TNULL)
+			// 			{
+			// 				// x->left = node;
+			// 				// node->parent = x;
+			// 				break;
+			// 			}
+			// 			// y = x;
+			// 			x = x->left;
+			// 		}
+			// 		else if (key > x->data)
+			// 		{
+			// 			if (x->right == TNULL)
+			// 			{
+			// 				break;
+			// 			}
+			// 			x = x->right;
+			// 		}
+			// 		else
+			// 			return NULL;
+			// 	}
+
+			// 	node->parent = x;
+			// 	if (key < x->data)
+			// 		x->left = node;
+			// 	else
+			// 		x->right = node;
+			// 	if (node->parent == TNULL)
+			// 	{
+			// 		// node->parent = TNULL;
+			// 		// node->color = BLACK;
+			// 		node->color = RED;
+			// 		return (node);
+			// 	}
+			// 	if (node->parent->parent == TNULL)
+			// 		return (node);
+			// 	node->parent = x;
+			// 	insertFix(node);
+			// 	std::cout << "addr in insert (root parent): " << root->parent << std::endl;
+			// 	return (node);
+			// }
+
 			pointer	insert(value_type key)
 			{
-				// NodePtr node = _allocator.allocate(1);
 				NodePtr node = _allocator.allocate(sizeof(NodePtr));
-				// _allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
+				_allocator.construct(node, Node<value_type>(key, my_nullptr, TNULL, TNULL, RED));
 				NodePtr y = my_nullptr;
-				// NodePtr y = TNULL;
 				NodePtr x = this->root;
 
-				// if ( root == TNULL )
-				// {
-				// 	std::cout << "hey" << std::endl;
-				// 	root = _allocator.allocate(sizeof(NodePtr));
-				// 	// _allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
-				// 	_allocator.construct(root, Node<value_type>(key, my_nullptr, TNULL, TNULL, BLACK));
-				// 	root->color = BLACK;
-				// 	root->parent = TNULL;
-				// 	return (root);
-				// } 
-				_allocator.construct(node, Node<value_type>(key, TNULL, TNULL, TNULL, RED));
 				while (x != TNULL)
 				{
 					y = x;
