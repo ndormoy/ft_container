@@ -51,14 +51,14 @@ namespace	ft
 			}
 
 			// RedBlackTreeIterator(const node_ptr_type &my_node, const node_ptr_type &my_TNULL)
-			RedBlackTreeIterator(const nodePtr &my_node, const nodePtr &my_TNULL)
-				: _node(my_node), _TNULL(my_TNULL)
+			RedBlackTreeIterator(const nodePtr &my_node, const nodePtr &my_TNULL, const nodePtr &my_root)
+				: _root(my_root), _node(my_node), _TNULL(my_TNULL)
 			{
 				// std::cout << "RBT iterator constructor 1" << std::endl;
 			}
 
 			RedBlackTreeIterator(const RedBlackTreeIterator &other)
-				: _node(other._node), _TNULL(other._TNULL)
+				: _root(other._root), _node(other._node), _TNULL(other._TNULL)
 			{
 				// std::cout << "RBT iterator constructor 2" << std::endl;
 			}
@@ -183,8 +183,8 @@ namespace	ft
 			}
 
 			void _increment () {
-				if (_node == _TNULL)
-					return ;
+				// if (_node == _TNULL)
+				// 	return ;
 				nodePtr x = _node;
 				// std::cout << "x->right = " << x->right << std::endl;
 				// std::cout << "x->left = " << x->left << std::endl;
@@ -212,6 +212,11 @@ namespace	ft
 
 			void	_decrement()
 			{
+				if (_node == nullptr)
+				{
+					_node = _TNULL;
+					return ;
+				}
 				nodePtr x = _node;
 				if (_node == _TNULL)
 				{
@@ -228,13 +233,41 @@ namespace	ft
 				}
 				std::cout << "here : x->data.first = " << x->left->data.first << std::endl;
 				if (y == my_nullptr) {
-					_node = _TNULL;
+					std::cout << "yep" << std::endl;
+					_node = minimum(_root);
+					// _node = _TNULL;
 					// _node->left = x->left;
 					// _node->right = x->right;
 					return;
 				}
 				_node  = y;
 			}
+
+			// void	_decrement()
+			// {
+			// 	nodePtr x = _node;
+			// 	if (_node == _TNULL)
+			// 	{
+			// 		std::cout << "x->data.first = " << x->data.first << std::endl;
+			// 		_node =  maximum(x);
+			// 		std::cout << "node->data.first = " << _node->data.first << std::endl;
+            //         return ;
+			// 	}
+			// 	nodePtr y = x->parent;
+			// 	while (y != my_nullptr && x == y->left)
+			// 	{
+			// 		x = y;
+			// 		y = y->parent;
+			// 	}
+			// 	std::cout << "here : x->data.first = " << x->left->data.first << std::endl;
+			// 	if (y == my_nullptr) {
+			// 		_node = _TNULL;
+			// 		// _node->left = x->left;
+			// 		// _node->right = x->right;
+			// 		return;
+			// 	}
+			// 	_node  = y;
+			// }
 
 			// void	_decrement()
 			// {
@@ -267,6 +300,7 @@ namespace	ft
 			// pointer	_node;
 			// pointer	_TNULL;
 
+			nodePtr	_root;
 			nodePtr	_node;
 			nodePtr	_TNULL;
 
