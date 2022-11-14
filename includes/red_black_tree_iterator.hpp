@@ -163,14 +163,34 @@ namespace	ft
 			{
 				while (x->right != _TNULL) 
 					x = x->right;
+				// while (x->right != my_nullptr) 
+				// x = x->right;
 				return (x);
 			}
 
+			nodePtr predecessor(nodePtr x)
+			{
+				if (x->left != _TNULL)
+					return maximum(x->left);
+	
+				nodePtr y = x->parent;
+				while (y != _TNULL && x == y->left)
+				{
+					x = y;
+					y = y->parent;
+				}
+				return y;
+			}
+
 			void _increment () {
+				if (_node == _TNULL)
+					return ;
 				nodePtr x = _node;
+				// std::cout << "x->right = " << x->right << std::endl;
+				// std::cout << "x->left = " << x->left << std::endl;
 				if (x->right != _TNULL) {
 					_node = minimum(x->right);
-					return;
+					return ;
 				}
 				nodePtr y = x->parent;
 				while (y != my_nullptr && x == y->right) {
@@ -178,7 +198,13 @@ namespace	ft
 					y = y->parent;
 				}
 				if (y == my_nullptr) {
+					// std::cout << "--------" << std::endl;
+					// std::cout << "x->right = " << x->right->data.first << std::endl;
+					// std::cout << "x->left = " << x->left->data.first << std::endl;
+					// std::cout << "--------" << std::endl;
 					_node = _TNULL;
+					_node->left = x->left;
+					_node->right = x->right;
 					return;
 				}
 				_node = y;
@@ -186,41 +212,28 @@ namespace	ft
 
 			void	_decrement()
 			{
-				// std::cout << "decrement" << std::endl;
-				if (_node)
+				nodePtr x = _node;
+				if (_node == _TNULL)
 				{
-					// std::cout << "decrement 2" << std::endl;
-					if (_node->left && _node->left != _TNULL)
-					{
-						std::cout << "first if" << std::endl;
-						_node = maximum(_node);
-					}
-					else
-                    {
-						std::cout << "second if" << std::endl;
-                        _node = _node->parent;
-						std::cout << "okok" <<	std::endl;
-						if (_node == my_nullptr) {
-								_node = _TNULL;
-								return;
-							}
-						while (_node && _node != _TNULL && _node->left &&  _node->left == _node)
-						{
-							std::cout << "oui" << std::endl;
-							_node = _node->parent;
-							std::cout << "non" << std::endl;
-							if (_node == my_nullptr) {
-								_node = _TNULL;
-								return;
-							}
-							std::cout << "after" << std::endl;
-						}
-							
-					}
+					std::cout << "x->data.first = " << x->data.first << std::endl;
+					_node =  maximum(x);
+					std::cout << "node->data.first = " << _node->data.first << std::endl;
+                    return ;
 				}
-				// else
-                //     _node = _TNULL;
-
+				nodePtr y = x->parent;
+				while (y != my_nullptr && x == y->left)
+				{
+					x = y;
+					y = y->parent;
+				}
+				std::cout << "here : x->data.first = " << x->left->data.first << std::endl;
+				if (y == my_nullptr) {
+					_node = _TNULL;
+					// _node->left = x->left;
+					// _node->right = x->right;
+					return;
+				}
+				_node  = y;
 			}
 
 			// void	_decrement()
