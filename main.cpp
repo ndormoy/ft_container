@@ -44,9 +44,9 @@ int main()
 
 	map.insert(ft::pair<int, bool>(4, true));
 	map.print_map();
-	// std::cout << "END 1st insert ----------------" << std::endl;
-	// map.insert(ft::pair<int, bool>(1, true));
-	// map.print_map();
+	std::cout << "END 1st insert ----------------" << std::endl;
+	map.insert(ft::pair<int, bool>(1, true));
+	map.print_map();
 	std::cout << "END 2st insert----------------" << std::endl;
 	map.insert(ft::pair<int, bool>(3, true));
 	map.print_map();
@@ -67,12 +67,14 @@ int main()
 	std::cout << it_beg->first << std::endl;
 	it_beg++;
 	std::cout << it_beg->first << std::endl;
-	it_beg++;
-	std::cout << it_beg->first << std::endl;
+	// it_beg++;
+	// std::cout << it_beg->first << std::endl;
 
 
 	std::cout << "-------END-------" << std::endl;
 	ft::map<int,bool>::iterator it = map.end();
+	std::cout << it->first << std::endl;
+	it--;
 	std::cout << it->first << std::endl;
 	it--;
 	std::cout << it->first << std::endl;
