@@ -159,6 +159,13 @@ namespace	ft
 				return x;
 			}
 
+			nodePtr maximum(nodePtr x)
+			{
+				while (x->right != _TNULL) 
+					x = x->right;
+				return (x);
+			}
+
 			void _increment () {
 				nodePtr x = _node;
 				if (x->right != _TNULL) {
@@ -179,25 +186,40 @@ namespace	ft
 
 			void	_decrement()
 			{
+				// std::cout << "decrement" << std::endl;
 				if (_node)
 				{
-					if (_node->left!= _TNULL)
+					// std::cout << "decrement 2" << std::endl;
+					if (_node->left && _node->left != _TNULL)
 					{
 						std::cout << "first if" << std::endl;
-						_node = _node->left;
-						while (_node && _node != _TNULL && _node->right != _TNULL)
-							_node = _node->right;
+						_node = maximum(_node);
 					}
 					else
                     {
 						std::cout << "second if" << std::endl;
                         _node = _node->parent;
-						while (_node && _node != _TNULL && _node->left == _node)
+						std::cout << "okok" <<	std::endl;
+						if (_node == my_nullptr) {
+								_node = _TNULL;
+								return;
+							}
+						while (_node && _node != _TNULL && _node->left &&  _node->left == _node)
+						{
+							std::cout << "oui" << std::endl;
 							_node = _node->parent;
+							std::cout << "non" << std::endl;
+							if (_node == my_nullptr) {
+								_node = _TNULL;
+								return;
+							}
+							std::cout << "after" << std::endl;
+						}
+							
 					}
 				}
-				else
-                    _node = _TNULL;
+				// else
+                //     _node = _TNULL;
 
 			}
 

@@ -72,8 +72,8 @@ int main()
 	std::cout << "-------END-------" << std::endl;
 	ft::map<int,bool>::iterator it = map.end();
 	std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
 	// it--;
 	// std::cout << it->first << std::endl;
 	// it--;

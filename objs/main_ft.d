@@ -1,4 +1,6 @@
-objs/main_ft.o: main.cpp includes/vector.hpp \
+objs/main_ft.o: \
+  /usr/lib/llvm-12/lib/clang/12.0.0/share/asan_blacklist.txt main.cpp \
+  includes/vector.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/memory \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/x86_64-linux-gnu/c++/10/bits/c++config.h \
