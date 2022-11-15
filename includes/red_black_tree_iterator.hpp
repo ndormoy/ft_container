@@ -161,20 +161,6 @@ namespace	ft
 				_node = y;
 			}
 
-			nodePtr predecessor(nodePtr x)
-			{
-				if (x->left != _TNULL)
-					return maximum(x->left);
-	
-				nodePtr y = x->parent;
-				while (y != my_nullptr && x == y->left)
-				{
-					x = y;
-					y = y->parent;
-				}
-				return y;
-			}
-
 			//TODO Attention quand on a 3 ou 1 ou 0 element
 			void	_decrement()
 			{
