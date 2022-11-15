@@ -37,7 +37,7 @@ int main()
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
 
-	TESTED_NAMESPACE::map<int, bool>::const_iterator	it = map.begin();
+	// TESTED_NAMESPACE::map<int, bool>::const_iterator	it = map.begin();
 
 
 	// map.print_map();
@@ -48,36 +48,36 @@ int main()
 	// for (TESTED_NAMESPACE::map<int, bool>::iterator it = map.end(); it != map.begin(); --it)
 	// 	std::cout << it->first << std::endl;
 
-	// std::cout <<"--------BEGIN-----" << std::endl;
-	// TESTED_NAMESPACE::map<int, bool>::iterator it_beg = map.begin();
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
+	std::cout <<"--------BEGIN-----" << std::endl;
+	TESTED_NAMESPACE::map<int, bool>::iterator it_beg = map.begin();
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
 
 
-	// std::cout << "-------END-------" << std::endl;
-	// TESTED_NAMESPACE::map<int,bool>::iterator it = map.end();
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
+	std::cout << "-------END-------" << std::endl;
+	TESTED_NAMESPACE::map<int,bool>::iterator it = map.end();
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
 
 
 	// std::cout << "-------RBEGIN-------" << std::endl;

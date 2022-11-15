@@ -57,25 +57,45 @@ namespace	ft
 					}
 			};
 
+			/*
+			----------------------------------------------------------------------------------------------------------------
+			                                                TYPEDEFS
+			----------------------------------------------------------------------------------------------------------------
+			*/
+
+			/*
+				From allocator_type 
+			*/
+
 			typedef typename allocator_type::reference							reference; // The type of the reference
 			typedef typename allocator_type::const_reference					const_reference; // The type of the const reference
 			typedef typename allocator_type::pointer							pointer;
 			typedef typename allocator_type::const_pointer						const_pointer;
+
+			/*
+				Related to the red black tree
+			*/
+
 			typedef RedBlackTree<value_type, Compare, Alloc>					tree_type;
 			typedef typename tree_type::difference_type							difference_type;
 			typedef typename tree_type::size_type								size_type;
-			
 			typedef typename tree_type::NodePtr 								TNULL_type;
 			typedef typename tree_type::NodePtr 								NodePtr;
+
+			/*
+				For iterators and reverse iterators
+			*/
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
 			typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
 			typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 			typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
-			
-
-			// create typename to have first in map class
+			/*
+			----------------------------------------------------------------------------------------------------------------
+			                                                CONSTRUCTORS
+			----------------------------------------------------------------------------------------------------------------
+			*/
 
 			// empty container constructor (default constructor) --> construct an empty container with no elements.
 			explicit map (const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
@@ -84,8 +104,6 @@ namespace	ft
 				_TNULL = _root.getTNULL();
 				// std::cout << "default constructor Map" << std::endl;
 			}
-
-
 
 			// // range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
 			// template <class InputIterator>
@@ -114,15 +132,11 @@ namespace	ft
 					_root.clear();
 			}
 
-
-		private:
-
-
-			size_type		_size;
-			tree_type		_root;
-			key_compare		_comp;
-			allocator_type	_allocator;
-			TNULL_type		_TNULL;
+			/*
+			----------------------------------------------------------------------------------------------------------------
+			                                                PUBLIC MEMBER FUNCTIONS
+			----------------------------------------------------------------------------------------------------------------
+			*/
 
 		public:
 
@@ -355,6 +369,7 @@ namespace	ft
 			}
 
 
+			//TODO TO DEL
 			void	print_map()
 			{
 				_root.printTree();
@@ -421,7 +436,21 @@ namespace	ft
 				return (const_reverse_iterator(begin()));
 			}
 
+		private:
+
+			size_type		_size;
+			tree_type		_root;
+			key_compare		_comp;
+			allocator_type	_allocator;
+			TNULL_type		_TNULL;
+
 	};
+
+	/*
+	----------------------------------------------------------------------------------------------------------------
+													RELATIONAL NON MEMBER OPERATORS 
+	----------------------------------------------------------------------------------------------------------------
+	*/
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator== (const map<Key,T,Compare,Alloc>& lhs, const map<Key,T,Compare,Alloc>& rhs)
