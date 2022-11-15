@@ -29,16 +29,16 @@
 
 int main()
 {
-	TESTED_NAMESPACE::map<int, bool>	map;
+	ft::map<int, bool>	map;
 
 
 
-	map.insert(TESTED_NAMESPACE::pair<int, bool>(2, true));
+	map.insert(ft::pair<int, bool>(2, true));
 	// map.insert(TESTED_NAMESPACE::pair<int, bool>(1, true));
 	// map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
 	// map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
 
-	TESTED_NAMESPACE::map<int, bool>::const_iterator	it = map.begin();
+	ft::map<int, bool>::const_iterator	it = map.begin();
 	std::cout << it->first << std::endl;
 
 
