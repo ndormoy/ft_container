@@ -112,13 +112,11 @@ namespace	ft
 
 			reference	operator*() const
 			{
-				// std::cout << "operator*" << std::endl;
 				return (this->_node->data);
 			}
 
 			VT	*operator->() const
 			{
-				// std::cout << "operator->" << std::endl;
 				return (&(this->_node->data));
 			}
 
