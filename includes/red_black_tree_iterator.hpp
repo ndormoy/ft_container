@@ -17,19 +17,19 @@ namespace	ft
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT>::difference_type		difference_type;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT>::iterator_category	iterator_category;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT >::pointer				pointer;
-	
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT>::reference			reference;
 			typedef typename ft::iterator<ft::bidirectional_iterator_tag, VT>::iterator_type		value_type;
-			// typedef typename node::value_type														value_type;
 			typedef RedBlackTreeIterator<VT, node>													self;
-
-			typedef node																			*nodePtr;
-
-		private:
-
-
+			typedef node																			*NodePtr;
 
 		public:
+
+			/*
+			---------------------------------------------------------------------------------------------------------------
+															CONSTRUCTOR AND DESTRUCTOR RBT ITERATOR
+			---------------------------------------------------------------------------------------------------------------
+			*/
+
 			RedBlackTreeIterator()
 			: _node(), _TNULL()
 			{
@@ -37,21 +37,21 @@ namespace	ft
 			}
 
 			// RedBlackTreeIterator(node_ptr_type &my_node)
-			RedBlackTreeIterator(nodePtr &my_node)
+			RedBlackTreeIterator(NodePtr &my_node)
 			: _node(my_node)/* , _TNULL() */
             {
 				// std::cout << "RBT iterator constructor 0" << std::endl;
 			}
 
 			// RedBlackTreeIterator(const node_ptr_type &my_node)
-			RedBlackTreeIterator(const nodePtr &my_node)
+			RedBlackTreeIterator(const NodePtr &my_node)
 			: _node(my_node)/* , _TNULL() */
             {
 				// std::cout << "RBT iterator constructor 0" << std::endl;
 			}
 
 			// RedBlackTreeIterator(const node_ptr_type &my_node, const node_ptr_type &my_TNULL)
-			RedBlackTreeIterator(const nodePtr &my_node, const nodePtr &my_TNULL, const nodePtr &my_root)
+			RedBlackTreeIterator(const NodePtr &my_node, const NodePtr &my_TNULL, const NodePtr &my_root)
 				: _root(my_root), _node(my_node), _TNULL(my_TNULL)
 			{
 				// std::cout << "RBT iterator constructor 1" << std::endl;
@@ -67,6 +67,12 @@ namespace	ft
 			{
 				// std::cout << "RBT iterator destructor" << std::endl;
 			}
+
+			/*
+			---------------------------------------------------------------------------------------------------------------
+															RELATIONAL OPERATORS RBT ITERATOR
+			---------------------------------------------------------------------------------------------------------------
+			*/
 
 			self &operator++()
 			{
@@ -120,23 +126,28 @@ namespace	ft
 				return (&(this->_node->data));
 			}
 
+		/*
+		---------------------------------------------------------------------------------------------------------------
+														PRIVATE FUNCTIONS --> Utils
+		---------------------------------------------------------------------------------------------------------------
+		*/
+
 		private:
 
-			nodePtr minimum(nodePtr x) {
+			NodePtr minimum(NodePtr x) {
 				while (x->left != _TNULL) {
 					x = x->left;
 				}
 				return x;
 			}
 
-			nodePtr maximum(nodePtr x)
+			NodePtr maximum(NodePtr x)
 			{
 				while (x->right != _TNULL) 
 					x = x->right;
 				return (x);
 			}
 
-			//TODO Attention quand on a un 0 element
 			void _increment ()
 			{
 				if (_node == _TNULL)
@@ -144,12 +155,12 @@ namespace	ft
 					_node = maximum(_root);
 					return ;
 				}
-				nodePtr x = _node;
+				NodePtr x = _node;
 				if (x->right != _TNULL) {
 					_node = minimum(x->right);
 					return ;
 				}
-				nodePtr y = x->parent;
+				NodePtr y = x->parent;
 				while (y != my_nullptr && x == y->right) {
 					x = y;
 					y = y->parent;
@@ -161,16 +172,15 @@ namespace	ft
 				_node = y;
 			}
 
-			//TODO Attention quand on a 3 ou 1 ou 0 element
 			void	_decrement()
 			{
-				nodePtr x = _node;
+				NodePtr x = _node;
 				if (_node == _TNULL)
 				{
 					_node =  maximum(_root);
                     return ;
 				}
-				nodePtr y = x->parent;
+				NodePtr y = x->parent;
 				while (y != my_nullptr && x == y->left)
 				{
 					x = y;
@@ -188,11 +198,17 @@ namespace	ft
 				_node = y;
 			}
 
+		/*
+		---------------------------------------------------------------------------------------------------------------
+														PRIVATE VARIABLES
+		---------------------------------------------------------------------------------------------------------------
+		*/
+
 		private:
 
-			nodePtr	_root;
-			nodePtr	_node;
-			nodePtr	_TNULL;
+			NodePtr	_root;
+			NodePtr	_node;
+			NodePtr	_TNULL;
 
 	};
 };

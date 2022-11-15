@@ -57,7 +57,6 @@ namespace	ft
 					}
 			};
 
-
 			typedef typename allocator_type::reference							reference; // The type of the reference
 			typedef typename allocator_type::const_reference					const_reference; // The type of the const reference
 			typedef typename allocator_type::pointer							pointer;

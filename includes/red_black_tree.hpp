@@ -377,14 +377,9 @@ namespace	ft
 			// For balancing the tree after insertion
 			void insertFix(NodePtr k)
 			{
-				std::cout << "Insert fix" << std::endl;
-				// std::cout << "InsertFix" << std::endl;
 				NodePtr u;
 				while (k->parent->color == RED) // case 3 : P is RED
 				{
-					// std::cout << "\n" << "Insert fix --> correcting" << std::endl;
-					// printTree();
-					// std::cout << "<--------------------->" << std::endl;
 					if (k->parent == k->parent->parent->right) // P is right child of G
 					{
 						u = k->parent->parent->left;
@@ -433,16 +428,8 @@ namespace	ft
 						}
 					}
 					if (k == root) // if k == root we stop de loop because the tree is balanced
-					{
-						std::cout << "After the correction" << std::endl;
-						printTree();
-						std::cout << "<--------------------->" << std::endl;
 						break;
-					}
 				}
-				std::cout << "END of the correction" << std::endl;
-				printTree();
-				std::cout << "<--------------------->" << "\n" << std::endl;
 				// rule 1 : the root is always black
 				root->color = BLACK;
 			}

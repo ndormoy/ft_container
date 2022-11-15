@@ -33,9 +33,14 @@ int main()
 
 
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(2, true));
-	// map.insert(TESTED_NAMESPACE::pair<int, bool>(1, true));
-	// map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
-	// map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(1, true));
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
+
+	TESTED_NAMESPACE::map<int, bool>::const_iterator	it = map.begin();
+
+
+	// map.print_map();
 
 	// for (TESTED_NAMESPACE::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
 	// 	std::cout << it->first << std::endl;
