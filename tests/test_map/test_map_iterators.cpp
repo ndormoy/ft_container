@@ -90,27 +90,3 @@ int main()
 	std::cout << "rit_end--" << std::endl;
 	rit_end--;
 	std::cout << "rit_end->first: " << rit_end->first << std::endl;
-
-	
-	for (; rit != map.rbegin(); rit--)
-	{
-		std::cout << rit->first << std::endl;
-	}
-	rit++;
-	std::cout << rit->first << std::endl;
-
-	// // ft::map<int, bool>::iterator	it = map.find(3);
-	// // it--;
-	// // std::cout << it->first << std::endl;
-
-	// // std::cout << "it->first: " << it->first << std::endl;
-	// ft::map<int,bool>::reverse_iterator rit = map.rend();
-	// std::cout << "rit->first: " << rit->first << std::endl;
- 	//  for (rit = map.rbegin(); rit != map.rend(); ++rit)
-    // std::cout << rit->first << " => " << rit->second << '\n';
-
-	/**************************************************************/
-
-	
-}
-

@@ -65,8 +65,6 @@ namespace	ft
 			typedef RedBlackTree<value_type, Compare, Alloc>					tree_type;
 			typedef typename tree_type::difference_type							difference_type;
 			typedef typename tree_type::size_type								size_type;
-			// typedef typename tree_type::reverse_iterator		reverse_iterator;
-			// typedef typename tree_type::const_reverse_iterator	const_reverse_iterator;
 			
 			typedef typename tree_type::NodePtr 								TNULL_type;
 			typedef typename tree_type::NodePtr 								NodePtr;
@@ -339,7 +337,7 @@ namespace	ft
 				return (key_compare());
 			}
 
-			//eturns a comparison object that can be used to compare two elements to get whether the key of the first one goes before the second.
+			//returns a comparison object that can be used to compare two elements to get whether the key of the first one goes before the second.
 			value_compare value_comp() const
 			{
 				return (value_compare(_comp));

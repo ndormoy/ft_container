@@ -30,7 +30,6 @@ namespace	ft
 			typedef std::bidirectional_iterator_tag							iterator_category;
 			typedef typename allocator_type::reference						reference;
 			typedef typename allocator_type::const_reference				const_reference;
-
 			typedef typename value_type::first_type							key_type; // We take the first element of the pair
 
 			/*
@@ -586,82 +585,6 @@ namespace	ft
 				y->right = x;
 				x->parent = y;
 			}
-
-	
-			// pointer	insert(value_type key)
-			// {
-			// 	// NodePtr node = _allocator.allocate(1);
-			// 	NodePtr node = _allocator.allocate(sizeof(NodePtr));
-			// 	_allocator.construct(node, Node<value_type>(key, my_nullptr, TNULL, TNULL, RED));
-			// 	NodePtr x = this->root;
-
-			// 	if ( root == TNULL )
-			// 	{
-			// 		std::cout << "hey" << std::endl;
-			// 		root = node;
-			// 		// root = _allocator.allocate(sizeof(NodePtr));
-			// 		// _allocator.construct(root, Node<value_type>(key, TNULL, TNULL, TNULL, BLACK));
-			// 		// _allocator.construct(root, Node<value_type>(key, my_nullptr, TNULL, TNULL, BLACK));
-			// 		root->color = BLACK;
-			// 		root->parent = TNULL;
-			// 		return (root);
-			// 	}
-
-			// 	// _allocator.construct(node, Node<value_type>(key, my_nullptr, TNULL, TNULL, RED));
-			// 	// while (x != TNULL)
-			// 	// {
-			// 	// 	y = x;
-			// 	// 	if (node->data < x->data)
-			// 	// 		x = x->left;
-			// 	// 	else if (node->data > x->data)
-			// 	// 		x = x->right;
-			// 	// 	else
-			// 	// 		return NULL;
-			// 	// }
-			// 	while (x != TNULL)
-			// 	{
-			// 		if (key < x->data)
-			// 		{
-			// 			if (x->left == TNULL)
-			// 			{
-			// 				// x->left = node;
-			// 				// node->parent = x;
-			// 				break;
-			// 			}
-			// 			// y = x;
-			// 			x = x->left;
-			// 		}
-			// 		else if (key > x->data)
-			// 		{
-			// 			if (x->right == TNULL)
-			// 			{
-			// 				break;
-			// 			}
-			// 			x = x->right;
-			// 		}
-			// 		else
-			// 			return NULL;
-			// 	}
-
-			// 	node->parent = x;
-			// 	if (key < x->data)
-			// 		x->left = node;
-			// 	else
-			// 		x->right = node;
-			// 	if (node->parent == TNULL)
-			// 	{
-			// 		// node->parent = TNULL;
-			// 		// node->color = BLACK;
-			// 		node->color = RED;
-			// 		return (node);
-			// 	}
-			// 	if (node->parent->parent == TNULL)
-			// 		return (node);
-			// 	node->parent = x;
-			// 	insertFix(node);
-			// 	std::cout << "addr in insert (root parent): " << root->parent << std::endl;
-			// 	return (node);
-			// }
 
 			pointer	insert(value_type key)
 			{
