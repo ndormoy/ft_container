@@ -12,8 +12,7 @@
 
 namespace	ft
 {
-	// template<typename value_type, typename Compare, typename Alloc>
-	template<typename value_type, typename Compare, typename Alloc/* , typename Node = ft::Node<value_type> */ >
+	template<typename value_type, typename Compare, typename Alloc >
 	class	RedBlackTree
 	{
 
@@ -609,6 +608,11 @@ namespace	ft
 			}
 
 			NodePtr getRoot()
+			{
+				return (this->root);
+			}
+
+			NodePtr const_getRoot() const
 			{
 				return (this->root);
 			}

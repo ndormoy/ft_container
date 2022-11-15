@@ -18,6 +18,7 @@ namespace	ft
 			{
 
 			}
+
 			Node(const _value_type &val, Node *parent = my_nullptr, Node *left = my_nullptr, Node *right = my_nullptr, int color = RED)
 				: data(val), parent(parent), left(left), right(right), color(color)
 			{
