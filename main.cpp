@@ -31,21 +31,17 @@ int main()
 {
 	TESTED_NAMESPACE::map<int, bool>	map;
 
-	// // map.insert(ft::pair<int, bool>(1, true));
-	// // map.print_map();
-	// // std::cout << "END 1st insert ----------------" << std::endl;
-	// // map.insert(ft::pair<int, bool>(2, true));
-	// // map.print_map();
-	// // std::cout << "END 2st insert----------------" << std::endl;
-	// // map.insert(ft::pair<int, bool>(3, true));
-	// // map.print_map();
-	// // std::cout << "END 3st insert----------------" << std::endl;
-	// // map.insert(ft::pair<int, bool>(6, true));
 
-	map.insert(TESTED_NAMESPACE::pair<int, bool>(4, true));
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(2, true));
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(1, true));
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
+
+	// for (TESTED_NAMESPACE::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
+	// 	std::cout << it->first << std::endl;
+	// std::cout << "----------------" << std::endl;
+	// for (TESTED_NAMESPACE::map<int, bool>::iterator it = map.end(); it != map.begin(); --it)
+	// 	std::cout << it->first << std::endl;
 
 	std::cout <<"--------BEGIN-----" << std::endl;
 	TESTED_NAMESPACE::map<int, bool>::iterator it_beg = map.begin();
@@ -81,7 +77,7 @@ int main()
 
 	// std::cout << "-------RBEGIN-------" << std::endl;
 
-	// ft::map<int,bool>::reverse_iterator rit = map.rbegin();
+	// TESTED_NAMESPACE::map<int,bool>::reverse_iterator rit = map.rbegin();
 	// std::cout << "rit->first: " << rit->first << std::endl;
 	// std::cout << "rit++" << std::endl;
 	// rit++;
@@ -89,7 +85,7 @@ int main()
 
 	// std::cout << "-------REND--------" << std::endl;
 
-	// ft::map<int, bool>::reverse_iterator rit_end = map.rend();
+	// TESTED_NAMESPACE::map<int, bool>::reverse_iterator rit_end = map.rend();
 	// std::cout << "rit_end->first: " << rit_end->first << std::endl;
 	// std::cout << "rit_end--" << std::endl;
 	// rit_end--;

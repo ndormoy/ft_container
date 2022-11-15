@@ -136,12 +136,11 @@ namespace	ft
 				return (x);
 			}
 
-			void _increment () {
+			//TODO Attention quand on a un 0 element
+			void _increment ()
+			{
 				if (_node == _TNULL)
-				{
-					_node = minimum(_root);
 					return ;
-				}
 				nodePtr x = _node;
 				if (x->right != _TNULL) {
 					_node = minimum(x->right);
@@ -154,8 +153,6 @@ namespace	ft
 				}
 				if (y == my_nullptr) {
 					_node = _TNULL;
-					_node->left = x->left;
-					_node->right = x->right;
 					return;
 				}
 				_node = y;
@@ -164,7 +161,7 @@ namespace	ft
 			nodePtr predecessor(nodePtr x)
 			{
 				if (x->left != _TNULL)
-					return maximum(x);
+					return maximum(x->left);
 	
 				nodePtr y = x->parent;
 				while (y != my_nullptr && x == y->left)
@@ -175,13 +172,33 @@ namespace	ft
 				return y;
 			}
 
+		// 	nodePtr
+		// _successor (nodePtr x) {
+		// 	if (x->right != _TNULL)
+		// 		return minimum(x->right);
+		// 	nodePtr save = x->parent;
+		// 	for(;(save != _TNULL && x == save->right); x = save, save = save->parent);
+		// 	return (save); 
+		// }
 
+		// nodePtr
+		// _predecessor (nodePtr x) {
+		// 	if (x->left != _TNULL)
+		// 		return maximum(x->left);
+		// 	nodePtr save = x->parent;
+		// 	for(;(save != _TNULL && x == save->left); x = save, save = save->parent);
+		// 	return (save);
+		// }
+
+
+			//TODO Attention quand on a 3 ou 1 ou 0 element
 			void	_decrement()
 			{
 				nodePtr x = _node;
 				if (_node == _TNULL)
 				{
-					_node =  maximum(x);
+					std::cout << "max" << std::endl;
+					_node =  maximum(_root);
                     return ;
 				}
 				nodePtr y = x->parent;
@@ -191,16 +208,48 @@ namespace	ft
 					y = y->parent;
 				}
 				if (y == my_nullptr && _node != minimum(_root)) {
+					std::cout << "non" << std::endl;
 					_node = minimum(_root);
 					return;
 				}
 				else if (y == my_nullptr)
 				{
+					std::cout << "oui" << std::endl;
 					_node = _TNULL;
 					return ;
 				}
 				_node = y;
 			}
+
+
+			// void	_decrement()
+			// {
+			// 	nodePtr x = _node;
+			// 	if (_node == _TNULL)
+			// 	{
+			// 		_node =  maximum(_root);
+            //         return ;
+			// 	}
+			// 	nodePtr y = x->parent;
+			// 	while (y != my_nullptr && x == y->left)
+			// 	{
+			// 		// std::cout << "non" << std::endl;
+			// 		x = y;
+			// 		y = y->parent;
+			// 	}
+			// 	if (y == my_nullptr && _node != minimum(_root)) {
+			// 		// std::cout << "non" << std::endl;
+			// 		_node = minimum(_root);
+			// 		return;
+			// 	}
+			// 	else if (y == my_nullptr)
+			// 	{
+			// 		std::cout << "oui" << std::endl;
+			// 		_node = _TNULL;
+			// 		return ;
+			// 	}
+			// 	_node = y;
+			// }
 
 
 

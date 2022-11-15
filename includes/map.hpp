@@ -132,25 +132,28 @@ namespace	ft
 			//Returns an iterator referring to the first element in the map container.
 			iterator	begin()
 			{
-				return (iterator(_root.begin(), _TNULL, _root.begin()));
+				// return (iterator(_root.begin(), _TNULL, _root.begin()));
+				return (iterator(_root.begin(), _TNULL, _root.getRoot()));
 			}
 
 			//Returns a const iterator referring to the first element in the map container.
 			const_iterator	begin() const
 			{
-				return (const_iterator(_root.const_begin(), _TNULL, _root.const_begin()));
+				// return (const_iterator(_root.const_begin(), _TNULL, _root.const_begin()));
+				return (const_iterator(_root.const_begin(), _TNULL, _root.getRoot()));
 			}
 
 			iterator	end()
 			{
-				iterator it = iterator(_root.end(), _TNULL, _root.begin());
+				iterator it = iterator(_root.end(), _TNULL, _root.getRoot());
 				it++;
 				return (it);
 			}
 
 			const_iterator	end() const
 			{
-				const_iterator it = const_iterator(_root.const_end(), _TNULL, _root.const_begin());
+				// const_iterator it = const_iterator(_root.const_end(), _TNULL, _root.const_begin());
+				const_iterator it = const_iterator(_root.const_end(), _TNULL, _root.getRoot());
 				it++;
 				return (it);
 			}
@@ -176,7 +179,8 @@ namespace	ft
 					return (end());
 				else if (to_search == _root.getTNULL())
 					return (end());
-				return (iterator(to_search, _root.getTNULL(), _root.begin()));
+				// return (iterator(to_search, _root.getTNULL(), _root.begin()));
+				return (iterator(to_search, _root.getTNULL(), _root.getRoot()));
 			}
 
 			const_iterator find(const key_type& k) const
@@ -186,7 +190,8 @@ namespace	ft
 					return (end());
 				if (to_search == _root.getTNULL())
 					return (end());
-				return (const_iterator(to_search, _root.getTNULL(), _root.begin()));
+				// return (const_iterator(to_search, _root.getTNULL(), _root.begin()));
+				return (const_iterator(to_search, _root.getTNULL(), _root.getRoot()));
 			}
 
 			//Single element insertion
@@ -199,7 +204,8 @@ namespace	ft
 					ret = false; // already exist in the map
 				else
 					_size++;
-				return (ft::make_pair(iterator(_root.searchTree(val.first), _TNULL, _root.begin()), ret));
+				// return (ft::make_pair(iterator(_root.searchTree(val.first), _TNULL, _root.begin()), ret));
+				return (ft::make_pair(iterator(_root.searchTree(val.first), _TNULL, _root.getRoot()), ret));
 			}
 
 			// With hint insertion
