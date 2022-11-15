@@ -87,7 +87,8 @@ namespace	ft
 			*/
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
-			typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
+			// typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
+			typedef RedBlackTreeConstIterator<const value_type, Node<value_type> >	const_iterator;
 			typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 			typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
@@ -140,7 +141,7 @@ namespace	ft
 
 		public:
 
-			//Returns an iterator referring to the first element in the map container.
+			// //Returns an iterator referring to the first element in the map container.
 			// iterator	begin()
 			// {
 			// 	return (iterator(_root.begin(), _TNULL, _root.getRoot()));
