@@ -43,18 +43,9 @@ int main()
 	// // map.insert(ft::pair<int, bool>(6, true));
 
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(4, true));
-	// map.print_map();
-	std::cout << "END 1st insert ----------------" << std::endl;
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(1, true));
-	// map.print_map();
-	std::cout << "END 2st insert----------------" << std::endl;
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
-	// map.print_map();
-	std::cout << "END 3st insert----------------" << std::endl;
 	map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
-
-	// map.print_map();
-	// std::cout << "END 4st insert----------------" << std::endl;
 
 	std::cout <<"--------BEGIN-----" << std::endl;
 	TESTED_NAMESPACE::map<int, bool>::iterator it_beg = map.begin();
