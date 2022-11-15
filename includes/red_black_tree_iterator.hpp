@@ -140,7 +140,10 @@ namespace	ft
 			void _increment ()
 			{
 				if (_node == _TNULL)
+				{
+					_node = maximum(_root);
 					return ;
+				}
 				nodePtr x = _node;
 				if (x->right != _TNULL) {
 					_node = minimum(x->right);
