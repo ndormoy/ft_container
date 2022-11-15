@@ -124,49 +124,12 @@ namespace	ft
 
 		private:
 
-			// void _increment()
-			// {
-			// 	if (_node != _TNULL)
-			// 	{
-			// 		if (_node->right != _TNULL)
-			// 		{
-			// 			std::cout << "first if" << std::endl;
-			// 			_node = _node->right;
-			// 			while (_node->left != _TNULL)
-			// 				_node = _node->left;
-			// 		}
-			// 		else
-			// 		{
-			// 			std::cout << "second if" << std::endl;
-			// 			// node_ptr_type y = _node->parent;
-			// 			nodePtr y = _node->parent;
-			// 			while (y && y != _TNULL && _node == y->right)
-			// 			{
-			// 				_node = y;
-			// 				y = y->parent;
-			// 			}
-			// 			if (_node->right != y)
-			// 				_node = y;
-			// 			// _node = y;
-			// 			std::cout << "addr: " << _node << std::endl;
-			// 		}
-			// 	}
-			// }
 			nodePtr minimum(nodePtr x) {
 				while (x->left != _TNULL) {
 					x = x->left;
 				}
 				return x;
 			}
-
-			// nodePtr maximum(nodePtr x)
-			// {
-			// 	while (x->right != _TNULL) 
-			// 		x = x->right;
-			// 	// while (x->right != my_nullptr) 
-			// 	// x = x->right;
-			// 	return (x);
-			// }
 
 			nodePtr maximum(nodePtr x)
 			{
@@ -217,17 +180,10 @@ namespace	ft
 
 			void	_decrement()
 			{
-				// if (_node == nullptr)
-				// {
-				// 	_node = _TNULL;
-				// 	return ;
-				// }
 				nodePtr x = _node;
 				if (_node == _TNULL)
 				{
-					std::cout << "x->data.first = " << x->data.first << std::endl;
 					_node =  maximum(x);
-					std::cout << "node->data.first = " << _node->data.first << std::endl;
                     return ;
 				}
 				nodePtr y = x->parent;
@@ -236,15 +192,8 @@ namespace	ft
 					x = y;
 					y = y->parent;
 				}
-				std::cout << "here : x->data.first = " << x->left->data.first << std::endl;
-				std::cout << "_node->data.first = " << _node->data.first << std::endl;
-				std::cout << "minimum(_root)->data.first = " << minimum(_root)->data.first << std::endl;
 				if (y == my_nullptr && _node != minimum(_root)) {
-					std::cout << "yep" << std::endl;
 					_node = minimum(_root);
-					// _node = _TNULL;
-					// _node->left = x->left;
-					// _node->right = x->right;
 					return;
 				}
 				else if (y == my_nullptr)
@@ -255,95 +204,9 @@ namespace	ft
 				_node = y;
 			}
 
-			// void	_decrement()
-			// {
-			// 	if (_node == nullptr)
-			// 	{
-			// 		_node = _TNULL;
-			// 		return ;
-			// 	}
-			// 	nodePtr x = _node;
-			// 	if (_node == _TNULL)
-			// 	{
-			// 		std::cout << "x->data.first = " << x->data.first << std::endl;
-			// 		_node =  maximum(x);
-			// 		std::cout << "node->data.first = " << _node->data.first << std::endl;
-            //         return ;
-			// 	}
-			// 	nodePtr y = x->parent;
-			// 	while (y != my_nullptr && x == y->left)
-			// 	{
-			// 		x = y;
-			// 		y = y->parent;
-			// 	}
-			// 	std::cout << "here : x->data.first = " << x->left->data.first << std::endl;
-			// 	if (y == my_nullptr{
-			// 		std::cout << "yep" << std::endl;
-			// 		_node = minimum(_root);
-			// 		// _node = _TNULL;
-			// 		// _node->left = x->left;
-			// 		// _node->right = x->right;
-			// 		return;
-			// 	}
-			// 	_node  = y;
-			// }
-
-			// void	_decrement()
-			// {
-			// 	nodePtr x = _node;
-			// 	if (_node == _TNULL)
-			// 	{
-			// 		std::cout << "x->data.first = " << x->data.first << std::endl;
-			// 		_node =  maximum(x);
-			// 		std::cout << "node->data.first = " << _node->data.first << std::endl;
-            //         return ;
-			// 	}
-			// 	nodePtr y = x->parent;
-			// 	while (y != my_nullptr && x == y->left)
-			// 	{
-			// 		x = y;
-			// 		y = y->parent;
-			// 	}
-			// 	std::cout << "here : x->data.first = " << x->left->data.first << std::endl;
-			// 	if (y == my_nullptr) {
-			// 		_node = _TNULL;
-			// 		// _node->left = x->left;
-			// 		// _node->right = x->right;
-			// 		return;
-			// 	}
-			// 	_node  = y;
-			// }
-
-			// void	_decrement()
-			// {
-			// 	if (_node)
-			// 	{
-			// 		if (_node->left!= _TNULL)
-			// 		{
-			// 			std::cout << "first if" << std::endl;
-			// 			_node = _node->left;
-			// 			while (_node && _node != _TNULL && _node->right != _TNULL)
-			// 				_node = _node->right;
-			// 		}
-			// 		else
-            //         {
-			// 			std::cout << "second if" << std::endl;
-            //             _node = _node->parent;
-			// 			while (_node && _node != _TNULL && _node->left == _node)
-			// 				_node = _node->parent;
-			// 		}
-			// 	}
-			// 	else
-            //         _node = _TNULL;
-
-			// }
 
 
 		private:
-
-
-			// pointer	_node;
-			// pointer	_TNULL;
 
 			nodePtr	_root;
 			nodePtr	_node;
