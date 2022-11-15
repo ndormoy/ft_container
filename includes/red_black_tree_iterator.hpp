@@ -177,10 +177,11 @@ namespace	ft
 
 			void _increment () {
 				if (_node == _TNULL)
+				{
+					_node = minimum(_root);
 					return ;
+				}
 				nodePtr x = _node;
-				// std::cout << "x->right = " << x->right << std::endl;
-				// std::cout << "x->left = " << x->left << std::endl;
 				if (x->right != _TNULL) {
 					_node = minimum(x->right);
 					return ;
@@ -191,10 +192,6 @@ namespace	ft
 					y = y->parent;
 				}
 				if (y == my_nullptr) {
-					// std::cout << "--------" << std::endl;
-					// std::cout << "x->right = " << x->right->data.first << std::endl;
-					// std::cout << "x->left = " << x->left->data.first << std::endl;
-					// std::cout << "--------" << std::endl;
 					_node = _TNULL;
 					_node->left = x->left;
 					_node->right = x->right;
@@ -217,19 +214,6 @@ namespace	ft
 				return y;
 			}
 
-			// void	_decrement()
-			// {
-			// 	if (_node == _TNULL)
-			// 	{
-			// 		std::cout << "ici" << std::endl;
-			// 		_node = maximum(_node);
-			// 	}
-			// 	else
-			// 	{
-			// 		std::cout << "la" << std::endl;
-            //         _node = predecessor(_node);
-            //     }
-			// }
 
 			void	_decrement()
 			{
