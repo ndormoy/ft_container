@@ -197,7 +197,7 @@ namespace	ft
 				nodePtr x = _node;
 				if (_node == _TNULL)
 				{
-					std::cout << "max" << std::endl;
+					// std::cout << "max" << std::endl;
 					_node =  maximum(_root);
                     return ;
 				}
@@ -208,13 +208,13 @@ namespace	ft
 					y = y->parent;
 				}
 				if (y == my_nullptr && _node != minimum(_root)) {
-					std::cout << "non" << std::endl;
+					// std::cout << "non" << std::endl;
 					_node = minimum(_root);
 					return;
 				}
 				else if (y == my_nullptr)
 				{
-					std::cout << "oui" << std::endl;
+					// std::cout << "oui" << std::endl;
 					_node = _TNULL;
 					return ;
 				}
