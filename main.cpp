@@ -26,24 +26,32 @@
 
 int main()
 {
-	TESTED_NAMESPACE::map<char, int>	foo, bar;
+	std::cout << "Default constructor" << std::endl;
 
-	foo.insert(TESTED_NAMESPACE::pair<char, int>('x', 100));
-	foo.insert(TESTED_NAMESPACE::pair<char, int>('y', 200));
+	TESTED_NAMESPACE::map<int, int>	map; // Default constructor
 
-	bar.insert(TESTED_NAMESPACE::pair<char, int>('a', 11));
-	bar.insert(TESTED_NAMESPACE::pair<char, int>('b', 22));
-	bar.insert(TESTED_NAMESPACE::pair<char, int>('c', 33));
+	map.insert(TESTED_NAMESPACE::pair<int, int>(20, 20));
+	map.insert(TESTED_NAMESPACE::pair<int, int>(30, 30));
+	map.insert(TESTED_NAMESPACE::pair<int, int>(40, 40));
+	map.insert(TESTED_NAMESPACE::pair<int, int>(50, 50));
+	map.insert(TESTED_NAMESPACE::pair<int, int>(60, 60));
 
-	foo.swap(bar);
+	for (TESTED_NAMESPACE::map<int, int>::iterator it = map.begin(); it != map.end(); ++it)
+		std::cout << it->first << " " << it->second << std::endl;
 
-	std::cout << "foo contains:\n";
-	for (TESTED_NAMESPACE::map<char, int>::iterator it = foo.begin(); it != foo.end(); ++it)
-		std::cout << it->first << " => " << it->second << '\n';
+	std::cout << "Range constructor" << std::endl;
 
-	std::cout << "bar contains:\n";
-	for (TESTED_NAMESPACE::map<char, int>::iterator it = bar.begin(); it != bar.end(); ++it)
-		std::cout << it->first << " => " << it->second << '\n';
+	TESTED_NAMESPACE::map<int, int>	map_range(map.begin(), map.end()); // Range constructor
+
+	for (TESTED_NAMESPACE::map<int, int>::iterator it = map_range.begin(); it != map_range.end(); ++it)
+		std::cout << it->first << " " << it->second << std::endl;
+
+	// std::cout << "Copy constructor" << std::endl;
+
+	// TESTED_NAMESPACE::map<int, int>	map_copy(map_range); // Copy constructor
+
+	// for (TESTED_NAMESPACE::map<int, int>::iterator it = map_copy.begin(); it != map_copy.end(); ++it)
+	// 	std::cout << it->first << " " << it->second << std::endl;
 
 	return 0;
 }

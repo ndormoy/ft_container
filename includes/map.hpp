@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:05:14 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:57:34 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,24 +126,25 @@ namespace	ft
 				// std::cout << "default constructor Map" << std::endl;
 			}
 
-			// // range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
-			// template <class InputIterator>
-			// map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
-			// 	_size(0), _root(), _comp(comp), _allocator(alloc)
-			// {
-			// 	// std::cout << "range constructor Map" << std::endl;
-			// 	_TNULL = _root.getTNULL();
-			// 	difference_type	nb = ft::distance(first, last);
-			// 	_size = nb;
-			// 	insert (first, last, comp, alloc);
-			// }
-			// copy constructor --> Constructs a container with a copy of each of the elements in x.
+			// range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
+			template <class InputIterator>
+			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
+				_size(0), _root(), _comp(comp), _allocator(alloc)
+			{
+				// std::cout << "range constructor Map" << std::endl;
+				_TNULL = _root.getTNULL();
+				difference_type	nb = ft::distance(first, last);
+				_size = nb;
+				insert (first, last);
+			}
+			
+			// // copy constructor --> Constructs a container with a copy of each of the elements in x.
 			// map (const map& x) :
 			// _size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
 			// {
 			// 	_TNULL = _root.getTNULL();
 			// 	// std::cout << "copy constructor Map" << std::endl;
-			// 	insert (x.begin(), x.end(), x._comp, x._allocator);
+			// 	insert (x.begin(), x.end());
 			// }
 
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
