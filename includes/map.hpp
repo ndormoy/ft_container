@@ -28,6 +28,12 @@ namespace	ft
 	{
 		public:
 
+			/*
+			----------------------------------------------------------------------------------------------------------------
+			                                                TYPEDEFS FROM TEMPLATE
+			----------------------------------------------------------------------------------------------------------------
+			*/
+
 			typedef map											self;
 			typedef Key											key_type; // the key of the map
 			typedef T											mapped_type; // The type of the mapped value
@@ -88,7 +94,6 @@ namespace	ft
 
 			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
 			typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
-			// typedef RedBlackTreeConstIterator<const value_type, Node<value_type> >	const_iterator;
 			typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 			typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
@@ -135,7 +140,6 @@ namespace	ft
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
-			                              
 										                    PUBLIC MEMBER FUNCTIONS
 			----------------------------------------------------------------------------------------------------------------
 			*/
@@ -364,6 +368,26 @@ namespace	ft
 				return (ft::make_pair(lower_bound(k), upper_bound(k)));
 			}
 
+			// Swap content
+			// Exchanges the content of the container by the content of x, which is another map of the same type. Sizes may differ.
+			void swap(map<Key, T, Compare, Alloc>& x)
+			{
+				size_type		tmp_size = _size;
+				tree_type		tmp_root = _root;
+				key_compare		tmp_comp = _comp;
+				allocator_type	tmp_allocator = _allocator;
+				TNULL_type		tmp_TNULL = _TNULL;
+				_size = x._size;
+				_root = x._root;
+				_comp = x._comp;
+				_allocator = x._allocator;
+				_TNULL = x._TNULL;
+				x._size = tmp_size;
+				x._root = tmp_root;
+				x._comp = tmp_comp;
+				x._allocator = tmp_allocator;
+				x._TNULL = tmp_TNULL;
+			}
 
 			//TODO TO DEL
 			void	print_map()
