@@ -25,96 +25,77 @@
 #include <map>
 
 
-
-
 int main()
 {
-	ft::map<int, bool>	map;
+	TESTED_NAMESPACE::map<int, bool>	map;
 
 
 
-	map.insert(ft::pair<int, bool>(2, true));
-	// map.insert(TESTED_NAMESPACE::pair<int, bool>(1, true));
-	// map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
-	// map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
-
-	ft::map<int, bool>::const_iterator	it = map.begin();
-	std::cout << it->first << std::endl;
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(2, true));
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(1, true));
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
+	map.insert(TESTED_NAMESPACE::pair<int, bool>(6, true));
 
 
 	// map.print_map();
 
-	// for (TESTED_NAMESPACE::map<int, bool>::iterator it = map.begin(); it != map.end(); ++it)
-	// 	std::cout << it->first << std::endl;
-	// std::cout << "----------------" << std::endl;
-	// for (TESTED_NAMESPACE::map<int, bool>::iterator it = map.end(); it != map.begin(); --it)
-	// 	std::cout << it->first << std::endl;
-
-	// std::cout <<"--------BEGIN-----" << std::endl;
-	// TESTED_NAMESPACE::map<int, bool>::iterator it_beg = map.begin();
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
-	// it_beg++;
-	// std::cout << it_beg->first << std::endl;
+	std::cout <<"--------BEGIN-----" << std::endl;
+	TESTED_NAMESPACE::map<int, bool>::iterator it_beg = map.begin();
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
+	it_beg++;
+	std::cout << it_beg->first << std::endl;
 
 
-	// std::cout << "-------END-------" << std::endl;
-	// TESTED_NAMESPACE::map<int,bool>::iterator it = map.end();
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
-	// it--;
-	// std::cout << it->first << std::endl;
+	std::cout << "-------END-------" << std::endl;
+	TESTED_NAMESPACE::map<int,bool>::iterator it = map.end();
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
+	it--;
+	std::cout << it->first << std::endl;
 
 
-	// std::cout << "-------RBEGIN-------" << std::endl;
+	std::cout << "-------RBEGIN-------" << std::endl;
 
-	// TESTED_NAMESPACE::map<int,bool>::reverse_iterator rit = map.rbegin();
-	// std::cout << "rit->first: " << rit->first << std::endl;
-	// std::cout << "rit++" << std::endl;
-	// rit++;
-	// std::cout << "rit->first: " << rit->first << std::endl;
+	TESTED_NAMESPACE::map<int,bool>::reverse_iterator rit = map.rbegin();
+	std::cout << "rit->first: " << rit->first << std::endl;
+	std::cout << "rit++" << std::endl;
+	rit++;
+	std::cout << "rit->first: " << rit->first << std::endl;
 
-	// std::cout << "-------REND--------" << std::endl;
+	std::cout << "-------REND--------" << std::endl;
 
-	// TESTED_NAMESPACE::map<int, bool>::reverse_iterator rit_end = map.rend();
-	// std::cout << "rit_end->first: " << rit_end->first << std::endl;
-	// std::cout << "rit_end--" << std::endl;
-	// rit_end--;
-	// std::cout << "rit_end->first: " << rit_end->first << std::endl;
+	TESTED_NAMESPACE::map<int, bool>::reverse_iterator rit_end = map.rend();
+	std::cout << "rit_end->first: " << rit_end->first << std::endl;
+	std::cout << "rit_end--" << std::endl;
+	rit_end--;
+	std::cout << "rit_end->first: " << rit_end->first << std::endl;
 
 	
-	// for (; rit != map.rbegin(); rit--)
-	// {
-	// 	std::cout << rit->first << std::endl;
-	// }
-	// rit++;
-	// std::cout << rit->first << std::endl;
+	for (; rit != map.rbegin(); rit--)
+	{
+		std::cout << rit->first << std::endl;
+	}
+	rit++;
+	std::cout << rit->first << std::endl;
 
-	// // ft::map<int, bool>::iterator	it = map.find(3);
-	// // it--;
-	// // std::cout << it->first << std::endl;
 
-	// // std::cout << "it->first: " << it->first << std::endl;
-	// ft::map<int,bool>::reverse_iterator rit = map.rend();
-	// std::cout << "rit->first: " << rit->first << std::endl;
- 	//  for (rit = map.rbegin(); rit != map.rend(); ++rit)
-    // std::cout << rit->first << " => " << rit->second << '\n';
 
 	/**************************************************************/
 
