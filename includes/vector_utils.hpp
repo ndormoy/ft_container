@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:06:21 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:34:12 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #define VECTOR_UTILS_HPP
 
 #include "vector.hpp"
+
+/*
+Comparing sequentially the elements that have the same position in both ranges against each other until one element is not equivalent to the other.
+The result of comparing these first non-matching elements is the result of the lexicographical comparison.
+The elements are compared using operator< f.
+This function is generally used to compare vectors of the same type.
+*/
 
 namespace ft
 {

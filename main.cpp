@@ -24,7 +24,6 @@
 #include <algorithm>
 #include <map>
 
-
 int main()
 {
 	TESTED_NAMESPACE::map<char, int>	foo, bar;

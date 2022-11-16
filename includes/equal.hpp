@@ -6,12 +6,19 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:44 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:05:46 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:35:54 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EQUAL_HPP
 #define EQUAL_HPP
+
+/*
+Test whether the elements in two ranges are equal
+Compares the elements in the range [first1,last1) with those in the range beginning at first2,
+and returns true if all of the elements in both ranges match.
+The elements are compared using operator==
+*/
 
 namespace	ft
 {
