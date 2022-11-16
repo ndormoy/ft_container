@@ -19,7 +19,7 @@ insert				[X]        [ ]
 insert hint			[X]        [ ] --> check if size of map is ok
 insert range		[X]        [ ]
 erase				[X]        [ ] --> check if size of map is ok
-swap				[ ]        [ ]
+swap				[X]        [ ]
 clear				[X]        [ ]
 key_comp			[X]        [ ]
 value_comp			[X]        [ ] --> need to test_map_value_comp

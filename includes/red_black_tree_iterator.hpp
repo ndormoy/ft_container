@@ -74,6 +74,7 @@ namespace	ft
 			/*
 				Conversion operator
 				-> You can overload type operators, so that your type can be implicitly converted into the specified type.
+				here if VT is const, we can convert the iterator into a const_iterator so we can use the cont function implicitly.
 			*/
 			operator RedBlackTreeIterator<const VT, node> ()
 			{
@@ -161,16 +162,19 @@ namespace	ft
 					return ;
 				}
 				NodePtr x = _node;
-				if (x->right != _TNULL) {
+				if (x->right != _TNULL)
+				{
 					_node = minimum(x->right);
 					return ;
 				}
 				NodePtr y = x->parent;
-				while (y != my_nullptr && x == y->right) {
+				while (y != my_nullptr && x == y->right)
+				{
 					x = y;
 					y = y->parent;
 				}
-				if (y == my_nullptr) {
+				if (y == my_nullptr)
+				{
 					_node = _TNULL;
 					return;
 				}
@@ -191,7 +195,8 @@ namespace	ft
 					x = y;
 					y = y->parent;
 				}
-				if (y == my_nullptr && _node != minimum(_root)) {
+				if (y == my_nullptr && _node != minimum(_root))
+				{
 					_node = minimum(_root);
 					return;
 				}
