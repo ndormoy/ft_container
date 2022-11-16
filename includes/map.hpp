@@ -35,7 +35,7 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-			typedef map											self;
+			typedef map											self; // map<Key,T,Compare,Alloc>
 			typedef Key											key_type; // the key of the map
 			typedef T											mapped_type; // The type of the mapped value
 			typedef ft::pair<const key_type, mapped_type>		value_type; // The type of the value (A pair of const key_type and mapped_type)
@@ -47,6 +47,8 @@ namespace	ft
 			                                                Nested class value_compare
 			----------------------------------------------------------------------------------------------------------------
 			*/
+
+			// A binary function object that returns whether the first argument is less than the second.
 
 			class	value_compare : public std::binary_function<value_type, value_type, bool>
 			{
@@ -76,27 +78,27 @@ namespace	ft
 
 			typedef typename allocator_type::reference							reference; // The type of the reference
 			typedef typename allocator_type::const_reference					const_reference; // The type of the const reference
-			typedef typename allocator_type::pointer							pointer;
-			typedef typename allocator_type::const_pointer						const_pointer;
+			typedef typename allocator_type::pointer							pointer; // The type of the pointer
+			typedef typename allocator_type::const_pointer						const_pointer; // The type of the const pointer
 
 			/*
 				Related to the red black tree
 			*/
 
-			typedef RedBlackTree<value_type, Compare, Alloc>					tree_type;
-			typedef typename tree_type::difference_type							difference_type;
-			typedef typename tree_type::size_type								size_type;
-			typedef typename tree_type::NodePtr 								TNULL_type;
-			typedef typename tree_type::NodePtr 								NodePtr;
+			typedef RedBlackTree<value_type, Compare, Alloc>					tree_type; // The type of the tree
+			typedef typename tree_type::difference_type							difference_type; // The type of the difference between two iterators
+			typedef typename tree_type::size_type								size_type; // The type of the size of the tree
+			typedef typename tree_type::NodePtr 								TNULL_type; // The type of the TNULL node --> represent the end of the tree at all of its sides
+			typedef typename tree_type::NodePtr 								NodePtr; // The type of the node pointer --> represent a node of the tree
 
 			/*
 				For iterators and reverse iterators
 			*/
 
-			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator;
+			typedef RedBlackTreeIterator<value_type, Node<value_type> >			iterator; // The type of the iterator --> give value_type (The pair) and the node
 			typedef RedBlackTreeIterator<const value_type, Node<value_type> >	const_iterator;
-			typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
-			typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
+			typedef typename ft::reverse_iterator<iterator>						reverse_iterator; // The type of the reverse iterator
+			typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator; // The type of the const reverse iterator
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
