@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
+/*   Updated: 2022/11/16 14:05:14 by ndormoy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MAP_HPP
 #define MAP_HPP
 
@@ -15,7 +27,7 @@
 #include <functional> // --> binaryfunction
 #include <limits> // --> numeric_limits
 
-#include <map>
+#include <map> //TODO TO DEL
 
 namespace	ft
 {
