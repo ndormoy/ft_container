@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:06:11 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:33:54 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -639,6 +639,7 @@ namespace	ft
 				if (root)
 					printHelper(this->root, "", true);
 			}
+
 	};
 };
 

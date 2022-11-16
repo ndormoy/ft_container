@@ -46,12 +46,12 @@ int main()
 	for (TESTED_NAMESPACE::map<int, int>::iterator it = map_range.begin(); it != map_range.end(); ++it)
 		std::cout << it->first << " " << it->second << std::endl;
 
-	// std::cout << "Copy constructor" << std::endl;
+	std::cout << "Copy constructor" << std::endl;
 
-	// TESTED_NAMESPACE::map<int, int>	map_copy(map_range); // Copy constructor
+	TESTED_NAMESPACE::map<int, int>	map_copy(map_range); // Copy constructor
 
-	// for (TESTED_NAMESPACE::map<int, int>::iterator it = map_copy.begin(); it != map_copy.end(); ++it)
-	// 	std::cout << it->first << " " << it->second << std::endl;
+	for (TESTED_NAMESPACE::map<int, int>::iterator it = map_copy.begin(); it != map_copy.end(); ++it)
+		std::cout << it->first << " " << it->second << std::endl;
 
 	return 0;
 }
