@@ -13,6 +13,7 @@
 // #include "nullptr.hpp"
 
 #include <functional> // --> binaryfunction
+#include <limits> // --> numeric_limits
 
 #include <map>
 
@@ -297,10 +298,10 @@ namespace	ft
 			}
 
 			//Returns the maximum number of elements that the map container can hold.
-			// size_type	max_size() const
-			// {
-			// 	return (std::numeric_limits<size_type>::max() / sizeof(Node<value_type>));
-			// }
+			size_type	max_size() const
+			{
+				return (std::numeric_limits<size_type>::max() / sizeof(Node<value_type>));
+			}
 
 			//Returns an iterator pointing to the first element in the container whose key is not considered to go before k or map::end if all keys are considered to go before k.
 			iterator lower_bound (const key_type& k)
