@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 16:12:48 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:45:30 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -509,7 +509,7 @@ namespace	ft
 	
 			// return the last left node ( the minimum node )
 	
-			NodePtr minimum(NodePtr node)
+			NodePtr minimum(NodePtr node) const
 			{
 				while (node->left != TNULL)
 					node = node->left;

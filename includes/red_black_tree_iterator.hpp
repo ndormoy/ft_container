@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:30 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 16:12:27 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:45:56 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "red_black_tree.hpp"
 #include "nullptr.hpp"
 #include "node.hpp"
+#include "color.hpp"
 
 namespace	ft
 {
@@ -90,7 +91,7 @@ namespace	ft
 			*/
 			operator RedBlackTreeIterator<const VT, node> ()
 			{
-				return (RedBlackTreeIterator<const VT, node>(_root, _node, _TNULL));
+				return (RedBlackTreeIterator<const VT, node>(_node, _TNULL, _root));
 			}
 
 			self &operator++()
@@ -152,14 +153,15 @@ namespace	ft
 
 		private:
 
-			NodePtr minimum(NodePtr x) {
+			NodePtr minimum(NodePtr x) const
+			{
 				while (x->left != _TNULL) {
 					x = x->left;
 				}
 				return x;
 			}
 
-			NodePtr maximum(NodePtr x)
+			NodePtr maximum(NodePtr x) const
 			{
 				// while (x->right != _TNULL) 
 				// 	x = x->right;

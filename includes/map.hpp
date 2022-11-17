@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 16:50:31 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:45:23 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "red_black_tree_iterator.hpp"
 #include "pair.hpp"
 #include "node.hpp"
+#include "color.hpp"
 // #include "nullptr.hpp"
 
 #include <functional> // --> binaryfunction
