@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 16:03:32 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 12:51:02 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-			// A binary function object that returns whether the first argument is less than the second.
+			// A binary function object that returns true the first argument is less than the second --> beacause of the key_compare who is std::less<Key> by default
 
 			class	value_compare : public std::binary_function<value_type, value_type, bool>
 			{
