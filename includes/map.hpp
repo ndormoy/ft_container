@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 15:10:47 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 16:14:44 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,10 +218,14 @@ namespace	ft
 			const_iterator find(const key_type& k) const
 			{
 				NodePtr to_search = _root.const_searchTree(k);
+				// if (_size == 0)
+				// 	return (end());
+				// if (to_search == _root.getTNULL())
+				// 	return (end());
 				if (_size == 0)
-					return (end());
+					return (_TNULL);
 				if (to_search == _root.getTNULL())
-					return (end());
+					return (_TNULL);
 				return (const_iterator(to_search, _root.getTNULL(), _root.const_getRoot()));
 			}
 

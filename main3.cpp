@@ -26,12 +26,12 @@
 
 int main()
 {
-	const TESTED_NAMESPACE::map<int, int> m;
+	TESTED_NAMESPACE::map<int, int> m;
 
 	m.insert(TESTED_NAMESPACE::make_pair(1, 1));
 	m.insert(TESTED_NAMESPACE::make_pair(2, 2));
 
-	TESTED_NAMESPACE::map<int, int>::const_iterator it = m.begin();
+	TESTED_NAMESPACE::map<int, int>::iterator it = m.find(4);
 
 	std::cout << "it->first: " << it->first << std::endl;
 }

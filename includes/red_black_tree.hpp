@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 15:04:47 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 16:12:48 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -526,7 +526,9 @@ namespace	ft
 			// return the last right node ( the maximum node )
 			NodePtr maximum(NodePtr node)
 			{
-				while (node->right != TNULL) 
+				// while (node->right != TNULL) 
+				// 	node = node->right;
+				while (node->right && node->right != TNULL) 
 					node = node->right;
 				return (node);
 			}
