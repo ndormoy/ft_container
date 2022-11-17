@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 16:14:44 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 16:37:46 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,7 +322,7 @@ namespace	ft
 			//Returns the maximum number of elements that the map container can hold.
 			size_type	max_size() const
 			{
-				return (std::numeric_limits<size_type>::max() / sizeof(Node<value_type>));
+				return (std::numeric_limits<difference_type>::max() / sizeof(Node<value_type>));
 			}
 
 			//Returns an iterator pointing to the first element in the container whose key is not considered to go before k or map::end if all keys are considered to go before k.
@@ -432,8 +432,11 @@ namespace	ft
 				if (it == end())
 				{
 					insert(ft::make_pair(k, mapped_type()));
-					it = find(k);
+					// it = find(k);
+					return (find(k)->second);
+					
 				}
+				std::cout << "operator[]->second: " << it->second << std::endl;
 				return (it->second);
 			}
 
