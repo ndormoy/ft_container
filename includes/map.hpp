@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 16:37:46 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 16:50:31 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -426,17 +426,16 @@ namespace	ft
 
 			//If k matches the key of an element in the container, the function returns a reference to its mapped value.
 			//If k does not match the key of any element in the container, the function inserts a new element with that key and returns a reference to its mapped value. 
-			mapped_type	operator[](const key_type& k)
+			mapped_type	&operator[](const key_type& k)
 			{
 				iterator it = find(k);
 				if (it == end())
 				{
 					insert(ft::make_pair(k, mapped_type()));
-					// it = find(k);
+					it = find(k);
 					return (find(k)->second);
 					
 				}
-				std::cout << "operator[]->second: " << it->second << std::endl;
 				return (it->second);
 			}
 

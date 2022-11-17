@@ -141,10 +141,15 @@ int		main(void)
 {
 	_map	mp;
 
-	mp['a'] = 2.3;
-	mp['b'] = 1.4;
-	mp['c'] = 0.3;
-	mp['d'] = 4.2;
+	mp.insert(TESTED_NAMESPACE::make_pair('a', 2.3));
+	mp.insert(TESTED_NAMESPACE::make_pair('b', 3.4));
+	mp.insert(TESTED_NAMESPACE::make_pair('c', 4.5));
+
+	std::cout << "mp[b] = " << mp['b'] << std::endl;
+	// mp['a'] = 2.3;
+	// mp['b'] = 1.4;
+	// mp['c'] = 0.3;
+	// mp['d'] = 4.2;
 	printSize(mp);
 
 	for (const_it it1 = mp.begin(); it1 != mp.end(); ++it1)
