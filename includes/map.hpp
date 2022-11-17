@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 18:21:15 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 19:09:02 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,15 +137,19 @@ namespace	ft
 				insert (first, last);
 			}
 
+			
+
 			map (const map & x) /* :
 			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator) */
 			{
 				// _TNULL = x._root.getTNULL();
 				// std::cout << "copy constructor Map" << std::endl;
-				// insert (x.begin(), x.end());
+				// insert (x.const_begin(), x.const_end());
 				// _size = 0;
 				*this = x;
 			}
+
+			
 
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
 			~map()
@@ -187,7 +191,6 @@ namespace	ft
 				it++;
 				return (it);
 			}
-
 
 			void	clear()
 			{
@@ -413,6 +416,11 @@ namespace	ft
 			void	print_map()
 			{
 				_root.printTree();
+			}
+
+			void	const_print_map() const
+			{
+				_root.const_printTree();
 			}
 
 			/*

@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 18:03:31 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 19:09:18 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -480,6 +480,32 @@ namespace	ft
 				}
 			}
 
+			void const_printHelper(NodePtr root, std::string indent, bool last) const
+			{
+				if (root != TNULL)
+				{
+					std::cout << indent;
+					if (last)
+					{
+						std::cout << "R----";
+						indent += "   ";
+					}
+					else
+					{
+						std::cout << "L----";
+						indent += "|  ";
+					}
+
+					std::string sColor = root->color ? "RED" : "BLACK";
+					std::cout << root->data.first/*  << std::endl */;
+					std::cout << " && second = " << root->data.second;
+					std::cout << /* root->color << */ "(" << sColor << ")" << std::endl;
+					const_printHelper(root->left, indent, false);
+					const_printHelper(root->right, indent, true);
+				}
+			}
+
+
 		public:
 	
 			void preorder()
@@ -520,7 +546,9 @@ namespace	ft
 
 			NodePtr const_minimum(NodePtr node) const
 			{
-				while (node->left != TNULL)
+				// while (node->left != TNULL)
+				// 	node = node->left;
+				while (node->left && node->left != TNULL)
 					node = node->left;
 				return (node);
 			}
@@ -537,7 +565,9 @@ namespace	ft
 
 			NodePtr const_maximum(NodePtr node) const
 			{
-				while (node->right != TNULL) 
+				// while (node->right != TNULL) 
+				// 	node = node->right;
+				while (node->right && node->right != TNULL) 
 					node = node->right;
 				return (node);
 			}
@@ -658,6 +688,12 @@ namespace	ft
 			{
 				if (root)
 					printHelper(this->root, "", true);
+			}
+
+			void const_printTree() const
+			{
+				if (root)
+					const_printHelper(this->root, "", true);
 			}
 
 	};
