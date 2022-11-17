@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 17:45:30 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 18:03:31 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -511,7 +511,9 @@ namespace	ft
 	
 			NodePtr minimum(NodePtr node) const
 			{
-				while (node->left != TNULL)
+				// while (node->left != TNULL)
+				// 	node = node->left;
+				while (node->left && node->left != TNULL)
 					node = node->left;
 				return (node);
 			}
@@ -609,7 +611,7 @@ namespace	ft
 				NodePtr y = my_nullptr;
 				NodePtr x = this->root;
 
-				while (x != TNULL)
+				while (/* x &&  */x != TNULL)
 				{
 					y = x;
 					if (_comp(node->data.first, x->data.first))

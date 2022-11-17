@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 17:45:23 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 18:21:15 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,21 +134,17 @@ namespace	ft
 			{
 				// std::cout << "range constructor Map" << std::endl;
 				_TNULL = _root.getTNULL();
-				difference_type	nb = ft::distance(first, last);
-				_size = nb;
 				insert (first, last);
 			}
 
-			map (const map & x) :
-			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator)
+			map (const map & x) /* :
+			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator) */
 			{
-				_TNULL = _root.getTNULL();
+				// _TNULL = x._root.getTNULL();
 				// std::cout << "copy constructor Map" << std::endl;
-				// const_iterator begin = const_iterator(_root.const_begin(), _TNULL, _root.const_getRoot());
-				// const_iterator end = const_iterator(_root.const_end(), _TNULL, _root.const_getRoot());
-				// insert (begin, end);
-				insert (x.begin(), x.end());
-				// *this = x;
+				// insert (x.begin(), x.end());
+				// _size = 0;
+				*this = x;
 			}
 
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
