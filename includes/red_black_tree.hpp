@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 15:33:54 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:10:08 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,9 @@ namespace	ft
 			{
 				if (root == TNULL || val == root->data)
 					return (root);
-				if (val < root->data)
+				// if (val < root->data)
+				// 	return (count(root->left, val));
+				if (_comp(val.first, root->data.first))
 					return (count(root->left, val));
 				return (count(root->right, val));
 			}
@@ -236,7 +238,9 @@ namespace	ft
 					return (node);
 				else if (node == TNULL)
 					return (TNULL);
-				else if (key < node->data.first)
+				// else if (key < node->data.first)
+				// 	return (searchTreeHelper(node->left, key));
+				else if (_comp(key, node->data.first))
 					return (searchTreeHelper(node->left, key));
 				return (searchTreeHelper(node->right, key));
 			}
@@ -335,7 +339,9 @@ namespace	ft
 				{
 					if (node->data == key)
 						z = node;
-					if (node->data <= key)
+					// if (node->data <= key)
+					// 	node = node->right;
+					if (_comp(node->data.first, key.first))
 						node = node->right;
 					else
 						node = node->left;
@@ -594,17 +600,23 @@ namespace	ft
 				while (x != TNULL)
 				{
 					y = x;
-					if (node->data < x->data)
+					// if (node->data < x->data)
+					// 	x = x->left;
+					if (_comp(node->data.first, x->data.first))
 						x = x->left;
-					else if (node->data > x->data)
-						x = x->right;
+					// else if (node->data > x->data)
+					// 	x = x->right;
+					else if (_comp(x->data.first, node->data.first))
+					x = x->right;
 					else
 						return NULL;
 				}
 				node->parent = y;
 				if (y == my_nullptr)
 					root = node;
-				else if (node->data < y->data)
+				// else if (node->data < y->data)
+				// 	y->left = node;
+				else if (_comp(node->data.first, y->data.first))
 					y->left = node;
 				else
 					y->right = node;
