@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 13:21:57 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:10:47 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ namespace	ft
 				// const_iterator begin = const_iterator(_root.const_begin(), _TNULL, _root.const_getRoot());
 				// const_iterator end = const_iterator(_root.const_end(), _TNULL, _root.const_getRoot());
 				// insert (begin, end);
-				// insert (x.begin(), x.end());
+				insert (x.begin(), x.end());
 				// *this = x;
 			}
 
@@ -186,7 +186,7 @@ namespace	ft
 
 			const_iterator	end() const
 			{
-				const_iterator it = const_iterator(_root.const_end(), _TNULL, _root.getRoot());
+				const_iterator it = const_iterator(_root.const_end(), _TNULL, _root.const_getRoot());
 				it++;
 				return (it);
 			}
@@ -212,17 +212,17 @@ namespace	ft
 					return (end());
 				else if (to_search == _root.getTNULL())
 					return (end());
-				return (iterator(to_search, _root.getTNULL(), _root.getRoot()));
+				return (iterator(to_search, _root.getTNULL(), _root.const_getRoot()));
 			}
 
 			const_iterator find(const key_type& k) const
 			{
-				NodePtr to_search = _root.searchTree(k);
+				NodePtr to_search = _root.const_searchTree(k);
 				if (_size == 0)
 					return (end());
 				if (to_search == _root.getTNULL())
 					return (end());
-				return (const_iterator(to_search, _root.getTNULL(), _root.getRoot()));
+				return (const_iterator(to_search, _root.getTNULL(), _root.const_getRoot()));
 			}
 
 			//Single element insertion

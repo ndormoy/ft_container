@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 14:17:11 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:04:47 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,6 +239,17 @@ namespace	ft
 				else if (_comp(key, node->data.first))
 					return (searchTreeHelper(node->left, key));
 				return (searchTreeHelper(node->right, key));
+			}
+
+			NodePtr const_searchTreeHelper(NodePtr node, key_type key) const
+			{
+				if (key == node->data.first)
+					return (node);
+				else if (node == TNULL)
+					return (TNULL);
+				else if (_comp(key, node->data.first))
+					return (const_searchTreeHelper(node->left, key));
+				return (const_searchTreeHelper(node->right, key));
 			}
 
 			// For balancing the tree after deletion
@@ -489,6 +500,11 @@ namespace	ft
 			NodePtr searchTree(key_type k)
 			{
 				return (searchTreeHelper(this->root, k));
+			}
+
+			NodePtr const_searchTree(key_type k) const
+			{
+				return (const_searchTreeHelper(this->root, k));
 			}
 	
 			// return the last left node ( the minimum node )
