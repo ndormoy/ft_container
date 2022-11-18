@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 19:09:18 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 11:05:44 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ namespace	ft
 				_allocator = allocator_type();
 				_comp = key_compare();
 				TNULL = _allocator.allocate(sizeof(Node<value_type>));
-				_allocator.construct(TNULL, Node<value_type>(ft::make_pair(42, true), my_nullptr, my_nullptr, my_nullptr, BLACK));
+				_allocator.construct(TNULL, Node<value_type>(value_type(),/* ft::make_pair(42, true),  */my_nullptr, my_nullptr, my_nullptr, BLACK));
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
@@ -131,12 +131,14 @@ namespace	ft
 			// Return the first element in the tree (The minimum)
 			pointer	begin()
 			{
+				const_printTree();
 				return (minimum(root));
 			}
 
 			// Return the first element in the tree (The minimum)
 			pointer	const_begin() const
 			{
+				const_printTree();
 				return (const_minimum(root));
 			}
 
@@ -647,7 +649,7 @@ namespace	ft
 					if (_comp(node->data.first, x->data.first))
 						x = x->left;
 					else if (_comp(x->data.first, node->data.first))
-					x = x->right;
+						x = x->right;
 					else
 						return NULL;
 				}

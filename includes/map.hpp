@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 19:09:02 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 10:52:53 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@
 #include <iostream>
 #include <string>
 #include "red_black_tree.hpp"
+#include "vector_utils.hpp"
 #include "red_black_tree_iterator.hpp"
 #include "pair.hpp"
 #include "node.hpp"
+#include "equal.hpp"
 #include "color.hpp"
+
 // #include "nullptr.hpp"
 
 #include <functional> // --> binaryfunction
@@ -248,6 +251,7 @@ namespace	ft
 
 			iterator insert (iterator position, const value_type& val)
 			{
+				std::cout << "ici" << std::endl;
 				(void)position;
 				iterator ret;
 				if ((ret = _root.insert(val)) != NULL)
@@ -262,6 +266,7 @@ namespace	ft
 			{
 				while (first != last)
 				{
+				std::cout << "LA" << std::endl;
 					if (_root.insert(*first) != NULL)
 						_size++;
 					first++;
@@ -447,6 +452,7 @@ namespace	ft
 			//Assigns new contents to the container, replacing its current content.
 			map	&operator=(const map &x)
 			{
+				std::cout << "operator=" << std::endl;
 				if (this != &x)
 				{
 					_comp = x._comp;

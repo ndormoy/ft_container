@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:30 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/17 18:00:00 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 10:49:20 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 #include "map.hpp"
 #include "red_black_tree.hpp"
+#include "iterator_traits.hpp"
 #include "nullptr.hpp"
+#include "pair.hpp"
+#include "reverse_iterator.hpp"
 #include "node.hpp"
 #include "color.hpp"
 
