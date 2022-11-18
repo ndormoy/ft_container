@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 10:52:53 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 11:08:24 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,6 +279,14 @@ namespace	ft
 			size_type	count(const key_type& k)
 			{
 				iterator it = find(k);
+				if (it == end())
+					return (0);
+				return (1);
+			}
+
+			size_type	count(const key_type& k) const
+			{
+				const_iterator it = find(k);
 				if (it == end())
 					return (0);
 				return (1);
