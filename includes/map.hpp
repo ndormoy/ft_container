@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 14:42:32 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 16:04:01 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,7 +368,9 @@ namespace	ft
 				{
 					ret = tmp;
 					if (tmp->data.first < k)
+					{
 						tmp = tmp->right;
+					}
 					else
 						tmp = tmp->left;
 					
@@ -378,54 +380,92 @@ namespace	ft
 				return (const_iterator(ret, _TNULL, _root.const_getRoot()));
 			}
 
-			// iterator lower_bound (const key_type& k)
-			// {
-			// 	iterator it = begin();
-			// 	for (; it != end(); it++)
-			// 	{
-			// 		if (k <= it->first)
-			// 			return (it);
-			// 	}
-			// 	return (end());
-			// }
-
-			// const_iterator lower_bound (const key_type& k) const
-			// {
-			// 	const_iterator it = begin();
-			// 	for (; it != end(); it++)
-			// 	{
-			// 		if (k <= it->first)
-			// 			return (it);
-			// 	}
-			// 	return (end());
-			// }
 
 			//Returns an iterator pointing to the first element in the container whose key is considered to go after k.
 
 			iterator upper_bound (const key_type& k)
 			{
-				iterator it = end();
-				it--;
-				iterator	tmp = it;
-				for (; it != begin(); it--)
+				NodePtr tmp = _root.getRoot();
+				NodePtr ret = _TNULL;
+
+				if (_root.getRoot() == _TNULL)
+					return (_TNULL);
+				while (tmp != _TNULL)
 				{
-					if (k >= it->first)
-						return (tmp);
-					tmp = it;
+					// if (_comp(k, tmp->data.first))
+					// {
+					// 	ret = tmp;
+					// 	tmp = tmp->left;
+					// }
+					// else 
+					// {
+					// 	tmp = tmp->right;
+					// }
+					if (!_comp(k, tmp->data.first))
+					{
+						tmp = tmp->right;
+					}
+					else 
+					{
+						ret = tmp;
+						tmp = tmp->left;
+						
+					}
 				}
-				return (end());
+				return (iterator(ret, _TNULL, _root.getRoot()));
 			}
 
 			const_iterator upper_bound (const key_type& k) const
 			{
-				const_iterator tmp = end();
-				for (const_iterator	it = begin(); it != end(); it++)
+				NodePtr tmp = _root.const_getRoot();
+				NodePtr ret = _TNULL;
+
+				if (_root.const_getRoot() == _TNULL)
+					return (_TNULL);
+				while (tmp != _TNULL)
 				{
-					if (k >= it->first)
-						tmp = it;
+					// if (_comp(k, tmp->data.first))
+					// {
+					// 	ret = tmp;
+					// 	tmp = tmp->left;
+					// }
+					// else 
+					// {
+					// 	tmp = tmp->right;
+					// }
+					if (!_comp(k, tmp->data.first))
+					{
+						tmp = tmp->right;
+					}
+					else 
+					{
+						ret = tmp;
+						tmp = tmp->left;
+						
+					}
 				}
-				return (tmp);
+				return (const_iterator(ret, _TNULL, _root.const_getRoot()));
 			}
+
+			// const_iterator    upper_bound(const key_type& k) const
+            // {
+            //     NodePtr tmp = _TNULL;
+			// 	NodePtr node = _root.const_getRoot();
+                
+            //     if (node == _TNULL)
+            //         return (node);
+            //     while (node != _TNULL)
+            //     {
+            //         if (_comp(k, node->data.first))
+            //         {
+            //             tmp = node;
+            //             node = node->left;
+            //         }
+            //         else
+            //             node = node->right;
+            //     }
+            //     return (const_iterator(tmp, _TNULL, _root.const_getRoot()));
+            // }
 
 			// iterator upper_bound (const key_type& k)
 			// {
