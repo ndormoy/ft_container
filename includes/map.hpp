@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 11:08:24 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:42:32 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ namespace	ft
 
 			iterator insert (iterator position, const value_type& val)
 			{
-				std::cout << "ici" << std::endl;
+				// std::cout << "ici" << std::endl;
 				(void)position;
 				iterator ret;
 				if ((ret = _root.insert(val)) != NULL)
@@ -266,7 +266,7 @@ namespace	ft
 			{
 				while (first != last)
 				{
-				std::cout << "LA" << std::endl;
+				// std::cout << "LA" << std::endl;
 					if (_root.insert(*first) != NULL)
 						_size++;
 					first++;
@@ -339,40 +339,124 @@ namespace	ft
 			}
 
 			//Returns an iterator pointing to the first element in the container whose key is not considered to go before k or map::end if all keys are considered to go before k.
+
 			iterator lower_bound (const key_type& k)
 			{
-				iterator it = find(k);
-				if (it == end())
+				NodePtr tmp = _root.getRoot();
+				NodePtr ret = _root.getRoot();
+
+				while (tmp != _TNULL)
+				{
+					ret = tmp;
+					if (tmp->data.first < k)
+						tmp = tmp->right;
+					else
+						tmp = tmp->left;
+					
+				}
+				if (ret->data.first < k)
 					return (end());
-				return (it);
+				return (iterator(ret, _TNULL, _root.getRoot()));
 			}
 
 			const_iterator lower_bound (const key_type& k) const
 			{
-				const_iterator it = find(k);
-				if (it == end())
+				NodePtr tmp = _root.const_getRoot();
+				NodePtr ret = _root.const_getRoot();
+
+				while (tmp != _TNULL)
+				{
+					ret = tmp;
+					if (tmp->data.first < k)
+						tmp = tmp->right;
+					else
+						tmp = tmp->left;
+					
+				}
+				if (ret->data.first < k)
 					return (end());
-				return (it);
+				return (const_iterator(ret, _TNULL, _root.const_getRoot()));
 			}
 
+			// iterator lower_bound (const key_type& k)
+			// {
+			// 	iterator it = begin();
+			// 	for (; it != end(); it++)
+			// 	{
+			// 		if (k <= it->first)
+			// 			return (it);
+			// 	}
+			// 	return (end());
+			// }
+
+			// const_iterator lower_bound (const key_type& k) const
+			// {
+			// 	const_iterator it = begin();
+			// 	for (; it != end(); it++)
+			// 	{
+			// 		if (k <= it->first)
+			// 			return (it);
+			// 	}
+			// 	return (end());
+			// }
+
 			//Returns an iterator pointing to the first element in the container whose key is considered to go after k.
+
 			iterator upper_bound (const key_type& k)
 			{
-				iterator it = find(k);
-				if (it == end())
-					return (end());
-				it++;
-				return (it);
+				iterator it = end();
+				it--;
+				iterator	tmp = it;
+				for (; it != begin(); it--)
+				{
+					if (k >= it->first)
+						return (tmp);
+					tmp = it;
+				}
+				return (end());
 			}
 
 			const_iterator upper_bound (const key_type& k) const
 			{
-				const_iterator it = find(k);
-				if (it == end())
-					return (end());
-				it++;
-				return (it);
+				const_iterator tmp = end();
+				for (const_iterator	it = begin(); it != end(); it++)
+				{
+					if (k >= it->first)
+						tmp = it;
+				}
+				return (tmp);
 			}
+
+			// iterator upper_bound (const key_type& k)
+			// {
+			// 	iterator it = end();
+			// 	it--;
+			// 	iterator	tmp = it;
+			// 	for (; it != begin(); it--)
+			// 	{
+			// 		if (k >= it->first)
+			// 			return (tmp);
+			// 		tmp = it;
+			// 	}
+			// 	return (end());
+			// }
+
+			// const_iterator upper_bound (const key_type& k) const
+			// {
+			// 	const_iterator	it = end();
+			// 	it--;
+			// 	const_iterator	tmp = it;
+				
+			// 	for (; it != begin(); it--)
+			// 	{
+			// 		if (k >= it->first)
+			// 			return (tmp);
+			// 		tmp = it;
+			// 	}
+			// 	return (end());
+			// }
+
+			
 
 			//Returns a copy of the allocator object associated with the map.
 			allocator_type get_allocator() const

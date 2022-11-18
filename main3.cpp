@@ -26,16 +26,17 @@
 
 int main()
 {
-	ft::map<int, int> m;
+	TESTED_NAMESPACE::map<int, int> m;
 
-	m.insert(ft::make_pair(7, 1));
-	m.insert(ft::make_pair(2, 2));
-	m.insert(ft::make_pair(1, 1));
-	m.insert(ft::make_pair(4, 4));
+	m.insert(TESTED_NAMESPACE::make_pair(2, 1));
+	m.insert(TESTED_NAMESPACE::make_pair(4, 2));
+	m.insert(TESTED_NAMESPACE::make_pair(6, 1));
+	m.insert(TESTED_NAMESPACE::make_pair(8, 4));
+	m.insert(TESTED_NAMESPACE::make_pair(9, 4));
 
-	m.print_map();
+	
 
-	ft::map<int, int>::iterator it = m.find(4);
+	TESTED_NAMESPACE::map<int, int>::const_iterator it = m.upper_bound(-5);
 
 	std::cout << "it->first: " << it->first << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 11:05:44 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 11:21:59 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,14 +131,14 @@ namespace	ft
 			// Return the first element in the tree (The minimum)
 			pointer	begin()
 			{
-				const_printTree();
+				// const_printTree();
 				return (minimum(root));
 			}
 
 			// Return the first element in the tree (The minimum)
 			pointer	const_begin() const
 			{
-				const_printTree();
+				// const_printTree();
 				return (const_minimum(root));
 			}
 
