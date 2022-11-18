@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 11:21:59 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:49:01 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,13 @@ namespace	ft
 				remove_node(this->root);
 			}
 
+			// void
+			// clear (void)
+			// {
+			// 	clear_internal (root);
+			// 	root = TNULL;
+			// }
+
 			// Return the first element in the tree (The minimum)
 			pointer	begin()
 			{
@@ -179,6 +186,18 @@ namespace	ft
 
 		// private: // need to be in private
 		public:
+
+			// void    clear_internal(NodePtr node)
+			// {
+			// 	if (node == TNULL)
+			// 		return ; 
+			
+			// 	clear_internal(node->left); 
+			// 	clear_internal(node->right); 
+			
+			// 	_allocator.destroy(node);
+			// 	_allocator.deallocate(node, 1);
+			// }
 
 			void remove_node(NodePtr node) 
 			{ 
@@ -643,7 +662,7 @@ namespace	ft
 				NodePtr y = my_nullptr;
 				NodePtr x = this->root;
 
-				while (/* x &&  */x != TNULL)
+				while (x != TNULL)
 				{
 					y = x;
 					if (_comp(node->data.first, x->data.first))
@@ -663,11 +682,16 @@ namespace	ft
 				if (node->parent == my_nullptr)
 				{
 					node->color = BLACK;
+					std::cout << "FIRST EXIT" << std::endl;
 					return node;
 				}
-				if (node->parent->parent == my_nullptr)
+				if (node->parent->parent == my_nullptr) {
+					std::cout << "SECOND EXIT" << std::endl;
 					return node;
+				}
 				insertFix(node);
+				std::cout << "THIRD EXIT" << std::endl;
+				printTree();
 				return (node);
 			}
 

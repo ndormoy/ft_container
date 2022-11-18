@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 16:04:01 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:24:10 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,9 +147,13 @@ namespace	ft
 			{
 				// _TNULL = x._root.getTNULL();
 				// std::cout << "copy constructor Map" << std::endl;
-				// insert (x.const_begin(), x.const_end());
+				// insert (x.begin(), x.end());
 				// _size = 0;
+				// std::cout << "BEFORE" << std::endl;
+				// x.const_print_map();
+				// std::cout << "AFTER" << std::endl;
 				*this = x;
+				// print_map();
 			}
 
 			
@@ -221,10 +225,6 @@ namespace	ft
 			const_iterator find(const key_type& k) const
 			{
 				NodePtr to_search = _root.const_searchTree(k);
-				// if (_size == 0)
-				// 	return (end());
-				// if (to_search == _root.getTNULL())
-				// 	return (end());
 				if (_size == 0)
 					return (_TNULL);
 				if (to_search == _root.getTNULL())
@@ -260,17 +260,32 @@ namespace	ft
 				// return (iterator(_root.searchTree(val.first), _TNULL));
 			}
 
+			// // range insertion
+			// template <class InputIterator>
+			// void insert (InputIterator first, InputIterator last)
+			// {
+			// 	while (first != last)
+			// 	{
+			// 	// std::cout << "LA" << std::endl;
+			// 		if (_root.insert(*first) != NULL)
+			// 			_size++;
+			// 		first++;
+			// 	}
+			// }
+
 			// range insertion
 			template <class InputIterator>
 			void insert (InputIterator first, InputIterator last)
 			{
 				while (first != last)
 				{
-				// std::cout << "LA" << std::endl;
+					// std::cout << "LA" << std::endl;
 					if (_root.insert(*first) != NULL)
 						_size++;
 					first++;
 				}
+				std::cout << "after range insertion" << std::endl;
+				const_print_map();
 			}
 
 
@@ -348,13 +363,13 @@ namespace	ft
 				while (tmp != _TNULL)
 				{
 					ret = tmp;
-					if (tmp->data.first < k)
+					if (_comp(tmp->data.first, k))
 						tmp = tmp->right;
 					else
 						tmp = tmp->left;
 					
 				}
-				if (ret->data.first < k)
+				if (_comp(ret->data.first, k))
 					return (end());
 				return (iterator(ret, _TNULL, _root.getRoot()));
 			}
@@ -367,7 +382,7 @@ namespace	ft
 				while (tmp != _TNULL)
 				{
 					ret = tmp;
-					if (tmp->data.first < k)
+					if (_comp(tmp->data.first, k))
 					{
 						tmp = tmp->right;
 					}
@@ -375,10 +390,51 @@ namespace	ft
 						tmp = tmp->left;
 					
 				}
-				if (ret->data.first < k)
+				if (_comp(ret->data.first, k))
 					return (end());
 				return (const_iterator(ret, _TNULL, _root.const_getRoot()));
 			}
+
+			// iterator lower_bound (const key_type& k)
+			// {
+			// 	NodePtr tmp = _root.getRoot();
+			// 	NodePtr ret = _root.getRoot();
+
+			// 	while (tmp != _TNULL)
+			// 	{
+			// 		ret = tmp;
+			// 		if (tmp->data.first < k)
+			// 			tmp = tmp->right;
+			// 		else
+			// 			tmp = tmp->left;
+					
+			// 	}
+			// 	if (ret->data.first < k)
+			// 		return (end());
+			// 	return (iterator(ret, _TNULL, _root.getRoot()));
+			// }
+
+			// const_iterator lower_bound (const key_type& k) const
+			// {
+			// 	NodePtr tmp = _root.const_getRoot();
+			// 	NodePtr ret = _root.const_getRoot();
+
+			// 	while (tmp != _TNULL)
+			// 	{
+			// 		ret = tmp;
+			// 		if (tmp->data.first < k)
+			// 		{
+			// 			tmp = tmp->right;
+			// 		}
+			// 		else
+			// 			tmp = tmp->left;
+					
+			// 	}
+			// 	if (ret->data.first < k)
+			// 		return (end());
+			// 	return (const_iterator(ret, _TNULL, _root.const_getRoot()));
+			// }
+
 
 
 			//Returns an iterator pointing to the first element in the container whose key is considered to go after k.
@@ -392,15 +448,6 @@ namespace	ft
 					return (_TNULL);
 				while (tmp != _TNULL)
 				{
-					// if (_comp(k, tmp->data.first))
-					// {
-					// 	ret = tmp;
-					// 	tmp = tmp->left;
-					// }
-					// else 
-					// {
-					// 	tmp = tmp->right;
-					// }
 					if (!_comp(k, tmp->data.first))
 					{
 						tmp = tmp->right;
@@ -424,15 +471,6 @@ namespace	ft
 					return (_TNULL);
 				while (tmp != _TNULL)
 				{
-					// if (_comp(k, tmp->data.first))
-					// {
-					// 	ret = tmp;
-					// 	tmp = tmp->left;
-					// }
-					// else 
-					// {
-					// 	tmp = tmp->right;
-					// }
 					if (!_comp(k, tmp->data.first))
 					{
 						tmp = tmp->right;
@@ -446,57 +484,6 @@ namespace	ft
 				}
 				return (const_iterator(ret, _TNULL, _root.const_getRoot()));
 			}
-
-			// const_iterator    upper_bound(const key_type& k) const
-            // {
-            //     NodePtr tmp = _TNULL;
-			// 	NodePtr node = _root.const_getRoot();
-                
-            //     if (node == _TNULL)
-            //         return (node);
-            //     while (node != _TNULL)
-            //     {
-            //         if (_comp(k, node->data.first))
-            //         {
-            //             tmp = node;
-            //             node = node->left;
-            //         }
-            //         else
-            //             node = node->right;
-            //     }
-            //     return (const_iterator(tmp, _TNULL, _root.const_getRoot()));
-            // }
-
-			// iterator upper_bound (const key_type& k)
-			// {
-			// 	iterator it = end();
-			// 	it--;
-			// 	iterator	tmp = it;
-			// 	for (; it != begin(); it--)
-			// 	{
-			// 		if (k >= it->first)
-			// 			return (tmp);
-			// 		tmp = it;
-			// 	}
-			// 	return (end());
-			// }
-
-			// const_iterator upper_bound (const key_type& k) const
-			// {
-			// 	const_iterator	it = end();
-			// 	it--;
-			// 	const_iterator	tmp = it;
-				
-			// 	for (; it != begin(); it--)
-			// 	{
-			// 		if (k >= it->first)
-			// 			return (tmp);
-			// 		tmp = it;
-			// 	}
-			// 	return (end());
-			// }
-
-			
 
 			//Returns a copy of the allocator object associated with the map.
 			allocator_type get_allocator() const
@@ -585,15 +572,33 @@ namespace	ft
 			map	&operator=(const map &x)
 			{
 				std::cout << "operator=" << std::endl;
+				std::cout << "x = " << std::endl;
+				x.const_print_map();
+				std::cout << "this = " << std::endl;
 				if (this != &x)
 				{
 					_comp = x._comp;
 					_allocator = x._allocator;
-					clear();
+					// clear();
+					// std::cout << "------------------------------ heeere" << ft::distance(x.begin(), x.end()) << std::endl;
 					insert(x.begin(), x.end());
 				}
+				std::cout << "end operator =" << std::endl;
 				return (*this);
 			}
+
+			// 	map& operator= (const map& x)
+			// {
+			// 	if (this != &x)
+			// 	{
+			// 		clear();
+			// 		_allocator = x._allocator;
+			// 		_comp = x._comp;
+			// 		insert(x.begin(), x.end());
+			// 		_size = x._size;
+			// 	}
+			// 	return (*this);
+			// }
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
