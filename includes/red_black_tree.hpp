@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 17:49:01 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:24:57 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,14 +138,14 @@ namespace	ft
 			// Return the first element in the tree (The minimum)
 			pointer	begin()
 			{
-				// const_printTree();
+				// printTree();
 				return (minimum(root));
 			}
 
 			// Return the first element in the tree (The minimum)
 			pointer	const_begin() const
 			{
-				// const_printTree();
+				// printTree();
 				return (const_minimum(root));
 			}
 
@@ -178,7 +178,12 @@ namespace	ft
 
 		public:
 
-			NodePtr getTNULL() const
+			NodePtr getTNULL()
+			{
+                return (TNULL);
+            }
+
+			NodePtr const_getTNULL() const
 			{
                 return (TNULL);
             }
@@ -369,6 +374,10 @@ namespace	ft
 						z = node;
 					if (_comp(node->data.first, key.first))
 						node = node->right;
+					// if (!_comp(key.first, node->data.first))
+					// {
+					// 	node = node->right;
+					// }
 					else
 						node = node->left;
 				}
@@ -409,7 +418,7 @@ namespace	ft
 					y->color = z->color;
 				}
 				_allocator.destroy(z);
-				_allocator.deallocate(z, 1);
+				_allocator.deallocate(z, sizeof(Node<value_type>));
 				if (y_original_color == BLACK)
 					deleteFix(x);
 				return (true);
@@ -682,16 +691,16 @@ namespace	ft
 				if (node->parent == my_nullptr)
 				{
 					node->color = BLACK;
-					std::cout << "FIRST EXIT" << std::endl;
+					// std::cout << "FIRST EXIT" << std::endl;
 					return node;
 				}
 				if (node->parent->parent == my_nullptr) {
-					std::cout << "SECOND EXIT" << std::endl;
+					// std::cout << "SECOND EXIT" << std::endl;
 					return node;
 				}
 				insertFix(node);
-				std::cout << "THIRD EXIT" << std::endl;
-				printTree();
+				// std::cout << "THIRD EXIT" << std::endl;
+				// printTree();
 				return (node);
 			}
 
@@ -710,17 +719,17 @@ namespace	ft
 				return (deleteNodeHelper(this->root, data));
 			}
 	
-			void printTree()
+			void printTree() const
 			{
 				if (root)
 					printHelper(this->root, "", true);
 			}
 
-			void const_printTree() const
-			{
-				if (root)
-					const_printHelper(this->root, "", true);
-			}
+			// void const_printTree() const
+			// {
+			// 	if (root)
+			// 		const_printHelper(this->root, "", true);
+			// }
 
 	};
 };
