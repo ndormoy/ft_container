@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:30 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 16:16:04 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:34:20 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,21 +238,18 @@ namespace	ft
 					_node =  maximum(_root);
                     return ;
 				}
-				else
+				if (x->left != _TNULL)
 				{
-					if (x->left != _TNULL)
-					{
-						_node = maximum(x->left);
-						return ;
-					}
-					NodePtr save = x->parent;
-					while (save != _TNULL && x == save->left)
-					{
-						x = save;
-						save = save->parent;
-					}
-					_node = save;
+					_node = maximum(x->left);
+					return ;
 				}
+				NodePtr tmp = x->parent;
+				while (tmp != _TNULL && x == tmp->left)
+				{
+					x = tmp;
+					tmp = tmp->parent;
+				}
+				_node = tmp;
 			}
 
 		/*
