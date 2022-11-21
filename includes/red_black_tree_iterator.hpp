@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:30 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 10:49:20 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:16:04 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,33 @@ namespace	ft
 				_node = y;
 			}
 
+			// void	_decrement()
+			// {
+			// 	NodePtr x = _node;
+			// 	if (_node == _TNULL)
+			// 	{
+			// 		_node =  maximum(_root);
+            //         return ;
+			// 	}
+			// 	NodePtr y = x->parent;
+			// 	while (y != my_nullptr && x == y->left)
+			// 	{
+			// 		x = y;
+			// 		y = y->parent;
+			// 	}
+			// 	if (y == my_nullptr && _node != minimum(_root))
+			// 	{
+			// 		_node = minimum(_root);
+			// 		return;
+			// 	}
+			// 	else if (y == my_nullptr)
+			// 	{
+			// 		_node = _TNULL;
+			// 		return ;
+			// 	}
+			// 	_node = y;
+			// }
+
 			void	_decrement()
 			{
 				NodePtr x = _node;
@@ -211,23 +238,21 @@ namespace	ft
 					_node =  maximum(_root);
                     return ;
 				}
-				NodePtr y = x->parent;
-				while (y != my_nullptr && x == y->left)
+				else
 				{
-					x = y;
-					y = y->parent;
+					if (x->left != _TNULL)
+					{
+						_node = maximum(x->left);
+						return ;
+					}
+					NodePtr save = x->parent;
+					while (save != _TNULL && x == save->left)
+					{
+						x = save;
+						save = save->parent;
+					}
+					_node = save;
 				}
-				if (y == my_nullptr && _node != minimum(_root))
-				{
-					_node = minimum(_root);
-					return;
-				}
-				else if (y == my_nullptr)
-				{
-					_node = _TNULL;
-					return ;
-				}
-				_node = y;
 			}
 
 		/*
