@@ -153,7 +153,7 @@ int		main(void)
 
 	mp = mp_copy;
 	mp_copy = mp_range;
-	// mp_range.clear();
+	mp_range.clear();
 
 	std::cout << "\t-- PART TWO --" << std::endl;
 	printSize(mp);

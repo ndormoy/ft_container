@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 14:21:41 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:28:20 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -531,7 +531,7 @@ namespace	ft
 			{
 				if (this != &x)
 				{
-					// clear();
+					clear();
 					_allocator = x._allocator;
 					_comp = x._comp;
 					insert(x.begin(), x.end());

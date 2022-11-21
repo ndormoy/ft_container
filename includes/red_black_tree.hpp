@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 14:24:57 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:34:03 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ namespace	ft
 			void clear() 
 			{ 
 				remove_node(this->root);
+				root = TNULL;
 			}
 
 			// void
