@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 14:40:55 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 15:12:58 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,8 @@ namespace	ft
 			~map()
 			{
 				if (_size)
-				{
-					
 					_root.clear();
-				}
-					_root.clear_TNULL();
-				// _allocator.deallocate(_TNULL, sizeof(Node<value_type>));
+				_root.clear_TNULL();
 			}
 
 			/*
@@ -336,47 +332,89 @@ namespace	ft
 
 			//Returns an iterator pointing to the first element in the container whose key is not considered to go before k or map::end if all keys are considered to go before k.
 
+			// iterator lower_bound (const key_type& k)
+			// {
+			// 	NodePtr tmp = _root.getRoot();
+			// 	NodePtr ret = _root.getRoot();
+
+			// 	while (tmp != _TNULL)
+			// 	{
+			// 		ret = tmp;
+			// 		if (_comp(tmp->data.first, k))
+			// 			tmp = tmp->right;
+			// 		else
+			// 			tmp = tmp->left;
+					
+			// 	}
+			// 	if (_comp(ret->data.first, k))
+			// 		return (end());
+			// 	return (iterator(ret, _TNULL, _root.getRoot()));
+			// }
+
+			// const_iterator lower_bound (const key_type& k) const
+			// {
+			// 	NodePtr tmp = _root.const_getRoot();
+			// 	NodePtr ret = _root.const_getRoot();
+
+			// 	while (tmp != _TNULL)
+			// 	{
+			// 		ret = tmp;
+			// 		if (_comp(tmp->data.first, k))
+			// 		{
+			// 			tmp = tmp->right;
+			// 		}
+			// 		else
+			// 			tmp = tmp->left;
+					
+			// 	}
+			// 	if (_comp(ret->data.first, k))
+			// 		return (end());
+			// 	return (const_iterator(ret, _root.const_getTNULL(), _root.const_getRoot()));
+			// }
+
 			iterator lower_bound (const key_type& k)
 			{
 				NodePtr tmp = _root.getRoot();
-				NodePtr ret = _root.getRoot();
+				NodePtr ret = _TNULL;
 
 				while (tmp != _TNULL)
 				{
-					ret = tmp;
-					if (_comp(tmp->data.first, k))
+					if (_comp(tmp->data.first, k)/*  == true */)
+					{
 						tmp = tmp->right;
+					}
 					else
+					{
+						ret = tmp;
 						tmp = tmp->left;
+					}
 					
 				}
-				if (_comp(ret->data.first, k))
-					return (end());
 				return (iterator(ret, _TNULL, _root.getRoot()));
 			}
 
 			const_iterator lower_bound (const key_type& k) const
 			{
 				NodePtr tmp = _root.const_getRoot();
-				NodePtr ret = _root.const_getRoot();
+				NodePtr ret = _TNULL;
 
 				while (tmp != _TNULL)
 				{
-					ret = tmp;
-					if (_comp(tmp->data.first, k))
+					if (_comp(tmp->data.first, k)/*  == true */)
 					{
 						tmp = tmp->right;
 					}
 					else
+					{
+						ret = tmp;
 						tmp = tmp->left;
+					}
 					
 				}
-				if (_comp(ret->data.first, k))
-					return (end());
 				return (const_iterator(ret, _root.const_getTNULL(), _root.const_getRoot()));
 			}
 
-			//Returns an iterator pointing to the first element in the container whose key is considered to go after k.
+			// //Returns an iterator pointing to the first element in the container whose key is considered to go after k.
 
 			iterator upper_bound (const key_type& k)
 			{
@@ -423,6 +461,46 @@ namespace	ft
 				}
 				return (const_iterator(ret, _root.const_getTNULL(), _root.const_getRoot()));
 			}
+
+			// iterator	upper_bound(key_type k)
+			// {
+			// 	NodePtr node = _root.getRoot();
+			// 	NodePtr tmp = _TNULL;
+				
+			// 	if (node == _TNULL)
+			// 		return (node);
+			// 	while (node != _TNULL)
+			// 	{
+			// 		if (m_comp(k, node->data.first) == true)
+			// 		{
+			// 			tmp = node;
+			// 			node = node->left;
+			// 		}
+			// 		else
+			// 			node = node->right;
+			// 	}
+			// 	return (iterator(tmp, _root.get_TNULL(), _root.getRoot()));
+			// }
+
+			// const_iterator	upper_bound(const key_type k) const
+			// {
+			// 	NodePtr node = _root.getRoot();
+			// 	NodePtr tmp = _TNULL;
+				
+			// 	if (node == _TNULL)
+			// 		return (node);
+			// 	while (node != _TNULL)
+			// 	{
+			// 		if (_comp(k, node->data.first) == true)
+			// 		{
+			// 			tmp = node;
+			// 			node = node->left;
+			// 		}
+			// 		else
+			// 			node = node->right;
+			// 	}
+			// 	return (const_iterator(tmp, _root.const_getTNULL(), _root.const_getRoot()));
+			// }	
 
 			//Returns a copy of the allocator object associated with the map.
 			allocator_type get_allocator() const

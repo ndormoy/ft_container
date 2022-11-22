@@ -27,90 +27,58 @@
 
 # include <iostream>
 # include <string>
+# include <iostream>
+# include <sstream>
 
-#define _pair TESTED_NAMESPACE::pair
-
-template <typename T>
-std::string	printPair(const T &iterator, bool nl = true, std::ostream &o = std::cout)
+namespace ft
 {
-	o << "key: " << iterator->first << " | value: " << iterator->second;
-	if (nl)
-		o << std::endl;
-	return ("");
-}
+	// static std::ostream& 									cout = std::cout;
+	typedef std::string										string;
 
-template <typename T_MAP>
-void	printSize(T_MAP const &mp, bool print_content = 1)
-{
-	std::cout << "size: " << mp.size() << std::endl;
-	std::cout << "max_size: " << mp.max_size() << std::endl;
-	if (print_content)
+
+# ifndef TO_STRING
+#  define TO_STRING
+	std::string	to_string(size_t n)
 	{
-		typename T_MAP::const_iterator it = mp.begin(), ite = mp.end();
-		std::cout << std::endl << "Content is:" << std::endl;
-		for (; it != ite; ++it)
-			std::cout << "- " << printPair(it, false) << std::endl;
+		std::stringstream tmp;
+
+		tmp << n;
+
+		return tmp.str();
 	}
-	std::cout << "###############################################" << std::endl;
+# endif
 }
 
-template <typename T1, typename T2>
-void	printReverse(TESTED_NAMESPACE::map<T1, T2> &mp)
+template <class Key, class T>
+void	print(TESTED_NAMESPACE::map<Key, T>& lst)
 {
-	typename TESTED_NAMESPACE::map<T1, T2>::iterator it = mp.end(), ite = mp.begin();
-
-	std::cout << "printReverse:" << std::endl;
-	while (it != ite) {
-		it--;
-		std::cout << "-> " << printPair(it, false) << std::endl;
-	}
-	std::cout << "_______________________________________________" << std::endl;
+	for (typename TESTED_NAMESPACE::map<Key, T>::iterator it = lst.begin(); it != lst.end(); it++)
+		std::cout << it->first << " => " << it->second << '\n';
 }
 
-
-
-#define T1 char
-#define T2 int
-typedef _pair<const T1, T2> T3;
-
-template <class MAP>
-void	cmp(const MAP &lhs, const MAP &rhs)
+int main ()
 {
-	static int i = 0;
+  TESTED_NAMESPACE::map<char,int> mymap;
+  TESTED_NAMESPACE::map<char,int>::iterator itlow,itup;
 
-	std::cout << "############### [" << i++ << "] ###############"  << std::endl;
-	std::cout << "eq: " << (lhs == rhs) << " | ne: " << (lhs != rhs) << std::endl;
-	std::cout << "lt: " << (lhs <  rhs) << " | le: " << (lhs <= rhs) << std::endl;
-	std::cout << "gt: " << (lhs >  rhs) << " | ge: " << (lhs >= rhs) << std::endl;
+  mymap['a']=20;
+  mymap['b']=40;
+  mymap['c']=60;
+  mymap['d']=80;
+  mymap['e']=100;
+
+  itlow=mymap.lower_bound ('b');  // itlow points to b
+  itup=mymap.upper_bound ('d');   // itup points to e (not d!)
+
+  std::cout << "low : " << itlow->first << '\n';
+  std::cout << "up : " << itup->first << '\n';
+
+  mymap.erase(itlow,itup);        // erases [itlow,itup)
+
+  // print content:
+  for (TESTED_NAMESPACE::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+    std::cout << it->first << " => " << it->second << '\n';
+
+  return 0;
 }
-
-int		main(void)
-{
-	TESTED_NAMESPACE::map<T1, T2> mp1;
-	TESTED_NAMESPACE::map<T1, T2> mp2;
-
-	mp1['a'] = 2; mp1['b'] = 3; mp1['c'] = 4; mp1['d'] = 5;
-	mp2['a'] = 2; mp2['b'] = 3; mp2['c'] = 4; mp2['d'] = 5;
-
-	cmp(mp1, mp1); // 0
-	cmp(mp1, mp2); // 1
-
-	mp2['e'] = 6; mp2['f'] = 7; mp2['h'] = 8; mp2['h'] = 9;
-
-	cmp(mp1, mp2); // 2
-	cmp(mp2, mp1); // 3
-
-	(++(++mp1.begin()))->second = 42;
-
-	cmp(mp1, mp2); // 4
-	cmp(mp2, mp1); // 5
-
-	swap(mp1, mp2);
-
-	cmp(mp1, mp2); // 6
-	cmp(mp2, mp1); // 7
-
-	return (0);
-}
-
 

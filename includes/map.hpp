@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 14:41:54 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 15:14:15 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,44 +335,46 @@ namespace	ft
 			iterator lower_bound (const key_type& k)
 			{
 				NodePtr tmp = _root.getRoot();
-				NodePtr ret = _root.getRoot();
+				NodePtr ret = _TNULL;
 
 				while (tmp != _TNULL)
 				{
-					ret = tmp;
 					if (_comp(tmp->data.first, k))
+					{
 						tmp = tmp->right;
+					}
 					else
+					{
+						ret = tmp;
 						tmp = tmp->left;
+					}
 					
 				}
-				if (_comp(ret->data.first, k))
-					return (end());
 				return (iterator(ret, _TNULL, _root.getRoot()));
 			}
 
 			const_iterator lower_bound (const key_type& k) const
 			{
 				NodePtr tmp = _root.const_getRoot();
-				NodePtr ret = _root.const_getRoot();
+				NodePtr ret = _TNULL;
 
 				while (tmp != _TNULL)
 				{
-					ret = tmp;
 					if (_comp(tmp->data.first, k))
 					{
 						tmp = tmp->right;
 					}
 					else
+					{
+						ret = tmp;
 						tmp = tmp->left;
+					}
 					
 				}
-				if (_comp(ret->data.first, k))
-					return (end());
 				return (const_iterator(ret, _root.const_getTNULL(), _root.const_getRoot()));
 			}
 
-			//Returns an iterator pointing to the first element in the container whose key is considered to go after k.
+			// //Returns an iterator pointing to the first element in the container whose key is considered to go after k.
 
 			iterator upper_bound (const key_type& k)
 			{
