@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:30 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 15:48:50 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:37:52 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ namespace	ft
 
 			NodePtr minimum(NodePtr x) const
 			{
+				if (!x)
+					return (_TNULL);
 				while (x->left && x->left != _TNULL)
 					x = x->left;
 				return x;
@@ -169,8 +171,8 @@ namespace	ft
 
 			NodePtr maximum(NodePtr x) const
 			{
-				// if (!x)
-				// 	return (_TNULL);
+				if (!x)
+					return (_TNULL);
 				while (x->right && x->right != _TNULL) 
 					x = x->right;
 				return (x);

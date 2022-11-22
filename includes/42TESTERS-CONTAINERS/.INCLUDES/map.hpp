@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 15:37:14 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:44:02 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,8 +193,11 @@ namespace	ft
 
 			void	clear()
 			{
-				_root.clear();
-				_size = 0;
+				if (_size)
+				{
+					_root.clear();
+					_size = 0;
+				}
 			}
 
 			// Returns whether the map container is empty (i.e. whether its size is 0).
@@ -516,7 +519,7 @@ namespace	ft
 					_allocator = x._allocator;
 					_comp = x._comp;
 					insert(x.begin(), x.end());
-					_TNULL = x._TNULL;
+					// _TNULL = x._TNULL;
 					_size = x._size;
 				}
 				return (*this);
