@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 17:55:10 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 13:46:43 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -594,10 +594,6 @@ namespace	ft
 			// return the last right node ( the maximum node )
 			NodePtr maximum(NodePtr node)
 			{
-				// while (node->right != TNULL) 
-				// 	node = node->right;
-				if (!node || node == TNULL)
-					return (TNULL);
 				while (node->right && node->right != TNULL) 
 					node = node->right;
 				return (node);
@@ -605,10 +601,6 @@ namespace	ft
 
 			NodePtr const_maximum(NodePtr node) const
 			{
-				// while (node->right != TNULL) 
-				// 	node = node->right;
-				if (!node || node == TNULL)
-					return (TNULL);
 				while (node->right && node->right != TNULL) 
 					node = node->right;
 				return (node);

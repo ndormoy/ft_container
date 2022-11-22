@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 17:54:18 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:55:10 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ namespace	ft
 
 			~RedBlackTree()
 			{
-				if (root != my_nullptr &&  root != TNULL)
-				{
-					remove_node(root);
-				}
+				// if (root != my_nullptr &&  root != TNULL)
+				// {
+				// 	remove_node(root);
+				// }
 				// _allocator.deallocate(TNULL, sizeof(Node<value_type>));
 			}
 
