@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 15:33:28 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:24:43 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -665,7 +665,11 @@ namespace	ft
 					else if (_comp(x->data.first, node->data.first))
 						x = x->right;
 					else
+					{
+						_allocator.destroy(node);
+						_allocator.deallocate(node, sizeof(Node<value_type>));
 						return NULL;
+					}
 				}
 				node->parent = y;
 				if (y == my_nullptr)

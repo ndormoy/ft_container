@@ -30,9 +30,11 @@
 # include <iostream>
 # include <sstream>
 
+using namespace TESTED_NAMESPACE;
+
 namespace ft
 {
-	// static std::ostream& 									cout = std::cout;
+	// static std::ostream& 									std::cout = std::std::cout;
 	typedef std::string										string;
 
 
@@ -50,56 +52,44 @@ namespace ft
 }
 
 template <class Key, class T>
-void	print(TESTED_NAMESPACE::map<Key, T>& lst)
+void	print(map<Key, T>& lst)
 {
-	for (typename TESTED_NAMESPACE::map<Key, T>::iterator it = lst.begin(); it != lst.end(); it++)
+	for (typename map<Key, T>::iterator it = lst.begin(); it != lst.end(); it++)
 		std::cout << it->first << " => " << it->second << '\n';
 }
 
-
 int main ()
 {
-  TESTED_NAMESPACE::map<char,int> mymap;
+  map<char,int> mymap;
 
-  mymap['x'] = 100;
-  mymap['y'] = 200;
-  mymap['z'] = 300;
+  // first insert function version (single parameter):
+  mymap.insert ( pair<char,int>('a',100) );
+  mymap.insert ( pair<char,int>('z',200) );
 
-  // show content:
-  TESTED_NAMESPACE::map<char,int>::reverse_iterator rit;
-  rit=mymap.rend();
-  for (rit=mymap.rbegin(); rit!=mymap.rend(); ++rit)
-  {
-	std::cout << "hey" << std::endl;
-    std::cout << rit->first << " => " << rit->second << '\n';
+  pair<map<char,int>::iterator,bool> ret;
+  ret = mymap.insert ( pair<char,int>('z',500) );
+  if (ret.second==false) {
+    std::cout << "element 'z' already exists";
+    std::cout << " with a value of " << ret.first->second << '\n';
   }
 
+  // second insert function version (with hint position):
+  map<char,int>::iterator it = mymap.begin();
+  mymap.insert (it, pair<char,int>('b',300));  // max efficiency inserting
+  mymap.insert (it, pair<char,int>('c',400));  // no max efficiency inserting
 
-// 	for (TESTED_NAMESPACE::map<char,int>::const_reverse_iterator it=mymap.rbegin(); it!=mymap.rend(); it++)
-//     std::cout << it->first << " => " << it->second << '\n';
+  // third insert function version (range insertion):
+  map<char,int> anothermap;
+  anothermap.insert(mymap.begin(),mymap.find('c'));
 
-// 	TESTED_NAMESPACE::map<char, int>::const_reverse_iterator it = mymap.rbegin();
-// 	TESTED_NAMESPACE::map<char, int>::const_reverse_iterator ti = mymap.rend();
+  // showing contents:
+  std::cout << "mymap contains:\n";
+  for (it=mymap.begin(); it!=mymap.end(); ++it)
+    std::cout << it->first << " => " << it->second << '\n';
 
-// 	it++;
-// 	++it;
-// 	it--;
-// 	--it;
-
-// 	ti--;
-// 	--ti;
-// 	++ti;
-// 	ti++;
-
-// 	ti = it;
-
-// 	TESTED_NAMESPACE::map<char, int>::reverse_iterator end = mymap.rend();
-// 	while(it != end)
-// 	{
-//     	std::cout << it->first << " => " << it->second << '\n';
-// 		it++;
-// 	}
-
+  std::cout << "anothermap contains:\n";
+  for (it=anothermap.begin(); it!=anothermap.end(); ++it)
+    std::cout << it->first << " => " << it->second << '\n';
 
   return 0;
 }
