@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 15:14:15 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 15:37:14 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -374,7 +374,7 @@ namespace	ft
 				return (const_iterator(ret, _root.const_getTNULL(), _root.const_getRoot()));
 			}
 
-			// //Returns an iterator pointing to the first element in the container whose key is considered to go after k.
+			//Returns an iterator pointing to the first element in the container whose key is considered to go after k.
 
 			iterator upper_bound (const key_type& k)
 			{

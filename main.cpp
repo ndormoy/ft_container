@@ -56,28 +56,50 @@ void	print(TESTED_NAMESPACE::map<Key, T>& lst)
 		std::cout << it->first << " => " << it->second << '\n';
 }
 
+
 int main ()
 {
   TESTED_NAMESPACE::map<char,int> mymap;
-  TESTED_NAMESPACE::map<char,int>::iterator itlow,itup;
 
-  mymap['a']=20;
-  mymap['b']=40;
-  mymap['c']=60;
-  mymap['d']=80;
-  mymap['e']=100;
+  mymap['x'] = 100;
+  mymap['y'] = 200;
+  mymap['z'] = 300;
 
-  itlow=mymap.lower_bound ('b');  // itlow points to b
-  itup=mymap.upper_bound ('d');   // itup points to e (not d!)
+  // show content:
+  TESTED_NAMESPACE::map<char,int>::reverse_iterator rit;
+  rit=mymap.rend();
+  for (rit=mymap.rbegin(); rit!=mymap.rend(); ++rit)
+  {
+	std::cout << "hey" << std::endl;
+    std::cout << rit->first << " => " << rit->second << '\n';
+  }
 
-  std::cout << "low : " << itlow->first << '\n';
-  std::cout << "up : " << itup->first << '\n';
 
-  mymap.erase(itlow,itup);        // erases [itlow,itup)
+// 	for (TESTED_NAMESPACE::map<char,int>::const_reverse_iterator it=mymap.rbegin(); it!=mymap.rend(); it++)
+//     std::cout << it->first << " => " << it->second << '\n';
 
-  // print content:
-  for (TESTED_NAMESPACE::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << " => " << it->second << '\n';
+// 	TESTED_NAMESPACE::map<char, int>::const_reverse_iterator it = mymap.rbegin();
+// 	TESTED_NAMESPACE::map<char, int>::const_reverse_iterator ti = mymap.rend();
+
+// 	it++;
+// 	++it;
+// 	it--;
+// 	--it;
+
+// 	ti--;
+// 	--ti;
+// 	++ti;
+// 	ti++;
+
+// 	ti = it;
+
+// 	TESTED_NAMESPACE::map<char, int>::reverse_iterator end = mymap.rend();
+// 	while(it != end)
+// 	{
+//     	std::cout << it->first << " => " << it->second << '\n';
+// 		it++;
+// 	}
+
 
   return 0;
 }
