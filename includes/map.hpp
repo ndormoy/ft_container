@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 13:48:38 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 13:49:49 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,18 +142,9 @@ namespace	ft
 
 			
 
-			map (const map & x) /* :
-			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator) */
+			map (const map & x)
 			{
-				// _TNULL = x._root.getTNULL();
-				// std::cout << "copy constructor Map" << std::endl;
-				// insert (x.begin(), x.end());
-				// _size = 0;
-				// std::cout << "BEFORE" << std::endl;
-				// x.const_print_map();
-				// std::cout << "AFTER" << std::endl;
 				*this = x;
-				// print_map();
 			}
 
 			
@@ -260,32 +251,16 @@ namespace	ft
 				// return (iterator(_root.searchTree(val.first), _TNULL));
 			}
 
-			// // range insertion
-			// template <class InputIterator>
-			// void insert (InputIterator first, InputIterator last)
-			// {
-			// 	while (first != last)
-			// 	{
-			// 	// std::cout << "LA" << std::endl;
-			// 		if (_root.insert(*first) != NULL)
-			// 			_size++;
-			// 		first++;
-			// 	}
-			// }
-
 			// range insertion
 			template <class InputIterator>
 			void insert (InputIterator first, InputIterator last)
 			{
 				while (first != last)
 				{
-					// std::cout << "LA" << std::endl;
 					if (_root.insert(*first) != NULL)
 						_size++;
 					first++;
 				}
-				// std::cout << "after range insertion" << std::endl;
-				// const_print_map();
 			}
 
 
