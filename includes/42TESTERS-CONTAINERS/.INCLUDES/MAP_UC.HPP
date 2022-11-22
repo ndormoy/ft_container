@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 17:53:51 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:40:55 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,18 +142,9 @@ namespace	ft
 
 			
 
-			map (const map & x) /* :
-			_size(x._size), _root(x._root), _comp(x._comp), _allocator(x._allocator) */
+			map (const map & x)
 			{
-				// _TNULL = x._root.getTNULL();
-				// std::cout << "copy constructor Map" << std::endl;
-				// insert (x.begin(), x.end());
-				// _size = 0;
-				// std::cout << "BEFORE" << std::endl;
-				// x.const_print_map();
-				// std::cout << "AFTER" << std::endl;
 				*this = x;
-				// print_map();
 			}
 
 			
@@ -161,8 +152,13 @@ namespace	ft
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
 			~map()
 			{
-				// if (_size)
-				// 	_root.clear();
+				if (_size)
+				{
+					
+					_root.clear();
+				}
+					_root.clear_TNULL();
+				// _allocator.deallocate(_TNULL, sizeof(Node<value_type>));
 			}
 
 			/*
@@ -260,32 +256,16 @@ namespace	ft
 				// return (iterator(_root.searchTree(val.first), _TNULL));
 			}
 
-			// // range insertion
-			// template <class InputIterator>
-			// void insert (InputIterator first, InputIterator last)
-			// {
-			// 	while (first != last)
-			// 	{
-			// 	// std::cout << "LA" << std::endl;
-			// 		if (_root.insert(*first) != NULL)
-			// 			_size++;
-			// 		first++;
-			// 	}
-			// }
-
 			// range insertion
 			template <class InputIterator>
 			void insert (InputIterator first, InputIterator last)
 			{
 				while (first != last)
 				{
-					// std::cout << "LA" << std::endl;
 					if (_root.insert(*first) != NULL)
 						_size++;
 					first++;
 				}
-				// std::cout << "after range insertion" << std::endl;
-				// const_print_map();
 			}
 
 
@@ -335,9 +315,9 @@ namespace	ft
 				{
 					tmp = first;
 					first++;
-					// if (_root.deleteNode(*tmp) == true)
-					// 	_size--;
-					erase(tmp->first);
+					if (_root.deleteNode(*tmp) == true)
+						_size--;
+					// erase(tmp->first);
 					
 				}
 			}
@@ -538,6 +518,7 @@ namespace	ft
 					_allocator = x._allocator;
 					_comp = x._comp;
 					insert(x.begin(), x.end());
+					_TNULL = x._TNULL;
 					_size = x._size;
 				}
 				return (*this);

@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 17:55:10 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:04:01 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,12 +131,11 @@ namespace	ft
 				root = TNULL;
 			}
 
-			// void
-			// clear (void)
-			// {
-			// 	clear_internal (root);
-			// 	root = TNULL;
-			// }
+			void	clear_TNULL()
+			{
+				_allocator.destroy(TNULL);
+				_allocator.deallocate(TNULL, sizeof(Node<value_type>));
+			}
 
 			// Return the first element in the tree (The minimum)
 			pointer	begin()
@@ -195,27 +194,17 @@ namespace	ft
 		// private: // need to be in private
 		public:
 
-			// void    clear_internal(NodePtr node)
-			// {
-			// 	if (node == TNULL)
-			// 		return ; 
-			
-			// 	clear_internal(node->left); 
-			// 	clear_internal(node->right); 
-			
-			// 	_allocator.destroy(node);
-			// 	_allocator.deallocate(node, 1);
-			// }
 
 			void remove_node(NodePtr node) 
 			{ 
-				if (!node || node == my_nullptr || node == TNULL)
+				if (node == TNULL)
 					return ; 
 				remove_node(node->left); 
 				remove_node(node->right); 
 				_allocator.destroy(node);
-				// _allocator.deallocate(node, sizeof(Node<value_type>));
 				_allocator.deallocate(node, sizeof(Node<value_type>));
+				// _allocator.destroy(TNULL);
+				// _allocator.deallocate(TNULL, sizeof(Node<value_type>));
 			}
 
 			void	initializeNULLNode(NodePtr node, NodePtr parent)
@@ -571,10 +560,6 @@ namespace	ft
 	
 			NodePtr minimum(NodePtr node) const
 			{
-				// while (node->left != TNULL)
-				// 	node = node->left;
-				if (!node || node == TNULL)
-					return (TNULL);
 				while (node->left && node->left != TNULL)
 					node = node->left;
 				return (node);
@@ -582,10 +567,6 @@ namespace	ft
 
 			NodePtr const_minimum(NodePtr node) const
 			{
-				// while (node->left != TNULL)
-				// 	node = node->left;
-				if (!node || node == TNULL)
-					return (TNULL);
 				while (node->left && node->left != TNULL)
 					node = node->left;
 				return (node);
@@ -594,10 +575,6 @@ namespace	ft
 			// return the last right node ( the maximum node )
 			NodePtr maximum(NodePtr node)
 			{
-				// while (node->right != TNULL) 
-				// 	node = node->right;
-				if (!node || node == TNULL)
-					return (TNULL);
 				while (node->right && node->right != TNULL) 
 					node = node->right;
 				return (node);
@@ -605,10 +582,6 @@ namespace	ft
 
 			NodePtr const_maximum(NodePtr node) const
 			{
-				// while (node->right != TNULL) 
-				// 	node = node->right;
-				if (!node || node == TNULL)
-					return (TNULL);
 				while (node->right && node->right != TNULL) 
 					node = node->right;
 				return (node);

@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 14:03:59 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:41:54 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,8 @@ namespace	ft
 			~map()
 			{
 				if (_size)
-				{
-					
 					_root.clear();
-					_root.clear_TNULL();
-				}
-				// _allocator.deallocate(_TNULL, sizeof(Node<value_type>));
+				_root.clear_TNULL();
 			}
 
 			/*
