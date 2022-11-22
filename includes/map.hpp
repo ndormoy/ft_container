@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/21 17:53:51 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 13:48:38 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,9 +335,9 @@ namespace	ft
 				{
 					tmp = first;
 					first++;
-					// if (_root.deleteNode(*tmp) == true)
-					// 	_size--;
-					erase(tmp->first);
+					if (_root.deleteNode(*tmp) == true)
+						_size--;
+					// erase(tmp->first);
 					
 				}
 			}
