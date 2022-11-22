@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 13:49:49 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:03:59 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,13 @@ namespace	ft
 			// destructor --> This destroys all container elements, and deallocates all the storage capacity allocated by the map container using its allocator.
 			~map()
 			{
-				// if (_size)
-				// 	_root.clear();
+				if (_size)
+				{
+					
+					_root.clear();
+					_root.clear_TNULL();
+				}
+				// _allocator.deallocate(_TNULL, sizeof(Node<value_type>));
 			}
 
 			/*
@@ -513,6 +518,7 @@ namespace	ft
 					_allocator = x._allocator;
 					_comp = x._comp;
 					insert(x.begin(), x.end());
+					_TNULL = x._TNULL;
 					_size = x._size;
 				}
 				return (*this);

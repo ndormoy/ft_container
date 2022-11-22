@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 13:48:12 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:04:01 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,12 +131,11 @@ namespace	ft
 				root = TNULL;
 			}
 
-			// void
-			// clear (void)
-			// {
-			// 	clear_internal (root);
-			// 	root = TNULL;
-			// }
+			void	clear_TNULL()
+			{
+				_allocator.destroy(TNULL);
+				_allocator.deallocate(TNULL, sizeof(Node<value_type>));
+			}
 
 			// Return the first element in the tree (The minimum)
 			pointer	begin()
@@ -195,27 +194,17 @@ namespace	ft
 		// private: // need to be in private
 		public:
 
-			// void    clear_internal(NodePtr node)
-			// {
-			// 	if (node == TNULL)
-			// 		return ; 
-			
-			// 	clear_internal(node->left); 
-			// 	clear_internal(node->right); 
-			
-			// 	_allocator.destroy(node);
-			// 	_allocator.deallocate(node, 1);
-			// }
 
 			void remove_node(NodePtr node) 
 			{ 
-				if (!node || node == my_nullptr || node == TNULL)
+				if (node == TNULL)
 					return ; 
 				remove_node(node->left); 
 				remove_node(node->right); 
 				_allocator.destroy(node);
-				// _allocator.deallocate(node, sizeof(Node<value_type>));
 				_allocator.deallocate(node, sizeof(Node<value_type>));
+				// _allocator.destroy(TNULL);
+				// _allocator.deallocate(TNULL, sizeof(Node<value_type>));
 			}
 
 			void	initializeNULLNode(NodePtr node, NodePtr parent)
