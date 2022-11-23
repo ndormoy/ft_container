@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 16:44:02 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:41:44 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@
 #include <memory.h>
 #include <iostream>
 #include <string>
-#include "red_black_tree.hpp"
-#include "vector_utils.hpp"
-#include "red_black_tree_iterator.hpp"
 #include "pair.hpp"
+#include "iterator_traits.hpp"
+#include "reverse_iterator.hpp"
+#include "nullptr.hpp"
 #include "node.hpp"
+#include "vector_utils.hpp"
+#include "red_black_tree.hpp"
+#include "red_black_tree_iterator.hpp"
 #include "equal.hpp"
-#include "color.hpp"
 
-// #include "nullptr.hpp"
+#include "includes.hpp"
+
 
 #include <functional> // --> binaryfunction
 #include <limits> // --> numeric_limits
@@ -273,7 +276,7 @@ namespace	ft
 			size_type	count(const key_type& k)
 			{
 				iterator it = find(k);
-				if (it == end())
+				if (it == end() || !k)
 					return (0);
 				return (1);
 			}

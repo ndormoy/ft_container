@@ -6,7 +6,7 @@ OBJDIR = objs
 INCDIR = includes
 
 CC = clang++ -std=c++98
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -MD #-fsanitize=address
 MEM = #-fsanitize=thread
 
 ifeq ($(TMEM),0)

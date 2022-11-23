@@ -1,0 +1,14 @@
+[34m[1m- MAP :
+[0m
+[33m Found 25 tests for MAP, running tests :
+[0m
+[31m[5m⚠	[0m[35m[1mbasic_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1mbegin_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1mclear_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1mcount_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1mempty_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1mend_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1mequalRange_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1merase_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1mfind_main.cpp seems to be invalid![0m
+[31m[5m⚠	[0m[35m[1minsert_main.cpp seems to be invalid![0m

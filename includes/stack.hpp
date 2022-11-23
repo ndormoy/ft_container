@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:16 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:06:17 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:43:55 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #define STACK_HPP
 
 #include "vector.hpp"
-#include <stack>
+// #include <stack>
 
 namespace	ft
 {
-	template <class T, class Container = vector<T> >
+	template <class T, class Container = ft::vector<T> >
 	class stack
 	{
 		public:

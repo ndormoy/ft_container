@@ -6,14 +6,12 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/18 10:53:54 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:44:07 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_UTILS_HPP
 #define VECTOR_UTILS_HPP
-
-#include "vector.hpp"
 
 /*
 Comparing sequentially the elements that have the same position in both ranges against each other until one element is not equivalent to the other.

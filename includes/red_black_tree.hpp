@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/22 16:39:15 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:51:59 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 #define RED_BLACK_TREE_HPP
 
 #include <iostream>
-#define BLACK 0
-#define RED 1
+
 
 #include "nullptr.hpp"
 #include "red_black_tree_iterator.hpp"
 #include "node.hpp"
-// using namespace std;
 
 namespace	ft
 {

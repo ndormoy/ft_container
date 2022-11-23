@@ -6,16 +6,18 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:58 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:05:59 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:59:33 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NODE_HPP
 #define NODE_HPP
 
+
+#define BLACK 0
+#define RED 1
+
 #include "nullptr.hpp"
-#include "red_black_tree.hpp"
-#include "map.hpp"
 
 namespace	ft
 {

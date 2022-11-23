@@ -6,12 +6,13 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:49 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:05:50 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:42:05 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IS_INTEGRAL_HPP
 #define IS_INTEGRAL_HPP
+
 
 /*
 

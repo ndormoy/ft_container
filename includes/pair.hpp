@@ -6,12 +6,12 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:04 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/16 14:06:05 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:42:48 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PAIR_HPP
-#define FT_PAIR_HPP
+#ifndef PAIR_HPP
+#define PAIR_HPP
 
 /*
 
