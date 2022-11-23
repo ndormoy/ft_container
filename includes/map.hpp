@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 15:23:48 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:28:07 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,7 +249,6 @@ namespace	ft
 
 			iterator insert (iterator position, const value_type& val)
 			{
-				// std::cout << "ici" << std::endl;
 				(void)position;
 				iterator ret;
 				if ((ret = _root.insert(val)) != NULL)
