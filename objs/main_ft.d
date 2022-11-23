@@ -1,5 +1,6 @@
-objs/main_ft.o: main.cpp includes/includes.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream \
+objs/main_ft.o: main.cpp includes/vector.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/memory \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_algobase.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h /usr/include/features-time64.h \
@@ -10,11 +11,39 @@ objs/main_ft.o: main.cpp includes/includes.hpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/functexcept.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/exception_defines.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/cpp_type_traits.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/type_traits.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/numeric_traits.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_pair.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/move.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/concept_check.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/assertions.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_iterator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ptr_traits.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/debug.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/predefined_ops.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/allocator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/new_allocator.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/new \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/exception.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/memoryfwd.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_construct.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_uninitialized.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/alloc_traits.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/alloc_traits.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_tempbuf.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_raw_storage_iter.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward/auto_ptr.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ios \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iosfwd \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stringfwd.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/memoryfwd.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/postypes.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cwchar \
   /usr/include/wchar.h \
@@ -32,24 +61,7 @@ objs/main_ft.o: main.cpp includes/includes.hpp \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/exception \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/exception.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/char_traits.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_algobase.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/functexcept.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/exception_defines.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/cpp_type_traits.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/type_traits.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/numeric_traits.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_pair.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/move.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/concept_check.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_iterator_base_types.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_iterator_base_funcs.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/assertions.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_iterator.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ptr_traits.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/debug/debug.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/predefined_ops.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/localefwd.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/clocale \
@@ -92,19 +104,12 @@ objs/main_ft.o: main.cpp includes/includes.hpp \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/string \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/allocator.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/new_allocator.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/new \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ostream_insert.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/cxxabi_forced.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_function.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward/binders.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/range_access.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ext/alloc_traits.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/alloc_traits.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_construct.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/stdexcept \
@@ -123,21 +128,13 @@ objs/main_ft.o: main.cpp includes/includes.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ostream.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/istream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/istream.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/vector \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_uninitialized.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_bvector.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/vector.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/list \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_list.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/list.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/memory \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_tempbuf.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_raw_storage_iter.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward/auto_ptr.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cassert \
-  /usr/include/assert.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/limits \
+  includes/enable_if.hpp includes/equal.hpp includes/is_integral.hpp \
+  includes/iterator_traits.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstddef \
+  includes/iterator_utils.hpp includes/pair.hpp \
+  includes/reverse_iterator.hpp includes/vector_utils.hpp \
+  includes/stack.hpp includes/map.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/functional \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/algorithm \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/utility \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_relops.h \
@@ -157,6 +154,20 @@ objs/main_ft.o: main.cpp includes/includes.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_abs.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/algorithmfwd.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_heap.h \
+  /usr/include/memory.h /usr/include/string.h /usr/include/strings.h \
+  includes/nullptr.hpp includes/node.hpp includes/red_black_tree.hpp \
+  includes/red_black_tree_iterator.hpp includes/color.hpp \
+  includes/includes.hpp \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/vector \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_bvector.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/vector.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/list \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_list.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/list.tcc \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cassert \
+  /usr/include/assert.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/limits \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/map \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_tree.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_map.h \
@@ -173,14 +184,4 @@ objs/main_ft.o: main.cpp includes/includes.hpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iomanip \
-  includes/color.hpp includes/enable_if.hpp includes/pair.hpp \
-  includes/equal.hpp includes/is_integral.hpp \
-  includes/iterator_traits.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstddef \
-  includes/iterator_utils.hpp includes/reverse_iterator.hpp \
-  includes/nullptr.hpp includes/node.hpp \
-  includes/red_black_tree_iterator.hpp includes/red_black_tree.hpp \
-  includes/vector_utils.hpp includes/vector.hpp includes/map.hpp \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/functional \
-  /usr/include/memory.h /usr/include/string.h /usr/include/strings.h
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iomanip

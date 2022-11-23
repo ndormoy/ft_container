@@ -704,8 +704,7 @@ int main()
 	it1 = monkey::get_itn(m1, 76995700);
 	val = _P<C::key_type, C::mapped_type>("atencion", "hudgd");
 	it1 = m1.insert(it1, val);
-}
-ogger.log<logger::NONE>("ret = " + SSTR(it1->first) + SSTR(it1->second));
+	logger.log<logger::NONE>("ret = " + SSTR(it1->first) + SSTR(it1->second));
 	logger.log<logger::NONE>("insert range:");
 	it1 = monkey::get_itn(m1, 415811181);
 	it2 = monkey::get_itn(m1, 415811181, it1);

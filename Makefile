@@ -65,7 +65,7 @@ diff: all
 	@echo  "Diffing\c"
 	@./${FT_NAME} > ft_test.txt
 	@./${STD_NAME} > std_test.txt
-	@diff ft_test.txt std_test.txt
+	diff ft_test.txt std_test.txt
 	@echo "\033[32m\t[OK]\033[0m"
 
 .PHONY : all clean re fclean

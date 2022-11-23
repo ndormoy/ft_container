@@ -48,6 +48,8 @@ namespace monkey_map {
 
 	template<class C, template<class, class> class P>
 	void test_clear(const std::string &n1, C &m1, const std::string &,  C &) {
+		(void)n1;
+		(void)m1;
 		logger.log<logger::TITLE>("test_clear:");
 		logger.create_block();
 		logger.log<logger::CPP>("C m3(" + n1 + ");");
@@ -64,6 +66,10 @@ namespace monkey_map {
 	void test_copy_construct_equal(const std::string &n1, C &m1, const std::string &n2,  C &m2) {
 		logger.log<logger::TITLE>("test_copy_construct_equal:");
 
+		(void)n1;
+		(void)m1;
+		(void)n2;
+		(void)m2;
 		logger.create_block();
 		logger.log<logger::CPP>("C m3(" + n1 + ");");
 		C v3(m1);
@@ -76,6 +82,8 @@ namespace monkey_map {
 
 	template<class C, template<class, class> class P>
 	void test_construct(const std::string &n1, C &m1, const std::string &,  C &) {
+		(void)n1;
+		(void)m1;
 		logger.log<logger::TITLE>("test_construct:");
 		logger.create_block();
 		const std::set<typename C::value_type> s(m1.begin(), m1.end());
@@ -87,6 +95,8 @@ namespace monkey_map {
 
 	template<class C, template<class, class> class P>
 	void test_operator_index(const std::string &n1, C &m1, const std::string &,  C &) {
+		(void)n1;
+		(void)m1;
 		logger.log<logger::TITLE>("test_operator_index:");
 		std::string key;
 		std::string val;
@@ -101,8 +111,8 @@ namespace monkey_map {
 			logger.log<logger::CPP>("std::cout << " + n1 + "[\"" + key +"\"] << std::endl;");
 			std::cout << m1[key] << std::endl;
 		}
-//		monkey::print_full_map<C, P>(m1);
-//		monkey::print_full_map<C, P>(m2);
+////		monkey::print_full_map<C, P>(m1);
+////		monkey::print_full_map<C, P>(m2);
 	}
 
 	template<class C, template<class, class> class P>
@@ -115,6 +125,12 @@ namespace monkey_map {
 		unsigned int 														rand;
 		std::string key;
 		std::string value;
+
+		(void)n1;
+		(void)m1;
+		(void)n2;
+		(void)m2;
+		(void)rand;
 
 		for (int i = 0; i < 5; i++) {
 

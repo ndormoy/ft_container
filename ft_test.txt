@@ -1,114 +1,85 @@
-[37m# test_map[0m
-[33m/* ********************************************************************** */
-/*                          [37mBASIC TESTS[33m                                   */
-/* ********************************************************************** */[0m
+[0;103m                                         GMARY'S TESTS                                         [0m
 
-mymap<[35mstring[0m, [35mint[0m> mymap;
 
-mymap.max_size(): 1
 
-ft => 42
-[37m# testing upper/lower_bound[0m
-ft => 42
-one => 1
-ft => 42
-one => 1
-              mymap.lower_bound("aaa"): ft:42
 
-ft => 42
-one => 1
-ft => 42
-one => 1
-              mymap.lower_bound("one"): one:1
+[4;35mNO ARGS = ALL
+0 - VECTOR
+1 - SET
+2 - MAP
+3 - STACK
+4 - PAIR
+[0m
 
-ft => 42
-one => 1
-ft => 42
-one => 1
-              mymap.lower_bound("oae"): one:1
 
-ft => 42
-one => 1
-ft => 42
-one => 1
-               mymap.lower_bound("ft"): ft:42
 
-ft => 42
-one => 1
-ft => 42
-one => 1
-   mymap.lower_bound("zzz"): mymap.end()
 
-ft => 42
-one => 1
-ft => 42
-one => 1
-              mymap.upper_bound("aaa"): ft:42
+[0;103m                                         VECTOR TESTS                                         [0m
 
-ft => 42
-one => 1
-ft => 42
-one => 1
-              mymap.upper_bound("oae"): one:1
 
-ft => 42
-one => 1
-   mymap.upper_bound("one"): mymap.end()
-ft => 42
-one => 1
 
-ft => 42
-one => 1
-               mymap.upper_bound("ft"): one:1
 
-ft => 42
-one => 1
-   mymap.upper_bound("zzz"): mymap.end()
-ft => 42
-one => 1
-
-ft => 42
-one => 1
-ft => 42
-one => 1
-one => 1
-[37m# double clear[0m
-lol => 0
-lol => 0
-xD => 123
-lol => 0
-uch => 442
-xD => 123
-lol => 0
-uch => 442
-xD => 123
-lol => 0
-uch => 442
-xD => 123
-lol => 0
-uch => 442
-xD => 123
-lol => 8
-uch => 442
-xD => 123
-lol => 8
-uch => 442
-xD => 123
-mymap<[35mstring[0m, [35mint[0m> mymap2;
-lol => 8
-uch => 442
-xD => 123
-empty line
-empty line2
-empty line3
-empty line4
-lol => 8
-uch => 442
-xD => 123
-empty line5
-lol => 8
-uch => 442
-xD => 123
-lol => 8
-uch => 442
-xD => 123
+[4;35m                                         CONSTRUCTORS
+[0m
+size: 5 capacity: 5
+size: 5 capacity: 5
+size: 5 capacity: 5
+size: 5 capacity: 5
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+[4;35m                                         ASSIGNATION
+[0m
+42
+42
+42
+42
+42
+[4;35m                                         PUSH BACK
+[0m
+size: 8 capacity: 10
+size: 14 capacity: 20
+size: 5 capacity: 5
+size: 9 capacity: 10
+[4;35m                                         ITERATORS
+[0m
+0
+-97
+-96
+-95
+-94
+93
+92
+91
+90
+89
+42
+42
+42
+42
+-97
+-96
+-95
+-94
+93
+92
+91
+90
+89
+42
+42
+42
+42
+42

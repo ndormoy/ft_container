@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 13:12:34 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:23:48 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,8 +254,7 @@ namespace	ft
 				iterator ret;
 				if ((ret = _root.insert(val)) != NULL)
 					_size++; // already exist in the map
-				return (ret);
-				// return (iterator(_root.searchTree(val.first), _TNULL));
+				return (iterator(_root.searchTree(val.first), _TNULL, _root.getRoot()));
 			}
 
 			// range insertion
@@ -521,7 +520,9 @@ namespace	ft
 					clear();
 					_allocator = x._allocator;
 					_comp = x._comp;
+					// std::cerr << "here" << std::endl;
 					insert(x.begin(), x.end());
+					// std::cerr << BBLU << "pouet" << CRESET << std::endl;
 					// _TNULL = x._TNULL;
 					_size = x._size;
 				}
