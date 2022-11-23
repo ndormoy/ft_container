@@ -5,8 +5,8 @@ STD_NAME = std_container
 OBJDIR = objs
 INCDIR = includes
 
-CC = c++ -std=c++98
-CFLAGS = -Wall -Wextra -Werror -g3 -MD #-fsanitize=address
+CC = clang++ -std=c++98
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -fsanitize=address
 MEM = #-fsanitize=thread
 
 ifeq ($(TMEM),0)

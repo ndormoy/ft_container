@@ -1,4 +1,6 @@
-objs/main_std.o: main.cpp includes/vector.hpp \
+objs/main_std.o: \
+  /usr/lib/llvm-12/lib/clang/12.0.1/share/asan_blacklist.txt main.cpp \
+  includes/vector.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/memory \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_algobase.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -179,6 +181,8 @@ objs/main_std.o: main.cpp includes/vector.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/list.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cassert \
   /usr/include/assert.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iterator \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stream_iterator.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/sstream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/sstream.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/cstdio \
