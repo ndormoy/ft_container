@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:30 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 13:19:18 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 13:18:24 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ namespace	ft
 	**************************************************************************************************************/
 
 	template<class VT, class node>
-	class RedBlackTreeIterator
+	class RedBlackTreeIterator /* : public ft::iterator<std::bidirectional_iterator_tag, VT> */
 	{
 		public:
 
