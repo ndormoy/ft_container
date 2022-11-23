@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 15:55:47 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/23 17:15:04 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -402,28 +402,20 @@ namespace	ft
 			void insert(iterator position,
 			InputIterator first, typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type last)
 			{
-				iterator	it = begin();
-				size_type	i = 0;
-				size_type	n;
-				while (it++ != position)
-					i++;
-				n = ft::distance(first, last);
+				difference_type i = 0;
+				size_type	n = ft::distance(first, last);
+				difference_type new_beg = position - begin();
 				if (_m_size + n >= _m_capacity)
 				{
-					if (_m_capacity == 0)
-						reserve(n + _m_size);
+					if (_m_capacity * 2 > n + _m_size)
+						reserve(_m_size * 2);
 					else
-						reserve((_m_size + n) * 2);
+						reserve(_m_size + n);
 				}
-				for (size_type pos = _m_size; pos > i; pos--)
-				{
-					_m_allocator.construct(_m_begin + (pos + n - 1), *(_m_begin + pos - 1));
-					_m_allocator.destroy(_m_begin + (pos - 1));
-				}
-				for (size_type pos = i; pos < i + n; pos++)
-					_m_allocator.construct(_m_begin + pos, *(first)++);
-				_m_size += n;
+				while (last != first)
+					insert(begin() + new_beg + i++, *first++);
 			}
+			
 			//Removes from the vector either a single element (position) or a range of elements ([first,last)).
 			iterator erase(iterator position)
 			{
