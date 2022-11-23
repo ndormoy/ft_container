@@ -42,6 +42,8 @@ size: 5 capacity: 5
 42
 [4;35m                                         ASSIGNATION
 [0m
+before assignation size: 0 capacity: 0
+after assignation size: 5 capacity: 5
 42
 42
 42
@@ -49,6 +51,8 @@ size: 5 capacity: 5
 42
 [4;35m                                         PUSH BACK
 [0m
+size: 6 capacity: 10
+size: 7 capacity: 10
 size: 8 capacity: 10
 size: 14 capacity: 20
 size: 5 capacity: 5
@@ -83,3 +87,73 @@ size: 9 capacity: 10
 42
 42
 42
+[4;35m                                         INSERT
+[0m
+size: 9 capacity: 10
+42
+42
+42
+42
+42
+42
+42
+89
+90
+91
+92
+93
+-94
+-95
+-96
+-97
+size: 18 capacity: 20
+42
+42
+42
+42
+42
+42
+42
+42
+42
+89
+90
+91
+92
+93
+-94
+-95
+-96
+-97
+size: 18 capacity: 20
+TOTOTO --- size: 23 capacity: 36
+42
+42
+42
+42
+42
+size: 5 capacity: 5
+[4;35m                                         ERASE
+[0m
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+89
+90
+91
+92
+93
+-94
+-95
+-96
+-97

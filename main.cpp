@@ -53,6 +53,11 @@ using namespace TESTED_NAMESPACE;
 # define COUT(x) std::cout << x << std::endl;
 # define EXCEPTION(x, y) public: class x : public std::exception { const char * what (void) const throw { return y; } }
 
+#define T_SIZE_TYPE typename TESTED_NAMESPACE::vector<T>::size_type
+
+using namespace TESTED_NAMESPACE;
+
+
 int main(int ac, char **av)
 {
 	(void)ac;
@@ -100,14 +105,19 @@ int main(int ac, char **av)
 
 		CCOUT(UMAG, "                                         ASSIGNATION\n");
 
+		COUT("before assignation size: " << myvector.size() << " capacity: " << myvector.capacity());
 		myvector = myvector3;
+		COUT("after assignation size: " << myvector.size() << " capacity: " << myvector.capacity());
+
 		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
 			std::cout << *it << std::endl;
 
 		CCOUT(UMAG, "                                         PUSH BACK\n");
 		
 		myvector.push_back(89);
+		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
 		myvector.push_back(90);
+		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
 		myvector.push_back(91);
 
 		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
@@ -137,5 +147,57 @@ int main(int ac, char **av)
 
 		for (TESTED_NAMESPACE::vector<int>::reverse_iterator it = myvector.rbegin(); it != myvector.rend(); ++it)
 			std::cout << *it << std::endl;
+		
+		TESTED_NAMESPACE::vector<std::string>::iterator ito = myvector6.begin();
+		ito++;
+		ito++;
+		ito--;
+		--ito;
+
+		CCOUT(UMAG, "                                         INSERT\n");
+
+		myvector.insert(myvector.begin(), 42);
+		myvector.insert(myvector.begin(), 42);
+		COUT("size: " << myvector6.size() << " capacity: " << myvector6.capacity());
+		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
+			std::cout << *it << std::endl;
+		myvector.insert(myvector.begin(), 2, 42);
+		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
+		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
+			std::cout << *it << std::endl;
+		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
+		myvector.insert(myvector.begin(), myvector3.begin(), myvector3.end());
+		COUT("TOTOTO --- size: " << myvector.size() << " capacity: " << myvector.capacity());
+		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector3.begin(); it != myvector3.end(); it++)
+			std::cout << *it << std::endl;
+		COUT("size: " << myvector3.size() << " capacity: " << myvector3.capacity());
+		
+		CCOUT(UMAG, "                                         ERASE\n");
+
+		myvector.erase(myvector.begin());
+		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
+			std::cout << *it << std::endl;
+		// myvector3.erase(myvector3.begin(), myvector3.end());
+		// for (TESTED_NAMESPACE::vector<int>::iterator it = myvector3.begin(); it != myvector3.end(); it++)
+		// 	std::cout << *it << std::endl;
+		// COUT("erase --- size: " << myvector3.size() << " capacity: " << myvector3.capacity());
+
+		// CCOUT(UMAG, "                                         SWAP\n");
+		
+		// myvector3.push_back(42);
+		// myvector3.push_back(42);
+		// myvector3.push_back(42);
+		// myvector.push_back(12);
+		// myvector.push_back(12);
+		
+		// myvector.swap(myvector3);
+		// for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
+		// 	std::cout << *it << std::endl;
+		// COUT("swap --- size: " << myvector.size() << " capacity: " << myvector.capacity());
+		
+		// for (TESTED_NAMESPACE::vector<int>::iterator it = myvector3.begin(); it != myvector3.end(); it++)
+		// 	std::cout << *it << std::endl;
+		// COUT("swap --- size: " << myvector3.size() << " capacity: " << myvector3.capacity());
+
 	}
 }
