@@ -1,51 +1,263 @@
-BEFORE SWAP
-foo contains:
-size: 7
-max_size: 230584300921369395
-
-Content is:
-- key: a | value: 7
-- key: b | value: 6
-- key: c | value: 5
-- key: d | value: 4
-- key: e | value: 3
-- key: f | value: 2
-- key: g | value: 1
-###############################################
-bar contains:
-size: 4
-max_size: 230584300921369395
-
-Content is:
-- key: w | value: 15
-- key: x | value: 10
-- key: y | value: 5
-- key: z | value: 0
-###############################################
-AFTER SWAP
-foo contains:
-size: 4
-max_size: 230584300921369395
-
-Content is:
-- key: w | value: 15
-- key: x | value: 10
-- key: y | value: 5
-- key: z | value: 0
-###############################################
-bar contains:
-size: 7
-max_size: 230584300921369395
-
-Content is:
-- key: a | value: 7
-- key: b | value: 6
-- key: c | value: 5
-- key: d | value: 4
-- key: e | value: 3
-- key: f | value: 2
-- key: g | value: 1
-###############################################
-Iterator validity:
+[1;31m*******************************
+<---------TEST VECTOR--------->
+*******************************[0m
+[1;34m1) ASSIGN[0m
+[1;32ma) FILL ASSIGN[0m
+42
+42
+42
+42
+Size = 4
+Capacity = 4
+begin = 42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+Size = 10
+Capacity = 10
+begin = 42
+[1;32mb)  ASSIGN[0m
+Size of first: 7
+Size of second: 5
+Size of third: 3
+[1;34m2) AT[0m
+[1;32ma) AT[0m
+at 0 = -20
+at 1 = -10
+at 2 = 1
+at 3 = 2
+at 4 = 3
+[1;32mb) CONST AT[0m
+at 0 = 5
+at 1 = 10
+at 2 = 15
+at 3 = 20
+at 4 = 25
+[1;34m3) BACK[0m
+3
+25
+-20
+-10
 1
+2
+3
+test_three contains: 10 9 8 7 6 5 4 3 2 1 0
+[1;34m3) BEGIN[0m
+begin = -20
+begin = 5
+begin = 10
+[1;34m4) END[0m
+end = 0
+end = 3
+end = 0
+end = 3
+end = 0
+end = 3
+[1;34m5) CLEAR[0m
+begin = -20
+end = -20
+size = 0
+capacity = 8
+begin = 5
+end = 5
+size = 0
+capacity = 8
+begin = 10
+end = 10
+size = 0
+capacity = 16
+[1;34m6) EMPTY[0m
+empty = 1
+empty = 1
+empty = 1
+empty = 0
+[1;34m7) ERASE[0m
+[1;32ma) erase position[0m
+erase 1st element = 4[0m
+erase last element = 12
+New last element = 12[0m
+4
+6
+8
+10
+size = 4
+capacity = 4
+erase 6 = 8
+erase begin = 8
+erase begin = 10
+10
+size = 1
+capacity = 1
+erase begin = 10
+nothing in here
+size = 0
+capacity = 0
+-----------
+[1;32mb) erase range[0m
+Erase all = 2
+size = 0
+capacity = 0
+empty = 1
+Erase 4 to 12 = 12
+2
+12
+size = 2
+capacity = 2
+erase same = : 2
+2
+12
+size = 2
+capacity = 2
+[1;34m8) FRONT[0m
+front = 2
+front = 50
+size = 0
+capacity = 0
+empty front = 50
+[1;34m8) GET ALLOCATOR[0m
+The allocated array contains: 0 1 2 3 4
+[1;34m8) INSERT[0m
+[1;32ma) insert single element[0m
+6
+4
+2
+8
+size = 4
+capacity = 4
+-------
+6
+60
+4
+2
+8
+size = 5
+capacity = 5
+-------
+6
+60
+4
+2
+8
+80
+size = 6
+capacity = 6
+-------------------------
+d
+c
+b
+a
+size = 4
+capacity = 4
+-------
+d
+c
+pouet
+b
+a
+size = 5
+capacity = 5
+[1;32mb) insert range[0m
+6
+4
+2
+8
+size = 4
+capacity = 4
+-------
+6
+4
+6
+4
+2
+8
+2
+8
+size = 8
+capacity = 8
+-------
+6
+4
+6
+4
+6
+4
+2
+8
+2
+8
+size = 10
+capacity = 10
+-------
+[1;32mc) insert fill[0m
+6
+4
+42
+42
+42
+42
+42
+2
+8
+size = 9
+capacity = 9
+-------
+84
+84
+84
+84
+84
+size = 5
+capacity = 5
+[1;34m9) MAX SIZE[0m
+Vector int --> Max size = 2305843009213693951
+Vector std::string --> Max size = 288230376151711743
+Vector char --> Max size = 9223372036854775807
+Vector unsigned char --> Max size = 9223372036854775807
+Vector short --> Max size = 4611686018427387903
+Vector unsigned short --> Max size = 4611686018427387903
+Vector unsigned int --> Max size = 2305843009213693951
+Vector float --> Max size = 2305843009213693951
+Vector double --> Max size = 1152921504606846975
+Vector long long --> Max size = 1152921504606846975
+Vector unsigned long long --> Max size = 1152921504606846975
+Vector long double --> Max size = 576460752303423487
+[1;34m9) OPERATOR[][0m
+test_one[0] = 0
+test_one[1] = 1
+test_one[2] = 2
+test_one[3] = 3
+test_one[4] = 4
+test_one[5] = 5
+test_one[6] = 6
+test_one[7] = 7
+0
 1
+42
+43
+44
+45
+6
+7
+size = 8
+capacity = 8
+[1;34m9) OPERATOR=[0m
+size = 0
+capacity = 0
+-------
+0
+1
+42
+43
+44
+45
+6
+7
+size = 8
+capacity = 8

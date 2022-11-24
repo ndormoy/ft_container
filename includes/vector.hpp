@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 17:15:04 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/24 15:57:20 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -419,13 +419,14 @@ namespace	ft
 			//Removes from the vector either a single element (position) or a range of elements ([first,last)).
 			iterator erase(iterator position)
 			{
+				if (position == end())
+					return end();
 				_m_allocator.destroy(position);
 				for (iterator it = position; it < end() - 1; it++)
 				{
 					_m_allocator.construct(it, *(it + 1));
 					_m_allocator.destroy(it + 1);
 				}
-
 				_m_size--;
                 return (position);
 			}
