@@ -413,6 +413,7 @@ int main()
 	print_vector(test_one);
 	std::cout << "-------" << std::endl;
 
+	// std::cout << "Capacity before = " << test_one.capacity() << std::endl;
 	test_one.clear();
 	test_one.insert(test_one.begin(), 5, 84);
 	print_vector(test_one);
@@ -571,8 +572,43 @@ int main()
 	std::cout << *(rit) << std::endl;
 	rit--;
     std::cout << *(rit) << std::endl;
+
+	test_one.clear();
 	
 	/************************************************************************************************/
 
-	std::cout << BBLU << "14) RBEGIN && REND" << CRESET << std::endl;
+	std::cout << BBLU << "14) RESERVE" << CRESET << std::endl;
+
+	// for (int i = 0; i < 10; i++)
+	// {
+	// 	std::cout << "Capacity before = " << test_one.capacity() << std::endl;
+	// 	test_one.push_back(i);
+	// 	std::cout << "Capacity after = " << test_one.capacity() << std::endl;
+	// }
+	// std::cout << "-------" << std::endl;
+	// test_one.clear();
+	// test_two.reserve(50);
+	// for (int i = 0; i < 100; i++)
+	// {
+	// 	std::cout << "Capacity before = " << test_two.capacity() << std::endl;
+	// 	test_two.push_back(i);
+	// 	std::cout << "Capacity after = " << test_two.capacity() << std::endl;
+	// }
+	// test_two.clear();
+	// print_vector(test_two);
+	// print_vector(test_one);
+
+	/************************************************************************************************/
+
+	std::cout << BBLU << "14) RESIZE" << CRESET << std::endl;
+
+	for (int i = 0; i < 100; i++)
+		test_one.insert(test_one.begin() + i, i);
+
+	std::cout << "size = " << test_one.size() << std::endl;
+
+	test_one.resize(1);
+
+	std::cout << "size = " << test_one.size() << std::endl;
+
 }

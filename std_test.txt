@@ -320,7 +320,7 @@ capacity = 0
 60
 size = 6
 capacity = 6
-[1;34m14) RBEGIN[0m
+[1;34m14) RBEGIN && REND[0m
 60
 50
 40
@@ -353,3 +353,7 @@ capacity = 6
 0
 40
 50
+[1;34m14) RESERVE[0m
+[1;34m14) RESIZE[0m
+size = 100
+size = 1
