@@ -24,180 +24,160 @@
 #include <algorithm>
 #include <map>
 
-// int main()
-// {
-// 	ft::map<int, int> m, other_m;
+// --- Class foo
+template <typename T>
+class foo {
+	public:
+		typedef T	value_type;
 
-// 	m.insert(ft::make_pair(2, 1));
-// 	m.insert(ft::make_pair(4, 2));
-// 	m.insert(ft::make_pair(6, 1));
-// 	m.insert(ft::make_pair(8, 4));
-// 	m.insert(ft::make_pair(9, 4));
+		foo(void) : value(), _verbose(false) { };
+		foo(value_type src, const bool verbose = false) : value(src), _verbose(verbose) { };
+		foo(foo const &src, const bool verbose = false) : value(src.value), _verbose(verbose) { };
+		~foo(void) { if (this->_verbose) std::cout << "~foo::foo()" << std::endl; };
+		void m(void) { std::cout << "foo::m called [" << this->value << "]" << std::endl; };
+		void m(void) const { std::cout << "foo::m const called [" << this->value << "]" << std::endl; };
+		foo &operator=(value_type src) { this->value = src; return *this; };
+		foo &operator=(foo const &src) {
+			if (this->_verbose || src._verbose)
+				std::cout << "foo::operator=(foo) CALLED" << std::endl;
+			this->value = src.value;
+			return *this;
+		};
+		value_type	getValue(void) const { return this->value; };
+		void		switchVerbose(void) { this->_verbose = !(this->_verbose); };
 
+		operator value_type(void) const {
+			return value_type(this->value);
+		}
+	private:
+		value_type	value;
+		bool		_verbose;
+};
 
-// 	other_m.insert(m.begin(), m.end());
+template <typename T>
+std::ostream	&operator<<(std::ostream &o, foo<T> const &bar) {
+	o << bar.getValue();
+	return o;
+}
+// --- End of class foo
 
-// 	m.const_print_map();
-
-// 	// ft::map<int, int>::const_iterator it = m.upper_bound(-5);
-
-// 	// std::cout << "it->first: " << it->first << std::endl;
-// }
-
-#define T_SIZE_TYPE typename TESTED_NAMESPACE::vector<T>::size_type
-
-using namespace TESTED_NAMESPACE;
-
-
-# define CCOUT(color, x) std::cout << color << x << CRESET << std::endl;
-# define COUT(x) std::cout << x << std::endl;
-# define EXCEPTION(x, y) public: class x : public std::exception { const char * what (void) const throw { return y; } }
-
-#define T_SIZE_TYPE typename TESTED_NAMESPACE::vector<T>::size_type
-
-using namespace TESTED_NAMESPACE;
-
-
-int main(int ac, char **av)
+template <typename T>
+T	inc(T it, int n)
 {
-	(void)ac;
-	(void)av;
-	CCOUT(YELHB, "                                         GMARY'S TESTS                                         ");
-	COUT("\n\n\n")
-	CCOUT(UMAG, "NO ARGS = ALL\n0 - VECTOR\n1 - SET\n2 - MAP\n3 - STACK\n4 - PAIR\n");
-	std::string arg;
-	if (ac == 2)
-		arg = av[1];
-	else
-		arg = "all";
+	while (n-- > 0)
+		++it;
+	return (it);
+}
 
-	if (arg == "0" || arg == "vector" || arg == "all")
+template <typename T>
+T	dec(T it, int n)
+{
+	while (n-- > 0)
+		--it;
+	return (it);
+}
+
+#define _pair TESTED_NAMESPACE::pair
+
+template <typename T>
+std::string	printPair(const T &iterator, bool nl = true, std::ostream &o = std::cout)
+{
+	o << "key: " << iterator->first << " | value: " << iterator->second;
+	if (nl)
+		o << std::endl;
+	return ("");
+}
+
+template <typename T_MAP>
+void	printSize(T_MAP const &mp, bool print_content = 1)
+{
+	std::cout << "size: " << mp.size() << std::endl;
+	std::cout << "max_size: " << mp.max_size() << std::endl;
+	if (print_content)
 	{
-
-		COUT("\n\n\n")
-		CCOUT(YELHB, "                                         VECTOR TESTS                                         ");
-		COUT("\n\n\n")
-		
-
-		CCOUT(UMAG, "                                         CONSTRUCTORS\n");
-		
-
-		TESTED_NAMESPACE::vector<int> myvector;
-		TESTED_NAMESPACE::vector<int> myvector2(5);
-		TESTED_NAMESPACE::vector<int> myvector3(5, 42);
-		TESTED_NAMESPACE::vector<int> myvector4(myvector3);
-		TESTED_NAMESPACE::vector<int> myvector5(myvector3.begin(), myvector3.end());
-		TESTED_NAMESPACE::vector<std::string> myvector6(5, "hello");
-
-		COUT("size: " << myvector2.size() << " capacity: " << myvector2.capacity());
-		COUT("size: " << myvector3.size() << " capacity: " << myvector3.capacity());
-		COUT("size: " << myvector4.size() << " capacity: " << myvector4.capacity());
-		COUT("size: " << myvector5.size() << " capacity: " << myvector5.capacity());
-
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector3.begin(); it != myvector3.end(); it++)
-			std::cout << *it << std::endl;
-
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector4.begin(); it != myvector4.end(); it++)
-			std::cout << *it << std::endl;
-
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector5.begin(); it != myvector5.end(); it++)
-			std::cout << *it << std::endl;
-
-		CCOUT(UMAG, "                                         ASSIGNATION\n");
-
-		COUT("before assignation size: " << myvector.size() << " capacity: " << myvector.capacity());
-		myvector = myvector3;
-		COUT("after assignation size: " << myvector.size() << " capacity: " << myvector.capacity());
-
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
-			std::cout << *it << std::endl;
-
-		CCOUT(UMAG, "                                         PUSH BACK\n");
-		
-		myvector.push_back(89);
-		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
-		myvector.push_back(90);
-		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
-		myvector.push_back(91);
-
-		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
-		
-		myvector.push_back(92);
-		myvector.push_back(93);
-		myvector.push_back(-94);
-		myvector.push_back(-95);
-		myvector.push_back(-96);
-		myvector.push_back(-97);
-
-		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
-		COUT("size: " << myvector6.size() << " capacity: " << myvector6.capacity());
-
-		myvector6.push_back("wesh");
-		myvector6.push_back("hell nooo");
-		myvector6.push_back("c mort frr");
-		myvector6.push_back("wougada");
-		
-		COUT("size: " << myvector6.size() << " capacity: " << myvector6.capacity());
-		
-
-		CCOUT(UMAG, "                                         ITERATORS\n");
-
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.end(); it != myvector.begin(); --it)
-			std::cout << *it << std::endl;
-
-		for (TESTED_NAMESPACE::vector<int>::reverse_iterator it = myvector.rbegin(); it != myvector.rend(); ++it)
-			std::cout << *it << std::endl;
-		
-		TESTED_NAMESPACE::vector<std::string>::iterator ito = myvector6.begin();
-		ito++;
-		ito++;
-		ito--;
-		--ito;
-
-		CCOUT(UMAG, "                                         INSERT\n");
-
-		myvector.insert(myvector.begin(), 42);
-		myvector.insert(myvector.begin(), 42);
-		COUT("size: " << myvector6.size() << " capacity: " << myvector6.capacity());
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
-			std::cout << *it << std::endl;
-		myvector.insert(myvector.begin(), 2, 42);
-		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
-			std::cout << *it << std::endl;
-		COUT("size: " << myvector.size() << " capacity: " << myvector.capacity());
-		myvector.insert(myvector.begin(), myvector3.begin(), myvector3.end());
-		COUT("TOTOTO --- size: " << myvector.size() << " capacity: " << myvector.capacity());
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector3.begin(); it != myvector3.end(); it++)
-			std::cout << *it << std::endl;
-		COUT("size: " << myvector3.size() << " capacity: " << myvector3.capacity());
-		
-		CCOUT(UMAG, "                                         ERASE\n");
-
-		myvector.erase(myvector.begin());
-		for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
-			std::cout << *it << std::endl;
-		// myvector3.erase(myvector3.begin(), myvector3.end());
-		// for (TESTED_NAMESPACE::vector<int>::iterator it = myvector3.begin(); it != myvector3.end(); it++)
-		// 	std::cout << *it << std::endl;
-		// COUT("erase --- size: " << myvector3.size() << " capacity: " << myvector3.capacity());
-
-		// CCOUT(UMAG, "                                         SWAP\n");
-		
-		// myvector3.push_back(42);
-		// myvector3.push_back(42);
-		// myvector3.push_back(42);
-		// myvector.push_back(12);
-		// myvector.push_back(12);
-		
-		// myvector.swap(myvector3);
-		// for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
-		// 	std::cout << *it << std::endl;
-		// COUT("swap --- size: " << myvector.size() << " capacity: " << myvector.capacity());
-		
-		// for (TESTED_NAMESPACE::vector<int>::iterator it = myvector3.begin(); it != myvector3.end(); it++)
-		// 	std::cout << *it << std::endl;
-		// COUT("swap --- size: " << myvector3.size() << " capacity: " << myvector3.capacity());
-
+		typename T_MAP::const_iterator it = mp.begin(), ite = mp.end();
+		std::cout << std::endl << "Content is:" << std::endl;
+		for (; it != ite; ++it)
+			std::cout << "- " << printPair(it, false) << std::endl;
 	}
+	std::cout << "###############################################" << std::endl;
+}
+
+template <typename T1, typename T2>
+void	printReverse(TESTED_NAMESPACE::map<T1, T2> &mp)
+{
+	typename TESTED_NAMESPACE::map<T1, T2>::iterator it = mp.end(), ite = mp.begin();
+
+	std::cout << "printReverse:" << std::endl;
+	while (it != ite) {
+		it--;
+		std::cout << "-> " << printPair(it, false) << std::endl;
+	}
+	std::cout << "_______________________________________________" << std::endl;
+}
+
+#include <list>
+
+#define T1 int
+#define T2 foo<int>
+typedef TESTED_NAMESPACE::map<T1, T2>::value_type T3;
+typedef TESTED_NAMESPACE::map<T1, T2>::iterator ft_iterator;
+typedef TESTED_NAMESPACE::map<T1, T2>::const_iterator ft_const_iterator;
+
+static int iter = 0;
+
+template <typename MAP>
+void	ft_bound(MAP &mp, const T1 &param)
+{
+	ft_iterator ite = mp.end(), it[2];
+	_pair<ft_iterator, ft_iterator> ft_range;
+
+	std::cout << "\t-- [" << iter++ << "] --" << std::endl;
+	std::cout << "with key [" << param << "]:" << std::endl;
+	it[0] = mp.lower_bound(param); it[1] = mp.upper_bound(param);
+	ft_range = mp.equal_range(param);
+	std::cout << "lower_bound: " << (it[0] == ite ? "end()" : printPair(it[0], false)) << std::endl;
+	std::cout << "upper_bound: " << (it[1] == ite ? "end()" : printPair(it[1], false)) << std::endl;
+	std::cout << "equal_range: " << (ft_range.first == it[0] && ft_range.second == it[1]) << std::endl;
+}
+
+template <typename MAP>
+void	ft_const_bound(const MAP &mp, const T1 &param)
+{
+	ft_const_iterator ite = mp.end(), it[2];
+	_pair<ft_const_iterator, ft_const_iterator> ft_range;
+
+	std::cout << "\t-- [" << iter++ << "] (const) --" << std::endl;
+	std::cout << "with key [" << param << "]:" << std::endl;
+	it[0] = mp.lower_bound(param); it[1] = mp.upper_bound(param);
+	ft_range = mp.equal_range(param);
+	std::cout << "lower_bound: " << (it[0] == ite ? "end()" : printPair(it[0], false)) << std::endl;
+	std::cout << "upper_bound: " << (it[1] == ite ? "end()" : printPair(it[1], false)) << std::endl;
+	std::cout << "equal_range: " << (ft_range.first == it[0] && ft_range.second == it[1]) << std::endl;
+}
+
+int		main(void)
+{
+	std::list<T3> lst;
+	unsigned int lst_size = 10;
+	for (unsigned int i = 0; i < lst_size; ++i)
+		lst.push_back(T3(i + 1, (i + 1) * 3));
+	TESTED_NAMESPACE::map<T1, T2> mp(lst.begin(), lst.end());
+	printSize(mp);
+
+	ft_const_bound(mp, -10);
+	ft_const_bound(mp, 1);
+	ft_const_bound(mp, 5);
+	ft_const_bound(mp, 10);
+	ft_const_bound(mp, 50);
+
+	printSize(mp);
+
+	mp.lower_bound(3)->second = 404;
+	mp.upper_bound(7)->second = 842;
+	ft_bound(mp, 5);
+	ft_bound(mp, 7);
+
+	printSize(mp);
+	return (0);
 }

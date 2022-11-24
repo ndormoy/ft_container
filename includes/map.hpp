@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 15:28:07 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/24 13:19:02 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ namespace	ft
 			// Returns an iterator referring to the first element in the map container.
 			iterator	begin()
 			{
-				return (iterator(_root.begin(), _TNULL, _root.getRoot()));
+				return (iterator(_root.begin(), _root.getTNULL(), _root.getRoot()));
 			}
 
 			//Returns a const iterator referring to the first element in the map container.
@@ -182,7 +182,7 @@ namespace	ft
 
 			iterator	end()
 			{
-				iterator it = iterator(_root.end(), _TNULL, _root.getRoot());
+				iterator it = iterator(_root.end(), _root.getTNULL(), _root.getRoot());
 				it++;
 				return (it);
 			}
@@ -240,7 +240,7 @@ namespace	ft
 					ret = false; // already exist in the map
 				else
 					_size++;
-				return (ft::make_pair(iterator(_root.searchTree(val.first), _TNULL, _root.getRoot()), ret));
+				return (ft::make_pair(iterator(_root.searchTree(val.first), _root.getTNULL(), _root.getRoot()), ret));
 			}
 
 			// With hint insertion
@@ -253,7 +253,7 @@ namespace	ft
 				iterator ret;
 				if ((ret = _root.insert(val)) != NULL)
 					_size++; // already exist in the map
-				return (iterator(_root.searchTree(val.first), _TNULL, _root.getRoot()));
+				return (iterator(_root.searchTree(val.first), _root.getTNULL(), _root.getRoot()));
 			}
 
 			// range insertion
@@ -339,9 +339,9 @@ namespace	ft
 			iterator lower_bound (const key_type& k)
 			{
 				NodePtr tmp = _root.getRoot();
-				NodePtr ret = _TNULL;
+				NodePtr ret = _root.getTNULL();
 
-				while (tmp != _TNULL)
+				while (tmp != _root.getTNULL())
 				{
 					if (_comp(tmp->data.first, k))
 					{
@@ -354,15 +354,15 @@ namespace	ft
 					}
 					
 				}
-				return (iterator(ret, _TNULL, _root.getRoot()));
+				return (iterator(ret, _root.getTNULL(), _root.getRoot()));
 			}
 
 			const_iterator lower_bound (const key_type& k) const
 			{
 				NodePtr tmp = _root.const_getRoot();
-				NodePtr ret = _TNULL;
+				NodePtr ret = _root.const_getTNULL();
 
-				while (tmp != _TNULL)
+				while (tmp != _root.const_getTNULL())
 				{
 					if (_comp(tmp->data.first, k))
 					{
@@ -383,11 +383,11 @@ namespace	ft
 			iterator upper_bound (const key_type& k)
 			{
 				NodePtr tmp = _root.getRoot();
-				NodePtr ret = _TNULL;
+				NodePtr ret = _root.getTNULL();
 
-				if (_root.getRoot() == _TNULL)
-					return (_TNULL);
-				while (tmp != _TNULL)
+				if (_root.getRoot() == _root.getTNULL())
+					return (_root.getTNULL());
+				while (tmp != _root.getTNULL())
 				{
 					if (!_comp(k, tmp->data.first))
 					{
@@ -400,17 +400,17 @@ namespace	ft
 						
 					}
 				}
-				return (iterator(ret, _TNULL, _root.getRoot()));
+				return (iterator(ret, _root.getTNULL(), _root.getRoot()));
 			}
 
 			const_iterator upper_bound (const key_type& k) const
 			{
 				NodePtr tmp = _root.const_getRoot();
-				NodePtr ret = _TNULL;
+				NodePtr ret = _root.const_getTNULL();
 
-				if (_root.const_getRoot() == _TNULL)
-					return (_TNULL);
-				while (tmp != _TNULL)
+				if (_root.const_getRoot() == _root.const_getTNULL())
+					return (_root.const_getTNULL());
+				while (tmp != _root.const_getTNULL())
 				{
 					if (!_comp(k, tmp->data.first))
 					{
@@ -466,12 +466,12 @@ namespace	ft
 				tree_type		tmp_root = _root;
 				key_compare		tmp_comp = _comp;
 				allocator_type	tmp_allocator = _allocator;
-				TNULL_type		tmp_TNULL = _TNULL;
+				TNULL_type		tmp_TNULL = _root.getTNULL();
 				_size = x._size;
 				_root = x._root;
 				_comp = x._comp;
 				_allocator = x._allocator;
-				_TNULL = x._TNULL;
+				_TNULL = x.getTNULL();
 				x._size = tmp_size;
 				x._root = tmp_root;
 				x._comp = tmp_comp;
