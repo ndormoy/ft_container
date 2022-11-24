@@ -1,159 +1,51 @@
-[0;103m                                         GMARY'S TESTS                                         [0m
+BEFORE SWAP
+foo contains:
+size: 7
+max_size: 230584300921369395
 
+Content is:
+- key: a | value: 7
+- key: b | value: 6
+- key: c | value: 5
+- key: d | value: 4
+- key: e | value: 3
+- key: f | value: 2
+- key: g | value: 1
+###############################################
+bar contains:
+size: 4
+max_size: 230584300921369395
 
+Content is:
+- key: w | value: 15
+- key: x | value: 10
+- key: y | value: 5
+- key: z | value: 0
+###############################################
+AFTER SWAP
+foo contains:
+size: 4
+max_size: 230584300921369395
 
+Content is:
+- key: w | value: 15
+- key: x | value: 10
+- key: y | value: 5
+- key: z | value: 0
+###############################################
+bar contains:
+size: 7
+max_size: 230584300921369395
 
-[4;35mNO ARGS = ALL
-0 - VECTOR
-1 - SET
-2 - MAP
-3 - STACK
-4 - PAIR
-[0m
-
-
-
-
-[0;103m                                         VECTOR TESTS                                         [0m
-
-
-
-
-[4;35m                                         CONSTRUCTORS
-[0m
-size: 5 capacity: 5
-size: 5 capacity: 5
-size: 5 capacity: 5
-size: 5 capacity: 5
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-[4;35m                                         ASSIGNATION
-[0m
-before assignation size: 0 capacity: 0
-after assignation size: 5 capacity: 5
-42
-42
-42
-42
-42
-[4;35m                                         PUSH BACK
-[0m
-size: 6 capacity: 10
-size: 7 capacity: 10
-size: 8 capacity: 10
-size: 14 capacity: 20
-size: 5 capacity: 5
-size: 9 capacity: 10
-[4;35m                                         ITERATORS
-[0m
-0
--97
--96
--95
--94
-93
-92
-91
-90
-89
-42
-42
-42
-42
--97
--96
--95
--94
-93
-92
-91
-90
-89
-42
-42
-42
-42
-42
-[4;35m                                         INSERT
-[0m
-size: 9 capacity: 10
-42
-42
-42
-42
-42
-42
-42
-89
-90
-91
-92
-93
--94
--95
--96
--97
-size: 18 capacity: 20
-42
-42
-42
-42
-42
-42
-42
-42
-42
-89
-90
-91
-92
-93
--94
--95
--96
--97
-size: 18 capacity: 20
-TOTOTO --- size: 23 capacity: 36
-42
-42
-42
-42
-42
-size: 5 capacity: 5
-[4;35m                                         ERASE
-[0m
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-42
-89
-90
-91
-92
-93
--94
--95
--96
--97
+Content is:
+- key: a | value: 7
+- key: b | value: 6
+- key: c | value: 5
+- key: d | value: 4
+- key: e | value: 3
+- key: f | value: 2
+- key: g | value: 1
+###############################################
+Iterator validity:
+1
+1

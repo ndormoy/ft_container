@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/24 13:19:02 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/24 13:21:18 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -471,7 +471,7 @@ namespace	ft
 				_root = x._root;
 				_comp = x._comp;
 				_allocator = x._allocator;
-				_TNULL = x.getTNULL();
+				_TNULL = x._root.getTNULL();
 				x._size = tmp_size;
 				x._root = tmp_root;
 				x._comp = tmp_comp;
