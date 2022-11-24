@@ -340,7 +340,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "8) INSERT" << CRESET << std::endl;
+	std::cout << BBLU << "9) INSERT" << CRESET << std::endl;
 
 	std::cout << BGRN << "a) insert single element" << CRESET << std::endl;
 
@@ -430,7 +430,7 @@ int main()
 	
 	/************************************************************************************************/
 
-	std::cout << BBLU << "9) MAX SIZE" << CRESET << std::endl;
+	std::cout << BBLU << "10) MAX SIZE" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::vector<long> long_vector;
 	TESTED_NAMESPACE::vector<char> char_vector;
@@ -460,7 +460,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "9) OPERATOR[]" << CRESET << std::endl;
+	std::cout << BBLU << "11) OPERATOR[]" << CRESET << std::endl;
 
 	for (int i = 0; i < 8; i++)
 		test_one.insert(test_one.begin() + i, i);
@@ -479,10 +479,100 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "9) OPERATOR=" << CRESET << std::endl;
+	std::cout << BBLU << "12) OPERATOR=" << CRESET << std::endl;
 	
 	print_vector(test_two);
 	std::cout << "-------" << std::endl;
 	test_two = test_one;
 	print_vector(test_two);
+	std::cout << "-------" << std::endl;
+
+	test_two.insert(test_two.begin(), 666);
+	print_vector(test_one);
+	std::cout << "-------" << std::endl;
+	print_vector(test_two);
+	std::cout << "-------" << std::endl;
+
+	test_one.clear();
+	test_two.clear();
+
+	/************************************************************************************************/
+
+	std::cout << BBLU << "13) POP BACK" << CRESET << std::endl;
+
+	test_one.insert(test_one.begin(), 2);
+	test_one.insert(test_one.begin(), 4);
+	test_one.insert(test_one.begin(), 6);
+	test_one.insert(test_one.begin(), 8);
+
+	print_vector(test_one);
+	std::cout << "-------" << std::endl;
+	test_one.pop_back();
+	print_vector(test_one);
+	std::cout << "-------" << std::endl;
+	test_one.pop_back();
+	print_vector(test_one);
+	std::cout << "-------" << std::endl;
+	test_one.pop_back();
+	print_vector(test_one);
+	std::cout << "-------" << std::endl;
+	test_one.pop_back();
+	print_vector(test_one);
+	std::cout << "-------" << std::endl;
+	try
+	{
+		test_one.pop_back();
+		print_vector(test_one);
+		std::cout << "-------" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	test_one.clear();
+
+	/************************************************************************************************/
+
+	std::cout << BBLU << "14) PUSH BACK" << CRESET << std::endl;
+
+	test_one.push_back(10);
+	test_one.push_back(20);
+	test_one.push_back(30);
+	test_one.push_back(40);
+	test_one.push_back(50);
+	test_one.push_back(60);
+	print_vector(test_one);
+
+	/************************************************************************************************/
+
+	std::cout << BBLU << "14) RBEGIN && REND" << CRESET << std::endl;
+
+	for (TESTED_NAMESPACE::vector<int>::reverse_iterator rit = test_one.rbegin(); rit != test_one.rend(); ++rit)
+		std::cout << *(rit) << std::endl;
+	std::cout << "-------" << std::endl;
+	for (TESTED_NAMESPACE::vector<int>::const_reverse_iterator rit = test_one.rbegin(); rit != test_one.rend(); ++rit)
+		std::cout << *(rit) << std::endl;
+	std::cout << "-------" << std::endl;
+	for (TESTED_NAMESPACE::vector<int>::reverse_iterator rit = test_one.rend(); rit != test_one.rbegin(); rit--)
+		std::cout << *(rit) << std::endl;
+	std::cout << "-------" << std::endl;
+	for (TESTED_NAMESPACE::vector<int>::const_reverse_iterator rit = test_one.rend(); rit != test_one.rbegin(); rit--)
+		std::cout << *(rit) << std::endl;
+	std::cout << "-------" << std::endl;
+	TESTED_NAMESPACE::vector<int>::reverse_iterator rit = test_one.rend();
+	rit--;
+	std::cout << *(rit) << std::endl;
+	rit++;
+	std::cout << *(rit) << std::endl;
+	rit = test_one.rbegin();
+	rit++;
+	rit++;
+	std::cout << *(rit) << std::endl;
+	rit--;
+    std::cout << *(rit) << std::endl;
+	
+	/************************************************************************************************/
+
+	std::cout << BBLU << "14) RBEGIN && REND" << CRESET << std::endl;
 }
