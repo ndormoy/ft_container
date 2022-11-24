@@ -413,7 +413,7 @@ int main()
 	print_vector(test_one);
 	std::cout << "-------" << std::endl;
 
-	// std::cout << "Capacity before = " << test_one.capacity() << std::endl;
+	std::cout << "Capacity before = " << test_one.capacity() << std::endl;
 	test_one.clear();
 	test_one.insert(test_one.begin(), 5, 84);
 	print_vector(test_one);

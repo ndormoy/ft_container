@@ -208,6 +208,7 @@ capacity = 10
 size = 9
 capacity = 9
 -------
+Capacity before = 9
 84
 84
 84

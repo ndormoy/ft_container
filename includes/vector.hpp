@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/24 18:13:40 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/24 18:19:05 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,7 +381,9 @@ namespace	ft
 					i++;
 				if (_m_size + n >= _m_capacity)
 				{
-					if (_m_size + n > 2 * _m_capacity)
+					// if (_m_capacity == 0)
+					// 	reserve(n + _m_size);
+					/* else  */if (_m_size + n > 2 * _m_capacity)
 						reserve(_m_size + n);
 					else
 						reserve(2 * _m_size);
