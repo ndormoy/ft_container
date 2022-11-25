@@ -190,17 +190,23 @@ int main()
 
 	std::cout << BBLU << "4) END" << CRESET << std::endl;
 
-	std::cout << "end = " << *(test_one.end()) << std::endl;
+	TESTED_NAMESPACE::vector<int>::iterator my_it_ret = test_one.end();
+	if (*my_it_ret)
+		std::cout << "end = " << *(my_it_ret) << std::endl;
 	TESTED_NAMESPACE::vector<int>::iterator it_one = test_one.end();
 	it_one--;
 	std::cout << "end = " << *it_one << std::endl;
 
-	std::cout << "end = " << *(test_two.end()) << std::endl;
+	my_it_ret = test_two.end();
+	if (*my_it_ret)
+		std::cout << "end = " << *(my_it_ret) << std::endl;
 	TESTED_NAMESPACE::vector<int>::iterator it_two = test_two.end();
 	it_two--;
 	std::cout << "end = " << *it_one << std::endl;
 	
-	std::cout << "end = " << *(test_three.end()) << std::endl;
+	my_it_ret = test_three.end();
+	if (*my_it_ret)
+		std::cout << "end = " << *(my_it_ret) << std::endl;
 	TESTED_NAMESPACE::vector<int>::iterator it_three = test_three.end();
 	it_three--;
 	std::cout << "end = " << *it_one << std::endl;
@@ -344,27 +350,29 @@ int main()
 
 	std::cout << BGRN << "a) insert single element" << CRESET << std::endl;
 
-	test_one.insert(test_one.begin(), 2);
-	test_one.insert(test_one.begin(), 4);
-	test_one.insert(test_one.begin(), 6);
-	test_one.insert(test_one.end(), 8);
-	print_vector(test_one);
-	std::cout << "-------" << std::endl;
-	TESTED_NAMESPACE::vector<int>::iterator okit = test_one.begin();
-	okit++;
-	test_one.insert(okit, 60);
-	print_vector(test_one);
-	std::cout << "-------" << std::endl;
-	okit = test_one.begin();
-	okit++;
-	okit++;
-	okit++;
-	okit++;
-	okit++;
-	test_one.insert(okit, 80);
-	print_vector(test_one);
+	TESTED_NAMESPACE::vector<int> insert_vector;
 
-	test_one.clear();
+	insert_vector.insert(insert_vector.begin(), 2);
+	insert_vector.insert(insert_vector.begin(), 4);
+	insert_vector.insert(insert_vector.begin(), 6);
+	insert_vector.insert(insert_vector.end(), 8);
+	print_vector(insert_vector);
+	std::cout << "-------" << std::endl;
+	TESTED_NAMESPACE::vector<int>::iterator okit = insert_vector.begin();
+	okit++;
+	insert_vector.insert(okit, 60);
+	print_vector(insert_vector);
+	std::cout << "-------" << std::endl;
+	okit = insert_vector.begin();
+	okit++;
+	okit++;
+	okit++;
+	okit++;
+	okit++;
+	insert_vector.insert(okit, 80);
+	print_vector(insert_vector);
+
+	insert_vector.clear();
 
 	std::cout << "-------------------------" << std::endl;
 
@@ -391,19 +399,19 @@ int main()
 
 	std::cout << BGRN << "b) insert range" << CRESET << std::endl;
 
-	test_one.insert(test_one.begin(), 2);
-	test_one.insert(test_one.begin(), 4);
-	test_one.insert(test_one.begin(), 6);
-	test_one.insert(test_one.end(), 8);
+	insert_vector.insert(insert_vector.begin(), 2);
+	insert_vector.insert(insert_vector.begin(), 4);
+	insert_vector.insert(insert_vector.begin(), 6);
+	insert_vector.insert(insert_vector.end(), 8);
 
-	test_two.insert(test_two.begin(), test_one.begin(), test_one.end());
+	test_two.insert(test_two.begin(), insert_vector.begin(), insert_vector.end());
 
     print_vector(test_two);
 	std::cout << "-------" << std::endl;
-	test_two.insert(test_two.begin() + 2, test_one.begin(), test_one.end());
+	test_two.insert(test_two.begin() + 2, insert_vector.begin(), insert_vector.end());
 	print_vector(test_two);
 	std::cout << "-------" << std::endl;
-	test_two.insert(test_two.begin() + 4, test_one.begin(), test_one.begin() + 2);
+	test_two.insert(test_two.begin() + 4, insert_vector.begin(), insert_vector.begin() + 2);
 	print_vector(test_two);
 
     std::cout << "-------" << std::endl;
@@ -411,25 +419,25 @@ int main()
 
 	std::cout << BGRN << "c) insert fill" << CRESET << std::endl;
 
-	test_one.insert(test_one.begin() + 2, 5, 42);
+	insert_vector.insert(insert_vector.begin() + 2, 5, 42);
 	std::cout << std::endl;
-	print_vector(test_one);
+	print_vector(insert_vector);
 	std::cout << "-------" << std::endl;
 
-	test_one.clear();
-	test_one.insert(test_one.begin(), 5, 84);
-	print_vector(test_one);
+	insert_vector.clear();
+	insert_vector.insert(insert_vector.begin(), 5, 84);
+	print_vector(insert_vector);
 
 	try
 	{
-		test_one.insert(test_one.begin(), 1000000000000000000, 84);
+		insert_vector.insert(insert_vector.begin(), 1000000000000000000, 84);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-	test_one.clear();
+	insert_vector.clear();
 	
 	/************************************************************************************************/
 
@@ -599,15 +607,185 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "14) RESIZE" << CRESET << std::endl;
+	std::cout << BBLU << "15) RESIZE" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::vector<int> test_four;
 
 	for (int i = 0; i < 100; i++)
-		test_one.insert(test_one.begin() + i, i);
+	{
+		std::cout << "Capacity before = " << test_four.capacity() << std::endl;
+		test_four.insert(test_four.begin() + i, i);
+		std::cout << "Capacity after = " << test_four.capacity() << std::endl;
+	}
 
-	std::cout << "size = " << test_one.size() << std::endl;
+	std::cout << "size = " << test_four.size() << std::endl;
+	std::cout << "capacity = " << test_four.capacity() << std::endl;
+	print_vector(test_four);
 
-	test_one.resize(1);
+	test_four.resize(1);
 
-	std::cout << "size = " << test_one.size() << std::endl;
+	std::cout << "size = " << test_four.size() << std::endl;
+	std::cout << "capacity = " << test_four.capacity() << std::endl;
+	print_vector(test_four);
 
+	test_four.clear();
+
+	std::cout << BBLU << "15) SWAP" << CRESET << std::endl;
+
+	for (int i = 0; i < 10; i++)
+		test_three.push_back(i);
+
+	for (int i = 50; i < 55; i++)
+		test_four.push_back(i);
+
+	std::cout << "capacity = " << test_three.capacity() << std::endl;
+	std::cout << "capacity = " << test_four.capacity() << std::endl;
+	std::cout << "-------" << std::endl;
+	print_vector(test_three);
+	std::cout << "-------" << std::endl;
+	print_vector(test_four);
+
+	std::cout << "Swaping[.....]" << std::endl;
+
+	test_three.swap(test_four);
+
+	std::cout << "capacity = " << test_three.capacity() << std::endl;
+	std::cout << "capacity = " << test_four.capacity() << std::endl;
+	print_vector(test_three);
+	std::cout << "-------" << std::endl;
+	print_vector(test_four);
+	std::cout << "-------" << std::endl;
+
+	std::cout << BBLU << "16) RELATIONAL OPERATORS" << CRESET << std::endl;
+
+	/*------------------------------------*/
+
+	TESTED_NAMESPACE::vector<int>	my_test;
+
+	my_test.push_back(1);
+	my_test.push_back(2);
+	my_test.push_back(3);
+	my_test.push_back(4);
+
+	TESTED_NAMESPACE::vector<int>	my_other_test;
+	
+	my_other_test.push_back(10);
+	my_other_test.push_back(20);
+	my_other_test.push_back(30);
+	my_other_test.push_back(40);
+
+	TESTED_NAMESPACE::vector<int>	my_same_test;
+	
+	my_same_test.push_back(10);
+	my_same_test.push_back(20);
+	my_same_test.push_back(30);
+	my_same_test.push_back(40);
+
+	TESTED_NAMESPACE::vector<int>	empty_vector;
+	TESTED_NAMESPACE::vector<int>	empty_vector2;
+
+	/*------------------------------------*/
+
+	std::cout << "test == comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (my_test == my_other_test)
+		std::cout << "EQUAL : ==" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+	if (my_same_test == my_other_test)
+		std::cout << "EQUAL : ==" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+	if (empty_vector == empty_vector2)
+		std::cout << "EQUAL : ==" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+
+	std::cout << "test != comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (my_test!= my_other_test)
+		std::cout << "DIFFRENT : !=" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test < comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (my_test < my_other_test)
+		std::cout << "LOWER : <" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test > comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (my_test > my_other_test)
+		std::cout << "HIGHER : >" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test <= comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (my_test <= my_other_test)
+		std::cout << "LOWER <=" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test >= comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (my_test >= my_other_test)
+		std::cout << "HIGHER : >=" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << BBLU << "17) CONSTRUCTORS" << CRESET << std::endl;
+
+
+	std::cout << BGRN << "a) default constructor" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::vector<int>	construct_test(20, 42);
+	TESTED_NAMESPACE::vector<int>	construct_test_2(0, 42);
+
+	print_vector(construct_test);
+	print_vector(construct_test_2);
+
+	std::cout << BGRN << "b) fill constructor" << CRESET << std::endl;
+
+	try
+	{
+		TESTED_NAMESPACE::vector<int>	construct_test_3(500000000000000000, 42);
+		print_vector(construct_test_3);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	TESTED_NAMESPACE::vector<int>	construct_test_4(10, 42);
+	print_vector(construct_test_4);
+
+	std::cout << BGRN << "c) range constructor" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::vector<int> vector_to_cpy;
+
+	for (int i = 0; i < 10; i++)
+		vector_to_cpy.push_back(i);
+
+	TESTED_NAMESPACE::vector<int>	construct_test_5(vector_to_cpy.begin(), vector_to_cpy.end());
+	TESTED_NAMESPACE::vector<int>	construct_test_6(vector_to_cpy.begin() + 3, vector_to_cpy.end() - 2);
+	print_vector(construct_test_5);
+	std::cout << "-------" << std::endl;
+	print_vector(construct_test_6);
+	std::cout << "-------" << std::endl;
+
+	std::cout << BGRN << "d) copy constructor" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::vector<int>	construct_test_7(construct_test_5);
+	print_vector(construct_test_7);
+	TESTED_NAMESPACE::vector<int>	construct_test_8(construct_test_6);
+	print_vector(construct_test_8);
 }

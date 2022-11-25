@@ -54,11 +54,8 @@ begin = -20
 begin = 5
 begin = 10
 [1;34m4) END[0m
-end = 0
 end = 3
-end = 0
 end = 3
-end = 0
 end = 3
 [1;34m5) CLEAR[0m
 begin = -20
@@ -572,6 +569,468 @@ size = 0
 capacity = 0
 size = 0
 capacity = 0
-[1;34m14) RESIZE[0m
+[1;34m15) RESIZE[0m
+Capacity before = 0
+Capacity after = 1
+Capacity before = 1
+Capacity after = 2
+Capacity before = 2
+Capacity after = 4
+Capacity before = 4
+Capacity after = 4
+Capacity before = 4
+Capacity after = 8
+Capacity before = 8
+Capacity after = 8
+Capacity before = 8
+Capacity after = 8
+Capacity before = 8
+Capacity after = 8
+Capacity before = 8
+Capacity after = 16
+Capacity before = 16
+Capacity after = 16
+Capacity before = 16
+Capacity after = 16
+Capacity before = 16
+Capacity after = 16
+Capacity before = 16
+Capacity after = 16
+Capacity before = 16
+Capacity after = 16
+Capacity before = 16
+Capacity after = 16
+Capacity before = 16
+Capacity after = 16
+Capacity before = 16
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 32
+Capacity before = 32
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 64
+Capacity before = 64
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
+Capacity before = 128
+Capacity after = 128
 size = 100
+capacity = 128
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+size = 100
+capacity = 100
 size = 1
+capacity = 128
+0
+size = 1
+capacity = 1
+[1;34m15) SWAP[0m
+capacity = 16
+capacity = 128
+-------
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+size = 10
+capacity = 10
+-------
+50
+51
+52
+53
+54
+size = 5
+capacity = 5
+Swaping[.....]
+capacity = 128
+capacity = 16
+50
+51
+52
+53
+54
+size = 5
+capacity = 5
+-------
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+size = 10
+capacity = 10
+-------
+[1;34m16) RELATIONAL OPERATORS[0m
+test == comp_test: 
+MY TEST
+WRONG
+EQUAL : ==
+EQUAL : ==
+--------------------
+test != comp_test: 
+MY TEST
+DIFFRENT : !=
+--------------------
+test < comp_test: 
+MY TEST
+LOWER : <
+--------------------
+test > comp_test: 
+MY TEST
+WRONG
+--------------------
+test <= comp_test: 
+MY TEST
+LOWER <=
+--------------------
+test >= comp_test: 
+MY TEST
+WRONG
+[1;34m17) CONSTRUCTORS[0m
+[1;32ma) default constructor[0m
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+size = 20
+capacity = 20
+size = 0
+capacity = 0
+[1;32mb) fill constructor[0m
+42
+42
+42
+42
+42
+42
+42
+42
+42
+42
+size = 10
+capacity = 10
+[1;32mc) range constructor[0m
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+size = 10
+capacity = 10
+-------
+3
+4
+5
+6
+7
+size = 5
+capacity = 5
+-------
+[1;32md) copy constructor[0m
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+size = 10
+capacity = 10
+3
+4
+5
+6
+7
+size = 5
+capacity = 5
