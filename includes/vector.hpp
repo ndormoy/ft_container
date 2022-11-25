@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/24 18:19:05 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/25 14:23:50 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ namespace	ft
 			{
 				_m_allocator = x._m_allocator;
 				_m_size = x._m_size;
-				_m_capacity = _m_size;
+				_m_capacity = x._m_size;
 				_m_begin = _m_allocator.allocate(_m_capacity);
 
 				for (size_type i = 0; i < _m_size; i++)
@@ -145,7 +145,6 @@ namespace	ft
 			{
 				this->clear();
 				reserve(n);
-				// this->clear();
 				for (size_type i = 0; i < n; i++)
 					_m_allocator.construct(_m_begin + i, u);
 				_m_size = n;
@@ -381,9 +380,7 @@ namespace	ft
 					i++;
 				if (_m_size + n >= _m_capacity)
 				{
-					// if (_m_capacity == 0)
-					// 	reserve(n + _m_size);
-					/* else  */if (_m_size + n > 2 * _m_capacity)
+					if (_m_size + n > 2 * _m_capacity)
 						reserve(_m_size + n);
 					else
 						reserve(2 * _m_size);

@@ -377,6 +377,8 @@ int main()
 
 	print_vector(string_vector);
 
+	
+
 	std::cout << "-------" << std::endl;
 
 	TESTED_NAMESPACE::vector<std::string>::iterator string_it = string_vector.begin();
@@ -410,10 +412,10 @@ int main()
 	std::cout << BGRN << "c) insert fill" << CRESET << std::endl;
 
 	test_one.insert(test_one.begin() + 2, 5, 42);
+	std::cout << std::endl;
 	print_vector(test_one);
 	std::cout << "-------" << std::endl;
 
-	std::cout << "Capacity before = " << test_one.capacity() << std::endl;
 	test_one.clear();
 	test_one.insert(test_one.begin(), 5, 84);
 	print_vector(test_one);
@@ -579,24 +581,21 @@ int main()
 
 	std::cout << BBLU << "14) RESERVE" << CRESET << std::endl;
 
-	// for (int i = 0; i < 10; i++)
-	// {
-	// 	std::cout << "Capacity before = " << test_one.capacity() << std::endl;
-	// 	test_one.push_back(i);
-	// 	std::cout << "Capacity after = " << test_one.capacity() << std::endl;
-	// }
-	// std::cout << "-------" << std::endl;
-	// test_one.clear();
-	// test_two.reserve(50);
-	// for (int i = 0; i < 100; i++)
-	// {
-	// 	std::cout << "Capacity before = " << test_two.capacity() << std::endl;
-	// 	test_two.push_back(i);
-	// 	std::cout << "Capacity after = " << test_two.capacity() << std::endl;
-	// }
-	// test_two.clear();
-	// print_vector(test_two);
-	// print_vector(test_one);
+	for (int i = 0; i < 10; i++)
+		test_one.push_back(i);
+	print_vector(test_one);
+	std::cout << "-------" << std::endl;
+	test_one.clear();
+	test_two.reserve(50);
+	for (int i = 0; i < 100; i++)
+	{
+		std::cout << "Capacity before = " << test_two.capacity() << std::endl;
+		test_two.push_back(i);
+		std::cout << "Capacity after = " << test_two.capacity() << std::endl;
+	}
+	test_two.clear();
+	print_vector(test_two);
+	print_vector(test_one);
 
 	/************************************************************************************************/
 
