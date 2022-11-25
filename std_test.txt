@@ -1034,3 +1034,108 @@ capacity = 10
 7
 size = 5
 capacity = 5
+[1;31m*******************************
+<---------TEST FUNCTIONS--------->
+*******************************[0m
+[1;34m1) IS INTEGRAL[0m
+is_integral:
+OK
+OK
+OK
+[1;34m2) PAIR[0m
+42 A
+[1;34m3) MAKE PAIR[0m
+42 A
+[1;34m4) EQUAL[0m
+The contents of both sequences are equal.
+The contents of both sequences differ.
+The contents of both sequences differ.
+[1;31m*******************************
+<---------TEST STACK--------->
+*******************************[0m
+[1;34m1) PUSH[0m
+stack is empty
+-------
+stack is not empty
+top = 4
+size = 5
+empty = false
+4
+3
+2
+1
+0
+[1;34m2) POP && TOP[0m
+4
+stack is not empty
+top = 3
+size = 4
+empty = false
+3
+2
+1
+0
+-------
+3
+stack is not empty
+top = 2
+size = 3
+empty = false
+2
+1
+0
+-------
+2
+stack is not empty
+top = 1
+size = 2
+empty = false
+1
+0
+-------
+1
+stack is not empty
+top = 0
+size = 1
+empty = false
+0
+-------
+0
+stack is empty
+-------
+[1;34m3) COPY CONSTRUCTOR[0m
+stack is not empty
+top = 4
+size = 5
+empty = false
+4
+3
+2
+1
+0
+[1;34m3) RELATIONAL OPERATORS[0m
+test == comp_test: 
+MY TEST
+EQUAL : ==
+WRONG
+EQUAL : ==
+--------------------
+test != comp_test: 
+MY TEST
+DIFFRENT : !=
+--------------------
+test < comp_test: 
+MY TEST
+LOWER : <
+--------------------
+test > comp_test: 
+MY TEST
+WRONG
+--------------------
+test <= comp_test: 
+MY TEST
+LOWER <=
+--------------------
+test >= comp_test: 
+MY TEST
+WRONG

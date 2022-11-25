@@ -24,6 +24,7 @@
 #include <limits>
 #include <algorithm>
 #include <map>
+#include <stack>
 
 template <typename T>
 void print_vector(TESTED_NAMESPACE::vector<T> myvector)
@@ -32,7 +33,33 @@ void print_vector(TESTED_NAMESPACE::vector<T> myvector)
 		std::cout << *(it) << std::endl;
 	std::cout << "size = " << myvector.size() << std::endl;
 	std::cout << "capacity = " << myvector.capacity() << std::endl;
+}
 
+template <typename T>
+void print_stack(TESTED_NAMESPACE::stack<T> mystack)
+{
+	if (mystack.empty())
+		std::cout << "stack is empty" << std::endl;
+	else
+	{
+		std::cout << "stack is not empty" << std::endl;
+		std::cout << "top = " << mystack.top() << std::endl;
+		std::cout << "size = " << mystack.size() << std::endl;
+		std::cout << "empty = " << mystack.empty() << std::endl;
+		while (!mystack.empty())
+		{
+			std::cout << mystack.top() << std::endl;
+			mystack.pop();
+		}
+	}
+}
+
+bool pred_function (int i, int j) {
+  return (i == j);
+}
+
+bool other_pred_function (int i, int j) {
+  return (i != j);
 }
 
 int main()
@@ -788,4 +815,170 @@ int main()
 	print_vector(construct_test_7);
 	TESTED_NAMESPACE::vector<int>	construct_test_8(construct_test_6);
 	print_vector(construct_test_8);
+
+	std::cout << BRED << "*******************************" << std::endl;
+	std::cout << "<---------TEST FUNCTIONS--------->" << std::endl;
+	std::cout << "*******************************" << CRESET << std::endl;
+
+	std::cout << BBLU << "1) IS INTEGRAL" << CRESET << std::endl;
+
+	std::cout << std::boolalpha;
+	std::cout << "is_integral:" << std::endl;
+	const bool ret = ft::is_integral<char>::value;
+	if (ret != true)
+		std::cout << "WRONG --> YOUR FUNCTION IS NOT WORKING !" << std::endl;
+	else
+		std::cout << "OK" << std::endl;
+	const bool ret_2 = ft::is_integral<int>::value;
+	if (ret_2 != true)
+		std::cout << "WRONG --> YOUR FUNCTION IS NOT WORKING !" << std::endl;
+	else
+		std::cout << "OK" << std::endl;
+	const bool ret_3 = ft::is_integral<float>::value;
+	if (ret_3 != false)
+		std::cout << "WRONG --> YOUR FUNCTION IS NOT WORKING !" << std::endl;
+	else
+		std::cout << "OK" << std::endl;
+
+	std::cout << BBLU << "2) PAIR" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::pair<int, char> pair;
+
+	pair.first = 42;
+	pair.second = 'A';
+
+	std::cout << pair.first << " ";
+	std::cout << pair.second << std::endl;
+
+	std::cout << BBLU << "3) MAKE PAIR" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::pair<int, char> pair_2 = TESTED_NAMESPACE::make_pair(42, 'A');
+	
+	std::cout << pair_2.first << " ";
+	std::cout << pair_2.second << std::endl;
+
+	std::cout << BBLU << "4) EQUAL" << CRESET << std::endl;
+
+	int tab[] = {20,40,60,80,100};
+
+	TESTED_NAMESPACE::vector<int> vector_equal (tab,tab + 5);
+
+	// using default comparison:
+	if ( TESTED_NAMESPACE::equal (vector_equal.begin(), vector_equal.end(), tab) )
+	std::cout << "The contents of both sequences are equal.\n";
+	else
+	std::cout << "The contents of both sequences differ.\n";
+	vector_equal[3]=81;
+
+	// using predicate comparison:
+	if ( TESTED_NAMESPACE::equal (vector_equal.begin(), vector_equal.end(), tab, pred_function) )
+	std::cout << "The contents of both sequences are equal.\n";
+	else
+	std::cout << "The contents of both sequences differ.\n";
+
+	if ( TESTED_NAMESPACE::equal (vector_equal.begin(), vector_equal.end(), tab, other_pred_function) )
+	std::cout << "The contents of both sequences are equal.\n";
+	else
+	std::cout << "The contents of both sequences differ.\n";
+
+	std::cout << BRED << "*******************************" << std::endl;
+	std::cout << "<---------TEST STACK--------->" << std::endl;
+	std::cout << "*******************************" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::stack<int> mystack;
+
+	std::cout << BBLU << "1) PUSH" << CRESET << std::endl;
+
+	print_stack(mystack);
+
+	std::cout << "-------" << std::endl;
+
+	for (int i = 0; i < 5; ++i)
+		mystack.push(i);
+
+	print_stack(mystack);
+
+	std::cout << BBLU << "2) POP && TOP" << CRESET << std::endl;
+
+	while (!mystack.empty())
+	{
+		std::cout << mystack.top() << std::endl;
+		mystack.pop();
+		print_stack(mystack);
+		std::cout << "-------" << std::endl;
+	}
+
+	std::cout << BBLU << "3) COPY CONSTRUCTOR" << CRESET << std::endl;
+
+	for (int i = 0; i < 5; ++i)
+		mystack.push(i);
+
+	TESTED_NAMESPACE::stack<int> o_stack(mystack);
+
+	print_stack(o_stack);
+
+	std::cout << BBLU << "3) RELATIONAL OPERATORS" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::stack<int> different_stack;
+	TESTED_NAMESPACE::stack<int> empty_stack;
+	TESTED_NAMESPACE::stack<int> empty_stack_2;
+
+	for (int i = 20; i < 42; ++i)
+		different_stack.push(i);
+
+	std::cout << "test == comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (mystack == o_stack)
+		std::cout << "EQUAL : ==" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+	if (mystack == different_stack)
+		std::cout << "EQUAL : ==" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+	if (empty_stack == empty_stack_2)
+		std::cout << "EQUAL : ==" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+
+	std::cout << "test != comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (mystack != different_stack)
+		std::cout << "DIFFRENT : !=" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test < comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (mystack < different_stack)
+		std::cout << "LOWER : <" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test > comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (mystack > different_stack)
+		std::cout << "HIGHER : >" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test <= comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (mystack <= different_stack)
+		std::cout << "LOWER <=" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
+
+	std::cout << "--------------------" << std::endl;
+	std::cout << "test >= comp_test: " << std::endl;
+	std::cout << "MY TEST" << std::endl;
+	if (mystack >= different_stack)
+		std::cout << "HIGHER : >=" << std::endl;
+	else
+		std::cout << "WRONG" << std::endl;
 }
