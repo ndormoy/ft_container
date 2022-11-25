@@ -428,4 +428,6 @@ int main()
 		std::cout << "HIGHER : >=" << std::endl;
 	else
 		std::cout << "WRONG" << std::endl;
+
+	std::cout << BBLU << "17) INSERTS" << CRESET << std::endl;
 }
