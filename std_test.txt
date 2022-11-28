@@ -286,3 +286,28 @@ first  = 1| second = 6
 first  = 0| second = 5
 first  = 4| second = 9
 first  = 3| second = 8
+first  = 4| second = 9
+first  = 4| second = 9
+[1;34m19) REVERSE BEGIN &&  REVERSE END[0m
+first  = 4| second = 9
+first  = 3| second = 8
+first  = 2| second = 7
+first  = 1| second = 6
+first  = 0| second = 5
+first  = 4| second = 9
+first  = 4| second = 9
+first  = 3| second = 8
+-------
+first  = 4| second = 9
+first  = 3| second = 8
+first  = 4| second = 9
+first  = 3| second = 8
+first  = 4| second = 9
+first  = 3| second = 8
+first  = 4| second = 9
+first  = 3| second = 8
+first  = 2| second = 7
+first  = 1| second = 6
+first  = 0| second = 5
+first  = end | second = end0
+first  = 4| second = 9

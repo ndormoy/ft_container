@@ -519,7 +519,6 @@ int main()
 	it_be_begin--;
 	std::cout << "first  = " << it_be_begin->first <<  "| second = " << it_be_begin->second << std::endl;
 	std::cout << "-------" << std::endl;
-	// it_be_end--;
 	it_be_end++;
 	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
 	it_be_end++;
@@ -537,12 +536,66 @@ int main()
 
 
 
-	// std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
 	it_be_end--;
 	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
 	it_be_end--;
 	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
 	it_be_end++;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
 	it_be_end++;
 	it_be_end++;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+
+	std::cout << BBLU << "19) REVERSE BEGIN &&  REVERSE END" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::map<int ,int>::reverse_iterator it_be_rbegin = map_begin_end.rbegin();
+	TESTED_NAMESPACE::map<int ,int>::reverse_iterator it_be_rend = map_begin_end.rend();
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+	it_be_rbegin++;
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+	it_be_rbegin++;
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+	it_be_rbegin++;
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+	it_be_rbegin++;
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+	it_be_rbegin++;
+	it_be_rbegin++;
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+	it_be_rbegin--;
+	it_be_rbegin--;
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+	it_be_rbegin--;
+	std::cout << "first  = " << it_be_rbegin->first <<  "| second = " << it_be_rbegin->second << std::endl;
+
+	std::cout << "-------" << std::endl;
+	it_be_rend++;
+	it_be_end++;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend--;
+	it_be_rend--;
+	it_be_rend--;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend--;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend--;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend--;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend--;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend--;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend--;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend++;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend++;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend++;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
+	it_be_rend++;
+	std::cout << "first  = end | second = end" << it_be_rend->second << std::endl;
+	it_be_rend++;
+	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
 }
