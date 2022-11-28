@@ -78,7 +78,7 @@ it->first = 3 | it->second = 1
 it->first = 4 | it->second = 1
 size = 4
 -------
-[1;32ma) erase key[0m
+[1;32mb) erase key[0m
 it->first = 0 | it->second = 1
 it->first = 1 | it->second = 1
 it->first = 2 | it->second = 1
@@ -86,7 +86,7 @@ it->first = 4 | it->second = 1
 size = 4
 -------
 ----------------
-[1;32ma) erase range[0m
+[1;32mc) erase range[0m
 it->first = 0 | it->second = 1
 it->first = 1 | it->second = 1
 it->first = 2 | it->second = 1
@@ -195,3 +195,94 @@ LOWER <=
 test >= comp_test: 
 MY TEST
 WRONG
+[1;34m17) INSERTS[0m
+[1;32ma) Single element[0m
+it->first = A | it->second = 100
+it->first = C | it->second = 400
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = b | it->second = 300
+size = 5
+[1;32mb) With hint[0m
+it->first = A | it->second = 100
+it->first = C | it->second = 400
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = OHOHOHOH | it->second = 100
+it->first = b | it->second = 300
+size = 6
+-------
+it->first = A | it->second = 100
+it->first = C | it->second = 400
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = OHOHOHOH | it->second = 100
+it->first = b | it->second = 300
+size = 6
+-------
+it->first = A | it->second = 100
+it->first = C | it->second = 400
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = OHOHOHOH | it->second = 100
+it->first = b | it->second = 300
+it->first = pouet | it->second = 200
+size = 7
+[1;32mc) Range[0m
+it->first = A | it->second = 100
+it->first = C | it->second = 400
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = OHOHOHOH | it->second = 100
+it->first = b | it->second = 300
+it->first = pouet | it->second = 200
+size = 7
+-------
+it->first = A | it->second = 100
+it->first = C | it->second = 400
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = OHOHOHOH | it->second = 100
+it->first = b | it->second = 300
+it->first = pouet | it->second = 200
+size = 7
+-------
+it->first = A | it->second = 100
+it->first = C | it->second = 400
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = OHOHOHOH | it->second = 100
+it->first = b | it->second = 300
+it->first = pouet | it->second = 200
+size = 7
+-------
+it->first = D | it->second = 200
+it->first = E | it->second = 500
+it->first = OHOHOHOH | it->second = 100
+size = 3
+[1;34m18) BEGIN && END[0m
+first  = 0| second = 5
+first  = 1| second = 6
+first  = 2| second = 7
+first  = 3| second = 8
+first  = 4| second = 9
+-------
+first  = 4| second = 9
+first  = 3| second = 8
+first  = 2| second = 7
+first  = 1| second = 6
+first  = 0| second = 5
+-------
+first  = 3| second = 8
+first  = 2| second = 7
+first  = 1| second = 6
+first  = 0| second = 5
+-------
+first  = 1| second = 6
+first  = 2| second = 7
+first  = 3| second = 8
+first  = 2| second = 7
+first  = 1| second = 6
+first  = 0| second = 5
+first  = 4| second = 9
+first  = 3| second = 8

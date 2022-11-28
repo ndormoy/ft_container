@@ -186,7 +186,7 @@ int main()
 	print_map(map_erase);
 	std::cout << "-------" << std::endl;
 	
-	std::cout << BGRN << "a) erase key" << CRESET << std::endl;
+	std::cout << BGRN << "b) erase key" << CRESET << std::endl;
 
 	map_erase.insert(TESTED_NAMESPACE::pair<int, bool>(2, true));
 
@@ -196,7 +196,7 @@ int main()
 	print_map(map_erase);
 	std::cout << "-------" << std::endl;
 	std::cout << "----------------" << std::endl;
-	std::cout << BGRN << "a) erase range" << CRESET << std::endl;
+	std::cout << BGRN << "c) erase range" << CRESET << std::endl;
 
 	map_erase.insert(TESTED_NAMESPACE::pair<int, bool>(3, true));
 
@@ -430,4 +430,119 @@ int main()
 		std::cout << "WRONG" << std::endl;
 
 	std::cout << BBLU << "17) INSERTS" << CRESET << std::endl;
+
+	std::cout << BGRN << "a) Single element" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::map<std::string,int> map_insert_1;
+
+	map_insert_1.insert (TESTED_NAMESPACE::make_pair("A" , 100));
+	map_insert_1.insert (TESTED_NAMESPACE::make_pair("b" , 300));
+	map_insert_1.insert (TESTED_NAMESPACE::make_pair("C" , 400));
+	map_insert_1.insert (TESTED_NAMESPACE::make_pair("D" , 200));
+	map_insert_1.insert (TESTED_NAMESPACE::make_pair("E", 500));
+
+	print_map(map_insert_1);
+
+	std::cout << BGRN << "b) With hint" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::map<std::string,int>::iterator it_insert_1 = map_insert_1.begin();
+	it_insert_1++;
+	it_insert_1++;
+	map_insert_1.insert (it_insert_1, TESTED_NAMESPACE::make_pair("OHOHOHOH" , 100));
+	print_map(map_insert_1);
+	std::cout << "-------" << std::endl;
+	map_insert_1.insert (map_insert_1.begin(), TESTED_NAMESPACE::make_pair("OHOHOHOH" , 200));
+	print_map(map_insert_1);
+	std::cout << "-------" << std::endl;
+	map_insert_1.insert (map_insert_1.begin(), TESTED_NAMESPACE::make_pair("pouet" , 200));
+	print_map(map_insert_1);
+
+	std::cout << BGRN << "c) Range" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::map<std::string,int> map_insert_2;
+
+	map_insert_2.insert (map_insert_1.begin(), map_insert_1.end());
+
+	print_map(map_insert_2);
+	std::cout << "-------" << std::endl;
+	map_insert_2.insert (map_insert_1.begin(), map_insert_1.end());
+	print_map(map_insert_2);
+	std::cout << "-------" << std::endl;
+	map_insert_2.insert (map_insert_1.begin(), map_insert_1.begin());
+	print_map(map_insert_2);
+	std::cout << "-------" << std::endl;
+
+	TESTED_NAMESPACE::map<std::string,int> map_insert_3;
+
+	TESTED_NAMESPACE::map<std::string,int>::iterator it_insert_2 = map_insert_1.begin();
+	TESTED_NAMESPACE::map<std::string,int>::iterator it_insert_3 = map_insert_1.end();
+
+	it_insert_2++;
+	it_insert_2++;
+	it_insert_3--;
+	it_insert_3--;
+
+	map_insert_3.insert (it_insert_2, it_insert_3);
+
+	print_map(map_insert_3);
+
+	std::cout << BBLU << "18) BEGIN && END" << CRESET << std::endl;
+
+	TESTED_NAMESPACE::map<int ,int> map_begin_end;
+
+	for (int i = 0; i < 5; i++)
+		map_begin_end.insert (TESTED_NAMESPACE::make_pair<int, int>(i , i + 5));
+
+	TESTED_NAMESPACE::map<int ,int>::iterator it_be_begin = map_begin_end.begin();
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << "first  = " << it_be_begin->first <<  "| second = " << it_be_begin->second << std::endl;
+		it_be_begin++;
+	}
+	std::cout << "-------" << std::endl;
+	TESTED_NAMESPACE::map<int ,int>::iterator it_be_end = map_begin_end.end();
+	for (int i = 0; i < 5; i++)
+	{
+		it_be_end--;
+		std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	}
+	std::cout << "-------" << std::endl;
+	it_be_begin++;
+	it_be_begin++;
+	it_be_begin++;
+	it_be_begin--;
+	std::cout << "first  = " << it_be_begin->first <<  "| second = " << it_be_begin->second << std::endl;
+	it_be_begin--;
+	std::cout << "first  = " << it_be_begin->first <<  "| second = " << it_be_begin->second << std::endl;
+	it_be_begin--;
+	std::cout << "first  = " << it_be_begin->first <<  "| second = " << it_be_begin->second << std::endl;
+	it_be_begin--;
+	std::cout << "first  = " << it_be_begin->first <<  "| second = " << it_be_begin->second << std::endl;
+	std::cout << "-------" << std::endl;
+	// it_be_end--;
+	it_be_end++;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end++;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end++;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end--;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end--;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end--;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	
+	it_be_end--;
+
+
+
+	// std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end--;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end--;
+	std::cout << "first  = " << it_be_end->first <<  "| second = " << it_be_end->second << std::endl;
+	it_be_end++;
+	it_be_end++;
+	it_be_end++;
 }
