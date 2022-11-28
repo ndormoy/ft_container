@@ -181,8 +181,12 @@ objs/main_std.o: main.cpp includes/vector.hpp \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/iomanip \
+  includes/set.hpp includes/set_red_black_tree.hpp \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/stack \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/deque \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_deque.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/deque.tcc \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_stack.h
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_stack.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/set \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_set.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_multiset.h
