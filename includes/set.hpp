@@ -49,9 +49,7 @@ namespace ft
 			typedef typename tree_type::NodePtr 								TNULL_type; // The type of the TNULL node --> represent the end of the tree at all of its sides
 			typedef typename tree_type::NodePtr 								NodePtr; // The type of the node pointer --> represent a node of the tree
 
-			// typedef	ft::RedBlackTreeIterator<const value_type, key_compare>	iterator;
-			// typedef	ft::RedBlackTreeIterator<const value_type, key_compare>	const_iterator;
-				typedef	ft::RedBlackTreeIterator<const value_type, ft::Node<value_type> >	iterator;
+			typedef	ft::RedBlackTreeIterator<const value_type, ft::Node<value_type> >	iterator;
 			typedef	ft::RedBlackTreeIterator<const value_type, ft::Node<value_type> >	const_iterator;
 			typedef	ft::reverse_iterator<const_iterator>						reverse_iterator;
 			typedef	ft::reverse_iterator<const_iterator>						const_reverse_iterator;
@@ -484,6 +482,63 @@ namespace ft
 			allocator_type	_allocator;
 			TNULL_type		_TNULL;
 	};
+
+	/*
+	----------------------------------------------------------------------------------------------------------------
+													RELATIONAL NON MEMBER OPERATORS 
+	----------------------------------------------------------------------------------------------------------------
+	*/
+
+	template <class T, class Compare, class Alloc>
+	bool operator== (const set<T,Compare,Alloc>& lhs, const set<T,Compare,Alloc>& rhs)
+	{
+		if (lhs.size() != rhs.size())
+			return (false);
+		return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+	}
+
+	template <class T, class Compare, class Alloc>
+	bool operator!= (const set<T,Compare,Alloc>& lhs, const set<T,Compare,Alloc>& rhs)
+	{
+		return (!(lhs == rhs));
+	}
+
+	template <class T, class Compare, class Alloc>
+	bool operator<  (const set<T,Compare,Alloc>& lhs, const set<T,Compare,Alloc>& rhs)
+	{
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+	}
+
+	template <class T, class Compare, class Alloc>
+	bool operator<= (const set<T,Compare,Alloc>& lhs, const set<T,Compare,Alloc>& rhs)
+	{
+		return (!(rhs < lhs));
+	}
+
+	template <class T, class Compare, class Alloc>
+	bool operator>  (const set<T,Compare,Alloc>& lhs, const set<T,Compare,Alloc>& rhs)
+	{
+		return (rhs < lhs);
+	}
+
+	template <class T, class Compare, class Alloc>
+	bool operator>= (const set<T,Compare,Alloc>& lhs, const set<T,Compare,Alloc>& rhs)
+	{
+		return (!(lhs < rhs));
+	}
+
+	/*
+	----------------------------------------------------------------------------------------------------------------
+													NON MEMBER FUNCTIONS
+	----------------------------------------------------------------------------------------------------------------
+	*/
+
+	template <class T, class Compare, class Alloc>
+	void swap (set<T,Compare,Alloc>& x, set<T,Compare,Alloc>& y)
+	{
+		if (&x != &y)
+			x.swap(y);
+	}
 };
 
 #endif
