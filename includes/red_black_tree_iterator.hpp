@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:30 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/28 13:02:40 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/28 13:05:59 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,23 +169,15 @@ namespace	ft
 				return x;
 			}
 
+
 			NodePtr maximum(NodePtr x) const
 			{
-				if (!x || x == _TNULL)
+				if (!x)
 					return (_TNULL);
 				while (x->right && x->right != _TNULL) 
 					x = x->right;
 				return (x);
 			}
-
-			// NodePtr maximum(NodePtr x) const
-			// {
-			// 	if (!x)
-			// 		return (_TNULL);
-			// 	while (x->right && x->right != _TNULL) 
-			// 		x = x->right;
-			// 	return (x);
-			// }
 
 			void _increment ()
 			{
@@ -214,57 +206,6 @@ namespace	ft
 				_node = y;
 			}
 
-			// void	_decrement()
-			// {
-			// 	NodePtr x = _node;
-			// 	if (_node == _TNULL)
-			// 	{
-			// 		_node =  maximum(_root);
-            //         return ;
-			// 	}
-			// 	NodePtr y = x->parent;
-			// 	while (y != my_nullptr && x == y->left)
-			// 	{
-			// 		x = y;
-			// 		y = y->parent;
-			// 	}
-			// 	if (y == my_nullptr && _node != minimum(_root))
-			// 	{
-			// 		_node = minimum(_root);
-			// 		return;
-			// 	}
-			// 	else if (y == my_nullptr)
-			// 	{
-			// 		_node = _TNULL;
-			// 		return ;
-			// 	}
-			// 	_node = y;
-			// }
-
-			// void	_decrement()
-			// {
-			// 	NodePtr x = _node;
-			// 	if (_node == _TNULL)
-			// 	{
-			// 		_node =  maximum(_root);
-            //         return ;
-			// 	}
-			// 	if (x->left != _TNULL)
-			// 	{
-			// 		_node = maximum(x->left);
-			// 		return ;
-			// 	}
-			// 	NodePtr tmp = x->parent;
-			// 	while (tmp != _TNULL && x == tmp->left)
-			// 	{
-			// 		x = tmp;
-			// 		tmp = tmp->parent;
-			// 	}
-			// 	_node = tmp;
-			// 	if (_node == my_nullptr)
-			// 			_node = _TNULL;
-			// }
-
 			void	_decrement()
 			{
 				NodePtr x = _node;
@@ -288,31 +229,6 @@ namespace	ft
 				if (_node == my_nullptr)
 						_node = _TNULL;
 			}
-
-			// void	_decrement()
-			// {
-			// 	if (_node == _TNULL)
-			// 	{
-			// 		_node = maximum(_root);
-			// 		return ;
-			// 	}
-			// 	if (_node->left != _TNULL)
-			// 	{
-			// 		_node = maximum(_node->left);
-			// 	}
-			// 	else
-			// 	{
-			// 		NodePtr	tmp = _node->parent;
-			// 		while (tmp && tmp != _TNULL && _node == tmp->left)
-			// 		{
-			// 			_node = tmp;
-			// 			tmp = tmp->parent;
-			// 		}
-			// 		_node = tmp;
-			// 		if (_node == my_nullptr)
-			// 			_node = _TNULL;
-			// 	}
-			// }
 
 		/*
 		---------------------------------------------------------------------------------------------------------------
