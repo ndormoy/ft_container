@@ -437,7 +437,7 @@ void	tests_vector()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 
 	insert_vector.clear();
@@ -541,7 +541,7 @@ void	tests_vector()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	
 	test_one.clear();
@@ -765,7 +765,7 @@ void	tests_vector()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	
 	TESTED_NAMESPACE::vector<int>	construct_test_4(10, 42);
