@@ -1,4 +1,4 @@
-objs/main_std.o: main.cpp includes/vector.hpp includes/enable_if.hpp \
+objs/main.o: main.cpp includes/vector.hpp includes/enable_if.hpp \
   includes/equal.hpp includes/is_integral.hpp \
   includes/iterator_traits.hpp includes/iterator_utils.hpp \
   includes/pair.hpp includes/reverse_iterator.hpp \

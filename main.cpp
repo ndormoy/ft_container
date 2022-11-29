@@ -28,19 +28,6 @@
 #include <stack>
 #include <set>
 
-// template <typename T>
-// void print_set(TESTED_NAMESPACE::set<T> myset)
-// {
-// 	if (myset.empty())
-// 	{
-// 		std::cout << "set is empty" << std::endl;
-// 		return ;
-// 	}
-// 	for (typename TESTED_NAMESPACE::set<T>::iterator it = myset.begin(); it != myset.end(); ++it)
-// 		std::cout << "it->first = " << it->first << std::endl;
-// 	std::cout << "size = " << myset.size() << std::endl;
-// }
-
 template <typename T>
 void print_set(TESTED_NAMESPACE::set<T> myset)
 {
@@ -58,20 +45,6 @@ void print_set(TESTED_NAMESPACE::set<T> myset)
 
 int main()
 {
-	// TESTED_NAMESPACE::set<std::string> setOfNumbers;
-    // // Lets insert four elements
-    // setOfNumbers.insert("first");
-    // setOfNumbers.insert("second");
-    // setOfNumbers.insert("third");
-    // setOfNumbers.insert("first");
-    // // // Only 3 elements will be inserted
-    // std::cout<<"Set Size = "<<setOfNumbers.size()<<std::endl;
-    // // // Iterate through all the elements in a set and display the value.
-    // for (TESTED_NAMESPACE::set<std::string>::iterator it=setOfNumbers.begin(); it!=setOfNumbers.end(); ++it)
-    //     std::cout << "value = " << *it << std::endl;
-    // std::cout<<"\n";
-    // return 0;
-
 	std::cout << BRED << "*******************************" << std::endl;
 	std::cout << "<---------TEST set--------->" << std::endl;
 	std::cout << "*******************************" << CRESET << std::endl;
