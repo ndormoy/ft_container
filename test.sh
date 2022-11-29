@@ -3,11 +3,11 @@
 i=0
 while ((i < 5));
 do
-	# Frame #1
-	printf "\r< Loading..." 
+	printf "\r◄ Loading[...]►" 
 	sleep 0.5
-	# Frame #2 
-	printf "\r> Loading..." 
+	printf "\r↺ Loading[...]↻" 
+	sleep 0.5
+	printf "\r► Loading[...]◄" 
 	sleep 0.5
 	i+=1
 done
