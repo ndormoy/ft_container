@@ -1,20 +1,20 @@
-#include "includes/vector.hpp"
-#include "includes/enable_if.hpp"
-#include "includes/equal.hpp"
-#include "includes/is_integral.hpp"
-#include "includes/iterator_traits.hpp"
-#include "includes/iterator_utils.hpp"
-#include "includes/pair.hpp"
-#include "includes/reverse_iterator.hpp"
-#include "includes/reverse_iterator.hpp"
-#include "includes/vector_utils.hpp"
-#include "includes/stack.hpp"
-#include "includes/set.hpp"
-#include "includes/set.hpp"
-// #include "includes/red_black_tree.hpp"
-// #include "includes/red_black_tree_iterator.hpp"
-#include "includes/nullptr.hpp"
-#include "includes/color.hpp"
+#ifndef TESTS_SET_HPP
+#define TESTS_SET_HPP
+
+#include "../includes/vector.hpp"
+#include "../includes/enable_if.hpp"
+#include "../includes/equal.hpp"
+#include "../includes/is_integral.hpp"
+#include "../includes/iterator_traits.hpp"
+#include "../includes/iterator_utils.hpp"
+#include "../includes/pair.hpp"
+#include "../includes/reverse_iterator.hpp"
+#include "../includes/reverse_iterator.hpp"
+#include "../includes/vector_utils.hpp"
+#include "../includes/stack.hpp"
+#include "../includes/set.hpp"
+#include "../includes/nullptr.hpp"
+#include "../includes/color.hpp"
 
 #include <iostream>
 #include <string>
@@ -41,10 +41,9 @@ void print_set(TESTED_NAMESPACE::set<T> myset)
 	std::cout << "size = " << myset.size() << std::endl;
 }
 
-int main()
+void	tests_set()
 {
-
-	std::cout << BRED << "*******************************" << std::endl;
+		std::cout << BRED << "*******************************" << std::endl;
 	std::cout << "<---------TEST set--------->" << std::endl;
 	std::cout << "*******************************" << CRESET << std::endl;
 
@@ -580,6 +579,6 @@ int main()
 	std::cout << "first  = end " << std::endl;
 	it_be_rend++;
 	std::cout << "first  = " << *it_be_rend << std::endl;
-
-	
 }
+
+#endif
