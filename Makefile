@@ -25,8 +25,6 @@ FT_SRCS			= main.cpp
 # stack
 # SRCS			+= ${STACKDIR}stack.cpp
 
-# stack
-# SRCS			+= ${STACKDIR}
 
 # map
 # SRCS			+= ${MAPDIR}
@@ -67,7 +65,7 @@ ${STD_OBJS}:	${OBJDIR}%_std.o:%.cpp
 				${CC} -I ${INCDIR} -MMD -MP -D TESTED_NAMESPACE=std -o $@ -c $< ${CFLAGS}
 
 diff:			all
-				@echo  "Diffing\c"
+				@echo  "\033[0;33mDiffing [...]\033[0m\n"
 				@./${FT_NAME} > ft_test.txt
 				@./${STD_NAME} > std_test.txt
 				diff ft_test.txt std_test.txt

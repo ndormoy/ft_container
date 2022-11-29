@@ -85,6 +85,7 @@
 		"codecvt": "cpp",
 		"stack": "cpp",
 		"filesystem": "cpp",
-		"__cxx_version": "cpp"
+		"__cxx_version": "cpp",
+		"span": "cpp"
 	}
 }
