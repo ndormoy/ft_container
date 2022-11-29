@@ -180,7 +180,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "3) BEGIN" << CRESET << std::endl;
+	std::cout << BBLU << "4) BEGIN" << CRESET << std::endl;
 
 	std::cout << "begin = " << *(test_one.begin()) << std::endl;
 	std::cout << "begin = " << *(test_two.begin()) << std::endl;
@@ -188,7 +188,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "4) END" << CRESET << std::endl;
+	std::cout << BBLU << "5) END" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::vector<int>::iterator my_it_ret = test_one.end();
 	if (*my_it_ret)
@@ -213,7 +213,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "5) CLEAR" << CRESET << std::endl;
+	std::cout << BBLU << "6) CLEAR" << CRESET << std::endl;
 
     test_one.clear();
 	std::cout << "begin = " << *(test_one.begin()) << std::endl;
@@ -233,7 +233,7 @@ int main()
 
     /************************************************************************************************/
 
-	std::cout << BBLU << "6) EMPTY" << CRESET << std::endl;
+	std::cout << BBLU << "7) EMPTY" << CRESET << std::endl;
 
 	std::cout << "empty = " << test_one.empty() << std::endl;
 	std::cout << "empty = " << test_two.empty() << std::endl;
@@ -244,7 +244,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "7) ERASE" << CRESET << std::endl;
+	std::cout << BBLU << "8) ERASE" << CRESET << std::endl;
 
 	std::cout << BGRN << "a) erase position" << CRESET << std::endl;
 
@@ -302,7 +302,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "8) FRONT" << CRESET << std::endl;
+	std::cout << BBLU << "9) FRONT" << CRESET << std::endl;
 
 	test_one.push_back(2);
 	test_one.push_back(4);
@@ -322,7 +322,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "8) GET ALLOCATOR" << CRESET << std::endl;
+	std::cout << BBLU << "10) GET ALLOCATOR" << CRESET << std::endl;
 
 	std::vector<int> my_alloc_vector;
 	int * p;
@@ -346,7 +346,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "9) INSERT" << CRESET << std::endl;
+	std::cout << BBLU << "11) INSERT" << CRESET << std::endl;
 
 	std::cout << BGRN << "a) insert single element" << CRESET << std::endl;
 
@@ -441,7 +441,7 @@ int main()
 	
 	/************************************************************************************************/
 
-	std::cout << BBLU << "10) MAX SIZE" << CRESET << std::endl;
+	std::cout << BBLU << "12) MAX SIZE" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::vector<long> long_vector;
 	TESTED_NAMESPACE::vector<char> char_vector;
@@ -471,7 +471,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "11) OPERATOR[]" << CRESET << std::endl;
+	std::cout << BBLU << "13) OPERATOR[]" << CRESET << std::endl;
 
 	for (int i = 0; i < 8; i++)
 		test_one.insert(test_one.begin() + i, i);
@@ -490,7 +490,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "12) OPERATOR=" << CRESET << std::endl;
+	std::cout << BBLU << "14) OPERATOR=" << CRESET << std::endl;
 	
 	print_vector(test_two);
 	std::cout << "-------" << std::endl;
@@ -509,7 +509,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "13) POP BACK" << CRESET << std::endl;
+	std::cout << BBLU << "15) POP BACK" << CRESET << std::endl;
 
 	test_one.insert(test_one.begin(), 2);
 	test_one.insert(test_one.begin(), 4);
@@ -545,7 +545,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "14) PUSH BACK" << CRESET << std::endl;
+	std::cout << BBLU << "16) PUSH BACK" << CRESET << std::endl;
 
 	test_one.push_back(10);
 	test_one.push_back(20);
@@ -557,7 +557,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "14) RBEGIN && REND" << CRESET << std::endl;
+	std::cout << BBLU << "17) RBEGIN && REND" << CRESET << std::endl;
 
 	for (TESTED_NAMESPACE::vector<int>::reverse_iterator rit = test_one.rbegin(); rit != test_one.rend(); ++rit)
 		std::cout << *(rit) << std::endl;
@@ -587,7 +587,7 @@ int main()
 	
 	/************************************************************************************************/
 
-	std::cout << BBLU << "14) RESERVE" << CRESET << std::endl;
+	std::cout << BBLU << "18) RESERVE" << CRESET << std::endl;
 
 	for (int i = 0; i < 10; i++)
 		test_one.push_back(i);
@@ -607,7 +607,7 @@ int main()
 
 	/************************************************************************************************/
 
-	std::cout << BBLU << "15) RESIZE" << CRESET << std::endl;
+	std::cout << BBLU << "19) RESIZE" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::vector<int> test_four;
 
@@ -656,7 +656,7 @@ int main()
 	print_vector(test_four);
 	std::cout << "-------" << std::endl;
 
-	std::cout << BBLU << "16) RELATIONAL OPERATORS" << CRESET << std::endl;
+	std::cout << BBLU << "20) RELATIONAL OPERATORS" << CRESET << std::endl;
 
 	/*------------------------------------*/
 
@@ -742,7 +742,7 @@ int main()
 	else
 		std::cout << "WRONG" << std::endl;
 
-	std::cout << BBLU << "17) CONSTRUCTORS" << CRESET << std::endl;
+	std::cout << BBLU << "21) CONSTRUCTORS" << CRESET << std::endl;
 
 
 	std::cout << BGRN << "a) default constructor" << CRESET << std::endl;

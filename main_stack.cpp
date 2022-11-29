@@ -83,7 +83,7 @@ int main()
 
 	print_stack(o_stack);
 
-	std::cout << BBLU << "3) RELATIONAL OPERATORS" << CRESET << std::endl;
+	std::cout << BBLU << "4) RELATIONAL OPERATORS" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::stack<int> different_stack;
 	TESTED_NAMESPACE::stack<int> empty_stack;

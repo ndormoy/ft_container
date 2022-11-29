@@ -28,19 +28,6 @@
 #include <stack>
 #include <set>
 
-// template <typename T>
-// void print_set(TESTED_NAMESPACE::set<T> myset)
-// {
-// 	if (myset.empty())
-// 	{
-// 		std::cout << "set is empty" << std::endl;
-// 		return ;
-// 	}
-// 	for (typename TESTED_NAMESPACE::set<T>::iterator it = myset.begin(); it != myset.end(); ++it)
-// 		std::cout << "it->first = " << it->first << std::endl;
-// 	std::cout << "size = " << myset.size() << std::endl;
-// }
-
 template <typename T>
 void print_set(TESTED_NAMESPACE::set<T> myset)
 {
@@ -54,23 +41,8 @@ void print_set(TESTED_NAMESPACE::set<T> myset)
 	std::cout << "size = " << myset.size() << std::endl;
 }
 
-
-
 int main()
 {
-	// TESTED_NAMESPACE::set<std::string> setOfNumbers;
-    // // Lets insert four elements
-    // setOfNumbers.insert("first");
-    // setOfNumbers.insert("second");
-    // setOfNumbers.insert("third");
-    // setOfNumbers.insert("first");
-    // // // Only 3 elements will be inserted
-    // std::cout<<"Set Size = "<<setOfNumbers.size()<<std::endl;
-    // // // Iterate through all the elements in a set and display the value.
-    // for (TESTED_NAMESPACE::set<std::string>::iterator it=setOfNumbers.begin(); it!=setOfNumbers.end(); ++it)
-    //     std::cout << "value = " << *it << std::endl;
-    // std::cout<<"\n";
-    // return 0;
 
 	std::cout << BRED << "*******************************" << std::endl;
 	std::cout << "<---------TEST set--------->" << std::endl;
@@ -154,7 +126,7 @@ int main()
 	set_count.clear();
 	std::cout << "set_count.empty() = " << set_count.empty() << std::endl;
 
-	std::cout << BBLU << "5) LOWER BOUND && UPPER BOUND" << CRESET << std::endl;
+	std::cout << BBLU << "4) LOWER BOUND && UPPER BOUND" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<int>	set_bound;
 
@@ -182,7 +154,7 @@ int main()
 		}
 	}
 	
-	std::cout << BBLU << "6) EQUAL RANGE" << CRESET << std::endl;
+	std::cout << BBLU << "5) EQUAL RANGE" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<char> set_equal_range;
 
@@ -199,7 +171,7 @@ int main()
  	std::cout << "upper bound points to: ";
  	std::cout << *ret.second << '\n';
 
-	std::cout << BBLU << "7) ERASE" << CRESET << std::endl;
+	std::cout << BBLU << "6) ERASE" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<int>	set_erase;
 
@@ -244,7 +216,7 @@ int main()
 
 	set_erase.clear();
 
-	std::cout << BBLU << "8) FIND" << CRESET << std::endl;
+	std::cout << BBLU << "7) FIND" << CRESET << std::endl;
 
 	for (int i = 0; i < 5; i++)
 		set_erase.insert(i);
@@ -253,7 +225,7 @@ int main()
 	if (set_erase.find(10) == set_erase.end())
 		std::cout << "find(10) = end" << std::endl;
 
-	std::cout << BBLU << "9) SWAP" << CRESET << std::endl;
+	std::cout << BBLU << "8) SWAP" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<char>	foo, bar, pouet;
 
@@ -278,14 +250,14 @@ int main()
 	std::cout << "pouet contains:\n";
 	print_set(pouet);
 
-	std::cout << BBLU << "10) GET ALLOCATOR" << CRESET << std::endl;
+	std::cout << BBLU << "9) GET ALLOCATOR" << CRESET << std::endl;
 
 	std::cout << "allocator = " << foo.get_allocator().max_size() << std::endl;
 	std::cout << "allocator = " << pouet.get_allocator().max_size() << std::endl;
 	std::cout << "allocator = " << bar.get_allocator().max_size() << std::endl;
 	std::cout << "allocator = " << set_erase.get_allocator().max_size() << std::endl;
 
-	std::cout << BBLU << "11) MAX SIZE" << CRESET << std::endl;
+	std::cout << BBLU << "10) MAX SIZE" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<long> long_set;
 	TESTED_NAMESPACE::set<char> char_set;
@@ -311,7 +283,7 @@ int main()
 	std::cout << "ulong_long_set.max_size() = " << ulong_long_set.max_size() << std::endl;
 	std::cout << "long_double_set.max_size() = " << long_double_set.max_size() << std::endl;
 
-	std::cout << BBLU << "12) KEY COMP" << CRESET << std::endl;
+	std::cout << BBLU << "11) KEY COMP" << CRESET << std::endl;
 
 
 	TESTED_NAMESPACE::set<char> set_comp;
@@ -331,7 +303,7 @@ int main()
 	std::cout << *it << '\n';
 	} while ( mycomp((*it++), highest) );
 
-	std::cout << BBLU << "13) VALUE COMP" << CRESET << std::endl;
+	std::cout << BBLU << "12) VALUE COMP" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<int> myset;
 
@@ -351,7 +323,7 @@ int main()
 
   return 0;
 
-	std::cout << BBLU << "14) OPERATOR=" << CRESET << std::endl;
+	std::cout << BBLU << "13) OPERATOR=" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<int>	set_op_equal;
 	TESTED_NAMESPACE::set<int>	set_cpy_equal;
@@ -363,7 +335,7 @@ int main()
 
 	print_set(set_cpy_equal);
 
-	std::cout << BBLU << "16) RELATIONAL OPERATORS" << CRESET << std::endl;
+	std::cout << BBLU << "14) RELATIONAL OPERATORS" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<int>	my_test;
 
@@ -441,7 +413,7 @@ int main()
 	else
 		std::cout << "WRONG" << std::endl;
 
-	std::cout << BBLU << "17) INSERTS" << CRESET << std::endl;
+	std::cout << BBLU << "15) INSERTS" << CRESET << std::endl;
 
 	std::cout << BGRN << "a) Single element" << CRESET << std::endl;
 
@@ -498,7 +470,7 @@ int main()
 
 	print_set(set_insert_3);
 
-	std::cout << BBLU << "18) BEGIN && END" << CRESET << std::endl;
+	std::cout << BBLU << "16) BEGIN && END" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<int> set_begin_end;
 
@@ -558,7 +530,7 @@ int main()
 	it_be_end++;
 	std::cout << "first  = " << *it_be_end << std::endl;
 
-	std::cout << BBLU << "19) REVERSE BEGIN &&  REVERSE END" << CRESET << std::endl;
+	std::cout << BBLU << "17) REVERSE BEGIN &&  REVERSE END" << CRESET << std::endl;
 
 	TESTED_NAMESPACE::set<int>::reverse_iterator it_be_rbegin = set_begin_end.rbegin();
 	TESTED_NAMESPACE::set<int>::reverse_iterator it_be_rend = set_begin_end.rend();
