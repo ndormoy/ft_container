@@ -1,5 +1,7 @@
 #!/bin/bash
 
+make > /dev/null
+
 i=0
 while ((i < 5));
 do
@@ -17,41 +19,41 @@ if (($# == 0)); then
 	./ft_containers functions > ft_test.txt && ./std_containers functions > std_test.txt
 	DIFF=$(diff ft_test.txt std_test.txt)
 	if [ "$DIFF" == "" ]; then
-		echo "FUNCTIONS :	✅"
+		echo "FUNCTIONS :	✅👑"
 	else
-		echo "FUNCTIONS :	❌"
+		echo "FUNCTIONS :	❌👀💣"
 	fi
 	sleep 1
 	./ft_containers vector > ft_test.txt && ./std_containers vector > std_test.txt
 	DIFF=$(diff ft_test.txt std_test.txt)
 	if [ "$DIFF" == "" ]; then
-		echo "VECTOR :	✅"
+		echo "VECTOR :	✅👑"
 	else
-		echo "VECTOR :	❌"
+		echo "VECTOR :	❌👀💣"
 	fi
 	sleep 1
 	./ft_containers stack > ft_test.txt && ./std_containers stack > std_test.txt
 	DIFF=$(diff ft_test.txt std_test.txt)
 	if [ "$DIFF" == "" ]; then
-		echo "STACK :		✅"
+		echo "STACK :		✅👑"
 	else
-		echo "STACK :		❌"
+		echo "STACK :		❌👀💣"
 	fi
 	sleep 1
 	./ft_containers map > ft_test.txt && ./std_containers map > std_test.txt
 	DIFF=$(diff ft_test.txt std_test.txt)
 	if [ "$DIFF" == "" ]; then
-		echo "MAP :		✅"
+		echo "MAP :		✅👑"
 	else
-		echo "MAP :		❌"
+		echo "MAP :		❌👀💣"
 	fi
 	sleep 1
 	./ft_containers set > ft_test.txt && ./std_containers set > std_test.txt
 	DIFF=$(diff ft_test.txt std_test.txt)
 	if [ "$DIFF" == "" ]; then
-		echo "SET :		✅"
+		echo "SET :		✅👑"
 	else
-		echo "SET :		❌"
+		echo "SET :		❌👀💣"
 	fi
 elif (($# > 1)); then
 	echo "One argument expected\n"
@@ -60,8 +62,8 @@ else
 	./ft_containers $1 > ft_test.txt && ./std_containers $1 > std_test.txt
 	DIFF=$(diff ft_test.txt std_test.txt)
 	if [ "$DIFF" == "" ]; then
-		echo "$1 :			✅"
+		echo "$1 :			✅👑"
 	else
-		echo "$1 :			❌"
+		echo "$1 :			❌👀💣"
 	fi
 fi
