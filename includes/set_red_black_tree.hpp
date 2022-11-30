@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 18:12:23 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:44:39 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,9 +184,7 @@ namespace	ft
 			}
 
 
-		// private: // need to be in private
-		public:
-
+		private:
 
 			void remove_node(NodePtr node) 
 			{ 
@@ -205,39 +203,6 @@ namespace	ft
 				node->left = my_nullptr;
 				node->right = my_nullptr;
 				node->color = BLACK;
-			}
-
-			// Preorder
-			void preOrderHelper(NodePtr node)
-			{
-				if (node != TNULL)
-				{
-					std::cout << node->data << " ";
-					preOrderHelper(node->left);
-					preOrderHelper(node->right);
-				}
-			}
-
-			// Inorder
-			void	inOrderHelper(NodePtr node)
-			{
-				if (node != TNULL)
-				{
-					inOrderHelper(node->left);
-					std::cout << node->data << " ";
-					inOrderHelper(node->right);
-				}
-			}
-
-			// Post order
-			void postOrderHelper(NodePtr node)
-			{
-				if (node != TNULL)
-				{
-					postOrderHelper(node->left);
-					postOrderHelper(node->right);
-					std::cout << node->data << " ";
-				}
 			}
 
 			NodePtr searchTreeHelper(NodePtr node, const_value_type key)
@@ -362,10 +327,7 @@ namespace	ft
 						node = node->left;
 				}
 				if (z == TNULL) // if node not found
-				{
-					std::cout << "Key not found in the tree" << std::endl;
 					return (false);
-				}
 				y = z;
 				int	y_original_color = y->color;
 				if (z->left == TNULL) // Swap the node with the right child because de the left child is NULL
@@ -466,72 +428,89 @@ namespace	ft
 				root->color = BLACK;
 			}
 
-			void printHelper(NodePtr root, std::string indent, bool last)
+			void leftRotate(NodePtr x)
 			{
-				if (root != TNULL)
-				{
-					std::cout << indent;
-					if (last)
-					{
-						std::cout << "R----";
-						indent += "   ";
-					}
-					else
-					{
-						std::cout << "L----";
-						indent += "|  ";
-					}
-
-					std::string sColor = root->color ? "RED" : "BLACK";
-					std::cout << root->data;
-					std::cout << "(" << sColor << ")" << std::endl;
-					printHelper(root->left, indent, false);
-					printHelper(root->right, indent, true);
-				}
+				NodePtr y = x->right;
+				x->right = y->left;
+				if (y->left != TNULL)
+					y->left->parent = x;
+				y->parent = x->parent;
+				if (x->parent == my_nullptr)
+					this->root = y;
+				else if (x == x->parent->left)
+					x->parent->left = y;
+				else
+					x->parent->right = y;
+				y->left = x;
+				x->parent = y;
 			}
-
-			void const_printHelper(NodePtr root, std::string indent, bool last) const
+	
+			void rightRotate(NodePtr x)
 			{
-				if (root != TNULL)
-				{
-					std::cout << indent;
-					if (last)
-					{
-						std::cout << "R----";
-						indent += "   ";
-					}
-					else
-					{
-						std::cout << "L----";
-						indent += "|  ";
-					}
-
-					std::string sColor = root->color ? "RED" : "BLACK";
-					std::cout << root->data;
-					std::cout << " && second = " << root->data.second;
-					std::cout << "(" << sColor << ")" << std::endl;
-					const_printHelper(root->left, indent, false);
-					const_printHelper(root->right, indent, true);
-				}
+				NodePtr y = x->left;
+				x->left = y->right;
+				if (y->right != TNULL)
+					y->right->parent = x;
+				y->parent = x->parent;
+				if (x->parent == my_nullptr)
+					this->root = y;
+				else if (x == x->parent->right)
+					x->parent->right = y;
+				else
+					x->parent->left = y;
+				y->right = x;
+				x->parent = y;
 			}
+			// void printHelper(NodePtr root, std::string indent, bool last)
+			// {
+			// 	if (root != TNULL)
+			// 	{
+			// 		std::cout << indent;
+			// 		if (last)
+			// 		{
+			// 			std::cout << "R----";
+			// 			indent += "   ";
+			// 		}
+			// 		else
+			// 		{
+			// 			std::cout << "L----";
+			// 			indent += "|  ";
+			// 		}
 
+			// 		std::string sColor = root->color ? "RED" : "BLACK";
+			// 		std::cout << root->data;
+			// 		std::cout << "(" << sColor << ")" << std::endl;
+			// 		printHelper(root->left, indent, false);
+			// 		printHelper(root->right, indent, true);
+			// 	}
+			// }
+
+			// void const_printHelper(NodePtr root, std::string indent, bool last) const
+			// {
+			// 	if (root != TNULL)
+			// 	{
+			// 		std::cout << indent;
+			// 		if (last)
+			// 		{
+			// 			std::cout << "R----";
+			// 			indent += "   ";
+			// 		}
+			// 		else
+			// 		{
+			// 			std::cout << "L----";
+			// 			indent += "|  ";
+			// 		}
+
+			// 		std::string sColor = root->color ? "RED" : "BLACK";
+			// 		std::cout << root->data;
+			// 		std::cout << " && second = " << root->data.second;
+			// 		std::cout << "(" << sColor << ")" << std::endl;
+			// 		const_printHelper(root->left, indent, false);
+			// 		const_printHelper(root->right, indent, true);
+			// 	}
+			// }
 
 		public:
-	
-			void preorder()
-			{
-				preOrderHelper(this->root);
-			}
-	
-			void inorder()
-			{
-				inOrderHelper(this->root);
-			}
-	
-			void postorder()
-			{
-				postOrderHelper(this->root);
-			}
 
 			NodePtr searchTree(const_value_type k)
 			{
@@ -580,68 +559,6 @@ namespace	ft
 				while (node->right && node->right != TNULL) 
 					node = node->right;
 				return (node);
-			}
-	
-			NodePtr successor(NodePtr x)
-			{
-				if (x->right != TNULL)
-					return minimum(x->right);
-	
-				NodePtr y = x->parent;
-				while (y != TNULL && x == y->right)
-				{
-					x = y;
-					y = y->parent;
-				}
-				return (y);
-			}
-	
-			NodePtr predecessor(NodePtr x)
-			{
-				if (x->left != TNULL)
-					return maximum(x->left);
-	
-				NodePtr y = x->parent;
-				while (y != TNULL && x == y->left)
-				{
-					x = y;
-					y = y->parent;
-				}
-				return y;
-			}
-
-			void leftRotate(NodePtr x)
-			{
-				NodePtr y = x->right;
-				x->right = y->left;
-				if (y->left != TNULL)
-					y->left->parent = x;
-				y->parent = x->parent;
-				if (x->parent == my_nullptr)
-					this->root = y;
-				else if (x == x->parent->left)
-					x->parent->left = y;
-				else
-					x->parent->right = y;
-				y->left = x;
-				x->parent = y;
-			}
-	
-			void rightRotate(NodePtr x)
-			{
-				NodePtr y = x->left;
-				x->left = y->right;
-				if (y->right != TNULL)
-					y->right->parent = x;
-				y->parent = x->parent;
-				if (x->parent == my_nullptr)
-					this->root = y;
-				else if (x == x->parent->right)
-					x->parent->right = y;
-				else
-					x->parent->left = y;
-				y->right = x;
-				x->parent = y;
 			}
 
 			pointer	insert(value_type key)
@@ -699,17 +616,17 @@ namespace	ft
 				return (deleteNodeHelper(this->root, data));
 			}
 	
-			void printTree() const
-			{
-				if (root)
-					printHelper(this->root, "", true);
-			}
+			// void printTree() const
+			// {
+			// 	if (root)
+			// 		printHelper(this->root, "", true);
+			// }
 
-			void const_printTree() const
-			{
-				if (root)
-					const_printHelper(this->root, "", true);
-			}
+			// void const_printTree() const
+			// {
+			// 	if (root)
+			// 		const_printHelper(this->root, "", true);
+			// }
 
 	};
 };

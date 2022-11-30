@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 18:16:30 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:35:54 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -464,16 +464,15 @@ namespace	ft
 				x._TNULL = tmp_TNULL;
 			}
 
-			//TODO TO DEL
-			void	print_map()
-			{
-				_root.printTree();
-			}
+			// void	print_map()
+			// {
+			// 	_root.printTree();
+			// }
 
-			void	const_print_map() const
-			{
-				_root.const_printTree();
-			}
+			// void	const_print_map() const
+			// {
+			// 	_root.const_printTree();
+			// }
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
@@ -516,7 +515,6 @@ namespace	ft
 			----------------------------------------------------------------------------------------------------------------
 			*/
 
-
 			//Return reverse iterator to reverse beginning
 			reverse_iterator rbegin()
 			{
@@ -529,13 +527,13 @@ namespace	ft
 			}
 
 			//Return reverse iterator to reverse end
-            reverse_iterator rend()
+			reverse_iterator rend()
 			{
-                return (reverse_iterator(begin()));
-            }
+				return (reverse_iterator(begin()));
+			}
 
 			const_reverse_iterator rend() const
-            {
+			{
 				return (const_reverse_iterator(begin()));
 			}
 
