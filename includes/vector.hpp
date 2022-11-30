@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 16:13:17 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 17:35:58 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,10 @@ namespace	ft
 			// Resizes the container so that it contains ‘size’ elements.
 			void	resize(size_type size, value_type val = value_type())
 			{
+				bool	change = false;
+				size_type cap = _m_capacity;
+				if (size < _m_capacity)
+					change = true;
 				if (size >= _m_size)
 				{
 					//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
@@ -245,8 +249,34 @@ namespace	ft
 					for (size_type i = size; i < _m_size; i++)
 						_m_allocator.destroy(_m_begin + i);
 				}
+				if (change == true)
+					_m_capacity = cap;
 				_m_size = size;
 			}
+
+			// // Resizes the container so that it contains ‘size’ elements.
+			// void	resize(size_type size, value_type val = value_type())
+			// {
+			// 	if (size >= _m_size)
+			// 	{
+			// 		//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
+			// 		//If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
+			// 		if (size > 2 * _m_size)
+			// 			reserve(size);
+			// 		else
+			// 			reserve(2 * _m_size);
+			// 		for (size_type i = _m_size; i < size; i++)
+			// 			_m_allocator.construct(_m_begin + i, val);
+			// 	}
+			// 	else if (size < _m_size)
+			// 	{
+			// 		//If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
+			// 		for (size_type i = size; i < _m_size; i++)
+			// 			_m_allocator.destroy(_m_begin + i);
+			// 	}
+			// 	_m_size = size;
+			// }
+
 			// Returns the size of the storage space currently allocated to the vector expressed as number of elements.
 			size_type capacity() const
 			{
