@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 17:35:58 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:10:17 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 #include "iterator_utils.hpp"
 #include "pair.hpp"
 #include "reverse_iterator.hpp"
-// #include "reverse_iterator.hpp"
 #include "vector_utils.hpp"
 
 namespace	ft
@@ -37,10 +36,13 @@ namespace	ft
 	*/
 	template <class T, class Allocator = std::allocator<T> >
 	class vector {
+
 		public:
 
 			/*
-			member types:
+			------------------------------------------------------------------------------------------------------------------------------
+			                                     member typedefs:
+			------------------------------------------------------------------------------------------------------------------------------
 			*/
 			typedef T										value_type; // The type of the elements.
 			typedef Allocator								allocator_type;
@@ -66,6 +68,7 @@ namespace	ft
 				_m_allocator(my_alloc), _m_size(0), _m_capacity(0), _m_begin(NULL)
 			{
 			}
+
 			//fill constructor : Constructs a container with n elements. Each element is a copy of val.
 			explicit vector(size_type n, const T& value = T(), const Allocator& my_alloc = Allocator()) :
 				_m_allocator(my_alloc), _m_size(n), _m_capacity(n), _m_begin(NULL)
@@ -74,6 +77,7 @@ namespace	ft
 				for (size_type i = 0; i < n; i++)
 					_m_allocator.construct(_m_begin + i, value);
 			}
+			
 			//range constructor : Constructs a container with as many elements as the range [first,last), with each element constructed from
 			//its corresponding element in that range, in the same order.
 			// vector(InputIterator first, InputIterator last, const Allocator& = Allocator()) :
@@ -95,6 +99,7 @@ namespace	ft
 				}
 				_m_size = nb;
 			}
+			
 			//copy constructor : Constructs a container with a copy of each of the elements in x, in the same order.
 			vector(const vector<T,Allocator>& x)
 			{
@@ -107,20 +112,16 @@ namespace	ft
 					_m_allocator.construct(_m_begin + i, x._m_begin[i]);
 				// *this = x;
 			}
+
 			//destructor : This destroys all container elements, and deallocates all the storage capacity allocated by the vector using its allocator.
 			~vector()
 			{
-				// this->clear();
-				// if (_m_begin != NULL && _m_capacity != 0)
-				// 	_m_allocator.deallocate(_m_begin, _m_capacity);
-
 				if (_m_capacity)
-				{
 					for (size_type i = 0; i < _m_size; i++)
 						_m_allocator.destroy(_m_begin + i);
-				}
-					_m_allocator.deallocate(_m_begin, _m_capacity);
+				_m_allocator.deallocate(_m_begin, _m_capacity);
 			} 
+			
 			//copy assignment operator
 			vector<T,Allocator>& operator=(const vector<T,Allocator>& x)
 			{
@@ -131,6 +132,7 @@ namespace	ft
 				}
 				return (*this);
 			}
+			
 			//range assign : Assigns new contents to the vector, replacing its current contents, and modifying its size accordingly.
 			template <class InputIterator>
 			void assign(typename ft::enable_if<!(ft::is_integral<InputIterator>::value), InputIterator>::type first, InputIterator last)
@@ -147,6 +149,7 @@ namespace	ft
 				}
 				_m_size = nb;
 			}
+			
 			//fill assign : In the fill version (2), the new contents are n elements, each initialized to a copy of val.
 			void assign(size_type n, const value_type& u)
 			{
@@ -156,6 +159,7 @@ namespace	ft
 					_m_allocator.construct(_m_begin + i, u);
 				_m_size = n;
 			}
+			
 			//get allocator
 			allocator_type get_allocator() const
 			{
@@ -173,36 +177,43 @@ namespace	ft
 			{
 				return (_m_begin);
 			}
+
 			//Returns an const_iterator pointing to the first element in the vector
 			const_iterator begin() const
 			{
 				return (_m_begin);
 			}
+			
 			//Returns an iterator pointing to the theoretical element that follows the last element in the vector
 			iterator end()
 			{
 				return (_m_begin + _m_size);
 			}
+			
 			//Returns a const_iterator pointing to the theoretical element that follows the last element in the vector
 			const_iterator end() const
 			{
 				return (_m_begin + _m_size);
 			}
+			
 			//Returns a reverse iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
 			reverse_iterator rbegin()
 			{
 				return (reverse_iterator(end()));
 			}
+
 			//Returns a reverse const_iterator pointing to the last element in the vector (reverse beginning). It moves from last to first element
 			const_reverse_iterator rbegin() const
 			{
 				return (const_reverse_iterator(end()));
 			}
+			
 			//Returns a reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
 			reverse_iterator rend()
 			{
 				return (reverse_iterator(begin()));
 			}
+			
 			//Returns a const reverse iterator pointing to the theoretical element preceding the first element in the vector (considered as reverse end)
 			const_reverse_iterator rend() const
 			{
@@ -220,11 +231,13 @@ namespace	ft
 			{
 				return	(_m_size);
 			}
+
 			// Returns the maximum number of elements that the vector can hold.
 			size_type max_size() const
 			{
 				return (_m_allocator.max_size());
 			}
+			
 			// Resizes the container so that it contains ‘size’ elements.
 			void	resize(size_type size, value_type val = value_type())
 			{
@@ -254,34 +267,12 @@ namespace	ft
 				_m_size = size;
 			}
 
-			// // Resizes the container so that it contains ‘size’ elements.
-			// void	resize(size_type size, value_type val = value_type())
-			// {
-			// 	if (size >= _m_size)
-			// 	{
-			// 		//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
-			// 		//If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
-			// 		if (size > 2 * _m_size)
-			// 			reserve(size);
-			// 		else
-			// 			reserve(2 * _m_size);
-			// 		for (size_type i = _m_size; i < size; i++)
-			// 			_m_allocator.construct(_m_begin + i, val);
-			// 	}
-			// 	else if (size < _m_size)
-			// 	{
-			// 		//If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
-			// 		for (size_type i = size; i < _m_size; i++)
-			// 			_m_allocator.destroy(_m_begin + i);
-			// 	}
-			// 	_m_size = size;
-			// }
-
 			// Returns the size of the storage space currently allocated to the vector expressed as number of elements.
 			size_type capacity() const
 			{
 				return (_m_capacity);
 			}
+			
 			// Returns whether the container is empty.
 			bool empty() const
 			{
@@ -290,6 +281,7 @@ namespace	ft
 				else
 					return (false);
 			}
+			
 			// Requests that the vector capacity be at least enough to contain n elements.
 			// construct : first arg = pointer to allocated uninitialized storage, second arg = the value to use as the copy constructor argument
 			void reserve(size_type n)
@@ -321,11 +313,13 @@ namespace	ft
 			{
 				return (_m_begin[n]);
 			}
+			
 			// returns a const reference to the element at position n in the vector container.
 			const_reference operator[](size_type n) const
 			{
 				return (_m_begin[n]);
 			}
+			
 			// Returns a reference to the element at position n in the vector.
 			const_reference at(size_type n) const
 			{
@@ -333,6 +327,7 @@ namespace	ft
 					throw std::out_of_range("Out of range");
 				return (_m_begin[n]);
 			}
+			
 			reference at(size_type n)
 			{
 				//TODO ajouter le bon message d'erreur
@@ -340,18 +335,22 @@ namespace	ft
 					throw std::out_of_range("Out of range");
 				return (_m_begin[n]);
 			}
+			
 			reference front()
 			{
 				return (*_m_begin);
 			}
+			
 			const_reference front() const
 			{
 				return (*_m_begin);
 			}
+			
 			reference back()
 			{
 				return (*(_m_begin + _m_size - 1));
 			}
+			
 			const_reference back() const
 			{
 				return (*(_m_begin + _m_size - 1));
@@ -374,12 +373,14 @@ namespace	ft
 				}
 				_m_allocator.construct(_m_begin + _m_size++, x);
 			}
+			
 			// Removes the last element in the vector, effectively reducing the container size by one. This destroys the removed element.
 			void pop_back()
 			{
 				_m_size--;
 				_m_allocator.destroy(_m_begin + _m_size);
 			}
+			
 			// The vector is extended by inserting new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted.
 			// single element inserts
 			iterator insert(iterator position, const T& x)
@@ -431,6 +432,7 @@ namespace	ft
 					_m_allocator.construct(_m_begin + pos, x);
 				_m_size += n;
 			}
+			
 			// range insert
 			template <class InputIterator>
 			void insert(iterator position,
@@ -464,6 +466,7 @@ namespace	ft
 				_m_size--;
                 return (position);
 			}
+			
 			iterator erase(iterator first, iterator last)
 			{
 				ptrdiff_t	n = last - first;
@@ -479,6 +482,7 @@ namespace	ft
 				_m_size -= n;
 				return (first);
 			}
+			
 			// Exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
 			void swap(vector<T, Allocator>& x)
 			{
@@ -496,6 +500,7 @@ namespace	ft
 				x._m_capacity = tmp_capacity;
 				x._m_allocator = tmp_allocator;
 			}
+			
 			//Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
 			void clear()
 			{
@@ -513,7 +518,6 @@ namespace	ft
 	
 	};
 
-	//ATTENTION : TO FILL
 	/*
 	------------------------------------------------------------------------------------------------------------------------------
 	                                     NON MEMBER RElATIONAL OVERLOADS OPERATORS

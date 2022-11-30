@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:16 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 11:43:55 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:10:35 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ namespace	ft
 	class stack
 	{
 		public:
+
 			typedef	typename	Container::value_type		value_type;
 			typedef	typename	Container::reference		reference;
 			typedef	typename	Container::const_reference	const_reference;
@@ -32,6 +33,7 @@ namespace	ft
 
 			// See queue::c for notes on this name.
 			Container c;
+
 		public:
 
 			stack() : c() {}; // default constructor

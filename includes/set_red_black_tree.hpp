@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/28 17:58:58 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:12:23 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ namespace	ft
 			typedef std::bidirectional_iterator_tag							iterator_category;
 			typedef typename allocator_type::reference						reference;
 			typedef typename allocator_type::const_reference				const_reference;
-			// typedef typename value_type::first_type							value_type; // We take the first element of the pair
 
 			/*
 			----------------------------------------------------------------------------------------------------------------
@@ -50,7 +49,7 @@ namespace	ft
 
 			typedef std::size_t												size_type;
 			typedef std::ptrdiff_t											difference_type;
-			typedef ft::Node</* const  */value_type>									*NodePtr;
+			typedef ft::Node<value_type>									*NodePtr;
 
 		private:
 
@@ -88,7 +87,7 @@ namespace	ft
 				_allocator = allocator_type();
 				_comp = key_compare();
 				TNULL = _allocator.allocate(sizeof(Node<value_type>));
-				_allocator.construct(TNULL, Node<value_type>(value_type(),/* ft::make_pair(42, true),  */my_nullptr, my_nullptr, my_nullptr, BLACK));
+				_allocator.construct(TNULL, Node<value_type>(value_type(), my_nullptr, my_nullptr, my_nullptr, BLACK));
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
@@ -176,13 +175,13 @@ namespace	ft
 
 			NodePtr getTNULL()
 			{
-                return (TNULL);
-            }
+				return (TNULL);
+			}
 
 			NodePtr const_getTNULL() const
 			{
-                return (TNULL);
-            }
+				return (TNULL);
+			}
 
 
 		// private: // need to be in private
@@ -359,10 +358,6 @@ namespace	ft
 						z = node;
 					if (_comp(node->data, key))
 						node = node->right;
-					// if (!_comp(key, node->data))
-					// {
-					// 	node = node->right;
-					// }
 					else
 						node = node->left;
 				}
@@ -488,8 +483,8 @@ namespace	ft
 					}
 
 					std::string sColor = root->color ? "RED" : "BLACK";
-					std::cout << root->data/*  << std::endl */;
-					std::cout << /* root->color << */ "(" << sColor << ")" << std::endl;
+					std::cout << root->data;
+					std::cout << "(" << sColor << ")" << std::endl;
 					printHelper(root->left, indent, false);
 					printHelper(root->right, indent, true);
 				}
@@ -512,9 +507,9 @@ namespace	ft
 					}
 
 					std::string sColor = root->color ? "RED" : "BLACK";
-					std::cout << root->data/*  << std::endl */;
+					std::cout << root->data;
 					std::cout << " && second = " << root->data.second;
-					std::cout << /* root->color << */ "(" << sColor << ")" << std::endl;
+					std::cout << "(" << sColor << ")" << std::endl;
 					const_printHelper(root->left, indent, false);
 					const_printHelper(root->right, indent, true);
 				}
@@ -651,7 +646,6 @@ namespace	ft
 
 			pointer	insert(value_type key)
 			{
-				// NodePtr node = _allocator.allocate(sizeof(NodePtr));
 				NodePtr node = _allocator.allocate(sizeof(Node<value_type>));
 				_allocator.construct(node, Node<value_type>(key, my_nullptr, TNULL, TNULL, RED));
 				NodePtr y = my_nullptr;
