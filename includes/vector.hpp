@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/29 18:08:27 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 15:48:08 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include "iterator_utils.hpp"
 #include "pair.hpp"
 #include "reverse_iterator.hpp"
-#include "reverse_iterator.hpp"
+// #include "reverse_iterator.hpp"
 #include "vector_utils.hpp"
 
 namespace	ft
@@ -429,8 +429,9 @@ namespace	ft
 			}
 			iterator erase(iterator first, iterator last)
 			{
-				//TODO BELEC PTRDIFF
 				ptrdiff_t	n = last - first;
+				if (first == last)
+					return first;
 				for (iterator it = first; it < last; it++)
 					_m_allocator.destroy(it);
 				for (iterator it = first; it < end() - n; it++)
