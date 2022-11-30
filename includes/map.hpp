@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 16:47:10 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:16:30 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ namespace	ft
 			 _size(0), _root(), _comp(comp), _allocator(alloc)
 			{
 				_TNULL = _root.getTNULL();
-				// std::cout << "default constructor Map" << std::endl;
 			}
 
 			// range constructor --> Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
@@ -138,7 +137,6 @@ namespace	ft
 			map (InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) :
 				_size(0), _root(), _comp(comp), _allocator(alloc)
 			{
-				// std::cout << "range constructor Map" << std::endl;
 				_TNULL = _root.getTNULL();
 				insert (first, last);
 			}
@@ -274,7 +272,7 @@ namespace	ft
 			size_type	count(const key_type& k)
 			{
 				iterator it = find(k);
-				if (it == end()/*  || !k */)
+				if (it == end())
 					return (0);
 				return (1);
 			}
@@ -317,8 +315,6 @@ namespace	ft
 					first++;
 					if (_root.deleteNode(*tmp) == true)
 						_size--;
-					// erase(tmp->first);
-					
 				}
 			}
 
@@ -365,15 +361,12 @@ namespace	ft
 				while (tmp != _root.const_getTNULL())
 				{
 					if (_comp(tmp->data.first, k))
-					{
 						tmp = tmp->right;
-					}
 					else
 					{
 						ret = tmp;
 						tmp = tmp->left;
 					}
-					
 				}
 				return (const_iterator(ret, _root.const_getTNULL(), _root.const_getRoot()));
 			}
@@ -390,14 +383,11 @@ namespace	ft
 				while (tmp != _root.getTNULL())
 				{
 					if (!_comp(k, tmp->data.first))
-					{
 						tmp = tmp->right;
-					}
 					else 
 					{
 						ret = tmp;
 						tmp = tmp->left;
-						
 					}
 				}
 				return (iterator(ret, _root.getTNULL(), _root.getRoot()));
@@ -413,14 +403,11 @@ namespace	ft
 				while (tmp != _root.const_getTNULL())
 				{
 					if (!_comp(k, tmp->data.first))
-					{
 						tmp = tmp->right;
-					}
 					else 
 					{
 						ret = tmp;
 						tmp = tmp->left;
-						
 					}
 				}
 				return (const_iterator(ret, _root.const_getTNULL(), _root.const_getRoot()));
@@ -460,8 +447,6 @@ namespace	ft
 			// Exchanges the content of the container by the content of x, which is another map of the same type. Sizes may differ.
 			void swap(map<Key, T, Compare, Alloc>& x)
 			{
-				// if (this == &x)
-				// 	return ;
 				size_type		tmp_size = _size;
 				tree_type		tmp_root = _root;
 				key_compare		tmp_comp = _comp;
@@ -519,27 +504,11 @@ namespace	ft
 					clear();
 					_allocator = x._allocator;
 					_comp = x._comp;
-					// std::cerr << "here" << std::endl;
 					insert(x.begin(), x.end());
-					// std::cerr << BBLU << "pouet" << CRESET << std::endl;
-					// _TNULL = x._TNULL;
 					_size = x._size;
 				}
 				return (*this);
 			}
-
-			// 	map& operator= (const map& x)
-			// {
-			// 	if (this != &x)
-			// 	{
-			// 		clear();
-			// 		_allocator = x._allocator;
-			// 		_comp = x._comp;
-			// 		insert(x.begin(), x.end());
-			// 		_size = x._size;
-			// 	}
-			// 	return (*this);
-			// }
 
 			/*
 			----------------------------------------------------------------------------------------------------------------

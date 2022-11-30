@@ -394,8 +394,6 @@ namespace ft
 			// Exchanges the content of the container by the content of x, which is another set of the same type. Sizes may differ.
 			void swap(set<T, Compare, Alloc>& x)
 			{
-				// if (this == &x)
-				// 	return ;
 				size_type		tmp_size = _size;
 				tree_type		tmp_root = _root;
 				key_compare		tmp_comp = _comp;
