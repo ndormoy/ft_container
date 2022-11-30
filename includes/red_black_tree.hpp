@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:10 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 11:51:59 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:19:01 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ namespace	ft
 
 		public:
 
-			
-
 			/*
 			----------------------------------------------------------------------------------------------------------------
 															Link rbt and node
@@ -87,7 +85,7 @@ namespace	ft
 				_allocator = allocator_type();
 				_comp = key_compare();
 				TNULL = _allocator.allocate(sizeof(Node<value_type>));
-				_allocator.construct(TNULL, Node<value_type>(value_type(),/* ft::make_pair(42, true),  */my_nullptr, my_nullptr, my_nullptr, BLACK));
+				_allocator.construct(TNULL, Node<value_type>(value_type(), my_nullptr, my_nullptr, my_nullptr, BLACK));
 				TNULL->color = BLACK;
 				TNULL->left = my_nullptr;
 				TNULL->right = my_nullptr;
@@ -97,11 +95,6 @@ namespace	ft
 
 			~RedBlackTree()
 			{
-				// if (root != my_nullptr &&  root != TNULL)
-				// {
-				// 	remove_node(root);
-				// }
-				// _allocator.deallocate(TNULL, sizeof(Node<value_type>));
 			}
 
 		/*
@@ -138,14 +131,12 @@ namespace	ft
 			// Return the first element in the tree (The minimum)
 			pointer	begin()
 			{
-				// printTree();
 				return (minimum(root));
 			}
 
 			// Return the first element in the tree (The minimum)
 			pointer	const_begin() const
 			{
-				// printTree();
 				return (const_minimum(root));
 			}
 
@@ -191,7 +182,6 @@ namespace	ft
 
 		// private: // need to be in private
 		public:
-
 
 			void remove_node(NodePtr node) 
 			{ 
@@ -363,10 +353,6 @@ namespace	ft
 						z = node;
 					if (_comp(node->data.first, key.first))
 						node = node->right;
-					// if (!_comp(key.first, node->data.first))
-					// {
-					// 	node = node->right;
-					// }
 					else
 						node = node->left;
 				}
@@ -492,8 +478,8 @@ namespace	ft
 					}
 
 					std::string sColor = root->color ? "RED" : "BLACK";
-					std::cout << root->data.first/*  << std::endl */;
-					std::cout << /* root->color << */ "(" << sColor << ")" << std::endl;
+					std::cout << root->data.first;
+					std::cout << "(" << sColor << ")" << std::endl;
 					printHelper(root->left, indent, false);
 					printHelper(root->right, indent, true);
 				}
@@ -516,9 +502,9 @@ namespace	ft
 					}
 
 					std::string sColor = root->color ? "RED" : "BLACK";
-					std::cout << root->data.first/*  << std::endl */;
+					std::cout << root->data.first;
 					std::cout << " && second = " << root->data.second;
-					std::cout << /* root->color << */ "(" << sColor << ")" << std::endl;
+					std::cout << "(" << sColor << ")" << std::endl;
 					const_printHelper(root->left, indent, false);
 					const_printHelper(root->right, indent, true);
 				}
@@ -553,7 +539,6 @@ namespace	ft
 			}
 	
 			// return the last left node ( the minimum node )
-	
 			NodePtr minimum(NodePtr node) const
 			{
 				if (!node)
@@ -655,7 +640,6 @@ namespace	ft
 
 			pointer	insert(value_type key)
 			{
-				// NodePtr node = _allocator.allocate(sizeof(NodePtr));
 				NodePtr node = _allocator.allocate(sizeof(Node<value_type>));
 				_allocator.construct(node, Node<value_type>(key, my_nullptr, TNULL, TNULL, RED));
 				NodePtr y = my_nullptr;

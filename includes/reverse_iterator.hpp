@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:13 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 16:31:11 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:17:52 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ namespace	ft
 
 			reverse_iterator() : _current() {} // construct with default container
 			explicit reverse_iterator(iterator_type x) : _current(x) {} // construct with container it points to
-			// reverse_iterator(const reverse_iterator& x) : _current(x) {} // copy
 			template<typename Iter_rev> // construct from a related type (reverse_iterator)
 			reverse_iterator(const reverse_iterator<Iter_rev>& x) : _current(x.base()) {} // copy
 			iterator_type base() const { return (_current); } // return base iterator
@@ -64,21 +63,9 @@ namespace	ft
 			
 			pointer operator->() const
 			{
-				// Iterator tmp = _current;
-				// --tmp;
-				// return (&(*tmp));
 				return &(operator*());
 			}
 
-			// reverse_iterator& operator=(const reverse_iterator& x)
-			// {
-			// 	// TODO REmettre ca
-			// 	if (this != &x)
-			// 		_current = x._current;
-			// 	// return (*this);
-			// 	// _current = x.base();
-			// 	return (*this);
-			// }
 			reverse_iterator& operator++()
 			{
 				--_current;
@@ -186,7 +173,6 @@ namespace	ft
 	inline typename ft::reverse_iterator<Iterator> operator+(typename reverse_iterator<Iterator>::difference_type n, const reverse_iterator<Iterator>& x)
 	{ return (reverse_iterator<Iterator>(x.base() - n)); }
 
-	//Not sure about the implementation of the following functions
 	template<typename IteratorL, typename IteratorR>
 	inline typename ft::reverse_iterator<IteratorL> operator+(typename reverse_iterator<IteratorL>::difference_type n,const reverse_iterator<IteratorR>& x)
 	{ return (reverse_iterator<IteratorL>(x.base() - n)); }
