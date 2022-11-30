@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:06:13 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/23 11:43:41 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 16:31:11 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,15 @@ namespace	ft
 				return &(operator*());
 			}
 
-			// pointer operator->() const
+			// reverse_iterator& operator=(const reverse_iterator& x)
 			// {
-			// 	Iterator tmp = _current;
-			// 	--tmp;
-			// 	return (tmp);
+			// 	// TODO REmettre ca
+			// 	if (this != &x)
+			// 		_current = x._current;
+			// 	// return (*this);
+			// 	// _current = x.base();
+			// 	return (*this);
 			// }
-			reverse_iterator& operator=(const reverse_iterator& x)
-			{
-				// TODO REmettre ca
-				if (this != &x)
-					_current = x._current;
-				// return (*this);
-				// _current = x.base();
-				return (*this);
-			}
 			reverse_iterator& operator++()
 			{
 				--_current;
