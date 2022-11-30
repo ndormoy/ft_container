@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 15:48:08 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/11/30 16:13:17 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,15 @@ namespace	ft
 			//destructor : This destroys all container elements, and deallocates all the storage capacity allocated by the vector using its allocator.
 			~vector()
 			{
-				this->clear();
-				if (_m_begin != NULL && _m_capacity != 0)
+				// this->clear();
+				// if (_m_begin != NULL && _m_capacity != 0)
+				// 	_m_allocator.deallocate(_m_begin, _m_capacity);
+
+				if (_m_capacity)
+				{
+					for (size_type i = 0; i < _m_size; i++)
+						_m_allocator.destroy(_m_begin + i);
+				}
 					_m_allocator.deallocate(_m_begin, _m_capacity);
 			} 
 			//copy assignment operator
@@ -431,7 +438,7 @@ namespace	ft
 			{
 				ptrdiff_t	n = last - first;
 				if (first == last)
-					return first;
+					return (first);
 				for (iterator it = first; it < last; it++)
 					_m_allocator.destroy(it);
 				for (iterator it = first; it < end() - n; it++)
@@ -440,7 +447,7 @@ namespace	ft
 					_m_allocator.destroy(it + n);
 				}
 				_m_size -= n;
-                return (first);
+				return (first);
 			}
 			// Exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
 			void swap(vector<T, Allocator>& x)
