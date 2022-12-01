@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:20 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/11/30 18:10:17 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/12/01 11:49:05 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -486,19 +486,23 @@ namespace	ft
 			// Exchanges the content of the container by the content of x, which is another vector object of the same type. Sizes may differ.
 			void swap(vector<T, Allocator>& x)
 			{
-				//TODO verifer si il ne faut pas swap les allocators
-				pointer tmp_begin = _m_begin;
-				size_type tmp_size = _m_size;
-				size_type tmp_capacity = _m_capacity;
-				allocator_type tmp_allocator = _m_allocator;
-				_m_begin = x._m_begin;
-				_m_size = x._m_size;
-				_m_capacity = x._m_capacity;
-				_m_allocator = x._m_allocator;
-				x._m_begin = tmp_begin;
-				x._m_size = tmp_size;
-				x._m_capacity = tmp_capacity;
-				x._m_allocator = tmp_allocator;
+				// pointer tmp_begin = _m_begin;
+				// size_type tmp_size = _m_size;
+				// size_type tmp_capacity = _m_capacity;
+				// allocator_type tmp_allocator = _m_allocator;
+				// _m_begin = x._m_begin;
+				// _m_size = x._m_size;
+				// _m_capacity = x._m_capacity;
+				// _m_allocator = x._m_allocator;
+				// x._m_begin = tmp_begin;
+				// x._m_size = tmp_size;
+				// x._m_capacity = tmp_capacity;
+				// x._m_allocator = tmp_allocator;
+
+				std::swap(_m_begin, x._m_begin);
+				std::swap(_m_size, x._m_size);
+				std::swap(_m_capacity, x._m_capacity);
+				std::swap(_m_allocator, x._m_allocator);
 			}
 			
 			//Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.

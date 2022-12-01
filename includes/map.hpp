@@ -6,7 +6,7 @@
 /*   By: ndormoy <ndormoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:05:12 by ndormoy           #+#    #+#             */
-/*   Updated: 2022/12/01 10:49:57 by ndormoy          ###   ########.fr       */
+/*   Updated: 2022/12/01 11:49:45 by ndormoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -447,21 +447,27 @@ namespace	ft
 			// Exchanges the content of the container by the content of x, which is another map of the same type. Sizes may differ.
 			void swap(map<Key, T, Compare, Alloc>& x)
 			{
-				size_type		tmp_size = _size;
-				tree_type		tmp_root = _root;
-				key_compare		tmp_comp = _comp;
-				allocator_type	tmp_allocator = _allocator;
-				TNULL_type		tmp_TNULL = _root.getTNULL();
-				_size = x._size;
-				_root = x._root;
-				_comp = x._comp;
-				_allocator = x._allocator;
-				_TNULL = x._root.getTNULL();
-				x._size = tmp_size;
-				x._root = tmp_root;
-				x._comp = tmp_comp;
-				x._allocator = tmp_allocator;
-				x._TNULL = tmp_TNULL;
+				// size_type		tmp_size = _size;
+				// tree_type		tmp_root = _root;
+				// key_compare		tmp_comp = _comp;
+				// allocator_type	tmp_allocator = _allocator;
+				// TNULL_type		tmp_TNULL = _root.getTNULL();
+				// _size = x._size;
+				// _root = x._root;
+				// _comp = x._comp;
+				// _allocator = x._allocator;
+				// _TNULL = x._root.getTNULL();
+				// x._size = tmp_size;
+				// x._root = tmp_root;
+				// x._comp = tmp_comp;
+				// x._allocator = tmp_allocator;
+				// x._TNULL = tmp_TNULL;
+
+				std::swap(_size, x._size);
+				std::swap(_root, x._root);
+				std::swap(_comp, x._comp);
+				std::swap(_allocator, x._allocator);
+				std::swap(_TNULL, x._TNULL);
 			}
 
 			// void	print_map()
