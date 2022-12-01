@@ -1,6 +1,3 @@
-#ifndef TESTS_STACK_HPP
-#define TESTS_STACK_HPP
-
 #include "../includes/vector.hpp"
 #include "../includes/enable_if.hpp"
 #include "../includes/equal.hpp"
@@ -151,6 +148,3 @@ void	tests_stack()
 	else
 		std::cout << "WRONG" << std::endl;
 }
-
-#endif
-

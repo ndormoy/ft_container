@@ -1,6 +1,3 @@
-#ifndef TESTS_SET_HPP
-#define TESTS_SET_HPP
-
 #include "../includes/vector.hpp"
 #include "../includes/enable_if.hpp"
 #include "../includes/equal.hpp"
@@ -580,5 +577,3 @@ void	tests_set()
 	it_be_rend++;
 	std::cout << "first  = " << *it_be_rend << std::endl;
 }
-
-#endif

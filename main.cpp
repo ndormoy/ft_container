@@ -1,8 +1,8 @@
-#include "tests/tests_functions.hpp"
-#include "tests/tests_vector.hpp"
-#include "tests/tests_stack.hpp"
-#include "tests/tests_map.hpp"
-#include "tests/tests_set.hpp"
+#include "tests/tests_functions.cpp"
+#include "tests/tests_vector.cpp"
+#include "tests/tests_stack.cpp"
+#include "tests/tests_map.cpp"
+#include "tests/tests_set.cpp"
 
 int main(int argc, char *argv[])
 {

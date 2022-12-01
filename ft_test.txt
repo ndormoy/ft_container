@@ -1,0 +1,300 @@
+[1;31m*******************************
+<---------TEST set--------->
+*******************************[0m
+[1;34m1) CONSTRUCTORS[0m
+[1;32ma) empty constructor[0m
+set is empty
+set_empty.size() = 0
+[1;32mb) range constructor[0m
+value = -30
+value = 10
+value = 20
+value = 40
+value = 50
+size = 5
+value = 20
+value = 40
+size = 2
+set is empty
+[1;32mc) copy constructor[0m
+value = -30
+value = 10
+value = 20
+value = 40
+value = 50
+size = 5
+-------
+value = 20
+value = 40
+size = 2
+-------
+set is empty
+-------
+set is empty
+[1;34m2) CLEAR[0m
+size = 0
+size = 0
+[1;34m3) COUNT[0m
+set_count.count(20) = 0
+set_count.count(20) = 1
+set_count.count(20) = 1
+[1;34m4) EMPTY[0m
+set_count.empty() = 0
+set_count.empty() = 1
+[1;34m4) LOWER BOUND && UPPER BOUND[0m
+value = 1
+value = 2
+value = 3
+value = 4
+size = 4
+lower_bound[0] = 1
+-------
+upper_bound[0] = 1
+-------
+lower_bound[1] = 1
+-------
+upper_bound[1] = 2
+-------
+lower_bound[2] = 2
+-------
+upper_bound[2] = 3
+-------
+lower_bound[3] = 3
+-------
+upper_bound[3] = 4
+-------
+upper_bound(4) = end
+lower_bound(5) = end
+upper_bound(5) = end
+[1;34m5) EQUAL RANGE[0m
+lower bound points to: b
+upper bound points to: c
+[1;34m6) ERASE[0m
+[1;32ma) single element erase[0m
+-------
+value = 0
+value = 1
+value = 3
+value = 4
+size = 4
+-------
+[1;32mb) erase key[0m
+value = 0
+value = 1
+value = 2
+value = 4
+size = 4
+-------
+----------------
+[1;32mc) erase range[0m
+value = 0
+value = 1
+value = 2
+value = 3
+value = 4
+size = 5
+-------
+----------------
+value = 0
+value = 1
+value = 4
+size = 3
+-------
+[1;34m7) FIND[0m
+find(2) = 2 | 2
+find(10) = end
+[1;34m8) SWAP[0m
+foo contains:
+value = a
+value = b
+value = c
+size = 3
+bar contains:
+value = x
+value = y
+size = 2
+foo contains:
+set is empty
+pouet contains:
+value = a
+value = b
+value = c
+size = 3
+[1;34m9) GET ALLOCATOR[0m
+allocator = 9223372036854775807
+allocator = 9223372036854775807
+allocator = 9223372036854775807
+allocator = 2305843009213693951
+[1;34m10) MAX SIZE[0m
+long_set.max_size() = 230584300921369395
+char_set.max_size() = 230584300921369395
+uchar_set.max_size() = 230584300921369395
+short_set.max_size() = 230584300921369395
+ushort_set.max_size() = 230584300921369395
+uint_set.max_size() = 230584300921369395
+float_set.max_size() = 230584300921369395
+double_set.max_size() = 230584300921369395
+long_long_set.max_size() = 230584300921369395
+ulong_long_set.max_size() = 230584300921369395
+long_double_set.max_size() = 192153584101141162
+[1;34m11) KEY COMP[0m
+set_comp contains:
+a
+b
+c
+[1;34m12) VALUE COMP[0m
+myset contains: 0 1 2 3 4
+[1;34m13) OPERATOR=[0m
+value = 0
+value = 1
+value = 2
+value = 3
+value = 4
+value = 5
+value = 6
+value = 7
+value = 8
+value = 9
+size = 10
+[1;34m14) RELATIONAL OPERATORS[0m
+test == comp_test: 
+MY TEST
+WRONG
+WRONG
+EQUAL : ==
+--------------------
+test != comp_test: 
+MY TEST
+DIFFRENT : !=
+--------------------
+test < comp_test: 
+MY TEST
+LOWER : <
+--------------------
+test > comp_test: 
+MY TEST
+WRONG
+--------------------
+test <= comp_test: 
+MY TEST
+LOWER <=
+--------------------
+test >= comp_test: 
+MY TEST
+WRONG
+[1;34m15) INSERTS[0m
+[1;32ma) Single element[0m
+value = A
+value = C
+value = D
+value = E
+value = b
+size = 5
+[1;32mb) With hint[0m
+value = A
+value = C
+value = D
+value = E
+value = OHOHOHOH
+value = b
+size = 6
+-------
+value = A
+value = C
+value = D
+value = E
+value = OHOHOHOH
+value = b
+size = 6
+-------
+value = A
+value = C
+value = D
+value = E
+value = OHOHOHOH
+value = b
+value = pouet
+size = 7
+[1;32mc) Range[0m
+value = A
+value = C
+value = D
+value = E
+value = OHOHOHOH
+value = b
+value = pouet
+size = 7
+-------
+value = A
+value = C
+value = D
+value = E
+value = OHOHOHOH
+value = b
+value = pouet
+size = 7
+-------
+value = A
+value = C
+value = D
+value = E
+value = OHOHOHOH
+value = b
+value = pouet
+size = 7
+-------
+value = D
+value = E
+value = OHOHOHOH
+size = 3
+[1;34m16) BEGIN && END[0m
+first  = 0
+first  = 1
+first  = 2
+first  = 3
+first  = 4
+-------
+first  = 4
+first  = 3
+first  = 2
+first  = 1
+first  = 0
+-------
+first  = 3
+first  = 2
+first  = 1
+first  = 0
+-------
+first  = 1
+first  = 2
+first  = 3
+first  = 2
+first  = 1
+first  = 0
+first  = 4
+first  = 3
+first  = 4
+first  = 4
+[1;34m17) REVERSE BEGIN &&  REVERSE END[0m
+first  = 4
+first  = 3
+first  = 2
+first  = 1
+first  = 0
+first  = 4
+first  = 4
+first  = 3
+-------
+first  = 4
+first  = 3
+first  = 4
+first  = 3
+first  = 4
+first  = 3
+first  = 4
+first  = 3
+first  = 2
+first  = 1
+first  = 0
+first  = end 
+first  = 4

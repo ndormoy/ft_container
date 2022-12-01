@@ -1,6 +1,3 @@
-#ifndef TESTS_VECTOR_HPP
-#define TESTS_VECTOR_HPP
-
 #include "../includes/vector.hpp"
 #include "../includes/enable_if.hpp"
 #include "../includes/equal.hpp"
@@ -792,5 +789,3 @@ void	tests_vector()
 	TESTED_NAMESPACE::vector<int>	construct_test_8(construct_test_6);
 	print_vector(construct_test_8);
 }
-
-#endif

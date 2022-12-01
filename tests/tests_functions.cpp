@@ -1,6 +1,3 @@
-#ifndef FUNCTIONS_HPP
-#define FUNCTIONS_HPP
-
 #include "../includes/vector.hpp"
 #include "../includes/enable_if.hpp"
 #include "../includes/equal.hpp"
@@ -104,5 +101,3 @@ void	tests_functions(void)
 	else
 	std::cout << "The contents of both sequences differ.\n";
 }
-
-#endif

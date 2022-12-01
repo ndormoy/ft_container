@@ -1,6 +1,3 @@
-#ifndef TESTS_MAP_HPP
-#define TESTS_MAP_HPP
-
 #include "../includes/vector.hpp"
 #include "../includes/enable_if.hpp"
 #include "../includes/equal.hpp"
@@ -600,5 +597,3 @@ void	tests_map()
 	it_be_rend++;
 	std::cout << "first  = " << it_be_rend->first <<  "| second = " << it_be_rend->second << std::endl;
 }
-
-#endif
