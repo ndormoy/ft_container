@@ -1,45 +1,12 @@
 FT_NAME			= ft_containers
-
 STD_NAME		= std_containers
-
 INCDIR			= includes/
-
-# FTDIR 		= srcs/
-
-TESTDIR			= #tests/
-
 OBJDIR			= objs/
-
-# FT_SRCS		= ${FTDIR}main.cpp \
-
 FT_SRCS			= main.cpp
-
-# tests
-# FT_SRCS		+=	${TESTDIR}test_vector_iterator.cpp \
-# 				${TESTDIR}test_vector_container.cpp \
-# 				${TESTDIR}test_vector_reverse_iterator.cpp \
-# 				${TESTDIR}test_stack.cpp \
-# 				${TESTDIR}test_map.cpp
-
-
-# stack
-# SRCS			+= ${STACKDIR}stack.cpp
-
-
-# map
-# SRCS			+= ${MAPDIR}
-
-# STD
-# SRCS			+= ${SRDDIR}
-
 FT_OBJS 		= ${FT_SRCS:%.cpp=${OBJDIR}%.o}
-
 STD_OBJS 		= ${FT_SRCS:%.cpp=${OBJDIR}%_std.o}
-
 FT_DEP			= ${FT_SRCS:%.cpp=${OBJDIR}%.d}
-
 STD_DEP			= ${FT_SRCS:%.cpp=${OBJDIR}%_std.d}
-
 CC				= c++
 
 CFLAGS			= -Wall -Wextra -Werror --std=c++98 -I ${INCDIR} -g3 #-fsanitize=address
@@ -77,6 +44,7 @@ clean:
 
 fclean:			clean
 				${DEL} ${FT_NAME} ${STD_NAME}
+				${DEL} ft_test.txt std_test.txt
 				@echo "\033[32m\t[FCLEAN OK]\033[0m"
 
 re:				fclean all
